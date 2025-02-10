@@ -753,10 +753,10 @@ body.dark .contatos-info h3 {
 
   <!-- Menu de Navegação -->
   <nav>
-    <a href="#mapa-acs">Mapa dos ACS'S</a>
+    <a href="index.html">Inicio</a>
     <a href="#atendimentos">Atendimentos</a>
     <a href="#contato">Contato</a>
-    <a href="#planejamento-familiar">Planejamento Familiar</a>
+    <a href="acs.html">Equipe</a>
     <a href="#sobre-ubs">Sobre</a>
   </nav>
 
@@ -1002,53 +1002,15 @@ body.dark .contatos-info h3 {
 
   <!-- Seção Mapa dos ACS (Geração Dinâmica dos Botões) -->
   <section id="mapa-acs" class="container">
-    <h2>Locais de Atuação dos Agentes Comunitários de Saúde (ACS)</h2>
-    <p>Clique em uma rua para ver os ACS responsáveis:</p>
+    
+    
     <div id="acs-buttons" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
     <div class="agent-info" id="agentInfo">
       <div class="agent-group" id="agentGroup"></div>
     </div>
   </section>
 
-  <!-- Seção: Equipes de Saúde da Família -->
-  <section class="esf-teams">
-    <h2>Equipes de Saúde da Família</h2>
-    <div class="teams-container">
-      <!-- Card da ESF 1 -->
-      <div class="team-card">
-        <h3>ESF 1</h3>
-        <ul>
-          <li><strong>Middihan Nascimento</strong> (Médica)</li>
-          <li><strong>Márcia Cruz</strong> (Enfermeira)</li>
-          <li>ACS Luana</li>
-          <li>ACS Nadieli</li>
-          <li>ACS Sol</li>
-          <li>ACS Kelly</li>
-          <li>ACS Susana</li>
-          <li>ACS Fernanda</li>
-          <li>ACS Patrícia</li>
-          <li>ACS Débora</li>
-          <li>ACS Bruna</li>
-        </ul>
-      </div>
-      <!-- Card da ESF 2 -->
-      <div class="team-card">
-        <h3>ESF 2</h3>
-        <ul>
-          <li><strong>Bianca Nicoleti</strong> (Médica)</li>
-          <li><strong>Thais</strong> (Enfermeira)</li>
-          <li>ACS Vanessa</li>
-          <li>ACS Vitor</li>
-          <li>ACS Maylon</li>
-          <li>ACS Marina</li>
-          <li>ACS Felix</li>
-          <li>ACS Regina</li>
-          <li>ACS Tais</li>
-          <li>ACS Késia</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  
 
   <h2>📍 Localização</h2>
 <div class="maps-container">
@@ -1068,75 +1030,6 @@ body.dark .contatos-info h3 {
 
 
 
-  <!-- Cronograma da Enfermeira Thais -->
-  <section class="container">
-    <h2>Cronograma da Enfermeira Thais</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Dia</th>
-          <th>Atividades</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Segunda-feira</td>
-          <td>Pré-natal e Puerpera, Demanda Espontânea, Verificação de e-mails (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Terça-feira</td>
-          <td>Papanicolaou, Demanda Espontânea (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Quarta-feira</td>
-          <td>Papanicolaou, Impressão de Resultados de Papa Semanal (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Quinta-feira</td>
-          <td>Planejamento Familiar, Verificar Processos de Planejamento (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Sexta-feira</td>
-          <td>Reunião de Equipe, Atendimento na Pediatria</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- Cronograma da Enfermeira Márcia Cruz -->
-  <section class="container">
-    <h2>Cronograma da Enfermeira Márcia Cruz</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Dia</th>
-          <th>Atividades</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Segunda-feira</td>
-          <td>Pré-natal e Puerpera, Demanda Espontânea, Verificação de e-mails (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Terça-feira</td>
-          <td>Papanicolaou, Demanda Espontânea (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Quarta-feira</td>
-          <td>Papanicolaou, Envio das lâminas de Papanicolaou (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Quinta-feira</td>
-          <td>Planejamento Familiar, Verificar processos de planejamento (Sala GO)</td>
-        </tr>
-        <tr>
-          <td>Sexta-feira</td>
-          <td>Reunião de Equipe, Atendimento na Pediatria</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
 
   <!-- Dias de Coleta -->
   <section class="container collection-days">
@@ -1147,57 +1040,9 @@ body.dark .contatos-info h3 {
       <l1><strong>Quinta-feira:</strong> Visita pela manhã.</li>
    
   </section>
-  <div id="password-section">
-    <input type="password" id="password-input" placeholder="Digite a senha">
-    <button onclick="checkPassword()">Acessar</button>
-</div>
-<h3>Fluxo do Planejamento Familiar (uso interno!)</h3>
-<div id="content" style="display: none;">
  
 
-  
-  <!-- Fluxo de Planejamento Familiar -->
-  <section class="container family-planning-flow" id="planejamento-familiar">
-    
-    
-     <p> <li>Agendar consulta com o enfermeiro na recepção, onde deve ser entregue o papel com data e horário da consulta, além dos documentos necessários para trazer, e o paciente deve ser orientado sobre isso.</li></p>
-      <li>Consulta com o enfermeiro com documentos em mãos.</li>
-      <li>Assinatura do psicólogo.</li>
-      <li>Assinatura do assistente social.</li>
-      <li>O paciente deve trazer os resultados dos exames solicitados.</li>
-      <li>Mediante exames, mostrar para a médica responsável da equipe para avaliação.</li>
-      <li>Passar para Jéssica realizar a inserção em sistema.</li>
-      <li>Quando sair a consulta com cirurgião, o paciente deve comparecer à UBS e retirar o processo de Planejamento Familiar com o enfermeiro.</li>
-   
-    <p><strong>OBS:</strong> Casos de gestantes, não é necessário passar para inserção no sistema, basta entregar em mãos para que seja feita pelo enfermeiro.</p>
-  </section>
-    <section class="container family-planning-flow" id="planejamento-familiar">
-        <!-- Seu conteúdo atual aqui -->
-    </section>
-</div>
 
-<style>
-    #password-section {
-        margin: 20px;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-</style>
-
-<script>
-    function checkPassword() {
-        const password = "c@ieiras2025"; // Altere esta senha
-        const input = document.getElementById('password-input').value;
-        
-        if (input === password) {
-            document.getElementById('content').style.display = 'block';
-            document.getElementById('password-section').style.display = 'none';
-        } else {
-            alert('Senha incorreta!');
-        }
-    }
-</script>
   
 
  
@@ -1599,28 +1444,7 @@ body.dark .contatos-info h3 {
       });
     }
 
-    // Alterna a visibilidade da seção "Salva Vidas"
-    function setupSalvaVidasButton() {
-      const salvaVidasBtn = document.getElementById('salvaVidasBtn');
-      const salvaVidasInfo = document.getElementById('salvaVidasInfo');
-      salvaVidasBtn.addEventListener('click', () => {
-        salvaVidasInfo.style.display = (salvaVidasInfo.style.display === 'none' || salvaVidasInfo.style.display === '')
-          ? 'block'
-          : 'none';
-      });
-    }
-
-    // Alterna a visibilidade da seção "Direitos e Deveres"
-    function setupDireitosDeveresButton() {
-      const direitosBtn = document.getElementById('direitosDeveresBtn');
-      const direitosInfo = document.getElementById('direitosDeveresInfo');
-      direitosBtn.addEventListener('click', () => {
-        direitosInfo.style.display = (direitosInfo.style.display === 'none' || direitosInfo.style.display === '')
-          ? 'block'
-          : 'none';
-      });
-    }
-
+    
     // Cria uma lista de cartões com os ACS (mapeamento manual)
     function createACSMappingList() {
       const acsMapping = [
@@ -1721,8 +1545,30 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       contatosInfo.style.display = "none";
     }
-  });
+  });// Alterna a visibilidade da seção "Salva Vidas"
+    function setupSalvaVidasButton() {
+      const salvaVidasBtn = document.getElementById('salvaVidasBtn');
+      const salvaVidasInfo = document.getElementById('salvaVidasInfo');
+      salvaVidasBtn.addEventListener('click', () => {
+        salvaVidasInfo.style.display = (salvaVidasInfo.style.display === 'none' || salvaVidasInfo.style.display === '')
+          ? 'block'
+          : 'none';
+      });
+    }
+
+    // Alterna a visibilidade da seção "Direitos e Deveres"
+    function setupDireitosDeveresButton() {
+      const direitosBtn = document.getElementById('direitosDeveresBtn');
+      const direitosInfo = document.getElementById('direitosDeveresInfo');
+      direitosBtn.addEventListener('click', () => {
+        direitosInfo.style.display = (direitosInfo.style.display === 'none' || direitosInfo.style.display === '')
+          ? 'block'
+          : 'none';
+      });
+    }
+
 </script>
+
 <title>UBS Caieiras Portal - Atendimento Online</title>
   <style>
     /* Estilos Globais */
