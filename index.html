@@ -1147,12 +1147,18 @@ body.dark .contatos-info h3 {
       <l1><strong>Quinta-feira:</strong> Visita pela manhã.</li>
    
   </section>
+  <div id="password-section">
+    <input type="password" id="password-input" placeholder="Digite a senha">
+    <button onclick="checkPassword()">Acessar</button>
+</div>
+<h3>Fluxo do Planejamento Familiar (uso interno!)</h3>
+<div id="content" style="display: none;">
+ 
 
   
-
   <!-- Fluxo de Planejamento Familiar -->
   <section class="container family-planning-flow" id="planejamento-familiar">
-    <h3>Fluxo do Planejamento Familiar - Vasectomia e Laqueadura</h3>
+    
     
      <p> <li>Agendar consulta com o enfermeiro na recepção, onde deve ser entregue o papel com data e horário da consulta, além dos documentos necessários para trazer, e o paciente deve ser orientado sobre isso.</li></p>
       <li>Consulta com o enfermeiro com documentos em mãos.</li>
@@ -1165,6 +1171,35 @@ body.dark .contatos-info h3 {
    
     <p><strong>OBS:</strong> Casos de gestantes, não é necessário passar para inserção no sistema, basta entregar em mãos para que seja feita pelo enfermeiro.</p>
   </section>
+    <section class="container family-planning-flow" id="planejamento-familiar">
+        <!-- Seu conteúdo atual aqui -->
+    </section>
+</div>
+
+<style>
+    #password-section {
+        margin: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
+
+<script>
+    function checkPassword() {
+        const password = "c@ieiras2025"; // Altere esta senha
+        const input = document.getElementById('password-input').value;
+        
+        if (input === password) {
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('password-section').style.display = 'none';
+        } else {
+            alert('Senha incorreta!');
+        }
+    }
+</script>
+  
+
  
 
 
