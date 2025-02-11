@@ -538,12 +538,8 @@ iframe {
   font-size: 1.1em;
 }
 
-/* Modo noturno */
-body.dark .contatos-info {
-  background: linear-gradient(135deg, #4f4f4f, #4f4f4f);
-  border-color: #6b66ff82;
-  box-shadow: 0 4px 8px rgba(112, 102, 255, 0.411);
-}
+
+
 
 body.dark .contatos-info h3 {
   color: #a3c7ff;
@@ -748,8 +744,7 @@ body.dark .contatos-info h3 {
 </div>
 
 
-  <!-- Botão para alternar modo noturno/diurno -->
-  <button class="toggle-dark-btn" id="toggleDarkBtn">Modo Noturno</button>
+ 
 
   <!-- Menu de Navegação -->
   <nav>
@@ -1016,7 +1011,7 @@ body.dark .contatos-info h3 {
 <div class="maps-container">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.3015184425894!2d-46.72461192379341!3d-23.377307054857987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee5002f6c4863%3A0x33b1a9290d0ecfdb!2sUBS%20Portal%20das%20Laranjeiras!5e0!3m2!1spt-BR!2sbr!4v1738836139763!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-   <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1YQGtlXZ-zgXICUP56JjYta-wzcryerk&ehbc=2E312F" width="640" height="480"></iframe>
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1GS-j0JKK5bBkCCBChODHhjN3mz1eCmc&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
 </div>
 
 
@@ -1033,9 +1028,9 @@ body.dark .contatos-info h3 {
 
   <!-- Dias de Coleta -->
   <section class="container collection-days">
-    <h3>Dias de Coleta</h3>
+    <h3>Dias de Coletas e Visitas Domiciliares</h3>
    
-      <l1></l1><strong>Segunda-feira:</strong> Coletas na última semana do mês.</li>
+      <l1></l1><strong>Terça e quinta:</strong> Coletas comuns.</li>
       <l1><strong>Quarta-feira:</strong> Visita à tarde.</li>
       <l1><strong>Quinta-feira:</strong> Visita pela manhã.</li>
    
@@ -1122,63 +1117,25 @@ body.dark .contatos-info h3 {
   <!-- JavaScript -->
   <!-- =================================== -->
   <script>
-    // Alterna o modo noturno/diurno e atualiza o texto do botão
-    const toggleDarkBtn = document.getElementById('toggleDarkBtn');
-    toggleDarkBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      toggleDarkBtn.textContent = document.body.classList.contains('dark') ? 'Modo Diurno' : 'Modo Noturno';
-    });
+  
 
     // Função para criar os botões de ACS para cada rua com regras específicas
     function createACSButtons() {
-      const acsContainer = document.getElementById('acs-buttons');
+      const acsContainer = document.getElementById('acs-buttons'); // parte ruim não mexer
       const streets = [
-        "Andorinha",
-        "Arapongas",
-        "Anu",
-        "Beija Flor",
-        "Bem-Te-Vi",
-        "Canário",
-        "Canário da Terra",
-        "Codorna",
-        "Faisão",
-        "Gaivota",
-        "Garça",
-        "Ibis Dourado",
-        "João de Barro",
-        "Melro",
-        "Pardal",
-        "Passáro Preto",
-        "Patativa",
-        "Orlando Peccicaco",
-        "Perdiz",
-        "Periquito",
-        "Pintassilgo",
-        "Rouxinol",
-        "Sabiá laranjeiras",
-        "Siriema",
-        "Sanhaço",
-        "Tico-Tico",
-        "Tiziu",
-        "Tucano",
-        "Uirapuru",
-        "Francisco Mommenshon",
-        " Cardeal",
-        "Erminia Amalia",
-        "Benedito Rodrigues",
-        "Luiz Gonzaga Dartora"
+        
       ];
 
       streets.forEach((street) => {
-        const button = document.createElement('button');
-        button.className = 'street-button';
+        const button = document.createElement('button');// parte ruim não mexer
+        button.className = 'street-button'; // parte ruim não mexer
         let agents = [];
         
-        // Regras específicas para determinadas ruas
+        // Regras específicas para determinadas ruas // parte ruim não mexer
         if (street === " Cardeal") {
           agents = [
-            { name: "ACS Daniele", photo: "danieli.png", info: "Agente de Saúde" },
-            { name: "ACS Patrícia", photo: "patricia.png", info: "Agente de Saúde" },
+            { name: "ACS Daniele", photo: "danieli.png", info: "Agente de Saúde" },// parte ruim não mexer
+            { name: "ACS Patrícia", photo: "patricia.png", info: "Agente de Saúde" },// parte ruim não mexer
             { name: "ACS Bruna", photo: "bruna.png", info: "Agente de Saúde" }
           ];
         } else if (street === "Tucano") {
@@ -1445,7 +1402,7 @@ body.dark .contatos-info h3 {
     }
 
     
-    // Cria uma lista de cartões com os ACS (mapeamento manual)
+    // Cria uma lista de cartões com os ACS (mapeamento manual) // não mexer
     function createACSMappingList() {
       const acsMapping = [
         { name: "Patrícia", photo: "patricia.png", streets: ["Ibis Dourado", "Perdiz", "Patativa", "Cardeal"] },
@@ -1570,23 +1527,44 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <title>UBS Caieiras Portal - Atendimento Online</title>
+  <!-- Carrega face-api.js para reconhecimento facial -->
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
   <style>
-    /* Estilos Globais */
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      position: relative;
+    /* Variáveis CSS para facilitar a manutenção */
+    :root {
+      --primary-color: #0056b3;
+      --primary-hover: #004494;
+      --secondary-color: #007bff;
+      --secondary-hover: #0056b3;
+      --bg-color: #f5f5f5;
+      --text-color: #333;
+      --header-gradient-start: #020267;
+      --header-gradient-end: #0056b3;
+      --border-color: #e0e0e0;
+      --transition-speed: 0.3s;
     }
 
-    /* Botão de Chat - Garantindo visibilidade com animação "pulse" */
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--bg-color);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Botão para abrir o chat */
     #openChat {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #0056b3;
+      background-color: var(--primary-color);
       color: #fff;
       border: none;
       padding: 15px 25px;
@@ -1595,35 +1573,33 @@ document.addEventListener("DOMContentLoaded", function () {
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
+      transition: transform var(--transition-speed);
       z-index: 9999;
       display: flex;
       align-items: center;
       gap: 8px;
-      opacity: 1;
-      visibility: visible;
       animation: pulse 2s infinite;
     }
 
     #openChat:hover {
-      background-color: #004494;
+      background-color: var(--primary-hover);
       transform: scale(1.05);
     }
 
-    /* Animação "pulse" para o botão */
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
 
-    /* Chat Container */
+    /* Container do chat */
     .chat-container {
       position: fixed;
       bottom: 80px;
       right: 20px;
       width: 380px;
-      background: #fff;
+      max-width: 90%;
+      background: linear-gradient(135deg, #ffffff, #f0f0f0);
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       display: none;
@@ -1638,19 +1614,38 @@ document.addEventListener("DOMContentLoaded", function () {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Chat Header */
+    /* Cabeçalho do chat */
     .chat-header {
-      background: linear-gradient(135deg, #020267, #0056b3);
+      background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
       color: #fff;
       padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
+
+    .chat-logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      animation: logoAppear 1s ease-out;
+    }
+
+    @keyframes logoAppear {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .chat-title {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
     }
 
     .chat-header h3 {
-      margin: 0;
       font-size: 16px;
+      margin: 0;
     }
 
     .header-buttons {
@@ -1659,52 +1654,26 @@ document.addEventListener("DOMContentLoaded", function () {
       align-items: center;
     }
 
-    .toggle-audio-btn {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 20px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .toggle-audio-btn:hover {
-      transform: scale(1.1);
-    }
-
+    .toggle-audio-btn,
     .close-chat-btn {
       background: none;
       border: none;
       color: #fff;
       font-size: 20px;
       cursor: pointer;
+      transition: transform var(--transition-speed);
       padding: 5px;
-      transition: transform 0.3s ease;
+    }
+
+    .toggle-audio-btn:hover {
+      transform: scale(1.1);
     }
 
     .close-chat-btn:hover {
       transform: rotate(90deg);
     }
 
-    /* Input Styling */
-    input[type="text"] {
-      text-align: center;
-      font-size: 14px;
-      padding: 12px;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      width: 90%;
-      margin: 8px auto;
-    }
-
-    input[type="text"]:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
-      outline: none;
-    }
-
-    /* User Info Section */
+    /* Seção de identificação do usuário */
     .user-info {
       padding: 20px;
       display: flex;
@@ -1713,27 +1682,44 @@ document.addEventListener("DOMContentLoaded", function () {
       gap: 10px;
     }
 
+    .user-info input[type="text"] {
+      text-align: center;
+      font-size: 14px;
+      padding: 12px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      transition: all var(--transition-speed);
+      width: 90%;
+    }
+
+    .user-info input[type="text"]:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+      outline: none;
+    }
+
     #startChat {
-      background-color: #007bff;
+      background-color: var(--secondary-color);
       color: #fff;
       border: none;
       padding: 12px 24px;
       border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
-      transition: all 0.3s ease;
+      transition: transform var(--transition-speed);
     }
 
     #startChat:hover {
-      background-color: #0056b3;
+      background-color: var(--secondary-hover);
       transform: translateY(-2px);
     }
 
-    /* Messages Area */
+    /* Área de mensagens */
     .chat-messages {
       height: 300px;
       overflow-y: auto;
       padding: 15px;
+      background: #f9f9f9;
     }
 
     .message {
@@ -1743,10 +1729,18 @@ document.addEventListener("DOMContentLoaded", function () {
       max-width: 85%;
       line-height: 1.4;
       font-size: 14px;
+      word-wrap: break-word;
+      opacity: 0;
+      animation: messageAppear 0.5s forwards;
+    }
+
+    @keyframes messageAppear {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .user-message {
-      background-color: #007bff;
+      background-color: var(--secondary-color);
       color: #fff;
       align-self: flex-end;
       border-bottom-right-radius: 5px;
@@ -1754,12 +1748,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     .bot-message {
       background-color: #f0f2f5;
-      color: #333;
+      color: var(--text-color);
       align-self: flex-start;
       border-bottom-left-radius: 5px;
     }
 
-    /* Chat Input Area */
+    /* Área de entrada */
     .chat-input {
       display: flex;
       padding: 15px;
@@ -1767,30 +1761,36 @@ document.addEventListener("DOMContentLoaded", function () {
       border-top: 1px solid #dee2e6;
     }
 
-    .chat-input input {
+    .chat-input input[type="text"] {
       flex: 1;
-      margin: 0;
       padding: 10px;
-      border: 2px solid #e0e0e0;
+      border: 2px solid var(--border-color);
       border-radius: 8px;
       font-size: 14px;
+      transition: all var(--transition-speed);
+    }
+
+    .chat-input input[type="text"]:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+      outline: none;
     }
 
     .chat-input button {
-      background-color: #007bff;
+      background-color: var(--secondary-color);
       color: #fff;
       border: none;
       padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background-color var(--transition-speed);
     }
 
     .chat-input button:hover {
-      background-color: #0056b3;
+      background-color: var(--secondary-hover);
     }
 
-    /* Botão de microfone para entrada por voz */
+    /* Botão de microfone */
     .mic-btn {
       background-color: #28a745;
       color: #fff;
@@ -1799,14 +1799,14 @@ document.addEventListener("DOMContentLoaded", function () {
       border-radius: 50%;
       cursor: pointer;
       font-size: 18px;
-      transition: all 0.3s ease;
+      transition: background-color var(--transition-speed);
     }
 
     .mic-btn:hover {
       background-color: #218838;
     }
 
-    /* Suggestions Area */
+    /* Área de sugestões */
     .suggestions {
       display: flex;
       flex-wrap: wrap;
@@ -1814,65 +1814,223 @@ document.addEventListener("DOMContentLoaded", function () {
       justify-content: center;
       padding: 10px;
       background: #f8f9fa;
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .suggestion-btn {
-      background-color: #007bff;
+      background-color: var(--secondary-color);
       color: #fff;
       border: none;
       padding: 8px 12px;
       border-radius: 20px;
       cursor: pointer;
       font-size: 13px;
-      transition: all 0.3s ease;
+      transition: transform var(--transition-speed), background-color var(--transition-speed);
       white-space: nowrap;
     }
 
     .suggestion-btn:hover {
-      background-color: #0056b3;
+      background-color: var(--secondary-hover);
       transform: translateY(-2px);
+    }
+
+    /* Modal para opções de Hipótese */
+    .hipotese-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    .hipotese-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .hipotese-content h3 {
+      margin-bottom: 20px;
+    }
+
+    .hipotese-content button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--secondary-color);
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hipotese-content button:hover {
+      background-color: var(--secondary-hover);
+    }
+
+    /* Modal para reconhecimento emocional */
+    .emotion-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    .emotion-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .emotion-content h3 {
+      margin-bottom: 15px;
+    }
+
+    .emotion-content video {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .emotion-content button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--secondary-color);
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .emotion-content button:hover {
+      background-color: var(--secondary-hover);
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 600px) {
+      #openChat {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+      .chat-container {
+        bottom: 70px;
+        right: 15px;
+        width: 95%;
+      }
+      .chat-header h3 {
+        font-size: 14px;
+      }
+      .chat-messages {
+        height: 250px;
+      }
+      .chat-input button,
+      .mic-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Botão de Chat -->
-  <button id="openChat">
-    💬 Chat Online
-  </button>
+  <!-- Botão para abrir o chat -->
+  <button id="openChat">💬 Chat Online</button>
 
   <!-- Container do Chat -->
   <div class="chat-container" id="chatContainer">
     <div class="chat-header">
-      <h3>UBS Portal - Atendimento Online</h3>
+      <div class="chat-title">
+        <!-- Substitua "logo.png" pelo caminho da sua imagem -->
+        <img src="brasao.png" alt="Logo UBS Caieiras" class="chat-logo" />
+        <h3>UBS Portal - Atendimento Online</h3>
+      </div>
       <div class="header-buttons">
-        <button id="toggleAudio" class="toggle-audio-btn">🔊</button>
-        <button class="close-chat-btn" id="closeChat">✖</button>
+        <button id="toggleAudio" class="toggle-audio-btn" aria-label="Ativar/Desativar áudio">🔊</button>
+        <button class="close-chat-btn" id="closeChat" aria-label="Fechar chat">✖</button>
       </div>
     </div>
 
+    <!-- Seção de identificação do usuário -->
     <div class="user-info" id="userInfo">
       <input type="text" id="nameInput" placeholder="Digite seu nome para começar" />
       <button id="startChat">Iniciar Atendimento</button>
     </div>
 
+    <!-- Interface do Chat (inicialmente oculta) -->
     <div id="chatInterface" style="display: none;">
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-input">
         <input type="text" id="userInput" placeholder="Digite sua mensagem..." />
         <button onclick="sendMessage()">Enviar</button>
-        <button class="mic-btn" onclick="startSpeechRecognition()">🎤</button>
+        <button class="mic-btn" onclick="startSpeechRecognition()" aria-label="Entrada por voz">🎤</button>
       </div>
+      <!-- Sugestões de assuntos (sem a opção de Planos) -->
       <div class="suggestions">
         <button class="suggestion-btn" onclick="useSuggestion('consulta')">📅 Consulta</button>
         <button class="suggestion-btn" onclick="useSuggestion('vacina')">💉 Vacina</button>
         <button class="suggestion-btn" onclick="useSuggestion('exames')">🔬 Exames</button>
         <button class="suggestion-btn" onclick="useSuggestion('telemedicina')">📱 Telemedicina</button>
         <button class="suggestion-btn" onclick="useSuggestion('diagnostico')">🏥 Diagnóstico</button>
-        <button class="suggestion-btn" onclick="useSuggestion('hipotese')">⚕️ Hipótese Diagnóstica</button>
+        <button class="suggestion-btn" onclick="useSuggestion('hipotese')">⚕️ Hipótese</button>
         <button class="suggestion-btn" onclick="useSuggestion('endereco')">📍 Endereço</button>
         <button class="suggestion-btn" onclick="useSuggestion('emergencia')">🚨 Emergência</button>
         <button class="suggestion-btn" onclick="useSuggestion('horario')">⏰ Horário</button>
+        <button class="suggestion-btn" onclick="useSuggestion('servicos')">🔧 Serviços</button>
+        <!-- Botão para Despedida -->
+        <button class="suggestion-btn" onclick="useSuggestion('despedida')">👋 Despedida</button>
+        <!-- Botão para reconhecimento emocional -->
+        <button class="suggestion-btn" onclick="checkEmotion()">😊 Checar Emoção</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal para opções de Hipótese -->
+  <div id="hipoteseModal" class="hipotese-modal">
+    <div class="hipotese-content">
+      <h3>Selecione os sintomas que você está sentindo</h3>
+      <button onclick="selectHipoteseOption('Estou com febre e calafrios')">Febre e Calafrios</button>
+      <button onclick="selectHipoteseOption('Estou com dor de cabeça intensa')">Dor de Cabeça Intensa</button>
+      <button onclick="selectHipoteseOption('Estou com dores no corpo')">Dores no Corpo</button>
+      <button onclick="selectHipoteseOption('Estou com náuseas e vômitos')">Náuseas e Vômitos</button>
+      <button onclick="selectHipoteseOption('Estou com tontura e falta de ar')">Tontura e Falta de Ar</button>
+      <button onclick="selectHipoteseOption('Estou com dor abdominal')">Dor Abdominal</button>
+      <button onclick="selectHipoteseOption('Estou com tosse persistente')">Tosse Persistente</button>
+      <button onclick="selectHipoteseOption('Estou com dor no peito')">Dor no Peito</button>
+      <button onclick="closeHipoteseModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Modal para reconhecimento emocional via face-api.js -->
+  <div id="emotionModal" class="emotion-modal">
+    <div class="emotion-content">
+      <h3>Posicione seu rosto para análise emocional</h3>
+      <video id="emotionVideo" autoplay muted playsinline style="border: 1px solid #ccc; border-radius: 8px;"></video>
+      <br />
+      <button onclick="stopEmotionRecognition()">Cancelar</button>
     </div>
   </div>
 
@@ -1881,14 +2039,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let userName = '';
     let audioEnabled = true;
     let conversationHistory = [];
+    let emotionInterval; // para armazenar o intervalo do reconhecimento facial
+    let emotionStream;   // para armazenar o stream da câmera
 
-    // Instanciando os sons (utilizando new Audio)
+    // Sons (verifique os caminhos dos arquivos)
     const openSound    = new Audio("message-13716.mp3");
     const closeSound   = new Audio("bottle-205353.mp3");
     const sendSound    = new Audio("notification-2-269292.mp3");
-    const receiveSound = new Audio("");
+    const receiveSound = new Audio(""); // Defina se desejar um som de recebimento
 
-    // Objeto com categorias de respostas aleatórias
+    // Categorias de respostas do bot com sintomas específicos e despedida
     const botResponses = {
       saudacoes: {
         keywords: ['oi', 'olá', 'ola', 'bom dia', 'boa tarde', 'boa noite'],
@@ -1897,140 +2057,153 @@ document.addEventListener("DOMContentLoaded", function () {
           "Oi, como posso ajudar?",
           "Olá, em que posso ser útil hoje?",
           "Olá! Como posso te atender?",
-          "Oi! O que posso fazer por você?",
-          "Olá! Precisa de algo?",
-          "Oi! Como posso ser útil?",
-          "Olá! Em que posso te auxiliar?",
-          "Oi! Como posso colaborar hoje?",
-          "Olá! Como posso facilitar seu dia?",
-          "Olá! Me diz como posso te ajudar!",
-          "Oi! Tem algo em que eu possa te ajudar?"
-
+          "Oi! O que posso fazer por você?"
         ]
       },
       consulta: {
         keywords: ['consulta', 'marcar consulta', 'agendar'],
         responses: [
-          "Você pode marcar sua consulta pelo nosso portal ou ligando para (11) 4800-5024.",
-          "Para agendar uma consulta, compareça à UBS com RG e cartão SUS.",
-          "Consulta agendada! Fale com seu ACS ou vá até a recepção para confirmar os detalhes."
+          "Você pode marcar sua consulta com o seu agente de saúde ou presencialmente.",
+          "Para agendar uma consulta, compareça à UBS com RG e cartão SUS."
         ]
       },
       vacina: {
         keywords: ['vacina', 'vacinação', 'vacinacao'],
         responses: [
           "A vacinação está disponível das 7h às 16h, de segunda a sexta.",
-          "Você pode se vacinar sem agendamento, basta apresentar seu cartão de vacina.",
-          "Vacina: traga seu documento e cartão de vacinação."
+          "Você pode se vacinar sem agendamento, basta apresentar seu cartão de vacina."
         ]
       },
       exames: {
         keywords: ['exame', 'exames', 'laboratório'],
         responses: [
-          "Os exames podem ser realizados das 7h às 10h, em jejum, consulte seu ACS sobre a abertura da agenda ou ligue para 4800-5024.",
-          "Para realizar exames, traga seu pedido médico e documentos. Consulte seu ACS para saber quando a agenda será aberta ou entre em contato pelo telefone 4800-5024, geralmente após o dia 20.",
-          "Para exames, tenha em mãos seu pedido médico e documentos. Consulte seu ACS sobre a abertura da agenda ou ligue para 4800-5024, geralmente após o dia 20."
+          "Os exames podem ser realizados das 7h às 10h, em jejum. Consulte seu ACS ou ligue para 4800-5024.",
+          "Para realizar exames, traga seu pedido médico e documentos. Verifique com seu ACS os horários disponíveis."
         ]
       },
       telemedicina: {
         keywords: ['telemedicina', 'consulta online', 'atendimento remoto'],
         responses: [
-          "A telemedicina está indisponível.",
-          "Telemedicina: acesse o link de agendamento para consultas remotas. no momento está índisponivel!."
-         
+          "No momento, a telemedicina está indisponível.",
+          "Telemedicina: acesse o link de agendamento para consultas remotas. Atualmente, está indisponível."
         ]
       },
       diagnostico: {
         keywords: ['diagnóstico', 'diagnostico', 'avaliação', 'exame'],
         responses: [
           "Para um diagnóstico, precisamos de uma avaliação completa. Marque uma consulta.",
-          "O diagnóstico deve ser feito por um profissional. Agende uma consulta.",
-          "Entre em contato com nossa equipe para uma avaliação diagnóstica detalhada."
+          "O diagnóstico deve ser feito por um profissional. Agende uma consulta."
+        ]
+      },
+      dorDeCabeca: {
+        keywords: ["dor de cabeça", "cefaleia", "dor na cabeça", "dor de cabeça intensa"],
+        responses: [
+          "Parece que você está com uma dor de cabeça intensa. Isso pode estar relacionado a estresse ou desidratação. Recomendo descansar, beber bastante água e, se a dor persistir, procurar um médico.",
+          "Uma dor de cabeça intensa pode ser causada por tensão ou falta de sono. Tente relaxar, evitar ambientes com luz forte e manter-se hidratado. Se o problema continuar, procure orientação médica.",
+          "Se sua dor de cabeça for muito forte, faça uma pausa, tome um analgésico e descanse em um ambiente calmo. Se não melhorar, consulte um profissional de saúde."
+        ]
+      },
+      febreCalafrios: {
+        keywords: ["febre", "calafrios", "febre e calafrios"],
+        responses: [
+          "Febre e calafrios podem ser sintomas de infecções ou outras condições. É importante monitorar sua temperatura, manter-se hidratado e descansar. Se os sintomas persistirem, consulte um médico.",
+          "Se você está sentindo febre e calafrios, recomendo repouso e hidratação. Caso a febre se mantenha por mais de dois dias, procure um profissional de saúde."
+        ]
+      },
+      doresNoCorpo: {
+        keywords: ["dores no corpo", "corpo dolorido"],
+        responses: [
+          "Dores no corpo podem ser resultado de esforço físico, infecções ou até mesmo de uma gripe. Procure descansar, manter-se hidratado e, se as dores persistirem, consulte um médico.",
+          "Se você está sentindo dores no corpo, pode ser sinal de uma infecção ou cansaço excessivo. Tente descansar e, se não houver melhora, busque avaliação médica."
+        ]
+      },
+      nauseasVomitos: {
+        keywords: ["náuseas", "vômitos", "náuseas e vômitos"],
+        responses: [
+          "Náuseas e vômitos podem ser sintomas de intoxicação alimentar ou outras condições. É importante descansar, ingerir líquidos aos poucos e, se os sintomas persistirem, procurar atendimento médico.",
+          "Se você está com náuseas e vômitos, beba líquidos gradualmente e evite alimentos pesados. Se o quadro continuar, busque ajuda médica."
+        ]
+      },
+      tonturaFaltaAr: {
+        keywords: ["tontura", "falta de ar", "tontura e falta de ar"],
+        responses: [
+          "Tontura e falta de ar podem ser sinais de desidratação ou problemas cardiovasculares. Procure descansar e, se os sintomas não melhorarem, consulte um médico.",
+          "Se você está sentindo tontura e falta de ar, sente-se, respire fundo e hidrate-se. Caso os sintomas persistam, busque orientação médica."
+        ]
+      },
+      dorAbdominal: {
+        keywords: ["dor abdominal", "dor no estômago", "dor no abdômen"],
+        responses: [
+          "Dor abdominal pode ter diversas causas, como gastrite ou refluxo. Recomendo repouso, uma alimentação leve e, se a dor persistir, procurar um médico.",
+          "Se você está com dor abdominal, tente fazer refeições leves e manter-se hidratado. Se o desconforto continuar, é importante buscar avaliação médica."
+        ]
+      },
+      tossePersistente: {
+        keywords: ["tosse persistente", "tosse", "tosse forte"],
+        responses: [
+          "Uma tosse persistente pode ser sintoma de resfriado, alergia ou até mesmo de uma infecção. Mantenha-se hidratado e, se a tosse continuar, consulte um médico.",
+          "Se sua tosse não passar, evite ambientes poluídos, beba bastante água e, caso os sintomas persistam, procure orientação médica."
+        ]
+      },
+      dorNoPeito: {
+        keywords: ["dor no peito", "dor no tórax"],
+        responses: [
+          "Dor no peito pode ser um sinal de algo sério. Se você estiver com dor no peito, procure atendimento médico imediatamente.",
+          "Se sentir dor no peito, não hesite em buscar ajuda médica, pois pode ser indicativo de uma condição que requer atenção urgente."
+        ]
+      },
+      despedida: {
+        keywords: ["despedida", "adeus", "tchau", "até logo", "até mais"],
+        responses: [
+          "Obrigado por utilizar nosso serviço. Lembre-se: nossa tecnologia foi desenvolvida para melhorar a qualidade de vida, incentivando momentos offline como brincar com seu cachorro, ir ao parque e admirar o céu estrelado. Cuide-se e até a próxima!",
+          "Foi um prazer atendê-lo! Nossa tecnologia busca promover uma vida equilibrada. Que tal aproveitar para dar uma pausa, brincar com seu pet, passear ao ar livre e contemplar as estrelas? Até logo!",
+          "Obrigado por conversar conosco! Reserve um tempo para se divertir offline – brinque com seu cachorro, vá ao parque, olhe para o céu estrelado – e cuide bem de você. Até mais!"
         ]
       },
       hipotese: {
-        keywords: ['febre', 'dor nas costas', 'ansiedade', 'repouso', 'hospital'],
+        keywords: ["hipotese"],
         responses: [
-          "Você está com febre e dor nas costas; isso pode ser dengue. Vá a um hospital, faça repouso e coma alimentos leves.",
-          "Se você sente ansiedade, procure um parque, olhe a natureza e dedique-se a hobbies. Se os sintomas persistirem, consulte um psicólogo.",
-          "Você está com febre alta e dor no corpo; isso pode ser dengue. vá a um hospital, faça repouso e mantenha-se hidratado.",
-           "Se você sente dor de cabeça intensa e manchas vermelhas na pele; isso pode ser dengue. vá a um hospital, evite esforço físico e busque ajuda médica imediatamente.",
-           "Você está com ardência ao urinar e dor pélvica; isso pode ser infecção urinária. vá a um hospital, beba bastante água e evite alimentos irritantes.",
-           "Se você sente cansaço extremo e olhos amarelados; isso pode ser hepatite A. vá a um hospital, evite contato com outras pessoas e siga orientações médicas.",
-           "Você está com tosse persistente e chiado no peito; isso pode ser bronquite. vá a um hospital, evite fumar e mantenha o ambiente arejado.",
-          "Se você sente dor de garganta intensa e febre alta; isso pode ser amigdalite. vá a um hospital, faça gargarejos com água morna e evite alimentos sólidos.",
-          "Você está com erupções cutâneas e coceira intensa; isso pode ser catapora. a um hospital, evite coçar as lesões e use roupas leves.",
-          "Se você sente dor aguda nas articulações e inchaço; isso pode ser chikungunya. vá a um hospital, faça compressas frias e evite movimentos bruscos.",
-          "Você está com congestão nasal e espirros frequentes; isso pode ser gripe. vá um hospital, descanse e mantenha o corpo aquecido.",
-          "Se você sente ansiedade, procure um parque, olhe a natureza e dedique-se a hobbies. se os sintomas persistirem, consulte um psicólogo.",
-         "Você está com dor abdominal e náuseas; isso pode ser gastrite. vá a um hospital, evite alimentos gordurosos e faça refeições leves.",
-         "Se você sente olhos vermelhos e secreção ocular; isso pode ser conjuntivite. vá a um hospital, lave os olhos com soro fisiológico e evite tocar a região.",
-        "Você está com dor de cabeça latejante e sensibilidade à luz; isso pode ser enxaqueca. vá a um hospital, descanse em um ambiente escuro e evite alimentos com cafeína.",
-        "Se você sente dor no peito e falta de ar; isso pode ser infarto.  vá imediatamente a um hospital, chame ajuda médica e evite esforço físico.",
-        "Você está com febre baixa e manchas vermelhas na pele; isso pode ser sarampo. vá a um hospital, evite contato com outras pessoas e siga orientações médicas.",
-         "Se você sente dor nas articulações e rigidez muscular pela manhã; isso pode ser artrite. vá a um hospital, faça alongamentos leves e evite esforços excessivos.",
-         "Você está com tosse seca persistente e perda de peso sem motivo aparente; isso pode ser tuberculose. vá a um hospital, use máscara para evitar transmissão e siga tratamento adequado.",
-         "Se você sente dor abdominal intensa e vômitos frequentes; isso pode ser apendicite.vá imediatamente a um hospital, evite comer ou beber e busque atendimento urgente.",
-          "Você está com coceira anal e desconforto ao evacuar; isso pode ser lombriga ou outra infecção parasitária. vá a um hospital, mantenha uma boa higiene pessoal e evite alimentos crus.",
-          "Se você sente tontura constante e zumbido no ouvido; isso pode ser labirintite. vá a um hospital, evite movimentos bruscos e reduza o estresse.",
-          "Você está com dor no calcanhar ao caminhar e rigidez matinal; isso pode ser fascite plantar. vá a um hospital, use calçados confortáveis e faça alongamentos suaves.",
-          "Se você sente palpitações cardíacas e tremores; isso pode ser hipertireoidismo. vá a um hospital, evite estimulantes como café e siga orientações médicas.",
-         "Você está com cansaço extremo e queda de cabelo; isso pode ser hipotireoidismo. vá a um hospital, faça exames de sangue e siga o tratamento recomendado.",
-       "Se você sente dor no maxilar ao mastigar e estalos na mandíbula; isso pode ser disfunção da ATM. vá a um hospital, evite mastigar alimentos duros e faça fisioterapia bucal.",
-"Você está com dor no punho e dificuldade para mover os dedos; isso pode ser tendinite. vá a um hospital, use talas de apoio e evite movimentos repetitivos.",
-"Se você sente dor abdominal após comer gorduras e fezes claras; isso pode ser cálculo biliar. vá a um hospital, evite alimentos gordurosos e siga orientações médicas.",
-"Você está com erupções cutâneas e bolhas dolorosas; isso pode ser herpes. vá a um hospital, evite contato direto com outras pessoas e mantenha a área limpa.",
-"Se você sente dor no quadril e dificuldade para andar; isso pode ser artrose. vá a um hospital, faça fisioterapia e evite sobrecarregar as articulações.",
-"Você está com formigamento nas pernas e fraqueza muscular; isso pode ser hérnia de disco. vá a um hospital, evite levantar peso e faça exercícios recomendados por um fisioterapeuta.",
-"Se você sente dor no peito e sensação de aperto; isso pode ser angina. vá imediatamente a um hospital, evite esforço físico e busque ajuda médica.",
-"Você está com inchaço generalizado e pressão alta; isso pode ser insuficiência cardíaca. vá a um hospital, reduza o consumo de sal e siga tratamento adequado.",
-"Se você sente dor intensa na panturrilha ao caminhar; isso pode ser má circulação. vá a um hospital, evite ficar muito tempo em pé e use meias de compressão.",
-"Você está com dor no joelho e dificuldade para dobrá-lo; isso pode ser lesão no ligamento. vá a um hospital, use gelo na região afetada e evite atividades físicas intensas.",
-"Se você sente dor no pescoço e dormência nos braços; isso pode ser compressão cervical.  vá a um hospital, faça fisioterapia e evite posturas inadequadas.",
-"Você está com coceira intensa e pele seca e descamativa; isso pode ser psoríase. vá a um hospital, hidrate bem a pele e evite produtos irritantes.",
-"Se você sente dificuldade para respirar e chiado constante; isso pode ser asma. vá a um hospital, use medicamentos prescritos e evite alérgenos.",
-"Você está com dor no abdômen superior e azia frequente; isso pode ser úlcera gástrica. vá a um hospital, evite alimentos ácidos e siga uma dieta leve.",
-   "Se você sente visão embaçada e formigamento nas mãos; isso pode ser diabetes. vá a um hospital, faça exames de glicemia e adote hábitos saudáveis.",
-    "Você está com dor no ombro e dificuldade para levantar o braço; isso pode ser tendinite no ombro.  vá a um hospital, evite movimentos repetitivos e faça fisioterapia.",
-    "Se você sente dor no flanco e sangue na urina; isso pode ser cálculo renal.  vá a um hospital, beba bastante água e siga tratamento específico."
+          "Por favor, selecione os sintomas que você está sentindo no menu de Hipótese."
         ]
       },
       endereco: {
         keywords: ['endereço', 'endereco', 'localização', 'localizacao'],
         responses: [
-          "A UBS está localizada na Rua Cardeal,em frente ao nº 458 - Portal das Laranjeiras Caieiras - São Paulo.",
-          "Nosso endereço é Rua Cardeal, ao lado do Ginásio Esportivo.",
-          "A UBS está situada na Rua Cardeal, no portal das Laranjeiras, um ponto bem conhecido em Caieiras.",
-          "Você pode encontrar a Unidade Básica de Saúde na Rua Cardeal, no portal das Laranjeiras, em Caieiras.",
-          "No portal das Laranjeiras, na Rua Cardeal, está localizada a UBS, em Caieiras."
+          "A UBS está localizada na Rua Cardeal, em frente ao nº 458 - Portal das Laranjeiras, Caieiras - São Paulo.",
+          "Nosso endereço: Rua Cardeal, ao lado do Ginásio Esportivo."
         ]
       },
       emergencia: {
         keywords: ['emergência', 'emergencia', 'urgência'],
         responses: [
           "Em caso de emergência, dirija-se imediatamente ao Pronto Socorro ou ligue 192.",
-          "Para emergências, procure o Pronto Socorro municipal.",
-          "Emergência: ligue 192 ou vá ao hospital mais próximo."
+          "Para emergências, procure o Pronto Socorro municipal."
         ]
       },
       horario: {
         keywords: ['horário', 'horario', 'expediente'],
         responses: [
           "Nosso horário de funcionamento é de segunda a sexta, das 7h às 17h.",
-          "Atendemos de segunda a sexta, com coletas entre 7h e 10h às terças e quintas.",
-          "Funcionamento: 7h às 17h, com horários específicos para cada serviço."
+          "Atendemos de segunda a sexta, com horários específicos para cada serviço."
+        ]
+      },
+      servicos: {
+        keywords: ['serviços', 'servicos', 'atendimento'],
+        responses: [
+          "Oferecemos uma variedade de serviços para atender à comunidade. Qual serviço você deseja saber mais?",
+          "Nossos serviços incluem consultas, exames, vacinação e muito mais. Em que posso ajudar?"
         ]
       }
     };
 
-    // Respostas de fallback (caso nenhuma categoria seja identificada)
+    // Respostas de fallback
     const fallbackResponses = [
       `Olá ${userName}, não entendi muito bem. Poderia reformular?`,
       `Desculpe, ${userName}, não compreendi. Pode explicar melhor?`,
       `Oi ${userName}, poderia dar mais detalhes, por favor?`
     ];
 
-    // Retorna uma resposta aleatória com base no texto do usuário
+    // Retorna uma resposta aleatória com base na mensagem do usuário
     function getRandomBotResponse(message) {
       const lowerMessage = message.toLowerCase();
       for (let category in botResponses) {
@@ -2044,7 +2217,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
     }
 
-    // Retorna saudação baseada no horário
+    // Saudação com base no horário
     function getGreeting() {
       const now = new Date();
       const hour = now.getHours();
@@ -2053,7 +2226,7 @@ document.addEventListener("DOMContentLoaded", function () {
       else return "Boa noite";
     }
 
-    // Reproduz a mensagem via síntese de voz (se áudio estiver ativado)
+    // Síntese de voz (se o áudio estiver ativado)
     function speakMessage(message) {
       if (!audioEnabled) return;
       if ('speechSynthesis' in window) {
@@ -2063,15 +2236,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Exibe a mensagem do bot com efeito "typewriter" e reproduz o som de recebimento
+    // Animação tipo "typewriter" para a mensagem do bot
     function animateBotMessage(message) {
       const messagesContainer = document.getElementById('chatMessages');
       const messageDiv = document.createElement('div');
       messageDiv.className = 'message bot-message';
       messagesContainer.appendChild(messageDiv);
 
-      // Reproduz o som de recebimento assim que o bot envia a mensagem
-      if (audioEnabled) {
+      if (audioEnabled && receiveSound.src) {
         receiveSound.play();
       }
 
@@ -2082,13 +2254,12 @@ document.addEventListener("DOMContentLoaded", function () {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
         if (i >= message.length) {
           clearInterval(interval);
-          // Após a digitação completa, utiliza a síntese de voz
           speakMessage(message);
         }
       }, 50);
     }
 
-    // Adiciona a mensagem do usuário
+    // Adiciona a mensagem do usuário à interface
     function addUserMessage(message) {
       const messagesContainer = document.getElementById('chatMessages');
       const messageDiv = document.createElement('div');
@@ -2098,7 +2269,7 @@ document.addEventListener("DOMContentLoaded", function () {
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    // Exemplo de função para buscar resposta de uma API externa
+    // Exemplo de função para buscar resposta via API (caso seja necessário)
     async function fetchResponseFromAPI(message) {
       try {
         const response = await fetch('https://api.example.com/chat?message=' + encodeURIComponent(message));
@@ -2116,9 +2287,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const message = input.value.trim();
       if (message === '') return;
 
-      // Reproduz o som de envio
       sendSound.play();
-
       addUserMessage(message);
       conversationHistory.push({ sender: 'user', text: message });
       input.value = '';
@@ -2136,7 +2305,7 @@ document.addEventListener("DOMContentLoaded", function () {
       animateBotMessage(botResponse);
     }
 
-    // Utiliza as sugestões predefinidas
+    // Função que trata as sugestões ao clicar nos botões
     function useSuggestion(type) {
       const suggestions = {
         'consulta': 'Como faço para marcar uma consulta?',
@@ -2144,20 +2313,51 @@ document.addEventListener("DOMContentLoaded", function () {
         'exames': 'Preciso fazer exames',
         'telemedicina': 'Como funciona a telemedicina?',
         'diagnostico': 'Gostaria de uma avaliação diagnóstica',
-        'hipotese': 'Estou com febre e dor nas costas',
         'endereco': 'Qual o endereço da UBS?',
         'emergencia': 'Estou com uma emergência',
-        'horario': 'Qual o horário de funcionamento?'
+        'horario': 'Qual o horário de funcionamento?',
+        'servicos': 'Quais serviços vocês oferecem?'
       };
-      const message = suggestions[type];
-      document.getElementById('userInput').value = message;
+
+      if (type === 'hipotese') {
+        showHipoteseModal();
+        return;
+      } else if (type === 'despedida') {
+        // Tratamento especial para despedida:
+        const farewellMsg = botResponses.despedida.responses[Math.floor(Math.random() * botResponses.despedida.responses.length)];
+        animateBotMessage(farewellMsg);
+        speakMessage(farewellMsg);
+        // Fecha o chat após 3 segundos
+        setTimeout(() => {
+          document.getElementById('chatContainer').style.display = 'none';
+        }, 3000);
+        return;
+      }
+      document.getElementById('userInput').value = suggestions[type] || '';
       sendMessage();
     }
 
-    // Inicia o reconhecimento de voz para entrada por áudio
+    // Exibe o modal com as opções de Hipótese
+    function showHipoteseModal() {
+      document.getElementById('hipoteseModal').style.display = 'flex';
+    }
+
+    // Fecha o modal de Hipótese
+    function closeHipoteseModal() {
+      document.getElementById('hipoteseModal').style.display = 'none';
+    }
+
+    // Ao selecionar uma opção do modal, envia a mensagem
+    function selectHipoteseOption(option) {
+      closeHipoteseModal();
+      document.getElementById('userInput').value = option;
+      sendMessage();
+    }
+
+    // Inicia o reconhecimento de voz
     function startSpeechRecognition() {
-      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
         recognition.lang = 'pt-BR';
         recognition.start();
@@ -2174,31 +2374,92 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Configuração dos event listeners
+    /* ======= Integração com Reconhecimento Facial ======= */
+    async function checkEmotion() {
+      document.getElementById('emotionModal').style.display = 'flex';
+      const video = document.getElementById('emotionVideo');
+
+      // Carrega os modelos do face-api.js (ajuste o caminho conforme necessário)
+      await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+      await faceapi.nets.faceExpressionNet.loadFromUri('/models');
+
+      try {
+        emotionStream = await navigator.mediaDevices.getUserMedia({ video: {} });
+        video.srcObject = emotionStream;
+      } catch (err) {
+        console.error('Erro ao acessar a câmera:', err);
+        stopEmotionRecognition();
+        return;
+      }
+
+      video.addEventListener('play', () => {
+        const displaySize = { width: video.width, height: video.height };
+        emotionInterval = setInterval(async () => {
+          const detections = await faceapi
+            .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+            .withFaceExpressions();
+          if (detections.length > 0) {
+            const expressions = detections[0].expressions;
+            const maxEmotion = Object.keys(expressions).reduce((a, b) =>
+              expressions[a] > expressions[b] ? a : b
+            );
+            let botMsg = "";
+            switch (maxEmotion) {
+              case 'happy':
+                botMsg = "Que bom! Vejo que você está feliz!";
+                break;
+              case 'sad':
+                botMsg = "Percebi que você parece triste. Se precisar conversar, estou aqui para ajudar.";
+                break;
+              case 'angry':
+                botMsg = "Notei alguma tensão. Se quiser, posso te ajudar a descontrair.";
+                break;
+              case 'surprised':
+                botMsg = "Uau, você parece surpreso! O que aconteceu?";
+                break;
+              default:
+                botMsg = "Parece que você está tranquilo. Como posso ajudar?";
+                break;
+            }
+            animateBotMessage(botMsg);
+            stopEmotionRecognition();
+          }
+        }, 500);
+      });
+    }
+
+    // Para o reconhecimento facial e fecha o modal
+    function stopEmotionRecognition() {
+      clearInterval(emotionInterval);
+      document.getElementById('emotionModal').style.display = 'none';
+      const video = document.getElementById('emotionVideo');
+      if (video.srcObject) {
+        video.srcObject.getTracks().forEach(track => track.stop());
+        video.srcObject = null;
+      }
+    }
+    /* ======= Fim do Reconhecimento Facial ======= */
+
+    // Configura os event listeners após o carregamento do DOM
     document.addEventListener('DOMContentLoaded', function() {
-      // Exibe o botão de chat
       const chatButton = document.getElementById('openChat');
       chatButton.style.display = 'flex';
 
-      // Abre o chat e reproduz o som de abertura
       document.getElementById('openChat').addEventListener('click', function() {
         document.getElementById('chatContainer').style.display = 'flex';
         openSound.play();
       });
 
-      // Fecha o chat e reproduz o som de fechamento
       document.getElementById('closeChat').addEventListener('click', function() {
         document.getElementById('chatContainer').style.display = 'none';
         closeSound.play();
       });
 
-      // Alterna a ativação/desativação do áudio
       document.getElementById('toggleAudio').addEventListener('click', function() {
         audioEnabled = !audioEnabled;
         this.textContent = audioEnabled ? '🔊' : '🔇';
       });
 
-      // Inicia o atendimento ao clicar em "Iniciar Atendimento"
       document.getElementById('startChat').addEventListener('click', function() {
         userName = document.getElementById('nameInput').value.trim();
         if (userName) {
@@ -2212,7 +2473,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // Envia a mensagem ao pressionar a tecla Enter
       document.getElementById('userInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
           sendMessage();
