@@ -740,27 +740,147 @@ body.dark .contatos-info h3 {
   <div class="splash-screen">
     <img src="ubs.png" alt="UBS Portal" style="max-width: 800px;">
   </div>
-  
+   <!-- Menu de Navegação -->
+   <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  <div class="instagram">
-    <a href="https://www.instagram.com/ubsportaldaslaranjeiras/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-        Siga-nos no Instagram
-    </a>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    #menu-container {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    nav {
+        background: #003366;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center; /* Centraliza o menu */
+        align-items: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: center; /* Centraliza os itens do menu */
+        transition: all 0.4s ease-in-out;
+    }
+
+    .nav-links li {
+        margin: 0 15px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        padding: 8px 12px;
+        transition: all 0.3s;
+        border-radius: 5px;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+    .menu-icon {
+display: none;
+font-size: 25px;
+cursor: pointer;
+color: white;
+transition: transform 0.3s;
+position: relative;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+
+
+    .menu-icon:hover {
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            justify-content: space-between;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            background: rgba(0, 64, 93, 0.9);
+            position: absolute;
+            top: 50px;
+            right: 0;
+            width: 200px;
+            text-align: right;
+            padding: 10px;
+            border-radius: 5px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .nav-links.show {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 10px 0;
+        }
+
+        .menu-icon {
+            display: block;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div id="header">
+    <nav>
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#atendimentos">Atendimentos</a></li>
+            <li><a href="#app-sus">Meu SUS</a></li>
+            <li><a href="acs.html">Equipe</a></li>
+            <li><a href="#sobre-ubs">Sobre</a></li>
+            <li><a href="calculadora.html">Examinar sua condição corporal</a></li>
+            <li><a href="hemograma.html">Analisador de Hemograma</a></li>
+        </ul>
+    </nav>
 </div>
 
+<script>
+    function toggleMenu() {
+        document.querySelector(".nav-links").classList.toggle("show");
+    }
+</script>
 
  
 
-  <!-- Menu de Navegação -->
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="#atendimentos">Atendimentos</a>
-    <a href="#app-sus">Meu SUS</a>
-    <a href="acs.html">Equipe</a>
-    <a href="#sobre-ubs">Sobre</a>
-    <a href="hemograma.html">Analisador de Hemograma</a>
-  </nav>
 
   <!-- Cabeçalho -->
   <header>
@@ -948,6 +1068,7 @@ body.dark .contatos-info h3 {
       <em>Observação: Os cálculos são aproximações baseadas no controle de entrada de pacientes e em dados do IBGE; os valores exatos podem variar.</em>
     </p>
   </div>
+  
 
 
   
@@ -1003,6 +1124,7 @@ body.dark .contatos-info h3 {
       </tbody>
     </table>
   </section>
+  
 
   <!-- Seção Mapa dos ACS (Geração Dinâmica dos Botões) -->
   <section id="mapa-acs" class="container">
