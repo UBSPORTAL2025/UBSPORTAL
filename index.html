@@ -2351,7 +2351,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <!-- Botão para Despedida -->
         <button class="suggestion-btn" onclick="useSuggestion('despedida')">👋 Despedida</button>
         <!-- Botão para reconhecimento emocional -->
-        <button class="suggestion-btn" onclick="checkEmotion()">😊 Checar Emoção</button>
+        <button class="suggestion-btn" onclick="checkEmotion()">😊 Posso checar sua emoção ?</button>
       </div>
     </div>
   </div>
@@ -2371,7 +2371,8 @@ document.addEventListener("DOMContentLoaded", function () {
       <button onclick="selectHipoteseOption('Estou Inchaço nas pernas e mãos')">Inchaço ou Edema</button>
       <button onclick="selectHipoteseOption('Estou com Tontura')">Tontura</button>
       <button onclick="selectHipoteseOption('Estou com Dor nas costas')">Dor nas costas</button>
-      <button onclick="selectHipoteseOption('Estou com Dor nos ombros')">Dor nos ombros/button>
+      <button onclick="selectHipoteseOption('Estou com Dor nos ombros')">Dor nos ombros</button>
+      <br>
       <button  onclick="closeHipoteseModal()">Cancelar</button>
     </div>
   </div>
@@ -2799,19 +2800,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         let botMsg = `Detectei que você está ${maxEmotion}. `;
                         switch(maxEmotion) {
-                            case 'happy':
+                            case 'feliz':
                                 botMsg += "Que bom ver você feliz! 😊";
                                 break;
-                            case 'sad':
+                            case 'triste':
                                 botMsg += "Estou aqui para ajudar se precisar conversar. 💬";
                                 break;
-                            case 'angry':
+                            case 'bravo':
                                 botMsg += "Vamos respirar fundo e resolver isso juntos. 🌬️";
                                 break;
-                            case 'surprised':
+                            case 'surpreso':
                                 botMsg += "Parece que algo te surpreendeu! 😯";
                                 break;
-                            case 'neutral':
+                            case 'neutro':
                                 botMsg += "Você parece concentrado. Em que posso ajudar? 🤔";
                                 break;
                         }
