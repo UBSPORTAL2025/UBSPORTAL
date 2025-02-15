@@ -1,0 +1,263 @@
+<title>Calculadora de Saúde</title>
+  <style>
+    /* Estilização do widget */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .health-widget {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+    .health-widget h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .health-widget input,
+    .health-widget select {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .health-widget button {
+      width: 100%;
+      padding: 10px;
+      background: #09437d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .health-widget button:hover {
+      background: #218838;
+    }
+    .resultado {
+      margin-top: 15px;
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .chart-container {
+      margin-top: 20px;
+    }
+    .info {
+      background: #fff;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .info h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    .info p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Widget de calculadora de saúde -->
+  <div class="health-widget">
+    <h2>Calculadora de Saúde</h2>
+    <input type="number" id="peso" placeholder="Peso (kg)" required>
+    <input type="number" id="altura" placeholder="Altura (cm)" required>
+    <input type="number" id="idade" placeholder="Idade (anos)" required>
+    <select id="genero">
+      <option value="masculino">Masculino</option>
+      <option value="feminino">Feminino</option>
+    </select>
+    <button onclick="calcularSaude()">Calcular</button>
+    <div class="resultado" id="resultado"></div>
+    <div class="chart-container">
+      <canvas id="healthChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Seção de informações sobre IMC e TMB -->
+  <div class="info">
+    <h3>O que é IMC?</h3>
+    <p>
+      O <strong>IMC (Índice de Massa Corporal)</strong> é um indicador utilizado para avaliar se uma pessoa está com o peso adequado em relação à sua altura. 
+      Ele é calculado dividindo o peso (em quilogramas) pela altura ao quadrado (em metros). O resultado é classificado em faixas que podem indicar:
+      <em>abaixo do peso, peso normal, sobrepeso ou obesidade</em>. É uma ferramenta útil para avaliações gerais, embora não diferencie a composição corporal.
+    </p>
+    <h3>O que é TMB?</h3>
+    <p>
+      A <strong>TMB (Taxa Metabólica Basal)</strong> representa a quantidade de energia (calorias) que o corpo gasta em repouso para manter suas funções vitais, 
+      como respiração, circulação e regulação da temperatura. Esse valor é importante para determinar as necessidades calóricas diárias e pode auxiliar na elaboração 
+      de dietas e programas de exercícios.
+    </p>
+  </div>
+
+  <!-- Inclusão do Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let healthChart; // Variável para armazenar o gráfico
+
+    function calcularSaude() {
+      // Obter valores dos inputs
+      const peso = parseFloat(document.getElementById("peso").value);
+      const alturaCm = parseFloat(document.getElementById("altura").value);
+      const idade = parseInt(document.getElementById("idade").value);
+      const genero = document.getElementById("genero").value;
+      const resultadoDiv = document.getElementById("resultado");
+
+      // Verificar se os valores são válidos
+      if (isNaN(peso) || isNaN(alturaCm) || isNaN(idade) || peso <= 0 || alturaCm <= 0 || idade <= 0) {
+        resultadoDiv.innerHTML = "<p style='color: red;'>Por favor, insira valores válidos.</p>";
+        return;
+      }
+
+      // Converter altura para metros
+      const altura = alturaCm / 100;
+
+      // Cálculo do IMC
+      const imc = peso / (altura * altura);
+      let imcClassificacao = "";
+      if (imc < 18.5) {
+        imcClassificacao = "Abaixo do peso";
+      } else if (imc < 24.9) {
+        imcClassificacao = "Peso normal";
+      } else if (imc < 29.9) {
+        imcClassificacao = "Sobrepeso";
+      } else {
+        imcClassificacao = "Obesidade";
+      }
+
+      // Cálculo da quantidade ideal de água (35 ml por kg, convertido para litros)
+      const aguaDiaria = (peso * 35) / 1000;
+
+      // Cálculo da TMB usando a fórmula de Mifflin-St Jeor
+      let tmb;
+      if (genero === "masculino") {
+        tmb = (10 * peso) + (6.25 * alturaCm) - (5 * idade) + 5;
+      } else {
+        tmb = (10 * peso) + (6.25 * alturaCm) - (5 * idade) - 161;
+      }
+
+      // Mensagens de conselho com base nos resultados
+      let conselho = "";
+      if (imc < 18.5) {
+        conselho += "Seu IMC indica que você está abaixo do peso. Procure se alimentar melhor, aumentando a ingestão de nutrientes e calorias de forma equilibrada. ";
+        conselho += "Considere consultar um nutricionista para orientações personalizadas.";
+      } else if (imc < 24.9) {
+        conselho += "Seu IMC está dentro da faixa normal. Continue mantendo uma dieta equilibrada e um estilo de vida saudável.";
+      } else if (imc < 29.9) {
+        conselho += "Seu IMC indica sobrepeso. Avalie melhorar sua alimentação e aumentar a atividade física. ";
+        conselho += "Lembre-se de beber a quantidade ideal de água e de distribuir as refeições ao longo do dia.";
+      } else {
+        conselho += "Seu IMC indica obesidade. É importante buscar orientação de um profissional para melhorar sua alimentação e incluir atividades físicas na sua rotina. ";
+        conselho += "Mantenha-se hidratado e considere uma avaliação nutricional detalhada.";
+      }
+      conselho += `<br><br>Com base no seu peso, você deve consumir aproximadamente <strong>${aguaDiaria.toFixed(2)} litros</strong> de água por dia. Tente distribuir essa quantidade ao longo do dia.`;
+      conselho += `<br><br>Sua TMB indica que seu corpo necessita de aproximadamente <strong>${tmb.toFixed(0)} kcal/dia</strong> para manter as funções vitais. Utilize essa informação para planejar sua alimentação de acordo com seu nível de atividade física.`;
+
+      // Exibir os resultados e os conselhos na div
+      resultadoDiv.innerHTML = `
+        <p><strong>IMC:</strong> ${imc.toFixed(1)} (${imcClassificacao})</p>
+        <p><strong>Água ideal:</strong> ${aguaDiaria.toFixed(2)} litros/dia</p>
+        <p><strong>TMB:</strong> ${tmb.toFixed(0)} kcal/dia (${genero === "masculino" ? "Homens" : "Mulheres"})</p>
+        <p><strong>Conselhos:</strong><br>${conselho}</p>
+      `;
+
+      // Atualizar o gráfico com os novos dados
+      atualizarGrafico(imc, aguaDiaria, tmb);
+    }
+
+    function atualizarGrafico(imc, agua, tmb) {
+      const ctx = document.getElementById('healthChart').getContext('2d');
+
+      // Se o gráfico já existir, destrua-o para recriá-lo
+      if (healthChart) {
+        healthChart.destroy();
+      }
+
+      // Criação do gráfico com dois eixos Y para escalas diferentes
+      healthChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Métricas'],
+          datasets: [
+            {
+              label: 'IMC',
+              data: [imc],
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1,
+              yAxisID: 'y1'
+            },
+            {
+              label: 'Água (L/dia)',
+              data: [agua],
+              backgroundColor: 'rgba(75, 192, 192, 0.5)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+              yAxisID: 'y1'
+            },
+            {
+              label: 'TMB (kcal/dia)',
+              data: [tmb],
+              backgroundColor: 'rgba(255, 99, 132, 0.5)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+              yAxisID: 'y2'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Visualização dos Dados de Saúde'
+            }
+          },
+          scales: {
+            y1: {
+              type: 'linear',
+              position: 'left',
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'IMC / Água (L/dia)'
+              }
+            },
+            y2: {
+              type: 'linear',
+              position: 'right',
+              beginAtZero: true,
+              grid: {
+                drawOnChartArea: false,
+              },
+              title: {
+                display: true,
+                text: 'TMB (kcal/dia)'
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
