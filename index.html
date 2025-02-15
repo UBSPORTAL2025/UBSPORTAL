@@ -2787,43 +2787,72 @@ document.addEventListener("DOMContentLoaded", function () {
             faceapi.matchDimensions(canvas, displaySize);
 
             async function detectEmotion() {
-                if (!video.paused) {
-                    const detections = await faceapi.detectAllFaces(
-                        video, 
-                        new faceapi.TinyFaceDetectorOptions()
-                    ).withFaceLandmarks().withFaceExpressions();
-                    
-                    if (detections.length > 0) {
-                        const expressions = detections[0].expressions;
-                        const maxEmotion = Object.entries(expressions)
-                            .reduce((a, b) => a[1] > b[1] ? a : b)[0];
-                        
-                        let botMsg = `Detectei que você está ${maxEmotion}. `;
-                        switch(maxEmotion) {
-                            case 'feliz':
-                                botMsg += "Que bom ver você feliz! 😊";
-                                break;
-                            case 'triste':
-                                botMsg += "Estou aqui para ajudar se precisar conversar. 💬";
-                                break;
-                            case 'bravo':
-                                botMsg += "Vamos respirar fundo e resolver isso juntos. 🌬️";
-                                break;
-                            case 'surpreso':
-                                botMsg += "Parece que algo te surpreendeu! 😯";
-                                break;
-                            case 'neutro':
-                                botMsg += "Você parece concentrado. Em que posso ajudar? 🤔";
-                                break;
-                        }
-                        
-                        animateBotMessage(botMsg);
-                        stopEmotionRecognition();
-                    }
-                    requestAnimationFrame(detectEmotion);
-                }
+    if (!video.paused) {
+        const detections = await faceapi.detectAllFaces(
+            video, 
+            new faceapi.TinyFaceDetectorOptions()
+        ).withFaceLandmarks().withFaceExpressions();
+        
+        if (detections.length > 0) {
+            const expressions = detections[0].expressions;
+            const maxEmotion = Object.entries(expressions)
+                .reduce((a, b) => a[1] > b[1] ? a : b)[0];
+
+            // Traduz a emoção detectada para português
+            const emocoesTraduzidas = {
+                happy: 'feliz',
+                sad: 'triste',
+                angry: 'bravo',
+                surprised: 'surpreso',
+                neutral: 'neutro',
+                fearful: 'com medo',
+                disgusted: 'com nojo',
+                contemptuous: 'desconfiado'
+            };
+            const maxEmotionPT = emocoesTraduzidas[maxEmotion] || 'neutro';
+
+            // Monta a mensagem inicial do bot
+            let botMsg = `Detectei que você está ${maxEmotionPT}. `;
+
+            // Complementa a mensagem com base na emoção traduzida
+            switch (maxEmotionPT) {
+                case 'feliz':
+                    botMsg += "Que bom ver você feliz! 😊 O que está te deixando tão animado?";
+                    break;
+                case 'triste':
+                    botMsg += "Sinto muito que você esteja assim. Estou aqui se quiser conversar. 💬";
+                    break;
+                case 'bravo':
+                    botMsg += "Respire fundo e conte até dez. Vamos resolver isso juntos. 🌬️";
+                    break;
+                case 'surpreso':
+                    botMsg += "Parece que algo te surpreendeu! 😯 O que foi?";
+                    break;
+                case 'neutro':
+                    botMsg += "Você parece concentrado. Em que posso ajudar? 🤔";
+                    break;
+                case 'com medo':
+                    botMsg += "Ei, está tudo bem? Você parece assustado. Estou aqui para ajudar. 🛡️";
+                    break;
+                case 'com nojo':
+                    botMsg += "Parece que algo te deixou enojado. Quer falar sobre isso? 🤢";
+                    break;
+                case 'desconfiado':
+                    botMsg += "Você parece desconfiado. Algo não está te convencendo? 🧐";
+                    break;
+                default:
+                    botMsg += "Hmm, estou tentando entender como você está se sentindo. Conte-me mais! 🤖";
+                    break;
             }
-            detectEmotion();
+
+            // Exibe a mensagem do bot
+            animateBotMessage(botMsg);
+            stopEmotionRecognition();
+        }
+        requestAnimationFrame(detectEmotion);
+    }
+}
+detectEmotion();
         };
     } catch (err) {
         console.error('Erro na câmera:', err);
