@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salva Vidas - Procedimentos de Emergência</title>
+  <style>
+    /* Reset de estilo básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0056b3;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .salva-vidas-info {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      text-align: center;
+      color: #0056b3;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .procedimento {
+      margin-bottom: 40px;
+    }
+
+    .procedimento h4 {
+      font-size: 1.6rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .img-procedimento {
+      width: 100%;
+      max-width: 350px;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 8px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    /* Dicas adicionais */
+    #dicas {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 2px solid #ddd;
+    }
+
+    #dicas h4 {
+      color: #0056b3;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    #dicas ul {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      .salva-vidas-info {
+        padding: 20px;
+      }
+
+      .procedimento h4 {
+        font-size: 1.4rem;
+      }
+
+      .img-procedimento {
+        max-width: 100%;
+      }
+
+      #dicas h4 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Aprenda a Salvar Vidas</h1>
+    <p>Procedimentos de emergência para situações críticas.</p>
+  </header>
+
+  <div class="salva-vidas-info">
+    <h3>Procedimentos de Emergência</h3>
+
+    <!-- RCP - Ressuscitação Cardiopulmonar -->
+    <section class="procedimento" id="rcp">
+      <h4>RCP (Ressuscitação Cardiopulmonar)</h4>
+      <img src="rcp.jpg" alt="Demonstração de RCP" class="img-procedimento">
+      <ul>
+        <li>Posicione as mãos sobre o centro do peito da vítima.</li>
+        <li>Realize 30 compressões torácicas seguidas de 2 ventilações.</li>
+        <li>Continue até a chegada do socorro ou a vítima recuperar os sinais vitais.</li>
+      </ul>
+    </section>
+
+    <!-- Pressão Arterial -->
+    <section class="procedimento" id="pressao">
+      <h4>Pressão Arterial</h4>
+      <img src="pressao.jpg" alt="Medição de Pressão" class="img-procedimento">
+      <ul>
+        <li><strong>Hipertensão (Pressão Alta):</strong> Pode causar AVC, infarto e insuficiência renal.</li>
+        <li><strong>Hipotensão (Pressão Baixa):</strong> Pode causar tontura, desmaios e choque circulatório.</li>
+        <li>Se alta: evite sal, relaxe e procure ajuda médica.</li>
+        <li>Se baixa: beba água, deite-se e levante as pernas.</li>
+      </ul>
+    </section>
+
+    <!-- Infarto -->
+    <section class="procedimento" id="infarto">
+      <h4>Infarto (Ataque Cardíaco)</h4>
+      <img src="infarto.jpg" alt="Sinais de infarto" class="img-procedimento">
+      <ul>
+        <li>Dor intensa no peito, irradiando para braço e mandíbula.</li>
+        <li>Dificuldade para respirar, suor excessivo e náusea.</li>
+        <li>Chame o socorro imediatamente e mantenha a vítima calma.</li>
+      </ul>
+    </section>
+
+    <!-- Engasgo -->
+    <section class="procedimento" id="engasgo">
+      <h4>Engasgo</h4>
+      <img src="engasgo.jpg" alt="Manobra de Heimlich" class="img-procedimento">
+      <ul>
+        <li>Se a pessoa não conseguir respirar ou falar, realize a manobra de Heimlich.</li>
+        <li>Fique atrás, pressione a barriga para cima com força.</li>
+        <li>Repita até o objeto ser expelido ou a vítima desmaiar.</li>
+      </ul>
+    </section>
+
+    <!-- Afogamento -->
+    <section class="procedimento" id="afogamento">
+      <h4>Afogamento</h4>
+      <img src="afogamento.jpg" alt="Resgate em afogamento" class="img-procedimento">
+      <ul>
+        <li>Retire a vítima da água com segurança.</li>
+        <li>Se não respirar, inicie a RCP imediatamente.</li>
+        <li>Evite entrar na água se não tiver treinamento adequado.</li>
+      </ul>
+    </section>
+
+    <!-- Choque Elétrico -->
+    <section class="procedimento" id="choque">
+      <h4>Choque Elétrico</h4>
+      <img src="choque.jpg" alt="Primeiros socorros para choque elétrico" class="img-procedimento">
+      <ul>
+        <li>Desligue a fonte de energia antes de tocar na vítima.</li>
+        <li>Se não respirar, inicie a RCP.</li>
+        <li>Leve a vítima ao hospital, pois choques podem causar danos internos.</li>
+      </ul>
+    </section>
+
+    <!-- Picadas de Animais Peçonhentos -->
+    <section class="procedimento" id="picada">
+      <h4>Picadas de Animais Peçonhentos</h4>
+      <img src="picada.jpg" alt="Picada de cobra" class="img-procedimento">
+      <ul>
+        <li>Mantenha a vítima calma e imóvel.</li>
+        <li>Não tente sugar o veneno ou cortar o local.</li>
+        <li>Leve a vítima rapidamente ao hospital e, se possível, identifique o animal.</li>
+      </ul>
+    </section>
+
+    <!-- Convulsões -->
+    <section class="procedimento" id="convulsao">
+      <h4>Convulsões</h4>
+      <img src="convulsao.jpg" alt="Convulsões" class="img-procedimento">
+      <ul>
+        <li>Deite a vítima de lado para evitar que se engasgue com a língua.</li>
+        <li>Proteja a cabeça da vítima para evitar lesões.</li>
+        <li>Não tente segurar a vítima, deixe que ela se mova livremente.</li>
+        <li>Chame a emergência imediatamente.</li>
+      </ul>
+    </section>
+
+    <!-- Acidente de Trânsito -->
+    <section class="procedimento" id="acidente">
+      <h4>Acidente de Trânsito</h4>
+      <img src="transito.png" alt="Acidente de trânsito" class="img-procedimento">
+      <ul>
+        <li>Verifique se há riscos de incêndio ou outros perigos.</li>
+        <li>Chame o socorro e evite mover as vítimas, a menos que esteja em risco de fogo ou explosão.</li>
+        <li>Se a vítima estiver inconsciente, verifique a respiração e inicie a RCP se necessário.</li>
+      </ul>
+    </section>
+
+    <p><strong>Números de Emergência:</strong></p>
+    <ul>
+      <li><strong>SAUR:</strong> 192</li>
+      <li><strong>Bombeiros:</strong> 193</li>
+      <li><strong>Polícia Militar:</strong> 190</li>
+      <li><strong>Guarda Municipal:</strong> 153</li>
+    </ul>
+
+    <section id="dicas">
+      <h4>Dicas Importantes</h4>
+      <ul>
+        <li>Sempre mantenha a calma, isso ajudará você a tomar melhores decisões.</li>
+        <li>Conheça os primeiros socorros básicos, esses conhecimentos podem salvar vidas.</li>
+        <li>Tenha sempre um número de emergência à mão e em local visível.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Salva Vidas - Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos Úteis - Caieiras</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #aeb2b8 0%, #e4e7eb 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #1a365d;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-name {
+            color: #2c5282;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            color: #4a5568;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        
+        .phone {
+            color: #2b6cb0;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="brasao.png" alt="Logo Caieiras" class="logo">
+            <h1>Contatos Úteis - Caieiras</h1>
+        </div>
+        
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <div class="contact-name">Casa da Mulher</div>
+                <div class="contact-info">
+                    <span class="phone">4445-2729</span><br>
+                    Al. das Mangueiras, 47 - Laranjeiras
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">CEME</div>
+                <div class="contact-info">
+                    <span class="phone">4442-7362</span><br>
+                    R. Flávio Augusto de Moraes, 80 - Centro
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">PS Laranjeiras</div>
+                <div class="contact-info">
+                    <span class="phone">4899-3367</span><br>
+                    Al. das Mangueiras, 47 - Laranjeiras
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">PS Caieiras</div>
+                <div class="contact-info">
+                    <span class="phone">4934-5132</span><br>
+                    Av. Dr. Olindo Dartora, 448
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">CTA Caieiras</div>
+                <div class="contact-info">
+                    <span class="phone">4442-4749</span><br>
+                    Av. Pres. Kennedy, 111 - Centro
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">CAPS Caieiras</div>
+                <div class="contact-info">
+                    <span class="phone">4605-2641</span><br>
+                    R. Padre Aquiles Silvestre, 274 - Centro
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">CRAS Caieiras</div>
+                <div class="contact-info">
+                    <span class="phone">4605-5116</span><br>
+                    R. Padre Aquiles Silvestre, 76 - Centro
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">CREAS Caieiras</div>
+                <div class="contact-info">
+                    <span class="phone">4442-4046</span><br>
+                    R. Padre Aquiles Silvestre, 69 - Centro
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">CIAS</div>
+                <div class="contact-info">
+                    <span class="phone">4442-4200</span><br>
+                    R. Ambrosina do Carmo Buonaguide, 310
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">UBS Laranjeiras</div>
+                <div class="contact-info">
+                    <span class="phone">4899-3367</span><br>
+                    Av. Pauliceia, 400 - Laranjeiras
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">UBS Portal</div>
+                <div class="contact-info">
+                    <span class="phone">4800-5024</span><br>
+                    Rua Cardeal, em frente ao nº 458 - Portal
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-name">Transporte</div>
+                <div class="contact-info">
+                    <span class="phone">4605-8505</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

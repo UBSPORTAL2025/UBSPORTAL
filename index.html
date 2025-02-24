@@ -24,16 +24,7 @@
       line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-    /* =================================== */
-    /* Modo Noturno - Ajustes Gerais       */
-    /* =================================== */
-    body.dark {
-      background-color: #212121;
-      color: #e0e0e0;
-    }
-    body.dark a {
-      color: #9ecfff;
-    }
+  
     /* =================================== */
     /* Cabeçalho e Navegação               */
     /* =================================== */
@@ -63,22 +54,7 @@
     nav a:hover {
       text-decoration: underline;
     }
-    /* =================================== */
-    /* Botão de Alternar Modo Noturno/Diurno */
-    /* =================================== */
-    .toggle-dark-btn {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background-color: #007bff8d;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
+ 
     .toggle-dark-btn:hover {
       background-color: #0056b3;
     }
@@ -122,109 +98,7 @@
     body.dark table th {
       background-color: #1f1f1f;
     }
-    /* =================================== */
-    /* Seção: Salva Vidas                  */
-    /* =================================== */
-    .salva-vidas-info {
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
-      background: linear-gradient(135deg, #ffdddd, #ffd6d6);
-      border: 2px solid #ff4d4d;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(255,77,77,0.4);
-      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
-      display: none;
-    }
-    .salva-vidas-info h3 {
-      color: #b30000;
-      text-align:left;
-      margin-bottom: 15px;
-      font-size: 1.5em;
-    }
-    .salva-vidas-info p {
-      margin: 10px 0;
-      font-size: 1.1em;
-    }
-    .salva-vidas-info ul {
-      margin: 10px 20px;
-    }
-    .salva-vidas-info ul li {
-      margin: 5px 0;
-      font-size: 1em;
-    }
-    body.dark .salva-vidas-info {
-      background: linear-gradient(135deg, #2a2a2a, #333);
-      border-color: #ff6666;
-      box-shadow: 0 4px 8px rgba(255,102,102,0.5);
-    }
-    body.dark .salva-vidas-info h3 {
-      color: #ff9999;
-    }
-    /* =================================== */
-    /* Botões: Salva Vidas e Direitos/Deveres */
-    /* =================================== */
-    .salva-vidas-btn, .direitos-deveres-btn {
-      display: block;
-      padding: 10px;
-      text-align: center;
-      margin: 20px auto;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: 80%;
-      max-width: 200px;
-      font-size: 14px;
-      font-weight: bold;
-      border: none;
-    }
-    .salva-vidas-btn {
-      background-color: #ff4d4d;
-      color: white;
-    }
-    .salva-vidas-btn:hover {
-      background-color: #cc0000;
-    }
-    .direitos-deveres-btn {
-      background-color: #00009c;
-      color: white;
-    }
-    .direitos-deveres-btn:hover {
-      background-color: #84a3fee7;
-    }
-    /* =================================== */
-    /* Seção: Direitos e Deveres            */
-    /* =================================== */
-    .direitos-deveres-info {
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
-      background: linear-gradient(135deg, #6173f619, #464dca4f);
-      border: 2px solid #534dff;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(78, 76, 207, 0.4);
-      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
-      display: none;
-    }
-    .direitos-deveres-info h3 {
-      color: #0012b3;
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 1.5em;
-    }
-    .direitos-deveres-info p,
-    .direitos-deveres-info ul {
-      margin: 10px 0;
-      font-size: 1.1em;
-    }
-    body.dark .direitos-deveres-info {
-      background: linear-gradient(135deg, #2a332a, #333933);
-      border-color: #668cff;
-      box-shadow: 0 4px 8px rgba(112, 102, 255, 0.5);
-    }
-    body.dark .direitos-deveres-info h3 {
-      color: #7496d1;
-    }
+   
     /* =================================== */
     /* Seção: Mapa dos ACS - Botões de Rua   */
     /* =================================== */
@@ -247,50 +121,8 @@
       transform: scale(1.05);
       border: 2px solid #003366;
     }
-    /* =================================== */
-    /* Seção: Informações dos ACS (ao clicar na rua) */
-    /* =================================== */
-    .agent-info {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f0f8ff;
-      border: 1px solid #003366;
-      border-radius: 5px;
-      display: none;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-    .agent-card {
-      background-color: #fff;
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      transition: background-color 0.3s ease, border 0.3s ease;
-      display: inline-block;
-    }
-    body.dark .agent-info {
-      background-color: #1e1e1e;
-      border: 1px solid #555;
-    }
-    body.dark .agent-card {
-      background-color: #2a2a2a;
-      border: 1px solid #666;
-      color: #e0e0e0;
-    }
-    .agent-card img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      display: block;
-      margin: 0 auto 10px;
-      border: 2px solid #ccc;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    body.dark .agent-card img {
-      border: 2px solid #888;
-      box-shadow: 0 2px 4px rgba(255,255,255,0.1);
-    }
+   
+    
     /* =================================== */
     /* Seção: Equipes de Saúde da Família   */
     /* =================================== */
@@ -485,65 +317,18 @@ iframe {
       0% { opacity: 1; }
       100% { opacity: 0; visibility: hidden; }
     }
-/* Botão "Contatos Úteis" - Estilo semelhante ao "Direitos e Deveres" */
-.contatos-btn {
-  display: block;
-  padding: 12px;
-  text-align: center;
-  margin: 20px auto;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 80%;
-  max-width: 200px;
-  font-size: 14px;
-  font-weight: bold;
-  border: none;
-  background-color: #04007d;
-  color: white;
-}
-
-.contatos-btn:hover {
-  background-color: #0056b3;
-}
-
-/* Seção "Contatos Úteis" */
-.contatos-info {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 600px;
-  background: linear-gradient(135deg, #ddefff, #d6f3ff);
-  border: 2px solid #007bff;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
-  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
-  display: none;
-}
-
-.contatos-info h3 {
-  color: #004085;
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 1.5em;
-}
-
-.contact-list {
-  list-style: none;
-  padding: 0;
-}
-
-.contact-list li {
-  padding: 8px 0;
-  border-bottom: 1px solid #ddd;
-  font-size: 1.1em;
-}
 
 
 
 
-body.dark .contatos-info h3 {
-  color: #a3c7ff;
-}
+
+
+
+
+
+
+
+
   </style>
   <style>
     body {
@@ -867,8 +652,6 @@ margin-right: auto;
             <li><a href="#app-sus">Meu SUS</a></li>
             <li><a href="acs.html">Equipe</a></li>
             <li><a href="#sobre-ubs">Sobre</a></li>
-            <li><a href="calculadora.html">Examinar sua condição corporal</a></li>
-            <li><a href="hemograma.html">Analisador de Hemograma</a></li>
         </ul>
     </nav>
 </div>
@@ -891,117 +674,243 @@ margin-right: auto;
     <h5>Serviços e Informações para a Comunidade</h5>
   </header>
 
-  <!-- Botão Salva Vidas e Seção de Procedimentos de Emergência -->
-  <button class="salva-vidas-btn" id="salvaVidasBtn">Salva Vidas</button>
-  <div class="salva-vidas-info" id="salvaVidasInfo">
-    <h3>Procedimentos de Emergência</h3>
-    <p><strong>RCP (Ressuscitação Cardiopulmonar):</strong></p>
-    <img src="rcp.jpg" alt="Demonstração de RCP" width="200">
-    <ul>
-      <li>Posicione as mãos sobre o centro do peito da vítima.</li>
-      <li>Realize 30 compressões torácicas seguidas de 2 ventilações.</li>
-      <li>Continue até a chegada do socorro ou a vítima recuperar os sinais vitais.</li>
-    </ul>
-    <p><strong>Pressão Arterial:</strong></p>
-    <img src="pressao.jpg" alt="Medição de Pressão" width="200">
-    <ul>
-      <li><strong>Hipertensão (Pressão Alta):</strong> Pode causar AVC, infarto e insuficiência renal.</li>
-      <li><strong>Hipotensão (Pressão Baixa):</strong> Pode causar tontura, desmaios e choque circulatório.</li>
-      <li>Se alta: evite sal, relaxe e procure ajuda médica.</li>
-      <li>Se baixa: beba água, deite-se e levante as pernas.</li>
-    </ul>
-    <p><strong>Infarto (Ataque Cardíaco):</strong></p>
-    <img src="infarto.jpg" alt="Sinais de infarto" width="200">
-    <ul>
-      <li>Dor intensa no peito, irradiando para braço e mandíbula.</li>
-      <li>Dificuldade para respirar, suor excessivo e náusea.</li>
-      <li>Chame o socorro imediatamente e mantenha a vítima calma.</li>
-    </ul>
-    <p><strong>Engasgo:</strong></p>
-    <img src="engasgo.jpg" alt="Manobra de Heimlich" width="200">
-    <ul>
-      <li>Se a pessoa não conseguir respirar ou falar, realize a manobra de Heimlich.</li>
-      <li>Fique atrás, pressione a barriga para cima com força.</li>
-      <li>Repita até o objeto ser expelido ou a vítima desmaiar.</li>
-    </ul>
-    <p><strong>Afogamento:</strong></p>
-    <img src="afogamento.jpg" alt="Resgate em afogamento" width="200">
-    <ul>
-      <li>Retire a vítima da água com segurança.</li>
-      <li>Se não respirar, inicie a RCP imediatamente.</li>
-      <li>Evite entrar na água se não tiver treinamento adequado.</li>
-    </ul>
-    <p><strong>Choque Elétrico:</strong></p>
-    <img src="choque.jpg" alt="Primeiros socorros para choque elétrico" width="200">
-    <ul>
-      <li>Desligue a fonte de energia antes de tocar na vítima.</li>
-      <li>Se não respirar, inicie a RCP.</li>
-      <li>Leve a vítima ao hospital, pois choques podem causar danos internos.</li>
-    </ul>
-    <p><strong>Picadas de Animais Peçonhentos:</strong></p>
-    <img src="picada.jpg" alt="Picada de cobra" width="200">
-    <ul>
-      <li>Mantenha a vítima calma e imóvel.</li>
-      <li>Não tente sugar o veneno ou cortar o local.</li>
-      <li>Leve a vítima rapidamente ao hospital e, se possível, identifique o animal.</li>
-    </ul>
-    <p><strong>Números de Emergência:</strong></p>
-    <ul>
-      <li><strong>SAUR:</strong> 192</li>
-      <li><strong>Bombeiros:</strong> 193</li>
-      <li><strong>Polícia Militar:</strong> 190</li>
-      <li><strong>Guarda Municipal:</strong> 153</li>
-    </ul>
-  </div>
-  
+ 
+  <!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 20px;
+            background: #f0f2f5;
+        }
 
-<!-- Botão para abrir a seção "Contatos Úteis" -->
-<button class="contatos-btn" id="contatosBtn">Contatos Úteis</button>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-<!-- Seção oculta inicialmente -->
-<div class="contatos-info" id="contatosInfo">
-  <h3>Contatos Úteis</h3>
-  <ul class="contact-list">
-    <li><strong>Casa da Mulher:</strong> 4445-2729 | Al. das Mangueiras, 47 - Laranjeiras</li>
-    <li><strong>CEME:</strong> 4442-7362 | R. Flávio Augusto de Moraes, 80 - Centro</li>
-    <li><strong>PS Laranjeiras:</strong> 4899-3367 | Al. das Mangueiras, 47 - Laranjeiras</li>
-    <li><strong>PS Caieiras:</strong> 4934-5132 | Av. Dr. Olindo Dartora, 448</li>
-    <li><strong>CTA Caieiras:</strong> 4442-4749 | Av. Pres. Kennedy, 111 - Centro</li>
-    <li><strong>CAPS Caieiras:</strong> 4605-2641 | R. Padre Aquiles Silvestre, 274 - Centro</li>
-    <li><strong>CRAS Caieiras:</strong> 4605-5116 | R. Padre Aquiles Silvestre, 76 - Centro</li>
-    <li><strong>CREAS Caieiras:</strong> 4442-4046 | R. Padre Aquiles Silvestre, 69 - Centro</li>
-    <li><strong>CIAS:</strong> 4442-4200 | R. Ambrosina do Carmo Buonaguide, 310</li>
-    <li><strong>UBS Laranjeiras:</strong> 4899-3367 | Av. Pauliceia, 400 - Laranjeiras</li>
-    <li><strong>UBS Portal:</strong> 4800-5024 | Rua Cardeal, em frente ao nº 458 - Portal</li>
-    <li><strong>Transporte:</strong> 4605-8505</li>
-  </ul>
-</div>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
 
+        .button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: #333;
+        }
 
-  <!-- Botão Direitos e Deveres e Seção de Informações -->
-  <button class="direitos-deveres-btn" id="direitosDeveresBtn">Direitos e Deveres</button>
-  <div class="direitos-deveres-info" id="direitosDeveresInfo">
-    <h3>Direitos e Deveres dos Cidadãos e Funcionários Públicos</h3>
-    <p>A seguir, destacamos os direitos e deveres que asseguram um atendimento de qualidade aos pacientes.</p>
-    <ul>
-      <li><strong>Direito à Saúde:</strong> Garantido pelo <strong>Art. 196 da Constituição Federal</strong>, o acesso universal e igualitário à saúde é um direito de todos.</li>
-        <li><strong>Atendimento Digno:</strong> Conforme o <strong>Art. 3º da Lei 8.080/90</strong>, os cidadãos têm direito ao atendimento respeitoso e eficiente no SUS.</li>
-        <li><strong>Sigilo Médico:</strong> O <strong>Art. 5º, inciso X da Constituição</strong> assegura a privacidade dos pacientes.</li>
-        <li><strong>Medicamentos e Tratamentos:</strong> A <strong>Lei 8.080/90</strong> garante o acesso a medicamentos essenciais gratuitamente pelo SUS.</li>
-        <li><strong>Direito à Capacitação dos Profissionais:</strong> Conforme o <strong>Art. 27 da Lei 8.080/90</strong>, os profissionais de saúde devem receber treinamentos constantes.</li>
-      <li><strong>Dever de Zelo:</strong> É obrigação dos agentes oferecer atendimento de excelência e com respeito aos direitos dos cidadãos.</li>
-      <li><strong>Direito à Remuneração Justa:</strong> Garantia de uma remuneração compatível com a responsabilidade e carga horária.</li>
-      <li><strong>Dever de Sigilo:</strong> Manter a confidencialidade das informações dos pacientes, em conformidade com as normas éticas.</li>
-      <li><strong>Direito à Segurança:</strong> Assegura-se ambientes de trabalho seguros e adequados para a prática profissional.</li>
-      <li><strong>Dever de Atendimento:</strong> Prestação de serviços de saúde de forma humanizada e seguindo os protocolos estabelecidos.</li>
-      <li><strong>Art. 196 da Constituição Federal:</strong> A saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doenças e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação.</li>
-    <li><strong>Art. 198:</strong> O Sistema Único de Saúde (SUS) deve ser descentralizado, com participação da comunidade e atendimento integral.</li>
-    <li><strong>Lei 8.080/1990:</strong> Regula as condições para a promoção, proteção e recuperação da saúde, além da organização e funcionamento dos serviços.</li>
-    <li><strong>Lei 8.142/1990:</strong> Garante a participação popular no SUS por meio dos Conselhos e Conferências de Saúde.</li>
-    </ul>
-    <p>Estas orientações têm respaldo em diversos dispositivos legais e normativos, visando proteger tanto os profissionais quanto os pacientes.</p>
-  </div>
-  <!-- Seção de Especialidades Médicas -->
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        /* Variações de cores */
+        .color-8 { background-color: #ff0000; }
+        .color-1 { background-color: #1e3d59; }
+        .color-2 { background-color: #3349c7; }
+        .color-3 { background-color: #3867a3; }
+        .color-4 { background-color: #4682B4; }
+        .color-5 { background-color: #5499C7; }
+        .color-6 { background-color: #6a89cc; }
+        .color-7 { background-color: #82ccdd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid">
+            <a href="#especialidades" class="button">
+                <div class="icon color-1"><i class="fas fa-stethoscope"></i></div>
+                <span class="title">Especialidades</span>
+            </a>
+            <a href="salva.html" class="button">
+                <div class="icon color-8"><i class="fa fa-medkit"></i></div>
+                <span class="title">Salva-Vidas</span>
+            </a>
+            <a href="#app-sus" class="button">
+                <div class="icon color-3"><i class="fas fa-notes-medical"></i></div>
+                <span class="title">App SUS </span>
+            </a>
+            <a href="#smartbulas" class="button">
+                <div class="icon color-4"><i class="fas fa-pills"></i></div>
+                <span class="title">Smartbulas</span>
+            </a>
+            <a href="direitos.html" class="button">
+                <div class="icon color-5"><i class="fas fa-exchange-alt"></i></div>
+                <span class="title">Direitos e Deveres</span>
+            </a>
+            <a href="#vacinas" class="button">
+                <div class="icon color-6"><i class="fas fa-syringe"></i></div>
+                <span class="title">Vacinação</span>
+            </a>
+            <a href="#codigo-cid" class="button">
+                <div class="icon color-7"><i class="fas fa-plus-square"></i></div>
+                <span class="title">Código CID</span>
+            </a>
+            <a href="#procedimentos" class="button">
+                <div class="icon color-1"><i class="fas fa-hand-holding-medical"></i></div>
+                <span class="title">Procedimentos Ilustrados</span>
+            </a>
+            <a href="calculadodrop.html" class="button">
+                <div class="icon color-2"><i class="fas fa-calculator"></i></div>
+                <span class="title">Calculadoras</span>
+            </a>
+            <a href="#laboratorios" class="button">
+                <div class="icon color-3"><i class="fas fa-vial"></i></div>
+                <span class="title">Laboratórios</span>
+            </a>
+            <a href="#toxologia" class="button">
+                <div class="icon color-4"><i class="fas fa-skull-crossbones"></i></div>
+                <span class="title">Toxicologia</span>
+            </a>
+            <a href="#protocolos" class="button">
+                <div class="icon color-5"><i class="fas fa-file-medical"></i></div>
+                <span class="title">-</span>
+            </a>
+            <a href="contatos.html" class="button">
+                <div class="icon color-6"><i class="fas fa-bell"></i></div>
+                <span class="title">Contatos Úteis</span>
+            </a>
+            <a href="#infinite-health-info" class="button">
+                <div class="icon color-7"><i class="fas fa-newspaper"></i></div>
+                <span class="title">Notícias</span>
+            </a>
+            <a href="#divisor-plantao" class="button">
+                <div class="icon color-1"><i class="fas fa-clock"></i></div>
+                <span class="title">Portal</span>
+            </a>
+            <a href="#scores" class="button">
+                <div class="icon color-2"><i class="fas fa-sort-numeric-up"></i></div>
+                <span class="title">Portal</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+   <title>Guias Médicas e Dados Calculados</title>
+  <!-- Incluindo o Bootstrap para estilo e funcionamento -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+    }
+    .container {
+      margin-top: 60px;
+    }
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0056b3;
+      margin-bottom: 25px;
+    }
+    .total-count, .specialty {
+      font-size: 18px;
+      color: #666;
+    }
+    .count {
+      font-weight: 700;
+      font-size: 20px;
+      color: #28a745;
+    }
+    .specialty {
+      font-size: 18px;
+      color: #555;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .specialty:last-child {
+      border-bottom: none;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      padding: 20px;
+    }
+    .card-header {
+      background-color: #007bff;
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      border-radius: 8px 8px 0 0;
+    }
+    .card-body {
+      font-size: 16px;
+      color: #555;
+    }
+    .card-body ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card-body ul li {
+      margin-bottom: 8px;
+    }
+    .btn-custom {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #218838;
+    }
+    .footer-note {
+      font-size: 14px;
+      color: #6c757d;
+      font-style: italic;
+      margin-top: 30px;
+    }
+    .specialty .count {
+      font-weight: bold;
+      font-size: 18px;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
   <div class="container">
     <h2>Guias Médicas</h2>
     <div class="total-count">Total: <span class="count" data-target="2100">0</span>+</div>
@@ -1031,43 +940,40 @@ margin-right: auto;
     <div class="specialty">Fonoaudiologia: <span class="count" data-target="20">0</span>+</div>
     <div class="specialty">Hepatologia: <span class="count" data-target="5">0</span>+</div>
   </div>
+    
 
-  <hr>
+    <!-- Seção de Dados Calculados -->
+    <div class="card">
+      <div class="card-header">Dados Calculados (Agosto/2024 a Janeiro/2025)</div>
+      <div class="card-body">
+        <p>Com base no controle de entrada de pacientes e utilizando dados do IBGE, foram realizadas aproximações para melhor entendimento dos encaminhamentos na região.</p>
+        <ul>
+          <li><strong>População Total de Caieiras:</strong> 98.257</li>
+          <li><strong>População do Portal das Laranjeiras e Laranjeiras:</strong> 20.000</li>
+          <li><strong>Solicitação médica:</strong> 2.095</li>
+        </ul>
+        <p>Aproximadamente <strong>2,13%</strong> da população total de Caieiras foi encaminhada, enquanto cerca de <strong>10,48%</strong> da população do Portal das Laranjeiras e Laranjeiras recebeu encaminhamentos.</p>
+        <p>Espera-se que o número de encaminhamentos varie em torno de <strong>2.095</strong>, com um desvio padrão aproximado de <strong>45,3</strong>.</p>
+        <p>A chance de ser encaminhado no Portal das Laranjeiras e Laranjeiras é aproximadamente <strong>5,39 vezes</strong> maior do que na população total de Caieiras.</p>
+        <p><strong>Contextualização:</strong> Os resultados sugerem que a região do Portal das Laranjeiras apresenta uma demanda significativamente maior por serviços de saúde, possivelmente devido a fatores como:</p>
+        <ul>
+          <li>Maior concentração populacional vulnerável;</li>
+          <li>Necessidades específicas de saúde na região;</li>
+          <li>Acesso diferenciado aos serviços de saúde.</li>
+        </ul>
+        <p class="footer-note">Observação: Os cálculos são aproximações baseadas no controle de entrada de pacientes e em dados do IBGE; os valores exatos podem variar.</p>
+      </div>
+    </div>
 
-  <!-- Seção de Dados Calculados -->
-  <div class="container">
-    <h2>Dados Calculados (Agosto/2024 a Janeiro/2025)</h2>
-    <p>
-      Com base no controle de entrada de pacientes e utilizando dados do IBGE, foram realizadas aproximações para melhor entendimento dos encaminhamentos na região.
-    </p>
-    <p>
-      <strong>População Total de Caieiras:</strong> 98.257<br>
-      <strong>População do Portal das Laranjeiras e Laranjeiras:</strong> 20.000
-    </p>
-    <p>
-      <strong>Solicitação médica</strong> 2.095
-    </p>
-    <p>
-      Aproximadamente <strong>2,13%</strong> da população total de Caieiras foi encaminhada, enquanto cerca de <strong>10,48%</strong> da população do Portal das Laranjeiras e Laranjeiras recebeu encaminhamentos.
-    </p>
-    <p>
-      Espera-se que o número de encaminhamentos varie em torno de <strong>2.095</strong>, com um desvio padrão aproximado de <strong>45,3</strong>.
-    </p>
-    <p>
-      A chance de ser encaminhado no Portal das Laranjeiras e Laranjeiras é aproximadamente <strong>5,39 vezes</strong> maior do que na população total de Caieiras.
-    </p>
-    <p>
-      <strong>Contextualização:</strong> Os resultados sugerem que a região do Portal das Laranjeiras apresenta uma demanda significativamente maior por serviços de saúde, possivelmente devido a fatores como:
-    </p>
-    <ul>
-      <li>Maior concentração populacional vulnerável;</li>
-      <li>Necessidades específicas de saúde na região;</li>
-      <li>Acesso diferenciado aos serviços de saúde.</li>
-    </ul>
-    <p>
-      <em>Observação: Os cálculos são aproximações baseadas no controle de entrada de pacientes e em dados do IBGE; os valores exatos podem variar.</em>
-    </p>
+    <!-- Botão de Ação -->
+    <div class="text-center mt-4">
+      <a href="#" class="btn-custom">Veja Mais Detalhes</a>
+    </div>
+
   </div>
+
+  <!-- Adicionando os scripts do Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   
 
 
@@ -1126,24 +1032,17 @@ margin-right: auto;
   </section>
   
 
-  <!-- Seção Mapa dos ACS (Geração Dinâmica dos Botões) -->
-  <section id="mapa-acs" class="container">
-    
-    
-    <div id="acs-buttons" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
-    <div class="agent-info" id="agentInfo">
-      <div class="agent-group" id="agentGroup"></div>
-    </div>
-  </section>
+ <hr>
 
   
+  <h5 align="center">📍 Localização</h5> 
 
-  <h2>📍 Localização</h2>
 <div class="maps-container">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.3015184425894!2d-46.72461192379341!3d-23.377307054857987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee5002f6c4863%3A0x33b1a9290d0ecfdb!2sUBS%20Portal%20das%20Laranjeiras!5e0!3m2!1spt-BR!2sbr!4v1738836139763!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1GS-j0JKK5bBkCCBChODHhjN3mz1eCmc&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
 </div>
+<hr>
 
 
   
@@ -1160,12 +1059,13 @@ margin-right: auto;
   <!-- Dias de Coleta -->
   <section class="container collection-days">
     <h3>Dias de Coletas e Visitas Domiciliares</h3>
-   
+   <center>
       <l1></l1><strong>Terça e quinta:</strong> Coletas comuns.</li>
       <l1><strong>Quarta-feira:</strong> Visita à tarde.</li>
-      <l1><strong>Quinta-feira:</strong> Visita pela manhã.</li>
+      <l1><strong>Quinta-feira:</strong> Visita pela manhã.</li></center>
    
   </section>
+  <hr>
   
 <!-- Bloco completo para exibir todas as notícias com rolagem manual -->
 <div id="infinite-health-info">
@@ -1585,360 +1485,10 @@ margin-right: auto;
  
   <!-- JavaScript -->
   <!-- =================================== -->
-  <script>
-  
-
-    // Função para criar os botões de ACS para cada rua com regras específicas
-    function createACSButtons() {
-      const acsContainer = document.getElementById('acs-buttons'); // parte ruim não mexer
-      const streets = [
-        
-      ];
-
-      streets.forEach((street) => {
-        const button = document.createElement('button');// parte ruim não mexer
-        button.className = 'street-button'; // parte ruim não mexer
-        let agents = [];
-        
-        // Regras específicas para determinadas ruas // parte ruim não mexer
-        if (street === " Cardeal") {
-          agents = [
-            { name: "ACS Daniele", photo: "danieli.png", info: "Agente de Saúde" },// parte ruim não mexer
-            { name: "ACS Patrícia", photo: "patricia.png", info: "Agente de Saúde" },// parte ruim não mexer
-            { name: "ACS Bruna", photo: "bruna.png", info: "Agente de Saúde" }
-          ];
-        } else if (street === "Tucano") {
-          agents = [
-            { name: "ACS Solange", photo: "solange.png", info: "236 em diante" },
-            { name: "ACS Maylon", photo: "maylon.png", info: "Agente de Saúde" },
-            { name: "ACS Susana", photo: "susana.png", info: "Agente de Saúde" }
-          ];
-        } else if (street === "Pintassilgo") {
-          agents = [
-            { name: "ACS Késia", photo: "kesia.png", info: "Agente de Saúde" },
-            { name: "ACS Regina", photo: "regina.png", info: "Agente de Saúde" },
-            { name: "ACS Tais", photo: "tais.png", info: "Agente de Saúde" }
-          ];
-        } else if (street === "Luiz Gonzaga Dartora") {
-          agents = [
-            { name: "ACS Bruna", photo: "bruna.png", info: "Agente de Saúde" },
-            { name: "ACS Solange", photo: "solange.png", info: "971 ate 1390" },
-            { name: "ACS Daniele", photo: "danieli.png", info: "Agente de Saúde" },
-            { name: "ACS Susana", photo: "susana.png", info: "Agente de Saúde" },
-            { name: "ACS Tais", photo: "tais.png", info: "Agente de Saúde" }
-          ];
-        } else if (street === "Francisco Mommenshon") {
-          agents = [
-            { name: "ACS Marina", photo: "marina.png", info: "N-224" }
-          ];
-        } else if (street === "Erminia Amalia") {
-          agents = [
-            { name: "ACS Vanessa", photo: "vanessa.png", info: "Casas(par)" }
-          ];
-        }else if (street === "Benedito Rodrigues") {
-          agents = [
-            { name: "ACS Vanessa", photo: "vanessa.png", info: "Casas(par)" }
-          ];
-        }
-        else if (street === "Orlando Peccicaco") {
-          agents = [
-            { name: "ACS Vanessa", photo: "vanessa.png", info: "Casas(par)" }
-          ];
-        } else if (street === "Arapongas") {
-          agents = [
-            { name: "ACS Vanessa", photo: "vanessa.png", info: "Casas(impar)" },
-            { name: "ACS Vitor", photo: "vitor.png", info: "Casas(par)" }
-          ];
-        }else if (street === "Arapongas") {
-          agents = [
-            { name: "ACS Vanessa", photo: "vanessa.png", info: "Casas(impar)" },
-            { name: "ACS Vitor", photo: "vitor.png", info: "Casas(par)" }
-          ];
-        } else if (street === "Sabiá laranjeiras") {
-          agents = [
-            { name: "ACS Felix", photo: "felix.png", info: "Casas(par)" },
-            { name: "ACS Vitor", photo: "vitor.png", info: "Casas(impar)" }
-          ];
-        }else if (street === "Canário") {
-          agents = [
-            { name: "ACS Vanessa", photo: "vanessa.png", info: "Casas(par 474 ate 772)" },
-            { name: "ACS Nadieli", photo: "nadieli.png", info: "Casas(par)" },
-            { name: "ACS Regina", photo: "regina.png", info: "Casas(par)" },
-            { name: "ACS Vitor", photo: "vitor.png", info: "Casas(par)" },
-          ];
-        }else if (street === "Garça") {
-          agents = [
-            { name: "Luana", photo: "luana.png", info: "(Casas par e impar)" },
-            
-          ];
-        }else if (street === "Andorinha") {
-          agents = [
-            { name: "Luana", photo: "luana.png", info: "Casas (impar- 225 ate 555)" },
-            { name: "Fernanda", photo: "fernanda.png", info: "Casas (par)" },
-            { name: "ACS Susana", photo: "susana.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Faisão") {
-          agents = [
-            { name: "ACS Solange", photo: "solange.png", info: "Agente de Saúde" },
-            { name: "ACS Maylon", photo: "maylon.png", info: "Agente de Saúde" },
-            
-          ];
-        } else if (street === "Passáro Preto") {
-          agents = [
-            { name: "ACS Solange", photo: "solange.png", info: "Casas(35 ate 90)" },
-            
-            
-          ];
-        }else if (street === "Anu") {
-          agents = [
-            { name: "Luana", photo: "luana.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "João de Barro") {
-          agents = [
-            { name: "Luana", photo: "luana.png", info: "Casas (par) 236 ate 426" },
-            { name: "ACS Susana", photo: "susana.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Siriema") {
-          agents = [
-            { name: "Debora", photo: "debora.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Bem-Te-Vi") {
-          agents = [
-          { name: "ACS Nadieli", photo: "nadieli.png", info: "Casas(par)" },
-          { name: "ACS Felix", photo: "felix.png", info: "Casas(par)" },
-            
-          ];
-        }else if (street === "Sanhaço") {
-          agents = [
-          { name: "ACS Nadieli", photo: "nadieli.png", info: "Casas(par)" },
-            
-          ];
-        }else if (street === "Beija Flor") {
-          agents = [
-          { name: "ACS Nadieli", photo: "nadieli.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Rouxinol") {
-          agents = [
-          { name: "ACS Regina", photo: "regina.png", info: "Agente de Saúde" },
-          { name: "ACS Tais", photo: "tais.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Canário da Terra") {
-          agents = [
-          { name: "ACS Felix", photo: "felix.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Gaivota") {
-          agents = [
-          { name: "ACS Maylon", photo: "maylon.png", info: "Agente de Saúde" },
-          { name: "ACS Kelly", photo: "kelly.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Melro") {
-          agents = [
-          { name: "ACS Maylon", photo: "maylon.png", info: "Agente de Saúde" },
-          { name: "ACS Susana", photo: "susana.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Melro") {
-          agents = [
-          { name: "ACS Maylon", photo: "maylon.png", info: "Agente de Saúde" },
-          { name: "ACS Susana", photo: "susana.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Ibis Dourado") {
-          agents = [
-          { name: "ACS Kelly", photo: "kelly.png", info: "Agente de Saúde" },
-          { name: "ACS Patrícia", photo: "patricia.png", info: "Agente de Saúde" },
-            
-          ];
-        }
-        else if (street === "Pardal") {
-          agents = [
-          { name: "ACS Regina", photo: "regina.png", info: "Agente de Saúde" },
-          { name: "ACS Félix", photo: "felix.png", info: "Agente de Saúde" },
-          { name: "ACS Débora", photo: "debora.png", info: "Agente de Saúde" },
-            
-          ];
-        }else if (street === "Patativa") {
-          agents = [
-          { name: "ACS Daniele", photo: "danieli.png", info: "Agente de Saúde" },
-          { name: "ACS Patrícia", photo: "patricia.png", info: "Agente de Saúde" },
-          
-            
-          ];
-        }else if (street === "Perdiz") {
-          agents = [
-          { name: "ACS Fernanda", photo: "fernanda.png", info: "Agente de Saúde" },
-          { name: "ACS Patrícia", photo: "patricia.png", info: "Agente de Saúde" },
-          
-            
-          ];
-        }else if (street === "Periquito") {
-          agents = [
-          { name: "ACS Félix", photo: "felix.png", info: "Agente de Saúde" },
-         
-          
-            
-          ];
-        }else if (street === "Tico-Tico") {
-          agents = [
-          { name: "ACS Tais", photo: "tais.png", info: "Agente de Saúde" },
-          { name: "ACS Débora", photo: "debora.png", info: "Agente de Saúde" },
-         
-          
-            
-          ];
-        }else if (street === "Tiziu") {
-          agents = [
-          { name: "ACS Kelly", photo: "kelly.png", info: "Agente de Saúde" },
-          { name: "ACS Maylon", photo: "maylon.png", info: "Agente de Saúde" },
-         
-          
-            
-          ];
-        }else if (street === "Uirapuru") {
-          agents = [
-            { name: "Débora", photo: "debora.png", info: "Agente de Saúde" },
-            { name: "Susana", photo: "susana.png", info: "Agente de Saúde" },
-            
-          ];
-        } else if (street === "Codorna") {
-          agents = [
-            { name: "Fernanda", photo: "fernanda.png", info: "Agente de Saúde" },
-            { name: "kelly", photo: "kelly.png", info: "Agente de Saúde" },
-           
-            
-          ];
-        }
-
-        // limite para inserir agentes
-         else {
-          // Geração dinâmica para demais ruas
-          const normalizedStreet = street.toLowerCase().replace(/\s/g, "_").replace(/[^\w]/g, "");
-          for (let i = 1; i <= 5; i++) {
-            agents.push({
-              name: `ACS ${street} ${i}`,
-              photo: `${normalizedStreet}_${i}.png`,
-              info: "Agente de Saúde"
-            });
-          }
-        }
-        
-        button.setAttribute('data-agents', JSON.stringify(agents));
-        button.textContent = street;
-        acsContainer.appendChild(button);
-      });
-    }
-
-    // Exibe informações dos agentes quando um botão de rua é clicado
-    function setupAgentClickHandlers() {
-      const streetButtons = document.querySelectorAll('.street-button');
-      const agentGroupDiv = document.getElementById('agentGroup');
-      const agentInfoDiv = document.getElementById('agentInfo');
-
-      streetButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const agentsData = JSON.parse(button.getAttribute('data-agents'));
-          agentGroupDiv.innerHTML = '';
-          agentsData.forEach(agent => {
-            const agentCard = document.createElement('div');
-            agentCard.className = 'agent-card';
-
-            const agentPhoto = document.createElement('img');
-            agentPhoto.src = agent.photo || 'placeholder.png';
-            agentPhoto.alt = `Foto de ${agent.name}`;
-            agentCard.appendChild(agentPhoto);
-
-            const agentName = document.createElement('p');
-            agentName.textContent = agent.name;
-            agentCard.appendChild(agentName);
-
-            const agentInfo = document.createElement('p');
-            agentInfo.textContent = agent.info;
-            agentCard.appendChild(agentInfo);
-
-            agentGroupDiv.appendChild(agentCard);
-          });
-          agentInfoDiv.style.display = 'block';
-        });
-      });
-    }
-
-    
-    // Cria uma lista de cartões com os ACS (mapeamento manual) // não mexer
-    function createACSMappingList() {
-      const acsMapping = [
-        { name: "Patrícia", photo: "patricia.png", streets: ["Ibis Dourado", "Perdiz", "Patativa", "Cardeal"] },
-        { name: "Regina", photo: "regina.png", streets: ["Sanhaço", "Pintassilgo"] },
-        { name: "Solange", photo: "solange.png", streets: ["Pássaro Preto", "Tucano", "Luiz Gonzaga Dartora"] },
-        { name: "Fernanda", photo: "fernanda.png", streets: ["Andorinha", "Codorna"] },
-        { name: "Daniele", photo: "danieli.png", streets: ["Luiz Gonzaga Dartora", "Cardeal", "Patativa", "Flamingo"] },
-        { name: "Tais", photo: "tais.png", streets: ["Pintassilgo"] },
-        { name: "Késia", photo: "kesia.png", streets: ["Pintassilgo"] },
-        { name: "Débora", photo: "debora.png", streets: ["Siriema"] },
-        { name: "Luana", photo: "luana.png", streets: ["João de Barro", "Andorinha", "Pardal", "Anu"] },
-        { name: "Susana", photo: "susana.png", streets: ["Melro", "Luiz Gonzaga Dartora", "Tucano"] },
-        { name: "Felix", photo: "felix.png", streets: ["Canário da Terra", "Periquito"] },
-        { name: "Vitor", photo: "vitor.png", streets: ["Sabiá Laranjeiras", "Arapongas"] },
-        { name: "Maylon", photo: "maylon.png", streets: ["Tucano", "Faisão", "Melro", "Tizio"] },
-        { name: "Kelly", photo: "kelly.png", streets: ["João de Barro", "Ibis Dourado", "Tizio", "Gaivota"] },
-        { name: "Nadieli", photo: "nadieli.png", streets: ["Sanhaço", "Beija Flor", "Canário"] },
-        { name: "Marina", photo: "marina.png", streets: ["Rua Francisco Mommenshon"] },
-        { name: "Bruna", photo: "bruna.png", streets: ["Rua Cardeal"] },
-        { name: "Vanessa", photo: "vanessa.png", streets: ["Erminia", "Benedito Rodrigues"] }
-      ];
-      
-      const acsListContainer = document.getElementById('acs-list');
-      acsMapping.forEach(acs => {
-        const card = document.createElement('div');
-        card.className = 'acs-card';
-        
-        const img = document.createElement('img');
-        img.src = acs.photo || 'placeholder.png';
-        img.alt = `Foto de ${acs.name}`;
-        card.appendChild(img);
-        
-        const details = document.createElement('div');
-        details.className = 'acs-details';
-        details.innerHTML = `<strong>${acs.name}</strong><span>Ruas: ${acs.streets.join(", ")}</span>`;
-        card.appendChild(details);
-        
-        acsListContainer.appendChild(card);
-      });
-    }
-
-    // Inicializa os manipuladores após o carregamento do DOM
-    document.addEventListener('DOMContentLoaded', () => {
-      createACSButtons();
-      setupAgentClickHandlers();
-      setupSalvaVidasButton();
-      setupDireitosDeveresButton();
-      createACSMappingList();
-    });
-  </script>
+ 
 
 <script>
-  // Remover a tela de abertura após 3 segundos
-  setTimeout(() => {
-    document.querySelector('.splash-screen').remove();
-  }, 3000);
-  // Alterna a visibilidade da seção "Contatos Úteis"
-function setupContatosButton() {s
-  const contatosBtn = document.getElementById('contatosBtn');
-  const contatosInfo = document.getElementById('contatosInfo');
-
-  contatosBtn.addEventListener('click', () => {
-    contatosInfo.style.display = (contatosInfo.style.display === 'none' || contatosInfo.style.display === '')
-      ? 'block'
-      : 'none';
-  });
-}
+ 
 
 // Inicializa a funcionalidade após o carregamento do DOM
 document.addEventListener('DOMContentLoaded', () => {
@@ -1962,37 +1512,8 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCount();
       });
     });
-
    
-        document.getElementById("contatosBtn").addEventListener("click", function() {
-    var contatosInfo = document.getElementById("contatosInfo");
-    if (contatosInfo.style.display === "none" || contatosInfo.style.display === "") {
-      contatosInfo.style.display = "block";
-    } else {
-      contatosInfo.style.display = "none";
-    }
-  });// Alterna a visibilidade da seção "Salva Vidas"
-    function setupSalvaVidasButton() {
-      const salvaVidasBtn = document.getElementById('salvaVidasBtn');
-      const salvaVidasInfo = document.getElementById('salvaVidasInfo');
-      salvaVidasBtn.addEventListener('click', () => {
-        salvaVidasInfo.style.display = (salvaVidasInfo.style.display === 'none' || salvaVidasInfo.style.display === '')
-          ? 'block'
-          : 'none';
-      });
-    }
-
-    // Alterna a visibilidade da seção "Direitos e Deveres"
-    function setupDireitosDeveresButton() {
-      const direitosBtn = document.getElementById('direitosDeveresBtn');
-      const direitosInfo = document.getElementById('direitosDeveresInfo');
-      direitosBtn.addEventListener('click', () => {
-        direitosInfo.style.display = (direitosInfo.style.display === 'none' || direitosInfo.style.display === '')
-          ? 'block'
-          : 'none';
-      });
-    }
-
+ 
 </script>
 
 <title>UBS Caieiras Portal - Atendimento Online</title>
@@ -2473,7 +1994,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <!-- Botão para Despedida -->
         <button class="suggestion-btn" onclick="useSuggestion('despedida')">👋 Despedida</button>
         <!-- Botão para reconhecimento emocional -->
-        <button class="suggestion-btn" onclick="checkEmotion()">😊 Posso checar sua emoção ?</button>
+        <button class="suggestion-btn" onclick="checkEmotion()">😊 Como estou?</button>
       </div>
     </div>
   </div>
