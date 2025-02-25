@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartBulas</title>
+  <style>
+    /* Reset e configuração base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* Estilo do campo de busca */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .search-container input[type="text"] {
+      width: 70%;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .search-container button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    .search-container button:hover {
+      background: #2980b9;
+    }
+    /* Estilo dos cards de categoria */
+    .category-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      cursor: pointer;
+    }
+    .category-header:hover {
+      background: #f9f9f9;
+    }
+    .category-header .arrow {
+      transition: transform 0.3s ease;
+      font-size: 18px;
+    }
+    .category-content {
+      display: none;
+      padding: 15px;
+      border-top: 1px solid #eee;
+      color: #555;
+    }
+    .category-content ul {
+      list-style: none;
+    }
+    .category-content li {
+      padding: 5px 0;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .category-content li:hover {
+      background: #f9f9f9;
+    }
+    .no-results {
+      text-align: center;
+      font-size: 18px;
+      color: #777;
+      margin-top: 20px;
+    }
+    .details-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SmartBulas</h1>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar medicamento...">
+      <button id="searchButton">Buscar</button>
+    </div>
+    <div id="categories">
+      <!-- Os cards de categoria serão inseridos aqui via JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    // Dados de exemplo para categorias, medicamentos e detalhes da bula
+    const categories = [
+      {
+        name: "AGENTES DIAGNÓSTICOS",
+        medications: [
+          { name: "Agente Anti-Cistina", details: "Bula do Agente Anti-Cistina..." },
+          { name: "Agente Radiológico", details: "Bula do Agente Radiológico..." },
+          { name: "Agente Ultrassonográfico", details: "Bula do Agente Ultrassonográfico..." }
+        ]
+      },
+      {
+        name: "ANALGÉSICOS",
+        medications: [
+          { name: "Analgésico Paracetamol", details: "Bula do Analgésico Paracetamol..." },
+          { name: "Analgésico Ibuprofeno", details: "Bula do Analgésico Ibuprofeno..." },
+          { name: "Analgésico Dipirona", details: "Bula do Analgésico Dipirona..." }
+        ]
+      },
+      {
+        name: "ANTIBIÓTICOS",
+        medications: [
+          { name: "Antibiótico Amoxicilina", details: "Bula do Antibiótico Amoxicilina..." },
+          { name: "Antibiótico Ciprofloxacino", details: "Bula do Antibiótico Ciprofloxacino..." },
+          { name: "Antibiótico Azitromicina", details: "Bula do Antibiótico Azitromicina..." }
+        ]
+      }
+    ];
+
+    const categoriesContainer = document.getElementById("categories");
+
+    // Função para criar um card de categoria
+    function createCategoryCard(category) {
+      const card = document.createElement("div");
+      card.className = "category-card";
+
+      // Cabeçalho do card
+      const header = document.createElement("div");
+      header.className = "category-header";
+      header.innerHTML = `
+        <span>${category.name}</span>
+        <span class="arrow">&#9660;</span>
+      `;
+
+      // Conteúdo do card (lista de medicamentos)
+      const content = document.createElement("div");
+      content.className = "category-content";
+      const ul = document.createElement("ul");
+      category.medications.forEach(med => {
+        const li = document.createElement("li");
+        li.textContent = med.name;
+        li.addEventListener("click", () => showMedicationDetails(med));
+        ul.appendChild(li);
+      });
+      content.appendChild(ul);
+
+      // Toggle do conteúdo ao clicar no cabeçalho
+      header.addEventListener("click", () => {
+        const arrow = header.querySelector(".arrow");
+        if (content.style.display === "block") {
+          content.style.display = "none";
+          arrow.style.transform = "rotate(0deg)";
+        } else {
+          content.style.display = "block";
+          arrow.style.transform = "rotate(180deg)";
+        }
+      });
+
+      card.appendChild(header);
+      card.appendChild(content);
+      return card;
+    }
+
+    // Função para renderizar categorias filtradas
+    function renderCategories(filter = "") {
+      categoriesContainer.innerHTML = "";
+      const lowerFilter = filter.toLowerCase();
+      // Filtra categorias: se o nome da categoria ou algum medicamento contiver o termo pesquisado
+      const filteredCategories = categories.filter(cat => {
+        const inCategoryName = cat.name.toLowerCase().includes(lowerFilter);
+        const inMedications = cat.medications.some(med => med.name.toLowerCase().includes(lowerFilter));
+        return lowerFilter === "" || inCategoryName || inMedications;
+      });
+      if (filteredCategories.length === 0) {
+        categoriesContainer.innerHTML = "<p class='no-results'>Nenhum medicamento encontrado.</p>";
+      } else {
+        filteredCategories.forEach(category => {
+          categoriesContainer.appendChild(createCategoryCard(category));
+        });
+      }
+    }
+
+    // Função para mostrar os detalhes do medicamento
+    function showMedicationDetails(medication) {
+      const detailsContainer = document.createElement("div");
+      detailsContainer.className = "details-container";
+      detailsContainer.innerHTML = `
+        <h3>Detalhes da Bula: ${medication.name}</h3>
+        <p>${medication.details}</p>
+      `;
+      document.body.appendChild(detailsContainer);
+    }
+
+    // Renderiza todas as categorias ao carregar a página
+    renderCategories();
+
+    // Eventos para o botão de busca e para digitar no campo de busca
+    document.getElementById("searchButton").addEventListener("click", () => {
+      const searchTerm = document.getElementById("searchInput").value;
+      renderCategories(searchTerm);
+    });
+
+    document.getElementById("searchInput").addEventListener("keyup", () => {
+      const searchTerm = document.getElementById("searchInput").value;
+      renderCategories(searchTerm);
+    });
+  </script>
+</body>
+</html>

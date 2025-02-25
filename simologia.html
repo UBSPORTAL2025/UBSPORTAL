@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Semiologia Médica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .sidebar {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .menu-card {
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-align: center;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .menu-card.basic {
+            background-color: #c75b87;
+        }
+
+        .menu-card.specific {
+            background-color: #3498db;
+        }
+
+        .specialty-list {
+            display: none;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .specialty-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .specialty-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .specialty-item.active {
+            border-left: 4px solid #3498db;
+            background-color: #f0f7fc;
+        }
+
+        .content-area {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            min-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="header">SEMIOLOGIAS</div>
+        <div class="menu-card basic" onclick="showSpecialtyList('basic')">
+            <h2>SEMIOLOGIA BÁSICA</h2>
+        </div>
+        <div class="menu-card specific" onclick="showSpecialtyList('specific')">
+            <h2>SEMIOLOGIA ESPECÍFICA</h2>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">SELECIONE UMA CATEGORIA</div>
+        
+        <div class="specialty-list" id="specialty-list"></div>
+        
+        <div class="home-screen" id="home-screen">
+            <h1>Sistema de Semiologia Médica</h1>
+            <p>Selecione uma categoria à esquerda para começar</p>
+        </div>
+        
+        <div class="content-area" id="content-area"></div>
+    </div>
+    
+    <script>
+        const specialties = {
+            basic: [
+                "Semiologia Geriátrica",
+                "Semiologia Neonatal",
+                "Semiologia da Adolescência",
+                "Semiologia da Infância",
+                "Semiologia e Propedêutica Geral"
+            ],
+            specific: [
+                "Semiologia Abdominal",
+                "Semiologia Cardiológica",
+                "Semiologia Coloproctológica",
+                "Semiologia Dermatológica",
+                "Semiologia Endocrinológica",
+                "Semiologia Ginecológica",
+                "Semiologia Neurológica",
+                "Semiologia Obstétrica",
+                "Semiologia Oftalmológica",
+                "Semiologia Ortopédica",
+                "Semiologia Otorrinolaringológica",
+                "Semiologia Pneumológica",
+                "Semiologia Psiquiátrica",
+                "Semiologia Reumatológica",
+                "Semiologia Urológica"
+            ]
+        };
+
+        function showSpecialtyList(type) {
+            const listContainer = document.getElementById('specialty-list');
+            listContainer.innerHTML = '';
+            listContainer.style.display = 'block';
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('content-area').style.display = 'none';
+            
+            specialties[type].forEach(specialty => {
+                const item = document.createElement('div');
+                item.className = 'specialty-item';
+                item.textContent = specialty;
+                item.onclick = () => showContent(specialty);
+                listContainer.appendChild(item);
+            });
+        }
+
+        function showContent(specialty) {
+            const contentArea = document.getElementById('content-area');
+            contentArea.innerHTML = `<h2>${specialty}</h2><p>Conteúdo sobre ${specialty} será exibido aqui.</p>`;
+            contentArea.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
