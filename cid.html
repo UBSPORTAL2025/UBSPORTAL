@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Avançada de Códigos CID</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-container label {
+            font-weight: bold;
+        }
+
+        .search-container input,
+        .search-container select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        #resultsTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        #resultsTable th,
+        #resultsTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #resultsTable th {
+            background-color: #f4f4f4;
+        }
+
+        #noResults {
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            color: #777;
+        }
+
+        .chapters {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .chapters h3 {
+            color: #0056b3;
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .chapter-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .chapter-item:hover {
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Busca Avançada de Códigos CID</h1>
+
+        <div class="search-container">
+            <label for="searchTerm">Buscar por Doença ou Código CID:</label>
+            <input type="text" id="searchTerm" placeholder="Digite uma doença ou código CID...">
+
+            <label for="categoryFilter">Filtrar por Capítulo:</label>
+            <select id="categoryFilter">
+                <option value="">Todos os capítulos</option>
+            </select>
+        </div>
+
+        <div id="results">
+            <h2>Resultados</h2>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Descrição</th>
+                        <th>Capítulo</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p id="noResults">Nenhum resultado encontrado.</p>
+        </div>
+
+        <div class="chapters">
+            <h3>Capítulos CID-10</h3>
+            <div class="chapters-grid" id="chaptersList"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchTermInput = document.getElementById('searchTerm');
+            const categoryFilterSelect = document.getElementById('categoryFilter');
+            const resultsTableBody = document.querySelector('#resultsTable tbody');
+            const noResultsMessage = document.getElementById('noResults');
+            const chaptersListDiv = document.getElementById('chaptersList');
+
+            let searchTerm = '';
+            let selectedCategory = '';
+
+            // Dados dos CIDs e categorias (substitua com seus dados completos)
+            const cidDatabase = [
+                { codigo: 'A00', descricao: 'Cólera' },
+                { codigo: 'A01', descricao: 'Febres tifóide e paratifóide' },
+                { codigo: 'A15', descricao: 'Tuberculose respiratória, com confirmação bacteriológica e histológica' },
+                { codigo: 'A30', descricao: 'Hanseníase [lepra]' },
+                { codigo: 'A90', descricao: 'Dengue [dengue clássico]' },
+                { codigo: 'B20', descricao: 'Doença pelo vírus da imunodeficiência humana [HIV]' },
+                { codigo: 'C50', descricao: 'Neoplasia maligna da mama' },
+                { codigo: 'C61', descricao: 'Neoplasia maligna da próstata' },
+                { codigo: 'D50', descricao: 'Anemia por deficiência de ferro' },
+                { codigo: 'E10', descricao: 'Diabetes mellitus insulino-dependente' },
+                { codigo: 'E11', descricao: 'Diabetes mellitus não-insulino-dependente' },
+                { codigo: 'E66', descricao: 'Obesidade' },
+                { codigo: 'F32', descricao: 'Episódios depressivos' },
+                { codigo: 'F41', descricao: 'Outros transtornos ansiosos' },
+                { codigo: 'G40', descricao: 'Epilepsia' },
+                { codigo: 'G43', descricao: 'Enxaqueca' },
+                { codigo: 'H40', descricao: 'Glaucoma' },
+                { codigo: 'H65', descricao: 'Otite média não supurativa' },
+                { codigo: 'I10', descricao: 'Hipertensão essencial (primária)' },
+                { codigo: 'I21', descricao: 'Infarto agudo do miocárdio' },
+                { codigo: 'I50', descricao: 'Insuficiência cardíaca' },
+                { codigo: 'J00', descricao: 'Nasofaringite aguda [resfriado comum]' },
+                { codigo: 'J03', descricao: 'Amigdalite aguda' },
+                { codigo: 'J11', descricao: 'Influenza [gripe] devido a vírus não identificado' },
+                { codigo: 'J45', descricao: 'Asma' },
+                { codigo: 'K29', descricao: 'Gastrite e duodenite' },
+                { codigo: 'K35', descricao: 'Apendicite aguda' },
+                { codigo: 'K80', descricao: 'Colelitíase' },
+                { codigo: 'L20', descricao: 'Dermatite atópica' },
+                { codigo: 'L70', descricao: 'Acne' },
+                { codigo: 'M54', descricao: 'Dorsalgia' },
+                { codigo: 'M79', descricao: 'Outros transtornos dos tecidos moles, não classificados em outra parte' },
+                { codigo: 'N30', descricao: 'Cistite' },
+                { codigo: 'N40', descricao: 'Hiperplasia da próstata' },
+                { codigo: 'O20', descricao: 'Hemorragia do início da gravidez' },
+                { codigo: 'P07', descricao: 'Transtornos relacionados com a gestação de curta duração e peso baixo ao nascer não classificados em outra parte' },
+                { codigo: 'Q90', descricao: 'Síndrome de Down' },
+                { codigo: 'R10', descricao: 'Dor abdominal e pélvica' },
+                { codigo: 'R50', descricao: 'Febre de origem desconhecida e de outras origens' },
+                { codigo: 'S06', descricao: 'Traumatismo intracraniano' },
+                { codigo: 'Z00', descricao: 'Exame geral e investigação de pessoas sem queixas ou diagnóstico relatado' }
+            ];
+
+            const categorias = [
+                { codigo: 'A00-B99', nome: 'Algumas doenças infecciosas e parasitárias', items: 21 },
+                { codigo: 'C00-D48', nome: 'Neoplasias (tumores)', items: 20 },
+                { codigo: 'D50-D89', nome: 'Doenças do sangue e dos órgãos hematopoéticos e alguns transtornos imunitários', items: 6 },
+                { codigo: 'E00-E90', nome: 'Doenças endócrinas nutricionais e metabólicas', items: 8 },
+                { codigo: 'F00-F99', nome: 'Transtornos mentais e comportamentais', items: 11 },
+                { codigo: 'G00-G99', nome: 'Doenças do sistema nervoso', items: 11 },
+                { codigo: 'H00-H59', nome: 'Doenças do olho e anexos', items: 11 },
+                { codigo: 'H60-H95', nome: 'Doenças do ouvido e da apófise mastóide', items: 4 },
+                { codigo: 'I00-I99', nome: 'Doenças do aparelho circulatório', items: 10 },
+                { codigo: 'J00-J99', nome: 'Doenças do aparelho respiratório', items: 10 },
+                { codigo: 'K00-K93', nome: 'Doenças do aparelho digestivo', items: 10 },
+                { codigo: 'L00-L99', nome: 'Doenças da pele e do tecido subcutâneo', items: 8 },
+                { codigo: 'M00-M99', nome: 'Doenças do sistema osteomuscular e do tecido conjuntivo', items: 19 },
+                { codigo: 'N00-N99', nome: 'Doenças do aparelho geniturinário', items: 11 },
+                { codigo: 'O00-O99', nome: 'Gravidez parto e puerpério', items: 8 },
+                { codigo: 'P00-P96', nome: 'Algumas afecções originadas no período perinatal', items: 10 },
+                { codigo: 'Q00-Q99', nome: 'Malformações congênitas, deformidades e anomalias cromossômicas', items: 11 },
+                { codigo: 'R00-R99', nome: 'Sintomas, sinais e achados anormais de exames clínicos e de laboratório, não classificados em outra parte', items: 13 },
+                { codigo: 'S00-T98', nome: 'Lesões, envenenamento e algumas outras conseqüências de causas externas', items: 24 },
+                { codigo: 'V01-Y98', nome: 'Causas externas de morbidade e mortalidade', items: 39 },
+                { codigo: 'Z00-Z99', nome: 'Fatores que influenciam o estado de saúde e o contato com os serviços de saúde', items: 7 },
+                { codigo: 'U00-U99', nome: 'Códigos para propósitos especiais', items: 0 }
+            ];
+
+            // Função para buscar CIDs
+            function searchCIDs() {
+                const searchTermLower = searchTerm.toLowerCase();
+                const results = cidDatabase.filter(cid => {
+                    const matchesCategory = selectedCategory === '' || isCodeInCategory(cid.codigo, selectedCategory);
+                    const matchesSearchTerm = cid.codigo.toLowerCase().includes(searchTermLower) || cid.descricao.toLowerCase().includes(searchTermLower);
+                    return matchesCategory && matchesSearchTerm;
+                });
+                displayResults(results);
+            }
+
+            // Função para verificar se um código CID pertence a uma categoria
+            function isCodeInCategory(code, category) {
+                const [start, end] = category.split('-');
+                return code >= start && code <= end;
+            }
+
+            // Função para obter o nome da categoria para um código CID
+            function getCategoryForCode(code) {
+                for (const categoria of categorias) {
+                    if (isCodeInCategory(code, categoria.codigo)) {
+                        return categoria.nome;
+                    }
+                }
+                return '';
+            }
+
+            // Função para exibir os resultados na tabela
+            function displayResults(results) {
+                resultsTableBody.innerHTML = ''; // Limpa os resultados anteriores
+                if (results.length === 0) {
+                    noResultsMessage.style.display = 'block';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                    results.forEach(cid => {
+                        const row = resultsTableBody.insertRow();
+                        const codigoCell = row.insertCell(0);
+                        const descricaoCell = row.insertCell(1);
+                        const categoriaCell = row.insertCell(2);
+                        codigoCell.textContent = cid.codigo;
+                        descricaoCell.textContent = cid.descricao;
+                        categoriaCell.textContent = getCategoryForCode(cid.codigo);
+                    });
+                }
+            }
+
+            // Event listeners
+            searchTermInput.addEventListener('input', function() {
+                searchTerm = this.value;
+                searchCIDs();
+            });
+
+            categoryFilterSelect.addEventListener('change', function() {
+                selectedCategory = this.value;
+                searchCIDs();
+            });
+
+            // Preenche as opções de filtro por categoria
+            categorias.forEach(categoria => {
+                const option = document.createElement('option');
+                option.value = categoria.codigo;
+                option.textContent = `${categoria.codigo} - ${categoria.nome}`;
+                categoryFilterSelect.appendChild(option);
+            });
+
+            // Preenche a lista de capítulos
+            categorias.forEach(categoria => {
+                const chapterItem = document.createElement('div');
+                chapterItem.classList.add('chapter-item');
+                chapterItem.textContent = `${categoria.codigo} - ${categoria.nome} (${categoria.items})`;
+                chapterItem.addEventListener('click', () => {
+                    selectedCategory = categoria.codigo;
+                    categoryFilterSelect.value = categoria.codigo;
+                    searchCIDs();
+                });
+                chaptersListDiv.appendChild(chapterItem);
+            });
+        });
+    </script>
+</body>
+</html>
