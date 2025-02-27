@@ -28,36 +28,62 @@
     /* =================================== */
     /* Cabeçalho e Navegação               */
     /* =================================== */
-    header {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-    }
-    .logo-container img {
-      max-height: 80px;
-      width: auto;
-    }
-    nav {
-      background-color: #00264d;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
- 
-    .toggle-dark-btn:hover {
-      background-color: #0056b3;
-    }
+  header {
+  background: #003366; /* Azul escuro sólido */
+  color: white; /* Cor do texto */
+  text-align: center;
+  padding: 20px 0;
+  position: relative; /* Para posicionar os pinheiros */
+  overflow: hidden; /* Evita que os pinheiros ultrapassem */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra suave */
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container h1 {
+  font-size: 2.5em; /* Ajuste o tamanho da fonte conforme necessário */
+  margin-bottom: 5px;
+  font-weight: 600; /* Deixa a fonte mais forte */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra no texto */
+}
+
+.logo-container img {
+  max-height: 80px;
+  width: auto;
+  margin-bottom: 10px; /* Espaço entre a imagem e o título */
+}
+
+header h5 {
+  font-size: 1.1em; /* Ajuste o tamanho da fonte do subtítulo */
+  color: #f0f8ff; /* Tom de branco para o subtítulo */
+  font-weight: 400; /* Ajuste a espessura da fonte */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra no texto */
+}
+
+/* Detalhes dos pinheiros */
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M50 0 L15 100 L85 100 Z" fill="white"/></svg>') repeat-y;
+  opacity: 0.3;
+}
+
+header::before {
+  left: 0;
+}
+
+header::after {
+  right: 0;
+}
+
     /* =================================== */
     /* Containers e Seções Gerais          */
     /* =================================== */
@@ -753,29 +779,29 @@ margin-right: auto;
         <div class="grid">
             <a href="#especialidades" class="button">
                 <div class="icon color-1"><i class="fas fa-stethoscope"></i></div>
-                <span class="title">Especialidades</span>
+                <span class="title">Especialidades(UBS)</Portal></span>
             </a>
             <a href="salva.html" class="button">
                 <div class="icon color-8"><i class="fa fa-medkit"></i></div>
                 <span class="title">Salva-Vidas</span>
             </a>
             <a href="#app-sus" class="button">
-                <div class="icon color-3"><i class="fas fa-notes-medical"></i></div>
+                <div class="icon color-3"><i class="fa fa-plus"></i></div>
                 <span class="title">App SUS </span>
             </a>
-            <a href="#smartbulas" class="button">
+            <a href="bulas.html"class="button">
                 <div class="icon color-4"><i class="fas fa-pills"></i></div>
-                <span class="title">Smartbulas</span>
+                <span class="title">Bulas Inteligentes</span>
             </a>
             <a href="direitos.html" class="button">
-                <div class="icon color-5"><i class="fas fa-exchange-alt"></i></div>
+                <div class="icon color-5"><i class="fa fa-balance-scale"></i></div>
                 <span class="title">Direitos e Deveres</span>
             </a>
             <a href="#vacinas" class="button">
                 <div class="icon color-6"><i class="fas fa-syringe"></i></div>
                 <span class="title">Vacinação</span>
             </a>
-            <a href="#codigo-cid" class="button">
+            <a href="cid.html" class="button">
                 <div class="icon color-7"><i class="fas fa-plus-square"></i></div>
                 <span class="title">Código CID</span>
             </a>
@@ -785,7 +811,7 @@ margin-right: auto;
             </a>
             <a href="calculadodrop.html" class="button">
                 <div class="icon color-2"><i class="fas fa-calculator"></i></div>
-                <span class="title">Calculadoras</span>
+                <span class="title">Calcular minha Saúde</span>
             </a>
             <a href="#laboratorios" class="button">
                 <div class="icon color-3"><i class="fas fa-vial"></i></div>
@@ -796,11 +822,11 @@ margin-right: auto;
                 <span class="title">Toxicologia</span>
             </a>
             <a href="#protocolos" class="button">
-                <div class="icon color-5"><i class="fas fa-file-medical"></i></div>
-                <span class="title">-</span>
+                <div class="icon color-5"><i class="fa fa-user-md"></i></div>
+                <span class="title">Consultas</span>
             </a>
             <a href="contatos.html" class="button">
-                <div class="icon color-6"><i class="fas fa-bell"></i></div>
+                <div class="icon color-6"><i class="fa fa-phone"></i></div>
                 <span class="title">Contatos Úteis</span>
             </a>
             <a href="#infinite-health-info" class="button">
@@ -808,12 +834,12 @@ margin-right: auto;
                 <span class="title">Notícias</span>
             </a>
             <a href="simologia.html" class="button">
-                <div class="icon color-1"><i class="fa-thin fa-stethoscope"></i>"></i></div>
+                <div class="icon color-1"><i class="fa fa-heartbeat"></i></i></div>
                 <span class="title">Semiologia</span>
             </a>
-            <a href="bulas.html" class="button">
-                <div class="icon color-2"><i class="fa-solid fa-tablets"></i>"></i></div>
-                <span class="title">Bulas inteligentes</span>
+            <a href="#" class="button">
+                <div class="icon color-2"><i class="fa fa-file-text"></i></i></div>
+                <span class="title">Guias Médicas</span>
             </a>
         </div>
     </div>
