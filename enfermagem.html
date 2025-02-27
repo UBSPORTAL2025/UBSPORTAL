@@ -22,13 +22,19 @@
       --text-light: #E3F2FD;
       --success: #4CAF50;
       --danger: #f44336;
+      --sidebar-width: 250px;
+      --sidebar-collapsed-width: 70px;
+      --transition-speed: 0.4s;
     }
     
     body {
       background-color: var(--background);
-      padding: 20px;
+      padding: 0;
+      margin: 0;
       min-height: 100vh;
       position: relative;
+      display: flex;
+      overflow-x: hidden;
     }
     
     body::before {
@@ -42,6 +48,232 @@
       opacity: 0.05;
       pointer-events: none;
       z-index: 0;
+    }
+    
+    /* Menu lateral */
+    .sidebar {
+      width: var(--sidebar-width);
+      height: 100vh;
+      background-color: var(--primary);
+      color: white;
+      position: fixed;
+      transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+      box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
+    .sidebar.collapsed {
+      width: var(--sidebar-collapsed-width);
+    }
+    
+    .sidebar-header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+    
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      transition: transform var(--transition-speed) ease;
+    }
+    
+    .sidebar.collapsed .sidebar-logo {
+      justify-content: center;
+    }
+    
+    .sidebar-logo i {
+      font-size: 2em;
+      animation: pulse 2s infinite;
+    }
+    
+    .sidebar-logo span {
+      font-size: 1.8em;
+      transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+    }
+    
+    .sidebar.collapsed .sidebar-logo span {
+      opacity: 0;
+      transform: translateX(-20px);
+      position: absolute;
+      width: 0;
+      overflow: hidden;
+    }
+    
+    .toggle-sidebar {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all var(--transition-speed) ease;
+    }
+    
+    .toggle-sidebar:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: rotate(180deg);
+    }
+    
+    .toggle-sidebar i {
+      transition: transform var(--transition-speed) ease;
+    }
+    
+    .sidebar.collapsed .toggle-sidebar i {
+      transform: rotate(180deg);
+    }
+    
+    .sidebar-user {
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: padding var(--transition-speed) ease;
+    }
+    
+    .sidebar.collapsed .sidebar-user {
+      padding: 15px 0;
+      justify-content: center;
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      transition: margin var(--transition-speed) ease;
+    }
+    
+    .sidebar.collapsed .user-avatar {
+      margin-right: 0;
+    }
+    
+    .user-info {
+      transition: opacity var(--transition-speed) ease, max-width var(--transition-speed) ease;
+      max-width: 150px;
+    }
+    
+    .sidebar.collapsed .user-info {
+      opacity: 0;
+      max-width: 0;
+      overflow: hidden;
+    }
+    
+    .user-info h3 {
+      font-size: 0.9em;
+      margin: 0;
+      white-space: nowrap;
+    }
+    
+    .user-info p {
+      font-size: 0.8em;
+      opacity: 0.8;
+      margin: 0;
+      white-space: nowrap;
+    }
+    
+    .menu-items {
+      list-style: none;
+      padding: 15px 0;
+    }
+    
+    .menu-item {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all var(--transition-speed) ease;
+      white-space: nowrap;
+      position: relative;
+    }
+    
+    .menu-item:hover, .menu-item.active {
+      background-color: rgba(255,255,255,0.1);
+    }
+    
+    .menu-item i {
+      margin-right: 15px;
+      width: 20px;
+      text-align: center;
+      transition: margin var(--transition-speed) ease;
+      font-size: 1.2em;
+    }
+    
+    .sidebar.collapsed .menu-item {
+      padding: 12px 0;
+      justify-content: center;
+    }
+    
+    .sidebar.collapsed .menu-item i {
+      margin-right: 0;
+    }
+    
+    .menu-item span {
+      transition: opacity var(--transition-speed) ease, max-width var(--transition-speed) ease;
+      max-width: 150px;
+    }
+    
+    .sidebar.collapsed .menu-item span {
+      opacity: 0;
+      max-width: 0;
+      overflow: hidden;
+    }
+    
+    /* Tooltip para menu recolhido */
+    .menu-item::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 20;
+    }
+    
+    .sidebar.collapsed .menu-item:hover::after {
+      opacity: 1;
+      visibility: visible;
+      left: 60px;
+    }
+    
+    /* Conteúdo principal */
+    .main-content {
+      flex: 1;
+      margin-left: var(--sidebar-width);
+      padding: 20px;
+      transition: margin-left var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+      width: calc(100% - var(--sidebar-width));
+      z-index: 1;
+    }
+    
+    .sidebar.collapsed ~ .main-content {
+      margin-left: var(--sidebar-collapsed-width);
+      width: calc(100% - var(--sidebar-collapsed-width));
     }
     
     .container {
@@ -315,112 +547,462 @@
       transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(13, 71, 161, 0.3);
     }
+    
+    /* Backdrop para o menu mobile */
+    .backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 90;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .backdrop.active {
+      display: block;
+      opacity: 1;
+    }
+    
+    /* Menu responsivo - melhorias adicionais */
+    @media (max-width: 991px) {
+      .stats-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+      
+      .tabs {
+        justify-content: center;
+      }
+      
+      .tab-button {
+        padding: 12px 20px;
+        font-size: 0.9em;
+      }
+      
+      .header h1 {
+        font-size: 1.8em;
+      }
+      
+      .tagline p {
+        font-size: 1.3em;
+        white-space: normal;
+        animation: none;
+        border-right: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 0;
+        transform: translateX(-100%);
+      }
+      
+      .sidebar.mobile-active {
+        width: var(--sidebar-width);
+        transform: translateX(0);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      }
+      
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+        padding-top: 70px; /* Espaço para o botão de menu */
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 110;
+        background-color: var(--primary);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2em;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-menu-toggle:hover {
+        background-color: var(--secondary);
+      }
+      
+      .mobile-menu-toggle.active {
+        left: calc(var(--sidebar-width) - 60px);
+      }
+      
+      .sidebar ~ .main-content {
+        margin-left: 0;
+      }
+      
+      .sidebar.collapsed ~ .main-content {
+        margin-left: 0;
+      }
+      
+      .container {
+        padding: 15px;
+      }
+      
+      .header {
+        padding: 15px;
+        margin-bottom: 15px;
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .header i {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      
+      .header h1 {
+        font-size: 1.5em;
+      }
+      
+      .stats-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .pedido-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .stat-card {
+        padding: 15px;
+      }
+      
+      .stat-number {
+        font-size: 1.5em;
+      }
+      
+      .tabs {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .tab-button {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .user-greeting {
+        font-size: 1.2em;
+      }
+      
+      .sidebar-header {
+        padding: 15px;
+      }
+      
+      .sidebar-user {
+        padding: 10px;
+      }
+      
+      .menu-item {
+        padding: 10px 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .header {
+        padding: 10px;
+      }
+      
+      .header i {
+        font-size: 2em;
+      }
+      
+      .header h1 {
+        font-size: 1.3em;
+      }
+      
+      .patient-card {
+        padding: 15px;
+      }
+      
+      .patient-info span {
+        font-size: 0.9em;
+      }
+      
+      .search-bar {
+        padding: 12px;
+        font-size: 1em;
+      }
+      
+      .stat-card i {
+        font-size: 2em;
+      }
+      
+      .mobile-menu-toggle {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .tagline p {
+        font-size: 1.1em;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Cabeçalho -->
-    <div class="header">
-      <i class="fas fa-heartbeat"></i>
-      <h1>Sistema de Enfermagem</h1>
-    </div>
-    
-    <!-- Tagline com efeito typewriter -->
-    <div class="tagline">
-      <p>UBS Portal cuidando de você com amor</p>
-    </div>
-    
-    <!-- Saudação motivacional -->
-    <div id="userGreeting" class="user-greeting"></div>
+  <!-- Botão de menu mobile -->
+  <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
 
-    <!-- Cards de Estatísticas -->
-    <div class="stats-container">
-      <div class="stat-card">
-        <i class="fas fa-users"></i>
-        <div class="stat-number">63</div>
-        <div class="stat-label">Pacientes Ativos</div>
+  <!-- Overlay de fundo para mobile -->
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- Menu Lateral -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <i class="fas fa-heartbeat"></i>
+        <span>UBS Portal</span>
       </div>
-      <div class="stat-card">
-        <i class="fas fa-file-alt"></i>
-        <div class="stat-number">188</div>
-        <div class="stat-label">Prontuários</div>
-      </div>
-      <div class="stat-card">
-        <i class="fas fa-pills"></i>
-        <div class="stat-number">89%</div>
-        <div class="stat-label">Estoque</div>
+      <div class="toggle-sidebar" id="toggle-sidebar">
+        <i class="fas fa-chevron-left"></i>
       </div>
     </div>
     
-    <!-- Abas de Navegação -->
-    <div class="tabs">
-      <button class="tab-button active" data-tab="pacientes">
+    <div class="sidebar-user">
+      <div class="user-avatar">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="user-info">
+        <h3>Profissional</h3>
+        <p>Online</p>
+      </div>
+    </div>
+    
+    <ul class="menu-items">
+      
+      <li class="menu-item" data-tooltip="Pacientes">
         <i class="fas fa-user-injured"></i>
-        Pacientes
-      </button>
-      <button class="tab-button" data-tab="medicamentos">
+        <span>Pacientes</span>
+      </li>
+     
+      <li class="menu-item" data-tooltip="Medicamentos">
         <i class="fas fa-pills"></i>
-        Medicamentos
-      </button>
-      <button class="tab-button" data-tab="retiradas">
-        <i class="fas fa-clipboard-list"></i>
-        Retiradas
-      </button>
-      <button class="tab-button" data-tab="insumos">
+        <span>Medicamentos</span>
+      </li>
+   
+      <li class="menu-item" data-tooltip="Insumos">
         <i class="fas fa-boxes"></i>
-        Pedido de Insumos
-      </button>
-    </div>
+        <span>Insumos</span>
+      </li>
+      <li class="menu-item" data-tooltip="Relatórios">
+        <i class="fas fa-chart-line"></i>
+        <span>Relatórios</span>
+      </li>
+      <li class="menu-item" data-tooltip="Agendamentos">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Agendamentos</span>
+      </li>
+      <li class="menu-item" data-tooltip="Configurações">
+        <i class="fas fa-cog"></i>
+        <span>Configurações</span>
+      </li>
+      <li class="menu-item" data-tooltip="Ajuda">
+        <i class="fas fa-question-circle"></i>
+        <span>Ajuda</span>
+      </li>
+      <li class="menu-item" data-tooltip="Sair">
+        <a href="index.html">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Sair</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-button');
 
-    <!-- Conteúdo das Abas -->
-    <div id="pacientes" class="tab-content active">
-      <input type="text" class="search-bar" placeholder="Buscar paciente...">
-      <div class="patient-grid" id="patient-list">
-        <!-- Os pacientes serão inseridos aqui via JavaScript -->
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const page = button.getAttribute('data-page');
+        if (page) {
+          window.location.href = page;
+        }
+      });
+    });
+  });
+</script>
+
+  
+  <!-- Conteúdo Principal -->
+  <div class="main-content" id="main-content">
+    <div class="container">
+      <!-- Cabeçalho -->
+      <div class="header">
+        <i class="fas fa-heartbeat"></i>
+        <h1>Sistema de Enfermagem</h1>
       </div>
-    </div>
+      
+      <!-- Tagline com efeito typewriter (adaptada para mobile) -->
+      <div class="tagline">
+        <p>UBS Portal cuidando de você com amor</p>
+      </div>
+      
+      <!-- Saudação motivacional -->
+      <div id="userGreeting" class="user-greeting"></div>
 
-    <div id="medicamentos" class="tab-content">
-      <p>Aqui você pode gerenciar os medicamentos.</p>
-    </div>
+      <!-- Cards de Estatísticas -->
+      <div class="stats-container">
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <div class="stat-number">63</div>
+          <div class="stat-label">Pacientes Ativos</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-file-alt"></i>
+          <div class="stat-number">188</div>
+          <div class="stat-label">Prontuários</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-pills"></i>
+          <div class="stat-number">89%</div>
+          <div class="stat-label">Estoque</div>
+        </div>
+      </div>
+      
+      <!-- Abas de Navegação -->
+      <div class="tabs">
+        <button class="tab-button active" data-tab="pacientes">
+          <i class="fas fa-user-injured"></i>
+          Pacientes
+        </button>
+        <button class="tab-button" data-tab="medicamentos">
+          <i class="fas fa-pills"></i>
+          Medicamentos
+        </button>
+        <button class="tab-button" data-tab="retiradas">
+          <i class="fas fa-clipboard-list"></i>
+          Retiradas
+        </button>
+        <button class="tab-button" data-tab="insumos">
+          <i class="fas fa-boxes"></i>
+          Pedido de Insumos
+        </button>
+      </div>
 
-    <div id="retiradas" class="tab-content">
-      <p>Aqui você pode gerenciar as retiradas.</p>
-    </div>
-    
-    <!-- Aba Pedido de Insumos -->
-    <div id="insumos" class="tab-content">
-      <div class="insumos-tab-content">
-        <h2>Pedido de Insumos</h2>
-        <p>Selecione a opção de pedido abaixo:</p>
-        <div class="pedido-container">
-          <div class="pedido-card">
-            <a href="https://docs.google.com/spreadsheets/d/1pYiWt2XHiE6Ux0w9C272rBAYa9R0Pa8Htgu5Ysr3OHs/edit?usp=sharing" target="_blank">Pedido de Insumos</a>
+      <!-- Conteúdo das Abas -->
+      <div id="pacientes" class="tab-content active">
+        <input type="text" class="search-bar" placeholder="Buscar paciente...">
+        <div class="patient-grid" id="patient-list">
+          <!-- Pacientes de exemplo -->
+          <div class="patient-card">
+            <div class="patient-info">
+              <a href="#" class="patient-name">Maria Silva</a>
+              <span>ID: 12345 | Idade: 68</span>
+              <span class="status-pill curativo">Curativo</span>
+            </div>
           </div>
-          <div class="pedido-card">
-            <a href="https://docs.google.com/spreadsheets/d/1pYiWt2XHiE6Ux0w9C272rBAYa9R0Pa8Htgu5Ysr3OHs/edit?usp=sharing" target="_blank">Pedido de Fraldas</a>
+          <div class="patient-card">
+            <div class="patient-info">
+              <a href="#" class="patient-name">João Santos</a>
+              <span>ID: 12346 | Idade: 72</span>
+              <span class="status-pill diabete">Diabetes</span>
+            </div>
           </div>
-          <div class="pedido-card">
-            <a href="https://docs.google.com/spreadsheets/d/1h9IpPMbRg20DopKm0CArBbcipqMoeglYQyTU1_Np57g/edit?usp=sharing" target="_blank">Pedido de Curativos</a>
+          <div class="patient-card">
+            <div class="patient-info">
+              <a href="#" class="patient-name">Ana Costa</a>
+              <span>ID: 12347 | Idade: 85</span>
+              <span class="status-pill fralda">Fralda</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="medicamentos" class="tab-content">
+        <p>Aqui você pode gerenciar os medicamentos.</p>
+      </div>
+
+      <div id="retiradas" class="tab-content">
+        <p>Aqui você pode gerenciar as retiradas.</p>
+      </div>
+      
+      <!-- Aba Pedido de Insumos -->
+      <div id="insumos" class="tab-content">
+        <div class="insumos-tab-content">
+          <h2>Pedido de Insumos</h2>
+          <p>Selecione a opção de pedido abaixo:</p>
+          <div class="pedido-container">
+            <div class="pedido-card">
+              <a href="https://docs.google.com/spreadsheets/d/1pYiWt2XHiE6Ux0w9C272rBAYa9R0Pa8Htgu5Ysr3OHs/edit?usp=sharing" target="_blank">Pedido de Insumos</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  
+  <!-- Scripts de funcionalidade -->
   <script>
-    // Exibe uma mensagem motivacional aleatória ao carregar a página
-    document.addEventListener('DOMContentLoaded', function() {
-      const motivationalMessages = [
-        "Bom dia! Que seu dia seja ótimo hoje e cheio de realizações!",
-        "Bom dia! Lembre-se: cada cuidado salva vidas!",
-        "Bom dia! Sua dedicação transforma vidas!",
-        "Bom dia! Continue brilhando e fazendo a diferença na enfermagem!",
-        "Bom dia! A sua paixão inspira e transforma a saúde de muitos!"
-      ];
-      const randomMessage = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
-      document.getElementById("userGreeting").textContent = randomMessage;
+    document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        button.classList.add('active');
+        const tabId = button.getAttribute('data-tab');
+        const activeTab = document.getElementById(tabId);
+        if (activeTab) {
+          activeTab.classList.add('active');
+        } else {
+          console.error(`Nenhum elemento encontrado com o id: ${tabId}`);
+        }
+      });
     });
+  });
+
+    // Toggle do menu lateral (desktop)
+    const toggleSidebar = document.getElementById('toggle-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleSidebar.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    // Menu mobile
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const backdrop = document.getElementById('backdrop');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('mobile-active');
+      mobileMenuToggle.classList.toggle('active');
+      backdrop.classList.toggle('active');
+    });
+
+    backdrop.addEventListener('click', () => {
+      sidebar.classList.remove('mobile-active');
+      mobileMenuToggle.classList.remove('active');
+      backdrop.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
+ <script>
 
     // Array de pacientes com seus dados
     const pacientes = [
@@ -1534,31 +2116,14 @@
   status: "Curativo",
   link: "https://docs.google.com/document/d/1OhapyRvZ1PnKHMgId-GOtIQVFjM4ggBtKmwMErpzRtY/edit?usp=sharing"
 },
-{
-  nome: "SAMUEL WASHIGTON MARCELINO",
-  dataNascimento: "23/05/1974",
-  status: "Diabete",
-  link: "https://docs.google.com/document/d/1U1dHeNPPsgEl44kJIf9AVzO4wdSNH9YYBzZ6FOa5koY/edit?usp=sharing"
-},
-{
-  nome: "Nilson José Vasques Sampaio",
-  dataNascimento: "27/04/1968",
-  status: "Diabete",
-  link: "https://docs.google.com/document/d/1p6ALa7WOoA9gBujpZ8xAjTZBFi3id7QlYlvrUote2Wo/edit?usp=sharing"
-},
-{
-  nome: "LUIZ ANTONIO GERALDO",
-  dataNascimento: "13/07/1954",
-  status: "Diabete",
-  link: "https://docs.google.com/document/d/1bJainUs5gV7E8fhMRfvlnfAvj00bL2__ft2lFbDJox8/edit?usp=sharing"
-},
+
 
       // VAGOS
-      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "https://drive.google.com/drive/folders/19eCUsYYnpWGT9iq8zbub-aKoNTn7tiPn?usp=sharing" },
-      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "https://drive.google.com/drive/folders/19eCUsYYnpWGT9iq8zbub-aKoNTn7tiPn?usp=sharing" },
-      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "https://drive.google.com/drive/folders/19eCUsYYnpWGT9iq8zbub-aKoNTn7tiPn?usp=sharing" },
-      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "https://drive.google.com/drive/folders/19eCUsYYnpWGT9iq8zbub-aKoNTn7tiPn?usp=sharing" },
-      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "https://drive.google.com/drive/folders/19eCUsYYnpWGT9iq8zbub-aKoNTn7tiPn?usp=sharing" }
+      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "#" },
+      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "#" },
+      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "#" },
+      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "#" },
+      { nome: "VAGO", dataNascimento: "", status: "ADM", link: "#" }
     ];
 
     // Função para calcular a idade a partir da data de nascimento
