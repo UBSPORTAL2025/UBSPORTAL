@@ -28,36 +28,62 @@
     /* =================================== */
     /* Cabeçalho e Navegação               */
     /* =================================== */
-    header {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-    }
-    .logo-container img {
-      max-height: 80px;
-      width: auto;
-    }
-    nav {
-      background-color: #00264d;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
- 
-    .toggle-dark-btn:hover {
-      background-color: #0056b3;
-    }
+  header {
+  background: #003366; /* Azul escuro sólido */
+  color: white; /* Cor do texto */
+  text-align: center;
+  padding: 20px 0;
+  position: relative; /* Para posicionar os pinheiros */
+  overflow: hidden; /* Evita que os pinheiros ultrapassem */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra suave */
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container h1 {
+  font-size: 2.5em; /* Ajuste o tamanho da fonte conforme necessário */
+  margin-bottom: 5px;
+  font-weight: 600; /* Deixa a fonte mais forte */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra no texto */
+}
+
+.logo-container img {
+  max-height: 80px;
+  width: auto;
+  margin-bottom: 10px; /* Espaço entre a imagem e o título */
+}
+
+header h5 {
+  font-size: 1.1em; /* Ajuste o tamanho da fonte do subtítulo */
+  color: #f0f8ff; /* Tom de branco para o subtítulo */
+  font-weight: 400; /* Ajuste a espessura da fonte */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra no texto */
+}
+
+/* Detalhes dos pinheiros */
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M50 0 L15 100 L85 100 Z" fill="white"/></svg>') repeat-y;
+  opacity: 0.3;
+}
+
+header::before {
+  left: 0;
+}
+
+header::after {
+  right: 0;
+}
+
     /* =================================== */
     /* Containers e Seções Gerais          */
     /* =================================== */
