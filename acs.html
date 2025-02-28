@@ -378,109 +378,9 @@
           body.dark table th {
             background-color: #1f1f1f;
           }
-          /* =================================== */
-          /* Seção: Salva Vidas                  */
-          /* =================================== */
-          .salva-vidas-info {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 600px;
-            background: linear-gradient(135deg, #ffdddd, #ffd6d6);
-            border: 2px solid #ff4d4d;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(255,77,77,0.4);
-            transition: background 0.3s, border 0.3s, box-shadow 0.3s;
-            display: none;
-          }
-          .salva-vidas-info h3 {
-            color: #b30000;
-            text-align:left;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-          }
-          .salva-vidas-info p {
-            margin: 10px 0;
-            font-size: 1.1em;
-          }
-          .salva-vidas-info ul {
-            margin: 10px 20px;
-          }
-          .salva-vidas-info ul li {
-            margin: 5px 0;
-            font-size: 1em;
-          }
-          body.dark .salva-vidas-info {
-            background: linear-gradient(135deg, #2a2a2a, #333);
-            border-color: #ff6666;
-            box-shadow: 0 4px 8px rgba(255,102,102,0.5);
-          }
-          body.dark .salva-vidas-info h3 {
-            color: #ff9999;
-          }
-          /* =================================== */
-          /* Botões: Salva Vidas e Direitos/Deveres */
-          /* =================================== */
-          .salva-vidas-btn, .direitos-deveres-btn {
-            display: block;
-            padding: 10px;
-            text-align: center;
-            margin: 20px auto;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 80%;
-            max-width: 200px;
-            font-size: 14px;
-            font-weight: bold;
-            border: none;
-          }
-          .salva-vidas-btn {
-            background-color: #ff4d4d;
-            color: white;
-          }
-          .salva-vidas-btn:hover {
-            background-color: #cc0000;
-          }
-          .direitos-deveres-btn {
-            background-color: #00009c;
-            color: white;
-          }
-          .direitos-deveres-btn:hover {
-            background-color: #84a3fee7;
-          }
-          /* =================================== */
-          /* Seção: Direitos e Deveres            */
-          /* =================================== */
-          .direitos-deveres-info {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 600px;
-            background: linear-gradient(135deg, #6173f619, #464dca4f);
-            border: 2px solid #534dff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(78, 76, 207, 0.4);
-            transition: background 0.3s, border 0.3s, box-shadow 0.3s;
-            display: none;
-          }
-          .direitos-deveres-info h3 {
-            color: #0012b3;
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-          }
-          .direitos-deveres-info p,
-          .direitos-deveres-info ul {
-            margin: 10px 0;
-            font-size: 1.1em;
-          }
-          body.dark .direitos-deveres-info {
-            background: linear-gradient(135deg, #2a332a, #333933);
-            border-color: #668cff;
-            box-shadow: 0 4px 8px rgba(112, 102, 255, 0.5);
-          }
-          body.dark .direitos-deveres-info h3 {
-            color: #7496d1;
-          }
+         
+          
+         
           /* =================================== */
           /* Seção: Mapa dos ACS - Botões de Rua   */
           /* =================================== */
@@ -1132,7 +1032,6 @@
                   <li><a href="index.html">Início</a></li>
                   <li><a href="#atendimentos">Atendimentos</a></li>
                   <li><a href="#app-sus">Meu SUS</a></li>
-                  <li><a href="acs.html">Equipe</a></li>
                   <li><a href="enfermagem.html">Enfermagem</a></li>
                   
               </ul>
@@ -1154,116 +1053,7 @@
           <h5>Saúde e união para vencer juntos!</h5>
         </header>
       
-        <!-- Botão Salva Vidas e Seção de Procedimentos de Emergência -->
-        <button class="salva-vidas-btn" id="salvaVidasBtn">Salva Vidas</button>
-        <div class="salva-vidas-info" id="salvaVidasInfo">
-          <h3>Procedimentos de Emergência</h3>
-          <p><strong>RCP (Ressuscitação Cardiopulmonar):</strong></p>
-          <img src="rcp.jpg" alt="Demonstração de RCP" width="200">
-          <ul>
-            <li>Posicione as mãos sobre o centro do peito da vítima.</li>
-            <li>Realize 30 compressões torácicas seguidas de 2 ventilações.</li>
-            <li>Continue até a chegada do socorro ou a vítima recuperar os sinais vitais.</li>
-          </ul>
-          <p><strong>Pressão Arterial:</strong></p>
-          <img src="pressao.jpg" alt="Medição de Pressão" width="200">
-          <ul>
-            <li><strong>Hipertensão (Pressão Alta):</strong> Pode causar AVC, infarto e insuficiência renal.</li>
-            <li><strong>Hipotensão (Pressão Baixa):</strong> Pode causar tontura, desmaios e choque circulatório.</li>
-            <li>Se alta: evite sal, relaxe e procure ajuda médica.</li>
-            <li>Se baixa: beba água, deite-se e levante as pernas.</li>
-          </ul>
-          <p><strong>Infarto (Ataque Cardíaco):</strong></p>
-          <img src="infarto.jpg" alt="Sinais de infarto" width="200">
-          <ul>
-            <li>Dor intensa no peito, irradiando para braço e mandíbula.</li>
-            <li>Dificuldade para respirar, suor excessivo e náusea.</li>
-            <li>Chame o socorro imediatamente e mantenha a vítima calma.</li>
-          </ul>
-          <p><strong>Engasgo:</strong></p>
-          <img src="engasgo.jpg" alt="Manobra de Heimlich" width="200">
-          <ul>
-            <li>Se a pessoa não conseguir respirar ou falar, realize a manobra de Heimlich.</li>
-            <li>Fique atrás, pressione a barriga para cima com força.</li>
-            <li>Repita até o objeto ser expelido ou a vítima desmaiar.</li>
-          </ul>
-          <p><strong>Afogamento:</strong></p>
-          <img src="afogamento.jpg" alt="Resgate em afogamento" width="200">
-          <ul>
-            <li>Retire a vítima da água com segurança.</li>
-            <li>Se não respirar, inicie a RCP imediatamente.</li>
-            <li>Evite entrar na água se não tiver treinamento adequado.</li>
-          </ul>
-          <p><strong>Choque Elétrico:</strong></p>
-          <img src="choque.jpg" alt="Primeiros socorros para choque elétrico" width="200">
-          <ul>
-            <li>Desligue a fonte de energia antes de tocar na vítima.</li>
-            <li>Se não respirar, inicie a RCP.</li>
-            <li>Leve a vítima ao hospital, pois choques podem causar danos internos.</li>
-          </ul>
-          <p><strong>Picadas de Animais Peçonhentos:</strong></p>
-          <img src="picada.jpg" alt="Picada de cobra" width="200">
-          <ul>
-            <li>Mantenha a vítima calma e imóvel.</li>
-            <li>Não tente sugar o veneno ou cortar o local.</li>
-            <li>Leve a vítima rapidamente ao hospital e, se possível, identifique o animal.</li>
-          </ul>
-          <p><strong>Números de Emergência:</strong></p>
-          <ul>
-            <li><strong>SAUR:</strong> 192</li>
-            <li><strong>Bombeiros:</strong> 193</li>
-            <li><strong>Polícia Militar:</strong> 190</li>
-            <li><strong>Guarda Municipal:</strong> 153</li>
-          </ul>
-        </div>
-        
-      
-      <!-- Botão para abrir a seção "Contatos Úteis" -->
-      <button class="contatos-btn" id="contatosBtn">Contatos Úteis</button>
-      
-      <!-- Seção oculta inicialmente -->
-      <div class="contatos-info" id="contatosInfo">
-        <h3>Contatos Úteis</h3>
-        <ul class="contact-list">
-          <li><strong>Casa da Mulher:</strong> 4445-2729 | Al. das Mangueiras, 47 - Laranjeiras</li>
-          <li><strong>CEME:</strong> 4442-7362 | R. Flávio Augusto de Moraes, 80 - Centro</li>
-          <li><strong>PS Laranjeiras:</strong> 4899-3367 | Al. das Mangueiras, 47 - Laranjeiras</li>
-          <li><strong>PS Caieiras:</strong> 4934-5132 | Av. Dr. Olindo Dartora, 448</li>
-          <li><strong>CTA Caieiras:</strong> 4442-4749 | Av. Pres. Kennedy, 111 - Centro</li>
-          <li><strong>CAPS Caieiras:</strong> 4605-2641 | R. Padre Aquiles Silvestre, 274 - Centro</li>
-          <li><strong>CRAS Caieiras:</strong> 4605-5116 | R. Padre Aquiles Silvestre, 76 - Centro</li>
-          <li><strong>CREAS Caieiras:</strong> 4442-4046 | R. Padre Aquiles Silvestre, 69 - Centro</li>
-          <li><strong>CIAS:</strong> 4442-4200 | R. Ambrosina do Carmo Buonaguide, 310</li>
-          <li><strong>UBS Laranjeiras:</strong> 4899-3367 | Av. Pauliceia, 400 - Laranjeiras</li>
-          <li><strong>UBS Portal:</strong> 4800-5024 | Rua Cardeal, em frente ao nº 458 - Portal</li>
-          <li><strong>Transporte:</strong> 4605-8505</li>
-        </ul>
-      </div>
-      
-      
-        <!-- Botão Direitos e Deveres e Seção de Informações -->
-        <button class="direitos-deveres-btn" id="direitosDeveresBtn">Direitos e Deveres</button>
-        <div class="direitos-deveres-info" id="direitosDeveresInfo">
-          <h3>Direitos e Deveres dos Cidadãos e Funcionários Públicos</h3>
-          <p>A seguir, destacamos os direitos e deveres que asseguram um atendimento de qualidade aos pacientes.</p>
-          <ul>
-            <li><strong>Direito à Saúde:</strong> Garantido pelo <strong>Art. 196 da Constituição Federal</strong>, o acesso universal e igualitário à saúde é um direito de todos.</li>
-              <li><strong>Atendimento Digno:</strong> Conforme o <strong>Art. 3º da Lei 8.080/90</strong>, os cidadãos têm direito ao atendimento respeitoso e eficiente no SUS.</li>
-              <li><strong>Sigilo Médico:</strong> O <strong>Art. 5º, inciso X da Constituição</strong> assegura a privacidade dos pacientes.</li>
-              <li><strong>Medicamentos e Tratamentos:</strong> A <strong>Lei 8.080/90</strong> garante o acesso a medicamentos essenciais gratuitamente pelo SUS.</li>
-              <li><strong>Direito à Capacitação dos Profissionais:</strong> Conforme o <strong>Art. 27 da Lei 8.080/90</strong>, os profissionais de saúde devem receber treinamentos constantes.</li>
-            <li><strong>Dever de Zelo:</strong> É obrigação dos agentes oferecer atendimento de excelência e com respeito aos direitos dos cidadãos.</li>
-            <li><strong>Direito à Remuneração Justa:</strong> Garantia de uma remuneração compatível com a responsabilidade e carga horária.</li>
-            <li><strong>Dever de Sigilo:</strong> Manter a confidencialidade das informações dos pacientes, em conformidade com as normas éticas.</li>
-            <li><strong>Direito à Segurança:</strong> Assegura-se ambientes de trabalho seguros e adequados para a prática profissional.</li>
-            <li><strong>Dever de Atendimento:</strong> Prestação de serviços de saúde de forma humanizada e seguindo os protocolos estabelecidos.</li>
-            <li><strong>Art. 196 da Constituição Federal:</strong> A saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doenças e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação.</li>
-          <li><strong>Art. 198:</strong> O Sistema Único de Saúde (SUS) deve ser descentralizado, com participação da comunidade e atendimento integral.</li>
-          <li><strong>Lei 8.080/1990:</strong> Regula as condições para a promoção, proteção e recuperação da saúde, além da organização e funcionamento dos serviços.</li>
-          <li><strong>Lei 8.142/1990:</strong> Garante a participação popular no SUS por meio dos Conselhos e Conferências de Saúde.</li>
-          </ul>
-          <p>Estas orientações têm respaldo em diversos dispositivos legais e normativos, visando proteger tanto os profissionais quanto os pacientes.</p>
-        </div>
+       
 
         
         
@@ -1883,27 +1673,7 @@
             });
           }
       
-          // Alterna a visibilidade da seção "Salva Vidas"
-          function setupSalvaVidasButton() {
-            const salvaVidasBtn = document.getElementById('salvaVidasBtn');
-            const salvaVidasInfo = document.getElementById('salvaVidasInfo');
-            salvaVidasBtn.addEventListener('click', () => {
-              salvaVidasInfo.style.display = (salvaVidasInfo.style.display === 'none' || salvaVidasInfo.style.display === '')
-                ? 'block'
-                : 'none';
-            });
-          }
-      
-          // Alterna a visibilidade da seção "Direitos e Deveres"
-          function setupDireitosDeveresButton() {
-            const direitosBtn = document.getElementById('direitosDeveresBtn');
-            const direitosInfo = document.getElementById('direitosDeveresInfo');
-            direitosBtn.addEventListener('click', () => {
-              direitosInfo.style.display = (direitosInfo.style.display === 'none' || direitosInfo.style.display === '')
-                ? 'block'
-                : 'none';
-            });
-          }
+          
       
           // Cria uma lista de cartões com os ACS (mapeamento manual)
           function createACSMappingList() {

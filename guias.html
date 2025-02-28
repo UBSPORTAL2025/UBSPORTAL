@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encaminhamento Médico e Guias Médicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #1a3a5f; /* Tom de azul escuro */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Menu styling */
+        #menu-container {
+            background-color: #0d2b4b; /* Azul mais escuro para o menu */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-icon {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            background-color: #2d5986; /* Azul médio para hover */
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1a3a5f; /* Tom de azul escuro para os títulos */
+            margin-top: 20px;
+            border-bottom: 2px solid #d1e1f1; /* Linha azul clara abaixo dos títulos */
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .info {
+            margin-bottom: 30px;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #1a3a5f; /* Destaque em azul escuro */
+        }
+
+        .warning {
+            color: #e63946;
+            font-style: italic;
+        }
+
+        .thank-you {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #1a3a5f; /* Agradecimento em azul escuro */
+            font-weight: bold;
+        }
+
+        /* Novas seções adicionadas */
+        .info-box {
+            background-color: #e6f2ff; /* Fundo azul claro */
+            border-left: 4px solid #1a3a5f;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            flex-basis: 48%;
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 5px;
+            color: #1a3a5f;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #1a3a5f;
+            border: 4px solid #d1e1f1;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            left: 10px;
+        }
+
+        /* Responsividade para o menu */
+        @media screen and (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                flex-direction: column;
+                background-color: #0d2b4b;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .contact-item {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <header>
+        <h1>Encaminhamento Médico e Guias Médicas</h1>
+    </header>
+
+    <div id="menu-container">
+        <nav>
+            <span class="menu-icon" onclick="toggleMenu()">☰</span>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#atendimentos">Atendimentos</a></li>
+                <li><a href="#app-sus">Meu SUS</a></li>
+                <li><a href="acs.html">Equipe</a></li>
+                <li><a href="#sobre-ubs">Sobre</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section class="info">
+            <h2>O que é Encaminhamento Médico?</h2>
+            <p>O encaminhamento médico é um documento fundamental emitido pelo seu médico, que o direciona para um especialista ou para a realização de exames complementares. Este documento é necessário quando o médico identifica a necessidade de uma avaliação mais específica ou de um tratamento que esteja fora de sua área de especialização.</p>
+            <p>Este documento contém informações cruciais sobre você, como seu histórico médico, os sintomas que você está apresentando e os resultados dos exames já realizados. Essas informações são essenciais para que o especialista possa oferecer o melhor e mais adequado cuidado para a sua saúde.</p>
+            
+            <div class="info-box">
+                <p><strong>Lembre-se:</strong> Sempre leve o encaminhamento original para sua consulta com o especialista. Guarde uma cópia para seu controle pessoal.</p>
+            </div>
+        </section>
+
+        <section class="info">
+            <h2>Informações Importantes sobre suas Guias</h2>
+            <p>As guias para consultas e exames são emitidas nas cidades de <span class="highlight">Caieiras e São Paulo</span>. Queremos informar que, devido à alta demanda e complexidade de alguns procedimentos, o tempo de espera para a realização de certos exames, como <span class="highlight">USG TV, USG Mamas</span>, entre outros, pode variar. Em alguns casos, esse tempo pode levar <span class="highlight">meses ou até mesmo anos</span>.</p>
+            <p class="warning">Entendemos que essa espera pode ser frustrante, e estamos trabalhando continuamente para agilizar os processos e reduzir o tempo de espera. Agradecemos sua compreensão e paciência.</p>
+            
+            <div class="timeline">
+                <h3>Processo de Agendamento</h3>
+                <div class="timeline-item">
+                    <h4>Emissão da Guia</h4>
+                    <p>Após sua consulta, o médico emite o encaminhamento que é registrado no sistema.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Análise e Priorização</h4>
+                    <p>A Central de Regulação analisa o pedido e atribui um nível de prioridade com base na gravidade.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Agendamento</h4>
+                    <p>Quando sua vez chegar, você receberá uma notificação por telefone ou SMS.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Realização</h4>
+                    <p>Compareça no local, data e horário agendados com seus documentos pessoais e guia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info">
+            <h2>Prioridades no Atendimento</h2>
+            <p>É importante entender que o sistema de saúde trabalha com prioridades baseadas na avaliação clínica. Casos mais graves são atendidos com maior urgência. As prioridades são classificadas da seguinte forma:</p>
+            
+            <ul>
+                <li><span class="highlight">Emergência:</span> Atendimento imediato para casos de risco à vida</li>
+                <li><span class="highlight">Urgência:</span> Casos graves que necessitam de atendimento rápido</li>
+                <li><span class="highlight">Alta prioridade:</span> Condições que requerem atendimento em curto prazo</li>
+                <li><span class="highlight">Média prioridade:</span> Condições que permitem espera moderada</li>
+                <li><span class="highlight">Baixa prioridade:</span> Condições estáveis que permitem maior tempo de espera</li>
+            </ul>
+            
+            <div class="info-box">
+                <p>Se houver piora em seu quadro clínico enquanto aguarda pelo agendamento, procure novamente sua Unidade Básica de Saúde para reavaliação da prioridade.</p>
+            </div>
+        </section>
+
+        <section class="info">
+            <h2>Aplicativo Meu SUS</h2>
+            <p>Para facilitar o acompanhamento de suas guias e agendamentos, recomendamos o uso do aplicativo <span class="highlight">Meu SUS</span>, disponível para download em smartphones. Com ele, você pode:</p>
+            
+            <ul>
+                <li>Consultar o status de seus encaminhamentos</li>
+                <li>Verificar datas de consultas agendadas</li>
+                <li>Acessar resultados de exames</li>
+                <li>Receber notificações sobre agendamentos</li>
+                <li>Visualizar sua carteira de vacinação digital</li>
+            </ul>
+        </section>
+
+        <section class="info">
+            <h2>Agradecimento</h2>
+            <p>UBS Portal agradece o empenho dos pacientes em manter a regularidade e comparecer aos agendamentos. Sua colaboração é essencial para o bom funcionamento do sistema e para garantir que todos recebam o atendimento necessário.</p>
+        </section>
+
+        <section class="info">
+            <h2>Contatos Úteis</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Central de Agendamentos</h3>
+        
+                    <p>Horário: Segunda a Sexta, 8h às 17h</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Ouvidoria</h3>
+                    <p>Telefone:  156 e 11 4445-9265</p>
+                    <p>Email: ouvidoria@caieiras.sp.gov.br</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Secretaria Municipal de Saúde</h3>
+                    <p>Telefone: 11 4442-7352 </p>
+                    <p>Website: caieiras.sp.gov.br</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Emergências</h3>
+                    <p>SAUR: 192</p>
+                    <p>Bombeiros: 193</p>
+                </div>
+            </div>
+        </section>
+
+        <p class="thank-you">Agradecemos a sua compreensão e colaboração!</p>
+    </main>
+
+    <!-- Script para funcionamento do menu responsivo -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
