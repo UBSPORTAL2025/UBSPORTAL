@@ -10,7 +10,7 @@
 
     <title>UBS Portal das Laranjeiras - Informações</title>
     <style>
-        /* =================================== */
+         /* =================================== */
         /* Reset e configuração global */
         /* =================================== */
         * {
@@ -20,7 +20,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f9f9f9;
             color: #656464;
             line-height: 1.6;
@@ -33,20 +33,15 @@
         /* Cabeçalho e Navegação */
         /* =================================== */
         header {
-            background: #003366;
-            /* Azul escuro sólido */
+            background: linear-gradient(135deg, #003366, #00509e);
             color: white;
-            /* Cor do texto */
             text-align: center;
             padding: 20px 0;
             position: relative;
-            /* Para posicionar os pinheiros */
-            overflow: hidden;
-            /* Evita que os pinheiros ultrapassem */
+            overflow: visible;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            /* Adiciona uma sombra suave */
             z-index: 1;
-            /* Garante que o cabeçalho esteja abaixo do menu */
+            width: 100%;
         }
 
         .logo-container {
@@ -56,51 +51,70 @@
         }
 
         .logo-container h1 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.5em;
-            /* Ajuste o tamanho da fonte conforme necessário */
             margin-bottom: 5px;
             font-weight: 600;
-            /* Deixa a fonte mais forte */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            /* Sombra no texto */
         }
 
         .logo-container img {
             max-height: 80px;
             width: auto;
             margin-bottom: 10px;
-            /* Espaço entre a imagem e o título */
         }
 
         header h5 {
             font-size: 1.1em;
-            /* Ajuste o tamanho da fonte do subtítulo */
             color: #f0f8ff;
-            /* Tom de branco para o subtítulo */
             font-weight: 400;
-            /* Ajuste a espessura da fonte */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            /* Sombra no texto */
         }
 
         /* Detalhes dos pinheiros */
-        header::before,
-        header::after {
-            content: "";
+        .pine-tree-left,
+        .pine-tree-right {
             position: absolute;
             top: 0;
-            width: 100px;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M50 0 L15 100 L85 100 Z" fill="white"/></svg>') repeat-y;
+            width: 100px;
+            background-size: contain;
+            background-repeat: repeat-y;
             opacity: 0.3;
+            pointer-events: none;
         }
 
-        header::before {
+        .pine-tree-left {
             left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120"><path d="M50 0 L15 120 L85 120 Z" fill="white"/></svg>');
         }
 
-        header::after {
+        .pine-tree-right {
             right: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120"><path d="M50 0 L15 120 L85 120 Z" fill="white"/></svg>');
+        }
+
+        /* Árvores adicionais */
+        .tree-left {
+            position: absolute;
+            top: 20px;
+            left: 20%;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="#f0f8ff"/></svg>');
+            background-size: contain;
+            opacity: 0.5;
+        }
+
+        .tree-right {
+            position: absolute;
+            top: 20px;
+            right: 20%;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="#f0f8ff"/></svg>');
+            background-size: contain;
+            opacity: 0.5;
         }
 
         /* =================================== */
@@ -109,7 +123,7 @@
         .container {
             max-width: 800px;
             margin: 20px auto;
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -123,8 +137,30 @@
 
         .container h2,
         .container h3 {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             text-align: center;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .pine-tree-left,
+            .pine-tree-right {
+                width: 60px;
+            }
+            
+            .tree-left,
+            .tree-right {
+                width: 30px;
+                height: 30px;
+            }
         }
 
         /* =================================== */
@@ -244,53 +280,8 @@
             color: #02168899;
         }
 
-        /* =================================== */
-        /* Seção: Organização dos ACS e suas Ruas */
-        /* =================================== */
-        .acs-list-container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #e3f2fd;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        .acs-list-container h2 {
-            text-align: center;
-            color: #0d47a1;
-            margin-bottom: 10px;
-        }
-
-        .acs-card {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 10px;
-        }
-
-        .acs-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .acs-card .acs-details {
-            flex: 1;
-        }
-
-        .acs-card .acs-details strong {
-            display: block;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
-
-        body.dark .acs-list-container {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-        }
+    
+       
 
         body.dark .acs-card {
             background-color: #2a2a2a;
@@ -340,25 +331,7 @@
             margin-top: 20px;
         }
 
-        .instagram {
-            margin-top: 20px;
-        }
-
-        .instagram a {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            font-size: 18px;
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        .instagram img {
-            width: 30px;
-            height: 30px;
-            margin-right: 8px;
-        }
-
+       
         /* =================================== */
         /* Outros Elementos */
         /* =================================== */
@@ -734,6 +707,11 @@
             <h1>Portal das Laranjeiras</h1>
             <h5>Prevenção, cuidado e informação: saúde e bem-estar para você, cidadão!</h5>
         </div>
+        <div class="pine-tree-left"></div>
+        <div class="pine-tree-right"></div>
+        <div class="tree-left"></div>
+        <div class="tree-right"></div>
+     
     </header>
 
     <script>
@@ -815,6 +793,7 @@
         .color-5 { background-color: #5499C7; }
         .color-6 { background-color: #6a89cc; }
         .color-7 { background-color: #82ccdd; }
+        .color-12 { background-color: #11c650; }
     </style>
 </head>
 <body>
@@ -832,6 +811,22 @@
                 <div class="icon color-3"><i class="fa fa-plus"></i></div>
                 <span class="title">App SUS </span>
             </a>
+            <a href="guias.html" class="button">
+              <div class="icon color-2"><i class="	fas fa-file-medical-alt"></i></i></div>
+              <span class="title">Guias Médicas</span>
+          </a>
+          <a href="https://www.instagram.com/ubsportaldaslaranjeiras/" class="button">
+            <div class="icon color-6"><i class="fab fa-instagram"></i></div>
+            <span class="title">Instagram</span>
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=%2B551148005024&text&type=phone_number&app_absent=0" class="button">
+          <div class="icon color-12"><i class="fab fa-whatsapp"></i></div>
+          <span class="title">Whatsapp</span>
+      </a>
+      <a href="contatos.html" class="button">
+        <div class="icon color-6"><i class="fa fa-phone"></i></div>
+        <span class="title">Contatos Úteis</span>
+    </a>
             <a href="bulas.html"class="button">
                 <div class="icon color-4"><i class="fas fa-pills"></i></div>
                 <span class="title">Bulas Inteligentes</span>
@@ -856,10 +851,7 @@
                 <div class="icon color-2"><i class="fas fa-calculator"></i></div>
                 <span class="title">Calcular minha Saúde</span>
             </a>
-            <a href="#laboratorios" class="button">
-                <div class="icon color-3"><i class="fas fa-vial"></i></div>
-                <span class="title">Laboratórios</span>
-            </a>
+        
             <a href="#toxologia" class="button">
                 <div class="icon color-4"><i class="fas fa-skull-crossbones"></i></div>
                 <span class="title">Toxicologia</span>
@@ -868,10 +860,7 @@
                 <div class="icon color-5"><i class="fa fa-user-md"></i></div>
                 <span class="title">Consultas</span>
             </a>
-            <a href="contatos.html" class="button">
-                <div class="icon color-6"><i class="fa fa-phone"></i></div>
-                <span class="title">Contatos Úteis</span>
-            </a>
+         
             <a href="#infinite-health-info" class="button">
                 <div class="icon color-7"><i class="fas fa-newspaper"></i></div>
                 <span class="title">Notícias</span>
@@ -880,10 +869,11 @@
                 <div class="icon color-1"><i class="fa fa-heartbeat"></i></i></div>
                 <span class="title">Semiologia</span>
             </a>
-            <a href="guias.html" class="button">
-                <div class="icon color-2"><i class="fa fa-file-text"></i></i></div>
-                <span class="title">Guias Médicas</span>
-            </a>
+            <a href="#infinite-health-info" class="button">
+              <div class="icon color-7"><i class="fas fa-star-of-life"></i></div>
+              <span class="title">Parâmetros diagnósticos</span>
+          </a>
+       
         </div>
     </div>
 </body>
@@ -2018,7 +2008,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </head>
 <body>
   <!-- Botão para abrir o chat -->
-  <button id="openChat">💬 Chat Online</button>
+  <button id="openChat">🤖Posso ajudar ?</button>
 
   <!-- Container do Chat -->
   <div class="chat-container" id="chatContainer">
@@ -2026,7 +2016,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="chat-title">
         <!-- Substitua "logo.png" pelo caminho da sua imagem -->
         <img src="ubs.png" alt="Logo UBS Caieiras" class="chat-logo" />
-        <h3>UBS Portal - Atendimento Online</h3>
+        <h3>UBS Portal - Atendimento </h3>
       </div>
       <div class="header-buttons">
         <button id="toggleAudio" class="toggle-audio-btn" aria-label="Ativar/Desativar áudio">🔊</button>
