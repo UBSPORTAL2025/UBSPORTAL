@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Idade e Demandas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            height: 400px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos Responsivos */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                margin: 10px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+                margin-top: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de Idade e Demandas</h1>
+
+        <h2>Distribuição de Idades</h2>
+        <div class="chart-container">
+            <canvas id="ageChart"></canvas>
+        </div>
+        <p>Este gráfico de barras exibe a distribuição de pacientes por idade. Ele nos permite identificar quais faixas etárias são mais prevalentes em nossa amostra.</p>
+
+        <h2>Prevalência de Demandas (Códigos F)</h2>
+        <div class="chart-container">
+            <canvas id="demandChart"></canvas>
+        </div>
+        <p>Este gráfico de pizza mostra a prevalência de diferentes códigos de demanda (doenças). Ele nos ajuda a entender quais condições são mais comuns entre os pacientes.</p>
+
+        <script>
+            // Dados fornecidos
+            const data = [
+    { DN: '10/10/1981', IDADE: 43, DEMANDA: 'F41' },
+    { DN: '10/8/1967', IDADE: 57, DEMANDA: 'F41' },
+    { DN: '23/10/2010', IDADE: 14, DEMANDA: 'F41' },
+    { DN: '09/10/1972', IDADE: 52, DEMANDA: 'R59, R452, R453' },
+    { DN: '14/02/1968', IDADE: 57, DEMANDA: 'F41' },
+    { DN: '3/6/2012', IDADE: 12, DEMANDA: 'F41' },
+    { DN: '12/02/2007', IDADE: 18, DEMANDA: 'F41' },
+    { DN: '03/09/1965', IDADE: 59, DEMANDA: 'F41.9' },
+    { DN: '27/05/1986', IDADE: 38, DEMANDA: 'F41' },
+    { DN: '02/02/1962', IDADE: 63, DEMANDA: 'F41' },
+    { DN: '01/07/1978', IDADE: 46, DEMANDA: 'F41.1 e F51.0' },
+    { DN: '18/09/1991', IDADE: 33, DEMANDA: 'Z73.0' },
+    { DN: '07/03/1984', IDADE: 40, DEMANDA: 'F41' },
+    { DN: '21/08/1985', IDADE: 39, DEMANDA: 'F41' },
+    { DN: '07/02/1965', IDADE: 60, DEMANDA: 'F41' },
+    { DN: '28/11/1968', IDADE: 56, DEMANDA: 'F41' },
+    { DN: '28/5/1971', IDADE: 53, DEMANDA: 'F41' },
+    { DN: '20/01/1978', IDADE: 47, DEMANDA: 'F41' },
+    { DN: '29/03/1965', IDADE: 59, DEMANDA: 'F41' },
+    { DN: '16/03/1987', IDADE: 37, DEMANDA: 'F45' },
+    { DN: '12/06/1965', IDADE: 59, DEMANDA: 'F41' },
+    { DN: '15/10/2009', IDADE: 15, DEMANDA: 'F41' },
+    { DN: '15/10/1985', IDADE: 39, DEMANDA: 'F41' },
+    { DN: '12/12/2008', IDADE: 16, DEMANDA: 'R45.3' },
+    { DN: '18/11/1990', IDADE: 34, DEMANDA: 'F41' },
+    { DN: '23/05/1966', IDADE: 58, DEMANDA: 'F41' },
+    { DN: '28/07/2009', IDADE: 15, DEMANDA: 'F98' },
+    { DN: '13/03/1982', IDADE: 42, DEMANDA: 'F41' },
+    { DN: '11/05/1992', IDADE: 32, DEMANDA: 'F41.2' },
+    { DN: '09/04/1982', IDADE: 42, DEMANDA: 'F32' },
+    { DN: '16/03/2010', IDADE: 14, DEMANDA: '' },
+    { DN: '04/04/1976', IDADE: 48, DEMANDA: 'F33' },
+    { DN: '27/11/2002', IDADE: 22, DEMANDA: 'F41' },
+    { DN: '20/04/1961', IDADE: 63, DEMANDA: 'F41' },
+    { DN: '05/02/1965', IDADE: 60, DEMANDA: 'F41' },
+    { DN: '01/08/1990', IDADE: 34, DEMANDA: '' },
+    { DN: '20/08/1969', IDADE: 55, DEMANDA: 'F41.1, G 47' },
+    { DN: '20/06/1981', IDADE: 43, DEMANDA: 'F41.1' },
+    { DN: '14/08/1971', IDADE: 53, DEMANDA: 'F41' },
+    { DN: '08/09/1996', IDADE: 28, DEMANDA: 'F41' },
+    { DN: '08/11/1952', IDADE: 72, DEMANDA: '' },
+    { DN: '22/10/1986', IDADE: 38, DEMANDA: 'F41' },
+    { DN: '30/05/1998', IDADE: 26, DEMANDA: 'F41' },
+    { DN: '25/05/1993', IDADE: 31, DEMANDA: 'F41' },
+    { DN: '24/01/2000', IDADE: 25, DEMANDA: '' },
+    { DN: '10/10/2011', IDADE: 13, DEMANDA: 'F41, F98.9' },
+    { DN: '24/09/1978', IDADE: 46, DEMANDA: '' },
+    { DN: '05/09/2006', IDADE: 18, DEMANDA: '' },
+    { DN: '09/08/1968', IDADE: 56, DEMANDA: 'F41' },
+    { DN: '09/01/2004', IDADE: 21, DEMANDA: 'F33' },
+    { DN: '15/03/2003', IDADE: 21, DEMANDA: 'F41' },
+    { DN: '28/10/1994', IDADE: 30, DEMANDA: 'F41' },
+    { DN: '27/04/1977', IDADE: 47, DEMANDA: '' },
+    { DN: '17/08/1988', IDADE: 36, DEMANDA: 'F41' },
+    { DN: '06/08/1986', IDADE: 38, DEMANDA: 'F32' },
+    { DN: '23/06/2003', IDADE: 21, DEMANDA: 'F41' },
+    { DN: '18/06/2003', IDADE: 21, DEMANDA: 'F41' },
+    { DN: '28/02/1987', IDADE: 38, DEMANDA: 'F41' },
+    { DN: '06/05/1992', IDADE: 32, DEMANDA: 'R' },
+    { DN: '18/06/1999', IDADE: 25, DEMANDA: 'F41' },
+    { DN: '3/7/1955', IDADE: 69, DEMANDA: 'F41' },
+    { DN: '09/02/1967', IDADE: 58, DEMANDA: 'F41' },
+    { DN: '15/02/1968', IDADE: 57, DEMANDA: 'Z63' },
+    { DN: '25/08/1963', IDADE: 61, DEMANDA: 'F41' },
+    { DN: '22/05/2009', IDADE: 15, DEMANDA: 'F41' },
+    { DN: '03/05/1993', IDADE: 31, DEMANDA: 'F41' },
+    { DN: '26/02/1952', IDADE: 73, DEMANDA: 'F41' },
+    { DN: '05/01/1966', IDADE: 59, DEMANDA: 'F41' },
+    { DN: '21/12/1981', IDADE: 43, DEMANDA: '' },
+    { DN: '11/09/2002', IDADE: 22, DEMANDA: 'F41' },
+    { DN: '22/12/1997', IDADE: 27, DEMANDA: 'F32' },
+    { DN: '03/04/2002', IDADE: 22, DEMANDA: 'F41' },
+    { DN: '16/09/1997', IDADE: 27, DEMANDA: 'F41' },
+    { DN: '11/11/1955', IDADE: 69, DEMANDA: 'F41' },
+    { DN: '26/09/2001', IDADE: 23, DEMANDA: 'F41' },
+    { DN: '21/05/2009', IDADE: 15, DEMANDA: 'F41' },
+    { DN: '27/12/2009', IDADE: 15, DEMANDA: 'F41, F32' },
+    { DN: '27/02/2004', IDADE: 21, DEMANDA: '' },
+    { DN: '14/9/1990', IDADE: 34, DEMANDA: 'F98.9, F32.0, Z63.4' },
+    { DN: '', IDADE: null, DEMANDA: 'F41' },
+    { DN: '29/04/2005', IDADE: 19, DEMANDA: 'F41' },
+    { DN: '07/11/1979', IDADE: 45, DEMANDA: 'F41' },
+    { DN: '01/05/2008', IDADE: 16, DEMANDA: 'F41' },
+    { DN: '20/5/1999', IDADE: 25, DEMANDA: 'F41' },
+    { DN: '07/04/2009', IDADE: 15, DEMANDA: 'F41' },
+    { DN: '02/03/1954', IDADE: 71, DEMANDA: 'F41' },
+    { DN: '21/5/1967', IDADE: 57, DEMANDA: 'F41' },
+    { DN: '2/6/1952', IDADE: 72, DEMANDA: 'F41' },
+    { DN: '22/05/1953', IDADE: 71, DEMANDA: 'Z63' },
+    { DN: '29/04/1936', IDADE: 88, DEMANDA: 'F41' },
+    { DN: '03/05/1967', IDADE: 57, DEMANDA: 'F41' },
+    { DN: '28/12/2020', IDADE: 4, DEMANDA: 'G42, F901' },
+    { DN: '23/06/1998', IDADE: 26, DEMANDA: 'F32' },
+    { DN: '19/1/2011', IDADE: 14, DEMANDA: 'F32' },
+    { DN: '12/05/2006', IDADE: 18, DEMANDA: 'F41, F67' },
+    { DN: '16/10/2004', IDADE: 20, DEMANDA: 'F41' },
+    { DN: '14/02/2008', IDADE: 17, DEMANDA: 'F41' },
+    { DN: '5/4/1950', IDADE: 74, DEMANDA: 'F41' },
+    { DN: '17/10/1966', IDADE: 58, DEMANDA: 'F41' },
+    { DN: '27/02/1993', IDADE: 32, DEMANDA: 'F41' },
+    { DN: '31/10/2005', IDADE: 19, DEMANDA: 'F41' },
+    { DN: '02/09/1954', IDADE: 70, DEMANDA: 'F32' },
+    { DN: '21/06/1986', IDADE: 38, DEMANDA: 'F41' },
+    { DN: '5/1/1972', IDADE: 53, DEMANDA: 'F41' },
+    { DN: '12/08/1985', IDADE: 39, DEMANDA: 'F41' },
+    { DN: '03/08/2018', IDADE: 6, DEMANDA: 'F41' },
+    { DN: '22/11/2008', IDADE: 16, DEMANDA: 'F41' },
+    { DN: '26/06/1959', IDADE: 65, DEMANDA: 'F41, F32' },
+    { DN: '10/08/1945', IDADE: 79, DEMANDA: 'F41 e F32' },
+    { DN: '13/01/2012', IDADE: 13, DEMANDA: 'F41' },
+    { DN: '02/01/1972', IDADE: 53, DEMANDA: 'F33' },
+    { DN: '28/04/1983', IDADE: 41, DEMANDA: 'F33' },
+    { DN: '2/5/1965', IDADE: 59, DEMANDA: 'F41' },
+    { DN: '29/04/1973', IDADE: 51, DEMANDA: 'F41' },
+    { DN: '25/06/1988', IDADE: 36, DEMANDA: 'F41' },
+    { DN: '15/06/1966', IDADE: 58, DEMANDA: 'F31' },
+    { DN: '03/05/1950', IDADE: 74, DEMANDA: 'F32' },
+    { DN: '09/10/1983', IDADE: 41, DEMANDA: 'F41' },
+    { DN: '20/10/1987', IDADE: 37, DEMANDA: 'F41' },
+    { DN: '19/11/1965', IDADE: 59, DEMANDA: 'F50' },
+    { DN: '24/04/2002', IDADE: 22, DEMANDA: 'F50' },
+    { DN: '17/03/2010', IDADE: 14, DEMANDA: 'F41' },
+    { DN: '14/01/1969', IDADE: 56, DEMANDA: 'F41' },
+    { DN: '15/01/2004', IDADE: 21, DEMANDA: 'F41.9' },
+    { DN: '28/07/1976', IDADE: 48, DEMANDA: 'F10' },
+    { DN: '14/02/1968', IDADE: 57, DEMANDA: 'F41' },
+    { DN: '09/12/1976', IDADE: 48, DEMANDA: 'F41' },
+    { DN: '06/12/2010', IDADE: 14, DEMANDA: 'F32' },
+    { DN: '10/04/1984', IDADE: 40, DEMANDA: 'F41' },
+    { DN: '02/09/1958', IDADE: 66, DEMANDA: 'F41' },
+    { DN: '21/02/1989', IDADE: 36, DEMANDA: 'F31' },
+    { DN: '25/01/1977', IDADE: 48, DEMANDA: 'F41' },
+    { DN: '03/06/1952', IDADE: 72, DEMANDA: 'F41' },
+    { DN: '08/12/1963', IDADE: 61, DEMANDA: 'F32' },
+    { DN: '18/11/1977', IDADE: 47, DEMANDA: 'F41' },
+    { DN: '29/04/1960', IDADE: 64, DEMANDA: 'F32' },
+    { DN: '16/01/1955', IDADE: 70, DEMANDA: '' },
+    { DN: '26/12/1963', IDADE: 61, DEMANDA: 'F41' },
+    { DN: '10/03/1993', IDADE: 31, DEMANDA: 'F41' },
+    { DN: '18/12/1992', IDADE: 32, DEMANDA: 'F33' },
+    { DN: '26/11/1967', IDADE: 57, DEMANDA: 'F' },
+    { DN: '04/11/1990', IDADE: 34, DEMANDA: 'F41' },
+    { DN: '20/11/1987', IDADE: 37, DEMANDA: 'F41' },
+    { DN: '22/06/1980', IDADE: 44, DEMANDA: 'F41' },
+    { DN: '27/01/1942', IDADE: 83, DEMANDA: 'F41' },
+    { DN: '15/09/1988', IDADE: 36, DEMANDA: 'F41' },
+    { DN: '17/10/1955', IDADE: 69, DEMANDA: 'F32' },
+    { DN: '23/02/1973', IDADE: 52, DEMANDA: 'E66.0' },
+    { DN: '30/06/1992', IDADE: 32, DEMANDA: 'F50' },
+    { DN: '30/09/1974', IDADE: 50, DEMANDA: 'F41' },
+    { DN: '16/10/1983', IDADE: 41, DEMANDA: 'F41' },
+    { DN: '20/12/1959', IDADE: 65, DEMANDA: 'F41' },
+    { DN: '17/07/1998', IDADE: 26, DEMANDA: 'F41' },
+    { DN: '25/07/1976', IDADE: 48, DEMANDA: 'F41' },
+    { DN: '01/01/1956', IDADE: 69, DEMANDA: 'F41' },
+    { DN: '06/07/2007', IDADE: 17, DEMANDA: 'F41' },
+    { DN: '27/07/1987', IDADE: 37, DEMANDA: 'F41' },
+    { DN: '01/05/2006', IDADE: 18, DEMANDA: 'F41' },
+    { DN: '24/02/1973', IDADE: 52, DEMANDA: 'F41' },
+    { DN: '28/10/2012', IDADE: 12, DEMANDA: 'F41' },
+    { DN: '22/10/2008', IDADE: 16, DEMANDA: 'F60' },
+    { DN: '04/02/1955', IDADE: 70, DEMANDA: 'F41' },
+    { DN: '29/12/1959', IDADE: 65, DEMANDA: 'F41' },
+    { DN: '23/06/1992', IDADE: 32, DEMANDA: 'F41' },
+    { DN: '28/02/1997', IDADE: 28, DEMANDA: 'F41' },
+    { DN: '14/04/1990', IDADE: 34, DEMANDA: 'F41' },
+    { DN: '24/12/1993', IDADE: 31, DEMANDA: 'F41' },
+    { DN: '08/01/1964', IDADE: 61, DEMANDA: 'F41' },
+    { DN: '16/07/1989', IDADE: 35, DEMANDA: 'F32' },
+    { DN: '04/10/1992', IDADE: 32, DEMANDA: 'F41' },
+    { DN: '22/02/1999', IDADE: 26, DEMANDA: 'F41' },
+    { DN: '14/09/1992', IDADE: 32, DEMANDA: '' },
+    { DN: '04/10/1983', IDADE: 41, DEMANDA: 'F41' },
+    { DN: '18/09/2013', IDADE: 11, DEMANDA: 'F32' }
+];
+
+            // Função para calcular a idade a partir da data de nascimento
+            function calcularIdade(dataNascimento) {
+                const [dia, mes, ano] = dataNascimento.split('/').map(Number);
+                const dataNascimentoObj = new Date(ano, mes - 1, dia);
+                const hoje = new Date();
+                let idade = hoje.getFullYear() - dataNascimentoObj.getFullYear();
+                const mesAtual = hoje.getMonth();
+                const mesNascimento = dataNascimentoObj.getMonth();
+
+                if (mesAtual < mesNascimento || (mesAtual === mesNascimento && hoje.getDate() < dataNascimentoObj.getDate())) {
+                    idade--;
+                }
+                return idade;
+            }
+
+            // Processar os dados para o gráfico de idades
+            const ageCounts = {};
+            data.forEach(item => {
+                if (item.IDADE != null) {
+                    ageCounts[item.IDADE] = (ageCounts[item.IDADE] || 0) + 1;
+                }
+            });
+
+            const ageLabels = Object.keys(ageCounts);
+            const ageData = Object.values(ageCounts);
+
+            // Criar o gráfico de idades
+            const ageCtx = document.getElementById('ageChart').getContext('2d');
+            const ageChart = new Chart(ageCtx, {
+                type: 'bar',
+                data: {
+                    labels: ageLabels,
+                    datasets: [{
+                        label: 'Número de Pacientes por Idade',
+                        data: ageData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Número de Pacientes'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Idade'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                title: (context) => {
+                                    return `Idade: ${context[0].label}`;
+                                },
+                                label: (context) => {
+                                    return `Pacientes: ${context.parsed.y}`;
+                                }
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Processar os dados para o gráfico de demandas
+            const demandCounts = {};
+            data.forEach(item => {
+                if (item.DEMANDA) {
+                    const demandas = item.DEMANDA.split(',').map(d => d.trim());
+                    demandas.forEach(demanda => {
+                        demandCounts[demanda] = (demandCounts[demanda] || 0) + 1;
+                    });
+                }
+            });
+
+            const demandLabels = Object.keys(demandCounts);
+            const demandData = Object.values(demandCounts);
+
+            // Criar o gráfico de demandas
+            const demandCtx = document.getElementById('demandChart').getContext('2d');
+            const demandChart = new Chart(demandCtx, {
+                type: 'pie',
+                data: {
+                    labels: demandLabels,
+                    datasets: [{
+                        label: 'Prevalência de Demandas',
+                        data: demandData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                title: (context) => {
+                                    return `Demanda: ${context[0].label}`;
+                                },
+                                label: (context) => {
+                                    return `Pacientes: ${context.parsed}`;
+                                }
+                            }
+                        },
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
