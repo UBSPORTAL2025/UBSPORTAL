@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBS Portal Vacinação</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body {
+    background: url('https://www.publicdomainpictures.net/pictures/320000/velka/background-with-pine-trees.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  .menu-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    color: black;
+    animation: fadeIn 1s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .accordion-button {
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  .accordion-button:hover {
+    background-color: #1976d2;
+    color: white;
+  }
+  .accordion-body {
+    background: #e3f2fd;
+  }
+  a {
+    color: #0d47a1;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 150px;
+  }
+  #menu-container {
+    background: rgba(6, 13, 148, 0.912);
+    padding: 10px;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+  }
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  .nav-links li {
+    margin: 0 15px;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div id="menu-container">
+    <nav>
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="calculadodrop.html">Calcular sua Saúde</a></li>
+            <li><a href="contatos.html">Contatos Úteis</a></li>
+            <li><a href="bulas.html">Bulas</a></li>
+    
+        </ul>
+    </nav>
+</div>
+
+<div class="container">
+  <div class="menu-container">
+    <img src="logo-prefeitura-2021.png" alt="Logo UBS" class="logo">
+    <h2 class="text-center mb-4">UBS Portal Vacinação</h2>
+    <p class="text-center">Se informe pelo número <strong>4800-5024</strong> ou com seu agente de saúde.</p>
+    
+    <div class="accordion" id="vacinasMenu">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#horarios" aria-expanded="true" aria-controls="horarios">
+            Horários de Vacinação
+          </button>
+        </h2>
+        <div id="horarios" class="accordion-collapse collapse show" data-bs-parent="#vacinasMenu">
+          <div class="accordion-body">
+            Segunda a Sexta: 07h - 15h50<br>
+            Sábados: 08h - 12h (Somente Campanhas)
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vacinas" aria-expanded="false" aria-controls="vacinas">
+            Vacinas Disponíveis
+          </button>
+        </h2>
+        <div id="vacinas" class="accordion-collapse collapse" data-bs-parent="#vacinasMenu">
+          <div class="accordion-body">
+            <p><strong>As vacinas podem estar em falta dependendo da demanda.</strong></p>
+            <p><strong>Vacina da Dengue:</strong> Disponível para crianças e adolescentes de 10 a 14 anos.</p>
+            <ul>
+              <li>Vacina DTP / DTPa / DT / dT / dTpa</li>
+              <li>Vacina Pneumocócica 10-valente</li>
+              <li>Vacina Poliomielite (VOP/VIP)</li>
+              <li>Vacina Influenza (Gripe)</li>
+              <li>Vacina BCG</li>
+              <li>Vacina Hepatite B</li>
+              <li>Vacina Febre Amarela</li>
+              <li>Vacina Meningocócica C</li>
+              <li>Vacina Tríplice Viral (SCR)</li>
+              <li>Vacina HPV</li>
+              <li>Vacina COVID-19</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.nav-links');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
+</body>
+</html>
