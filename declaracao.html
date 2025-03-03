@@ -8,7 +8,7 @@
     @media print {
       @page {
         size: A4;
-        margin: 0.5cm;
+        margin: 0;
       }
       body {
         margin: 0;
@@ -18,14 +18,20 @@
       }
       .document {
         border: none;
-        padding: 0.5cm;
+        padding: 1cm;
         overflow: visible;
+        box-shadow: none;
+        height: 29.7cm;
+        width: 21cm;
       }
       .footer {
         page-break-inside: avoid;
         margin-top: 10px;
         padding-top: 5px;
         border-top: 1px solid #ccc;
+        position: absolute;
+        bottom: 1cm;
+        width: calc(100% - 2cm);
       }
       .watermark {
         position: fixed;
@@ -40,22 +46,26 @@
 
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
+      line-height: 1.5;
       color: #333;
       max-width: 21cm;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0;
       position: relative;
-      font-size: 14px;
+      font-size: 16px; /* Increased base font size */
       background-color: #f5f5f5;
     }
 
     .document {
       border: 1px solid #ccc;
-      padding: 2cm;
+      padding: 1cm;
       position: relative;
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      min-height: 29.7cm;
+      width: 21cm;
+      box-sizing: border-box;
+      margin: 0 auto;
     }
 
     /* Cabeçalho com a logo */
@@ -63,53 +73,58 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: 10px;
+      padding: 5px;
       background-color: #e8f0fe;
       border-radius: 5px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .header img {
-      max-width: 150px;
+      max-width: 120px;
       height: auto;
     }
 
     /* Container para Unidade */
     .unidade-container {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .unidade {
-      font-size: 12px;
+      font-size: 15px; /* Increased font size */
       font-weight: bold;
       color: #194275;
     }
 
+    .unidade p {
+      margin: 0;
+    }
+
     .title {
-      font-size: 20px;
+      font-size: 26px; /* Increased font size */
       font-weight: bold;
       text-align: center;
-      margin: 30px 0;
+      margin: 20px 0;
       color: #194275;
     }
 
     .content {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       text-align: justify;
-      font-size: 14px;
+      font-size: 16px; /* Increased font size */
     }
 
     /* Novo estilo para os campos sem linhas */
     .info-paragraph {
-      margin-bottom: 15px;
+      margin-bottom: 16px; /* Increased spacing */
       text-align: justify;
-      line-height: 1.8;
+      line-height: 1.6;
     }
 
     .label {
       font-weight: bold;
       color: #194275;
       margin-right: 5px;
+      font-size: 18px; /* Increased font size */
     }
 
     .value {
@@ -117,12 +132,13 @@
       display: inline;
       padding: 0 5px;
       min-width: 100px;
+      font-size: 18px; /* Increased font size */
     }
 
     /* Estilo para o grupo de checkboxes */
     .service-types {
-      margin: 25px 0;
-      padding: 15px;
+      margin: 20px 0; /* Increased spacing */
+      padding: 12px;
       background-color: #f8f9fa;
       border-radius: 5px;
       text-align: center;
@@ -132,6 +148,7 @@
       font-weight: bold;
       color: #194275;
       margin-bottom: 10px;
+      font-size: 18px; /* Increased font size */
     }
 
     .checkbox-group {
@@ -143,26 +160,44 @@
     .checkbox-item {
       display: flex;
       align-items: center;
-      margin: 0 15px;
+      margin: 0 12px; /* Increased spacing */
     }
 
     .checkbox-item input {
-      margin-right: 5px;
+      margin-right: 6px;
+      transform: scale(1.4); /* Increased checkbox size */
     }
 
     .checkbox-item label {
-      font-size: 14px;
+      font-size: 16px; /* Increased font size */
     }
 
     .signature {
-      margin-top: 80px;
+      margin-top: 60px; /* Increased spacing */
       border-top: 1px solid #333;
       padding-top: 5px;
       width: 50%;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
-      font-size: 14px;
+      font-size: 16px; /* Increased font size */
+    }
+    
+    .professional-selector {
+      text-align: center;
+      margin-top: 8px;
+    }
+    
+    select {
+      padding: 4px;
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      outline: none;
+      text-align: center;
+      width: 100%;
     }
 
     .watermark {
@@ -171,19 +206,23 @@
       left: 50%;
       transform: translate(-50%, -50%) rotate(-30deg);
       opacity: 0.15;
-      font-size: 4.5cm;
+      font-size: 5cm; /* Increased font size */
       color: #194275;
       z-index: 0;
       pointer-events: none;
     }
 
     .footer {
-      margin-top: 50px;
+      margin-top: 5px;
       text-align: center;
-      font-size: 12px;
+      font-size: 14px; /* Increased font size */
       border-top: 1px solid #ccc;
-      padding-top: 10px;
+      padding-top: 5px;
       color: #194275;
+    }
+
+    .footer p {
+      margin: 2px 0;
     }
 
     .no-print {
@@ -199,27 +238,18 @@
       background-color: #194275;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 24px; /* Increased padding */
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 16px; /* Increased font size */
     }
 
     .print-button:hover {
       background-color: #0e2a4f;
     }
-
-    select {
-      padding: 5px;
-      background-color: transparent;
-      border: none;
-      font-size: 14px;
-      color: #333;
-      cursor: pointer;
-      outline: none;
-    }
   </style>
+  <link rel="icon" href="cristo (2).png" type="image/png">
 </head>
 <body>
   <div class="document">
@@ -230,12 +260,12 @@
 
     <!-- Container para Unidade -->
     <div class="unidade-container">
-      <div class="unidade">UNIDADE BÁSICA DE SAÚDE</div>
+      <div class="unidade">UBS PORTAL DAS LARANJEIRAS ANTÔNIO DE SOUZA SANTOS <p>CNES:4737423</p></div>
     </div>
 
     <div class="title">DECLARAÇÃO DE COMPARECIMENTO</div>
     <div class="content">
-      Declaramos para os devidos fins que o(a) paciente abaixo identificado(a) compareceu a esta Unidade de Saúde na data e horário especificados para atendimento médico.
+      Certificamos, para os devidos fins e conforme solicitado, que a pessoa abaixo identificada compareceu a esta Unidade de Saúde na data e horário previamente agendados, tendo recebido o atendimento necessário, seja como acompanhante, ou por meio de consulta ou exame, conforme a situação determinada pelo profissional responsável.
     </div>
 
     <!-- Novo formato de parágrafo para as informações -->
@@ -256,26 +286,7 @@
 
     <div class="info-paragraph">
       <span class="label">Horário:</span>
-      <span class="value" id="horario" contenteditable="true">das 00:00 às 00:00</span>
-    </div>
-
-    <div class="info-paragraph">
-      <span class="label">Profissional:</span>
-      <span class="value">
-        <select id="profissional">
-          <option value="">Selecione</option>
-          <option value="Auxiliar Administrativo">Auxiliar Administrativo</option>
-          <option value="Gerente">Gerente</option>
-          <option value="Recepcionista">Recepcionista</option>
-          <option value="Médico">Médico</option>
-          <option value="Dentista">Dentista</option>
-          <option value="Psicólogo">Psicólogo</option>
-          <option value="Enfermeiro">Enfermeiro</option>
-          <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
-          <option value="Agente de Saúde">Agente de Saúde</option>
-          <option value="Outro">Outro</option>
-        </select>
-      </span>
+      <span class="value" id="horario" contenteditable="true">das 00:00 às 00:00 (período da manhã)</span>
     </div>
 
     <!-- Novo formato para os checkboxes -->
@@ -284,7 +295,7 @@
       <div class="checkbox-group">
         <div class="checkbox-item">
           <input type="checkbox" id="consulta" name="tipo">
-          <label for="consulta">Consulta Médica</label>
+          <label for="consulta">Consulta </label>
         </div>
         <div class="checkbox-item">
           <input type="checkbox" id="exame" name="tipo">
@@ -303,13 +314,28 @@
 
     <div class="signature">
       Assinatura do Profissional
+      <div class="professional-selector">
+        <select id="profissional" onchange="updateProfessionalTitle()">
+          <option value="">Selecione o profissional</option>
+          <option value="Auxiliar Administrativo">Auxiliar Administrativo</option>
+          <option value="Gerente">Gerente</option>
+          <option value="Recepcionista">Recepcionista</option>
+          <option value="Médico">Médico</option>
+          <option value="Dentista">Dentista</option>
+          <option value="Psicólogo">Psicólogo</option>
+          <option value="Enfermeiro">Enfermeiro</option>
+          <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
+          <option value="Agente de Saúde">Agente de Saúde</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
     </div>
 
-    <div class="footer">
+    <footer class="footer">
       <p>Caieiras, <span id="data-atual"></span></p>
       <p>Horário de emissão: <span id="hora-atual"></span></p>
       <p>www.caieiras.sp.gov.br | <span class="social-icons">@prefeituradecaieiras</span></p>
-    </div>
+    </footer>
 
     <div class="watermark">UBS PORTAL</div>
 
@@ -332,6 +358,11 @@
       document.getElementById('data').textContent = `${day}/${month}/${year}`;
       document.getElementById('hora-atual').textContent = `${hours}:${minutes}`;
     }
+    
+    function updateProfessionalTitle() {
+      // Esta função não precisa mais atualizar um elemento separado de título profissional
+      // já que a seleção é feita diretamente abaixo da assinatura
+    }
 
     function generateAndPrint() {
       updateDateTime();
@@ -353,6 +384,12 @@
     document.addEventListener('DOMContentLoaded', function() {
       updateDateTime();
       setInterval(updateDateTime, 60000);
+      
+      // Set default time with morning period
+      if (!document.getElementById('horario').textContent.includes('período')) {
+        document.getElementById('horario').textContent = 'das 00:00 às 00:00 (período da manhã)';
+      }
+      
       document.querySelectorAll('[contenteditable]').forEach(function(field) {
         field.addEventListener('focus', function() {
           this.style.backgroundColor = '#f8f9fa';
