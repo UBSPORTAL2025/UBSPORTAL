@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Guia de Toxicologia Interativo</title>
+ <style>
+ body {
+ font-family: 'Arial', sans-serif;
+ background: linear-gradient(to right, #141e30, #243b55);
+ color: #fff;
+ margin: 0;
+ padding: 0;
+ transition: background-color 0.3s ease;
+ }
+
+
+ .container {
+ max-width: 900px;
+ margin: 50px auto;
+ padding: 20px;
+ background: rgba(255, 255, 255, 0.08);
+ backdrop-filter: blur(10px);
+ border-radius: 15px;
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+ }
+
+
+ h1 {
+ text-align: center;
+ font-size: 2.5rem;
+ margin-bottom: 20px;
+ color: #ecf0f1;
+ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+ }
+
+
+ .menu {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 15px;
+ padding: 15px;
+ background: rgba(255, 255, 255, 0.1);
+ border-radius: 10px;
+ margin-bottom: 20px;
+ }
+
+
+ .menu a {
+ color: #fff;
+ text-decoration: none;
+ font-size: 1.1rem;
+ padding: 10px 15px;
+ border-radius: 8px;
+ background: rgba(46, 134, 193, 0.7);
+ transition: all 0.3s ease;
+ display: inline-block;
+ }
+
+
+ .menu a:hover {
+ background: #1abc9c;
+ color: #fff;
+ transform: translateY(-2px);
+ box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+ }
+
+
+ .category {
+ margin: 15px 0;
+ padding: 15px;
+ background: rgba(255, 255, 255, 0.1);
+ border-radius: 10px;
+ transition: background 0.3s ease, transform 0.3s ease;
+ border-left: 5px solid #3498db;
+ }
+
+
+ .category:hover {
+ background: rgba(255, 255, 255, 0.2);
+ transform: translateY(-3px);
+ box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+ }
+
+
+ .details {
+ padding: 15px;
+ font-size: 0.95rem;
+ line-height: 1.6;
+ color: #d0d3d4;
+ }
+
+
+ .details p strong {
+ color: #fff;
+ }
+
+
+ .details ul {
+ list-style-type: disc;
+ padding-left: 20px;
+ }
+
+
+ .details ul li {
+ margin-bottom: 5px;
+ }
+ </style>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+
+<body>
+ <div class="container">
+ <h1>Guia de Toxicologia Interativo</h1>
+
+
+ <div class="menu">
+ <a href="#" data-topic="sindrome-serotoninergica">Síndrome Serotoninérgica</a>
+ <a href="#" data-topic="drogas-ilicitas">Drogas Ilícitas</a>
+ <a href="#" data-topic="gases">Gases</a>
+ <a href="#" data-topic="medicamentos">Medicamentos</a>
+ <a href="#" data-topic="metais-pesados">Metais Pesados</a>
+ <a href="#" data-topic="plantas">Plantas</a>
+ <a href="#" data-topic="produtos-quimicos">Produtos Químicos</a>
+ <a href="#" data-topic="alccois">Álcoois</a>
+ </div>
+
+
+ <div class="category" data-category="intoxicacao-drogas-ilicitas" data-url="https://www.example.com/drogas-ilicitas">
+ <i class="fas fa-pills"></i> Intoxicação por Drogas Ilícitas
+ <div class="details">
+ <p><strong><i class="fas fa-cannabis"></i> Transtornos Relacionados à Maconha:</strong>
+ Informações sobre os efeitos e riscos do uso de maconha.</p>
+ <ul>
+ <li><strong>Casos:</strong> Uso recreativo, uso medicinal, dependência.</li>
+ <li><strong>Prevenção:</strong> Educação sobre os riscos, programas de tratamento.</li>
+ </ul>
+ <p><strong><i class="fas fa-radiation"></i> Intoxicação por LSD e Alucinógenos:</strong>
+ Guia sobre os perigos e sintomas da intoxicação por alucinógenos.</p>
+ <ul>
+ <li><strong>Casos:</strong> Bad trips, overdose acidental, efeitos psicológicos a longo prazo.</li>
+ <li><strong>Prevenção:</strong> Evitar o uso, ambientes seguros, acompanhamento psicológico.</li>
+ </ul>
+ <p><strong><i class="fas fa-syringe"></i> Transtornos Relacionados aos Opioides / Heroína:</strong>
+ Recursos sobre dependência e overdose de opioides.</p>
+ <ul>
+ <li><strong>Casos:</strong> Uso para alívio da dor, dependência, overdose fatal.</li>
+ <li><strong>Prevenção:</strong> Prescrição controlada, programas de redução de danos, tratamento da
+ dependência.</li>
+ </ul>
+ <p><strong><i class="fas fa-tablets"></i> Intoxicação por Anfetaminas (Ecstasy):</strong>
+ Alerta sobre os riscos e consequências do uso de ecstasy.</p>
+ <ul>
+ <li><strong>Casos:</strong> Uso em festas, desidratação, overdose, efeitos cardiovasculares.</li>
+ <li><strong>Prevenção:</strong> Evitar o uso, hidratação adequada, informação sobre os riscos.</li>
+ </ul>
+ <p><strong><i class="fas fa-vial"></i> Transtornos Relacionados à Cocaína / Crack:</strong>
+ Informações sobre os efeitos devastadores da cocaína e crack.</p>
+ <ul>
+ <li><strong>Casos:</strong> Uso recreativo, dependência, overdose, problemas cardíacos.</li>
+ <li><strong>Prevenção:</strong> Educação sobre os riscos, programas de tratamento, apoio social.</li>
+ </ul>
+ <p><strong><i class="fas fa-mask"></i> Intoxicação por Inalantes:</strong> Perigos e efeitos dos inalantes
+ no organismo.</p>
+ <ul>
+ <li><strong>Casos:</strong> Uso por crianças e adolescentes, danos cerebrais, morte súbita.</li>
+ <li><strong>Prevenção:</strong> Educação nas escolas, controle da venda de produtos com inalantes, apoio
+ familiar.</li>
+ </ul>
+ </div>
+ </div>
+
+
+ <div class="category" data-category="intoxicacao-medicamentos" data-url="https://www.example.com/medicamentos">
+ <i class="fas fa-prescription-bottle-alt"></i> Intoxicação por Medicamentos
+ <div class="details">
+ <p><strong><i class="fas fa-capsules"></i> Analgésicos:</strong> Riscos de overdose e efeitos
+ colaterais.</p>
+ <ul>
+ <li><strong>Casos:</strong> Uso excessivo para alívio da dor, interação com álcool, overdose acidental.</li>
+ <li><strong>Prevenção:</strong> Seguir a prescrição médica, evitar o uso com álcool, armazenar em local
+ seguro.</li>
+ </ul>
+ <p><strong><i class="fas fa-heartbeat"></i> Antidepressivos:</strong> Efeitos adversos e interações
+ perigosas.</p>
+ <ul>
+ <li><strong>Casos:</strong> Uso sem supervisão médica, interrupção abrupta, síndrome serotoninérgica.</li>
+ <li><strong>Prevenção:</strong> Acompanhamento médico, não interromper o uso sem orientação, informar sobre
+ outros medicamentos.</li>
+ </ul>
+ </div>
+ </div>
+
+
+ <div class="category" data-category="intoxicacao-metais-pesados" data-url="https://www.example.com/metais-pesados">
+ <i class="fas fa-weight"></i> Intoxicação por Metais Pesados
+ <div class="details">
+ <p><strong><i class="fas fa-flask"></i> Chumbo:</strong> Fontes de exposição e efeitos na saúde.</p>
+ <ul>
+ <li><strong>Casos:</strong> Exposição em construções antigas, água contaminada, tintas.</li>
+ <li><strong>Prevenção:</strong> Monitorar a exposição, remover fontes de chumbo, saneamento básico.</li>
+ </ul>
+ <p><strong><i class="fas fa-mercury"></i> Mercúrio:</strong> Riscos ambientais e sintomas de
+ intoxicação.</p>
+ <ul>
+ <li><strong>Casos:</strong> Contaminação por peixes, garimpo ilegal, termômetros quebrados.</li>
+ <li><strong>Prevenção:</strong> Consumo seguro de peixes, evitar garimpo ilegal, descarte correto de
+ termômetros.</li>
+ </ul>
+ </div>
+ </div>
+
+
+ <div class="category" data-category="intoxicacao-plantas" data-url="https://www.example.com/plantas">
+ <i class="fas fa-leaf"></i> Intoxicação por Plantas
+ <div class="details">
+ <p><strong><i class="fas fa-tree"></i> Comigo-ninguém-pode:</strong> Toxicidade e como evitar
+ acidentes.</p>
+ <ul>
+ <li><strong>Casos:</strong> Ingestão acidental por crianças e animais de estimação.</li>
+ <li><strong>Prevenção:</strong> Manter fora do alcance de crianças e animais, informar sobre a
+ toxicidade.</li>
+ </ul>
+ <p><strong><i class="fas fa-holly-berry"></i> Bico-de-papagaio:</strong> Efeitos e cuidados ao
+ manusear.</p>
+ <ul>
+ <li><strong>Casos:</strong> Contato com a seiva, irritação da pele e mucosas.</li>
+ <li><strong>Prevenção:</strong> Usar luvas ao manusear, evitar contato com a seiva.</li>
+ </ul>
+ </div>
+ </div>
+
+
+ <div class="category" data-category="intoxicacao-produtos-quimicos" data-url="https://www.example.com/produtos-quimicos">
+ <i class="fas fa-flask"></i> Intoxicação por Produtos Químicos
+ <div class="details">
+ <p><strong><i class="fas fa-spray-can"></i> Produtos de Limpeza:</strong> Riscos e precauções.</p>
+ <ul>
+ <li><strong>Casos:</strong> Ingestão acidental, contato com a pele, inalação de vapores.</li>
+ <li><strong>Prevenção:</strong> Armazenar em local seguro, usar luvas e máscaras, ventilar o ambiente.</li>
+ </ul>
+ <p><strong><i class="fas fa-paint-roller"></i> Solventes:</strong> Efeitos e como evitar a exposição.</p>
+ <ul>
+ <li><strong>Casos:</strong> Inalação para fins recreativos, exposição em ambientes de trabalho, contato com a
+ pele.</li>
+ <li><strong>Prevenção:</strong> Ventilar o ambiente, usar máscaras e luvas, evitar o contato com a pele.</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</body>
+
+
+</html>

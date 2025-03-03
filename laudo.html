@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown de Laudos e Formulários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #002855;
+            color: white;
+        }
+        label {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        select {
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: #ffffff;
+            color: #002855;
+        }
+        select:hover {
+            border-color: #FFD700;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #002855;
+            background-color: #FFD700;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            visibility: hidden;
+            font-weight: bold;
+        }
+        a:hover {
+            background-color: #FFC107;
+        }
+        .icon {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <link rel="icon" href="medicine.png" type="image/png">
+</head>
+<body>
+    <img class="icon" src="medicine.png" alt="Símbolo da Medicina">
+    <label for="laudos">Selecione um laudo ou requisição de exame:</label>
+    <select id="laudos" onchange="atualizarLink()">
+        <option value="">-- Selecione --</option>
+        <option value="lme.pdf">Laudo APAC Medicamentos</option>
+        <option value="Laudo_APAC_Densitometria.pdf"> APAC Laudo</option>
+        <option value="03-Laudo_Complementar_APAC_Cirurgia_Bariatrica.pdf"> Laudo Complementar APAC Cirurgia Bariátrica</option>
+        <option value="mamografia.pdf"> Requisição de Mamografia</option>
+        <option value="CITOPATOLÓGICO - MAMA.pdf"> Requisição de exame citopatológico - Mama</option>
+        <option value="CITOPATOLÓGICO - COLO DO ÚTERO.pdf"> Requisição de exame citopatológico - Colo do Útero</option>
+        
+    </select>
+    
+    <a id="link" href="#" target="_blank">Acessar Documento</a>
+    
+    <script>
+        function atualizarLink() {
+            var selecionado = document.getElementById("laudos").value;
+            var link = document.getElementById("link");
+            if (selecionado) {
+                link.href = selecionado;
+                link.style.visibility = "visible";
+            } else {
+                link.style.visibility = "hidden";
+            }
+        }
+    </script>
+</body>
+</html>
