@@ -81,6 +81,42 @@
                 height: 300px;
             }
         }
+        .container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.content {
+  padding: 20px;
+}
+
+.content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content li {
+  margin-bottom: 10px;
+}
+
+.content li b {
+  font-weight: bold;
+  color: #007bff;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  .content {
+    padding: 10px;
+  }
+}
+
     </style>
       <link rel="icon" href="cristo (2).png" type="image/png">
 </head>
@@ -94,12 +130,46 @@
         </div>
         <p>Este gráfico de barras exibe a distribuição de pacientes por idade. Ele nos permite identificar quais faixas etárias são mais prevalentes em nossa amostra.</p>
 
-        <h2>Prevalência de Demandas (Códigos F)</h2>
+        <h2>Prevalência de Demandas (Códigos cid)</h2>
         <div class="chart-container">
             <canvas id="demandChart"></canvas>
         </div>
         <p>Este gráfico de pizza mostra a prevalência de diferentes códigos de demanda (doenças). Ele nos ajuda a entender quais condições são mais comuns entre os pacientes.</p>
-
+        <div class="container">
+            <h2>Observações sobre CIDs</h2>
+            <div class="content">
+              <ul>
+                <li><b>F41</b>: Outros transtornos ansiosos, incluindo transtorno de pânico, ansiedade generalizada e transtorno misto ansioso e depressivo.</li>
+                <li><b>F41.1</b>: Ansiedade generalizada.</li>
+                <li><b>F41.2</b>: Transtorno misto ansioso e depressivo.</li>
+                <li><b>F41.9</b>: Transtornos ansiosos não especificados.</li>
+                <li><b>F32 e F33</b>: Episódios depressivos e transtorno depressivo recorrente, respectivamente.</li>
+                <li><b>F50</b>: Transtornos alimentares.</li>
+                <li><b>F60</b>: Transtornos específicos de personalidade.</li>
+                <li><b>F98.9 e F98</b>: Outros transtornos emocionais e comportamentais da infância e adolescência.</li>
+                <li><b>G42</b>: Epilepsia.</li>
+                <li><b>G47</b>: Transtornos do sono.</li>
+                <li><b>R45.3</b>: Irritabilidade e mau humor.</li>
+                <li><b>R52.2</b>: Dor crônica.</li>
+                <li><b>R59, R452, e R453</b>: Relacionados a febre.</li>
+                <li><b>Z63 e Z73</b>: Problemas relacionados à organização do modo de vida.</li>
+                <li><b>F10</b>: Transtornos mentais e comportamentais devido ao uso de álcool.</li>
+                <li><b>F14.9</b>: Transtorno mental e comportamental devido ao uso de outras substâncias psicoativas.</li>
+                <li><b>F31</b>: Transtorno bipolar.</li>
+                <li><b>F43</b>: Reações ao estresse grave e transtornos de adaptação.</li>
+                <li><b>F45</b>: Transtornos somatoformes.</li>
+                <li><b>F51.0</b>: Insônia não orgânica.</li>
+                <li><b>F53</b>: Transtornos psicológicos e comportamentais associados ao puerpério.</li>
+                <li><b>F67</b>: Transtornos de identidade sexual.</li>
+                <li><b>F82</b>: Transtorno específico do desenvolvimento da coordenação motora.</li>
+                <li><b>F90 e F901</b>: Transtornos hiperkinéticos.</li>
+                <li><b>F92.9</b>: Transtorno desafiador opositor da infância.</li>
+                <li><b>E66.0</b>: Obesidade.</li>
+              </ul>
+            </div>
+          </div>
+          
+          
         <script>
             // Dados fornecidos
             const data = [
