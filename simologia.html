@@ -166,8 +166,764 @@
 
         function showContent(specialty) {
             const contentArea = document.getElementById('content-area');
-            contentArea.innerHTML = `<h2>${specialty}</h2><p>Conteúdo sobre ${specialty} será exibido aqui.</p>`;
+            let content = '';
+
+            switch (specialty) {
+                case "Semiologia Geriátrica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia geriátrica estuda os sinais e sintomas em pacientes idosos, considerando condições crônicas complexas.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Dor crônica nas articulações. História pregressa: Hipertensão, diabetes tipo 2.</p>
+                        <p><strong>Exame Físico:</strong> Avaliação da marcha e equilíbrio.</p><hr>
+                        <h3>Video Explicativo</h3> 
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IO72dw8Os1Q?si=yI8U5madczati4SM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                case "Semiologia Neonatal":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia neonatal é crucial para o diagnóstico e tratamento de condições em recém-nascidos.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> História gestacional: Parto prematuro. História neonatal: Sinais de desconforto respiratório.</p>
+                        <p><strong>Exame Físico:</strong> Avaliação dos sinais vitais (frequência cardíaca, respiratória).</p><hr>
+                          <h3>Video Explicativo</h3> 
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/TTydeFD5u5E?si=a8QbSyRm8a7a8_zt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    `;
+                    break;
+                case "Semiologia da Adolescência":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia na adolescência envolve o estudo dos sinais e sintomas em jovens em desenvolvimento.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Dor abdominal recorrente. História pregressa: Problemas de saúde mental (ansiedade).</p>
+                        <p><strong>Exame Físico:</strong> Avaliação do estado nutricional e do desenvolvimento físico.</p><hr>
+                        <h3>Material Complementar</h3> <hr>
+                        <iframe src="ado.pdf" width="100%" height="600px"></iframe>
+                    `;
+                    break;
+                case "Semiologia da Infância":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia pediátrica é essencial para o diagnóstico em crianças.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Febre persistente. História pregressa: Vacinação em dia.</p>
+                        <p><strong>Exame Físico:</strong> Avaliação dos sinais vitais.</p><hr>
+                        <h3>Material Complementar</h3> <hr>
+                          <iframe src="cria.pdf" width="100%" height="600px"></iframe>
+                    `;
+                    break;
+                case "Semiologia e Propedêutica Geral":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A propedêutica é um conjunto de técnicas que inclui a anamnese e o exame físico para chegar a um diagnóstico.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Dor de cabeça frequente. História pregressa: Hipertensão.</p>
+                        <p><strong>Exame Físico:</strong> Avaliação do estado geral do paciente.</p><hr>
+                        <h3>Video Explicativo</h3> <hr>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/20Eu0R_j2F8?si=fh7GKvFWSGYd2Ytm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                case "Semiologia Abdominal":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia abdominal estuda os sinais e sintomas relacionados ao abdômen.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Dor abdominal aguda.</p>
+                        <p><strong>Exame Físico:</strong> Palpação abdominal para detectar massas ou sensibilidade.</p>
+                      
+                        <img src="abdome.jpg" alt="Exame abdominal">
+                           <h3>Vídeo Explicativo</h3>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/jdpa9GsmA9k?si=ThAs2_QENBGgFZ6v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                case "Semiologia Cardiológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia cardiológica se concentra nos sinais e sintomas relacionados ao coração.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Dor no peito.</p>
+                        <p><strong>Exame Físico:</strong> Ausculta cardíaca.</p>
+                        
+
+                        <h3>Material Complementar</h3>
+        <iframe src="528441462-Semiologia-Cardiologica-Normal.pdf" width="100%" height="600px"></iframe>
+                    `;
+                    break;
+                    case "Semiologia Coloproctológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A Semiologia Coloproctológica é a área da medicina responsável pelo estudo dos sinais e sintomas relacionados ao trato intestinal, reto e ânus. Essa semiologia é fundamental para o diagnóstico de doenças como hemorroidas, fissuras anais, doença inflamatória intestinal, câncer colorretal, entre outras.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Dor anal, sangramento retal, constipação, diarreia, secreção anal, sensação de evacuação incompleta, prurido anal, entre outros.
+História da doença atual: Início, duração e evolução dos sintomas.
+Hábitos intestinais: Frequência, consistência das fezes (Escala de Bristol), presença de muco ou sangue.
+Antecedentes pessoais: Doenças prévias, cirurgias, hábitos alimentares e uso de medicamentos.
+História familiar: Casos de câncer colorretal, doença inflamatória intestinal.</p>
+                        <p><strong>Exame Físico:</strong> Inspeção anal e perianal:
+Avaliação de fissuras, hemorroidas, fístulas e lesões na região anal.
+Toque retal:
+Identificação de massas, tônus esfincteriano e presença de sangue.
+Anuscopia:
+Visualização do canal anal para identificar alterações inflamatórias, pólipos ou neoplasias.
+Reto-sigmoidoscopia:
+Exame endoscópico que permite visualizar parte do reto e sigmoide para diagnóstico de lesões mais internas..</p>
+                        
+
+                        <h3>Exames Complementares</h3>
+         <p>Inspeção anal e perianal:
+Avaliação de fissuras, hemorroidas, fístulas e lesões na região anal.
+Toque retal:
+Identificação de massas, tônus esfincteriano e presença de sangue.
+Anuscopia:
+Visualização do canal anal para identificar alterações inflamatórias, pólipos ou neoplasias.
+Reto-sigmoidoscopia:
+Exame endoscópico que permite visualizar parte do reto e sigmoide para diagnóstico de lesões mais internas..</p>
+          <h3>Vídeo Explicativo</h3>
+
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/Tlz92tEbJeU?si=D9F4XDO3vL1wLxHG&amp;start=279" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                case "Semiologia Dermatológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia dermatológica estuda os sinais e sintomas relacionados à pele.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Rash cutâneo.</p>
+                        <p><strong>Exame Físico:</strong> Inspeção visual da pele.</p>
+                        
+                         <h3>Vídeo Explicativo</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IXSKl1BU5As?si=l3SGJI2K3F8aAbko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                    case "Semiologia Endocrinológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A Semiologia Endocrinológica estuda os sinais e sintomas relacionados às glândulas endócrinas e seus distúrbios hormonais. O exame clínico detalhado e a anamnese são fundamentais para identificar doenças como diabetes mellitus, distúrbios da tireoide, síndromes metabólicas, doenças da hipófise, adrenais e distúrbios do crescimento.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Fadiga, alterações de peso, sede excessiva, aumento da diurese, intolerância ao frio ou calor, alterações menstruais, crescimento anormal, entre outros.
+História da doença atual: Evolução dos sintomas, fatores desencadeantes.
+História familiar: Diabetes, doenças da tireoide, obesidade, osteoporose, distúrbios hormonais hereditários.
+Hábitos de vida: Alimentação, atividade física, uso de medicamentos ou suplementos hormonais.
+</p>
+                        <p><strong>Exame Físico:</strong> O exame físico endocrinológico avalia sinais clínicos de distúrbios hormonais:
+
+1. Avaliação Geral
+Aspecto corporal: Presença de obesidade, magreza excessiva, padrão de distribuição da gordura corporal.
+Estado de hidratação: Indícios de desidratação (exemplo: diabetes insipidus).
+Alterações de pele e cabelos: Ressecamento, hiperpigmentação, estrias (síndrome de Cushing), hirsutismo (excesso de pelos em mulheres), queda de cabelo.
+2. Avaliação Específica das Glândulas
+Tireoide: Inspeção e palpação do pescoço para detectar bócio, nódulos ou sinais de hipo/hipertireoidismo.
+Hipófise: Alterações no crescimento e desenvolvimento sexual, cefaleia, distúrbios visuais.
+Adrenais: Sinais de excesso ou deficiência de cortisol, como fraqueza muscular, hipotensão, hiperpigmentação cutânea.
+Pâncreas: Sinais de diabetes, como polidipsia (sede excessiva), poliúria (urinar muito), polifagia (fome excessiva), emagrecimento.
+Gônadas: Avaliação do desenvolvimento sexual, irregularidades menstruais, ginecomastia em homens.</p>
+                        
+                         <h3>Exames Complementares</h3>
+                         <p>Dosagens hormonais: TSH, T3, T4, cortisol, ACTH, testosterona, estradiol, prolactina, GH, insulina, glicemia.
+Ultrassonografia de tireoide ou adrenal: Para detecção de nódulos e alterações estruturais.
+Ressonância Magnética de hipófise: Para investigação de tumores hipofisários.
+Teste de tolerância à glicose: Para diagnóstico de diabetes. </p>
+<h3>Tratamento e Conduta</h3>
+<p>Reposição hormonal: Para deficiências hormonais, como hipotireoidismo ou insuficiência adrenal.
+Bloqueio hormonal: Para hiperfunção glandular, como hipertireoidismo.
+Controle metabólico: Mudanças no estilo de vida e medicamentos para diabetes e obesidade.
+Cirurgia ou radioterapia: Para casos de tumores hipofisários, adrenais ou tireoidianos.</p>
+<h3>Vídeo Explicativo</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/w28FmqjvRbg?si=eygXtH2OZrEib_Y8&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                    case "Semiologia Ginecológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A Semiologia Ginecológica estuda os sinais e sintomas das doenças do sistema reprodutor feminino. Inclui a avaliação da saúde ginecológica da mulher por meio da anamnese, exame físico e exames complementares.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Alterações no ciclo menstrual, dor pélvica, corrimento vaginal, sangramentos anormais, prurido, dispareunia (dor durante a relação sexual).
+História menstrual: Idade da menarca (primeira menstruação), duração do ciclo, regularidade, intensidade do fluxo.
+História obstétrica: Gestações, partos, abortos, complicações gestacionais.
+História sexual: Atividade sexual, número de parceiros, métodos contraceptivos, histórico de Infecções Sexualmente Transmissíveis (ISTs).
+História ginecológica: Cirurgias ginecológicas, cistos, miomas, endometriose.
+História familiar: Casos de câncer de mama, ovário, útero, doenças genéticas.</p>
+                        <p><strong>Exame Físico:</strong> 1. Exame Geral
+Avaliação do estado geral, sinais vitais, peso, altura.
+Inspeção da pele para detectar sinais de distúrbios hormonais, como hirsutismo (excesso de pelos) ou acantose nigricans (manchas escuras na pele, comum em mulheres com síndrome dos ovários policísticos).
+2. Exame Ginecológico Específico
+Inspeção da região vulvoperineal: Identificação de lesões, corrimentos, sinais de infecções.
+Exame especular: Introdução do espéculo vaginal para visualização do colo do útero, avaliação do muco cervical e presença de secreções anormais.
+Toque vaginal (exame bimanual): Avaliação do útero, ovários e anexos para verificar presença de massas, dor ou alterações anatômicas.</p>
+<h3>Vídeo Explicativo</h3>
+<p><strong>Papanicolau:</strong> Rastreamento de câncer de colo do útero e identificação de infecções.
+<strong>Colposcopia:</strong> Exame detalhado do colo do útero com lente de aumento para detectar lesões.
+<strong>Ultrassonografia pélvica/transvaginal:</strong> Avaliação do útero, ovários e endométrio.
+<strong>Dosagens hormonais:</strong> Investigação de distúrbios menstruais e infertilidade.
+<strong>Testes para ISTs:</strong> Pesquisa de infecções como sífilis, HPV, HIV, clamídia e gonorreia</p>
+                        <h3>Vídeo Explicativo</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LLsuVeM__yA?si=hRIYffNAfOu2TWOm&amp;start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        
+                    `;
+                    break;
+                case "Semiologia Obstétrica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia obstétrica é a parte da medicina que se ocupa da coleta e interpretação de sinais e sintomas da gestante, com o objetivo de monitorar a saúde da mãe e do feto durante a gestação, o parto e o pós-parto.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> A anamnese é o processo de coleta de informações detalhadas sobre a história clínica da gestante. Ela fornece dados cruciais para a avaliação da saúde da paciente e para o acompanhamento da gestação.
+
+<strong>História Ginecológica</strong>
+<strong>Menarca:</strong> Idade da primeira menstruação.
+<strong>Ciclo menstrual:</strong> Regularidade, duração e intensidade.
+<strong>Contracepção:</strong> Métodos utilizados antes da gestação e tempo de uso.
+<strong>História sexual:</strong> Número de parceiros, doenças sexualmente transmissíveis anteriores.
+<strong>História Obstétrica</strong>
+<strong>Gravidez atual:</strong> Data da última menstruação (LMP), exames feitos até o momento (como ultrassonografia), e sintomas como náuseas, vômitos, dor abdominal, entre outros.
+<strong>Gravidez anterior:</strong>  Número de gestações, partos, abortos, complicações (como pré-eclâmpsia, diabetes gestacional), e o estado dos filhos (vivos ou não).
+<strong>Complicações anteriores::</strong> História de parto prematuro, gestação ectópica, sangramentos, etc.
+<strong>Histórico de doenças genéticas ou infecciosas::</strong> Como infecções de transmissão vertical, diabetes, hipertensão, entre outras.
+<strong>História Familiar:</strong>
+Doenças genéticas, doenças cardiovasculares, diabetes e hipertensão podem ser relevantes para o acompanhamento da gestação.
+<strong>Sintomas Atuais:</strong>
+Perguntar sobre sintomas como dor, sangramentos, edemas, tontura, cefaleia, alterações na visão, entre outros sinais indicativos de complicações.</p>
+<hr>
+                        <p><strong>Exame Físico:</strong>O exame físico é dividido em várias etapas e tem o objetivo de monitorar tanto a gestante quanto o feto.
+
+<strong>Inspeção</strong>
+<strong>Estado geral da paciente:</strong> Verificar sinais de bem-estar ou sofrimento, como palidez, sudorese excessiva, cansaço.
+<strong>Postura e marcha:</strong> Durante a gestação, mudanças posturais podem ocorrer devido ao aumento do peso.
+<strong>Alterações cutâneas:</strong> Aumento da pigmentação (linha nigra, cloasma) ou sinais de doenças dermatológicas.
+<strong>Barriga:</strong> Avaliar o tamanho, formato e presença de estrias.
+<strong>Edema:</strong> Verificar inchaços nas extremidades (mãos, pés) que podem ser um sinal de complicação, como pré-eclâmpsia.
+<strong>Palpação Abdominal</strong>
+<strong>Altura uterina:</strong> Mensuração da distância entre a sínfise púbica e o fundo uterino. Esse parâmetro é importante para estimar o crescimento fetal.
+<strong>Palpação para localização fetal: </strong>Determinar a apresentação (cefálica, pélvica), posição e atitude do feto.
+<strong>Toque para detectar contrações:</strong> Verificar a presença de contrações uterinas, que podem ser fisiológicas (Braxton Hicks) ou patológicas (trabalho de parto prematuro).
+<strong>Ausculta Fetal</strong>
+<strong>Batimentos cardíacos fetais:</strong> Usar um estetoscópio obstétrico ou Doppler para ouvir os batimentos do feto. A frequência cardíaca normal fetal varia entre 110 e 160 bpm. A ausência de batimentos ou alterações podem indicar problemas.
+<strong>Exame Pélvico</strong>
+<strong>Toque vaginal: </strong>Para avaliar a dilatação, o comprimento do colo do útero (efacemento) e a consistência do colo. Também ajuda a identificar a posição do feto (se está bem posicionado para o parto).
+<strong>Sinais Vitais</strong>
+<strong>Pressão arterial:</strong> A hipertensão pode ser um indicativo de pré-eclâmpsia.
+<strong>Temperatura:</strong> Pode indicar infecções ou complicações.
+<strong>Frequência cardíaca:</strong> Pode ser alterada por fatores emocionais ou patologias (como arritmias).</p>
+<h3>Exames Complementares</h3>
+<p>Exames Laboratoriais
+<strong>Hemograma:</strong> Para detectar anemia, leucocitose (indicação de infecção) e plaquetas (importante na vigilância para pré-eclâmpsia).
+<strong>Glicemia:</strong> Para rastrear diabetes gestacional.
+<strong>Exame de urina:</strong> Para verificar a presença de proteínas (que pode indicar pré-eclâmpsia) e infecções do trato urinário.
+<strong>Sorologias:</strong> Como HIV, sífilis, toxoplasmose, hepatites virais e rubéola, que são fundamentais para a saúde do feto e da gestante.
+<strong>Coagulograma:</strong> Para avaliar o risco de trombose ou sangramentos excessivos, especialmente se houver histórico de complicações.
+<strong>Ultrassonografia</strong>
+<strong>Ultrassonografia obstétrica:</strong> Fundamental para confirmar a idade gestacional, detectar anomalias fetais e avaliar o líquido amniótico e a posição da placenta.
+<strong>Ultrassonografia Doppler:</strong> Avalia o fluxo sanguíneo nos vasos do cordão umbilical, artéria uterina e cérebro fetal, útil em casos de suspeita de comprometimento fetal.
+<strong>Translucência nucal:</strong> Exame realizado no primeiro trimestre para avaliar o risco de anomalias cromossômicas como a síndrome de Down.
+<strong>Cardiotocografia (CTG)</strong>
+<strong>Monitoramento fetal:</strong> Avalia os batimentos cardíacos do feto e as contrações uterinas, essencial em situações de alto risco ou quando o bem-estar fetal é questionado.
+<strong>Exame de Papanicolau</strong>
+Caso não tenha sido realizado recentemente, o exame pode ser indicado para avaliar a saúde do colo do útero.</p>
+<hr>
+                        <h3>Vídeo Explicativo</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/udJb0A9LcY4?si=KS7imx9BqqblyQGC&amp;start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                    case "Semiologia Neurológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia neurológica se concentra nos sinais e sintomas relacionados ao sistema nervoso.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Fraqueza muscular em um membro.</p>
+                        <p><strong>Exame Físico:</strong> Avaliação da força muscular e reflexos.</p>
+                        <h3>Vídeo Explicativo</h3>
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/kuLJ0VTiXDc?si=OIFEA64jjYi2cddA&amp;start=30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                case "Semiologia Oftalmológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia oftalmológica é responsável por identificar sinais e sintomas relacionados a condições oculares. Essa área envolve a realização de uma anamnese detalhada e exames físicos específicos para avaliar a saúde ocular e diagnosticar doenças.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Visão turva.
+Pode indicar várias condições, como catarata, erro refrativo (miopia, hipermetropia), ou problemas na retina, como a degeneração macular.
+História ocular:
+Duração e evolução dos sintomas: A visão turva ocorre de forma súbita ou gradual?
+História prévia de doenças oculares: O paciente tem histórico de doenças como glaucoma, catarata ou degeneração macular?
+Uso de óculos ou lentes de contato: Se sim, qual a prescrição atual e quando foi a última atualização?
+História familiar: Doenças como glaucoma, retinopatias ou degeneração macular possuem hereditariedade.
+Sintomas associados:
+Dor ocular: Pode estar associada a condições como conjuntivite ou uveíte.
+Fotofobia: Pode indicar inflamações ou distúrbios na córnea.
+Alterações no campo visual: Como perda de visão periférica, o que pode sugerir glaucoma.</p>
+<hr>
+                        <p><strong>Exame Físico:</strong> Acuidade Visual:
+
+Teste de Snellen (placa com letras ou números) para avaliar a visão central. Pacientes com acuidade visual reduzida podem ter erros refrativos (miopia, hipermetropia) ou doenças retinianas.
+Inspeção:
+
+Observação da anatomia dos olhos e das pálpebras para detectar alterações, como ptose (queda da pálpebra), edemas, e secreções.
+Exame de fundo de olho (Fundo de olho ou fundoscopia):
+
+<strong>Avaliação direta da retina, nervo óptico e vasos sanguíneos. Importante para detectar doenças como:</strong>
+<strong>Retinopatia diabética:</strong> Alterações na retina causadas pelo diabetes.
+<strong>Glaucoma:</strong> Aumento da pressão intraocular que pode causar danos ao nervo óptico.
+<strong>Degeneração macular:</strong> Perda de visão central devido ao envelhecimento.
+<strong>Exame de Pressão Intraocular (Tonometria):</strong>
+
+Medição da pressão intraocular para verificar a possibilidade de glaucoma.
+<strong>Teste de Refração:</strong>
+
+Para diagnosticar erros refrativos (miopia, hipermetropia, astigmatismo). O exame pode ser realizado com uma lâmpada de fenda ou retinoscopia.
+<strong>Movimentos Oculares:</strong>
+
+Avaliação do movimento e coordenação dos músculos oculares. Pode identificar condições como estrabismo.
+<strong>Teste de Pupilas (Reflexo Pupilar):</strong>
+
+Avaliação das respostas das pupilas à luz (reflexo fotomotor) e ao foco próximo (reflexo de acomodação).
+</p>
+<hr>
+ <h3>Sinais e Sintomas Comuns em Oftalmologia</h3>
+ <p><strong>Visão turva:</strong> Pode ser causada por erros refrativos (miopia, hipermetropia), catarata ou doenças retinianas.
+<strong>Dor ocular:</strong> Pode indicar conjuntivite, uveíte ou glaucoma agudo.
+<strong>Cegueira temporária:</strong> Perda de visão que pode ocorrer com condições como amaurose fugaz ou migração de entupimento de vasos sanguíneos na retina.
+<strong>Fotofobia:</strong>  Sensibilidade à luz, que pode ser um sintoma de conjuntivite ou inflamações intraoculares (uveíte).</p>
+ <h3>Sinais e Sintomas Comuns em Oftalmologia</h3>
+ <p><strong>Oftalmoscopia:</strong>  Exame de fundo de olho para verificar condições da retina, nervo óptico e vasos sanguíneos.
+<strong>Teste de campo visual:</strong> Para avaliar a presença de perda de visão periférica, importante no diagnóstico de glaucoma.
+<strong>Tomografia de Coerência Óptica (OCT):</strong> Imagem detalhada da retina e do nervo óptico.
+<strong>Angiografia com fluoresceína:</strong> Usada para observar a circulação sanguínea na retina.</p>
+<hr>
+<h3>Vídeo Explicativo</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/56B3odVNToo?si=krtasAAYEL2jDpIy&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                   
+                    `;
+                    break;
+                case "Semiologia Ortopédica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia ortopédica se concentra nos sinais e sintomas relacionados ao sistema locomotor.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: Exemplo: Dor no joelho, dificuldade de movimento, sensação de fraqueza ou formigamento.
+
+História da doença atual:
+
+Início: Quando a dor ou sintoma começou?
+Evolução: A dor está piorando, melhorando ou permanecendo constante?
+Localização: Onde a dor está localizada? (Ex.: Dor no quadril, dor lombar).
+Intensidade: Dor leve, moderada ou forte? Dor em repouso ou apenas com atividade?
+Fatores desencadeantes: Movimentos específicos, esforço físico, mudanças de clima.
+Alívio da dor: Há algo que melhore ou piore a dor, como descanso, medicamentos ou fisioterapia?
+<strong>História ortopédica anterior:</strong>
+
+Queixas anteriores ou tratamentos para lesões ou doenças musculoesqueléticas (fracturas, entorses, cirurgias).
+<strong>História familiar:</strong>
+
+Presença de doenças ortopédicas hereditárias, como artrite, osteoporose ou doenças metabólicas ósseas.
+<strong>Comorbidades:</strong>
+
+Presença de doenças como diabetes, hipertensão, problemas metabólicos, que podem afetar o sistema musculoesquelético.</p>
+<hr>
+                        <p><strong>Exame Físico:</strong> a) Inspeção
+<strong>Postura:</strong> Avaliar a postura do paciente. Alterações podem sugerir problemas musculoesqueléticos, como escoliose, cifose ou lordose.
+<strong>Deformidades: </strong>Observar alterações anatômicas como desalinhamento de membros, inchaço, assimetrias, ou deformidades nas articulações.
+Edema e hematomas: Indicam inflamação ou lesão traumática.
+<strong>b) Palpação</strong>
+<strong>Temperatura local:</strong> Aumento da temperatura pode indicar inflamação ou infecção.
+<strong>Sensibilidade e dor à palpação:</strong> Verificar se há dor em pontos específicos, o que pode indicar lesões musculares, articulares ou ósseas.
+<strong>Deformidades ósseas ou articulares:</strong> Pode indicar fraturas ou artrose.
+<strong>c) Testes de Movimento</strong>
+Amplitudes de movimento: Avaliar se há restrição no movimento das articulações (ex.: dificuldade em flexionar ou estender o joelho, a coluna ou o ombro).
+<strong>Exame de articulações:</strong> Testes de flexão, extensão, rotação e abdução. Perda de movimento pode ser um sinal de lesão muscular ou ligamentar.
+<strong>d) Testes Funcionais</strong>
+<strong>Teste de força muscular:</strong> Avaliar a força dos músculos ao realizar contrações específicas (como levantar uma perna, apertar a mão do examinador).
+<strong>Teste de estabilidade articular:</strong> Testes para avaliar a integridade de ligamentos e cápsulas articulares (exemplo: teste de Lachman para o joelho, sinal de McMurray para o menisco).
+<strong>Sinal de Trendelenburg:</strong> Teste para avaliar a função dos músculos abdutores do quadril, que pode indicar fraqueza muscular.
+<strong>e) Testes Específicos</strong>
+<strong>Teste de compressão:</strong> Avalia a presença de fraturas em articulações ou ossos longos.
+<strong>Teste de Neer e Hawkins:</strong> Usados para identificar lesões no ombro, como tendinite do manguito rotador.</p>
+<hr>
+<h3> Sinais e Sintomas Comuns em Ortopedia</h3>
+<p>Dor: O sintoma mais comum em ortopedia, podendo estar associada a lesões traumáticas, degenerativas ou inflamatórias.
+<strong>Limitação de movimento:</strong> Devido a lesões musculoesqueléticas ou condições inflamatórias como artrite.
+<strong>Edema e inflamação:</strong> Presença de inchaço devido a lesões articulares, tendinites ou fraturas.
+<strong>Deformidades:</strong> Como fraturas mal alinhadas, displasias ósseas ou deformidades congênitas.
+<strong>Instabilidade articular:</strong> Sensação de que a articulação “sai do lugar”, geralmente em lesões ligamentares.
+<strong>Cãibras musculares:</strong> Comum em distúrbios musculares ou desequilíbrios eletrolíticos.</p>
+<hr>
+<h3> Exames Complementares em Ortopedia</h3>
+<p><strong>Radiografia (Raio-X):</strong>  Usada para diagnosticar fraturas, luxações e doenças degenerativas como osteoartrite.
+<strong>Ressonância Magnética (RM):</strong>  Útil para avaliar lesões nos tecidos moles (ligamentos, músculos, tendões) e problemas articulares internos.
+<strong>Tomografia Computadorizada (TC):</strong>  Pode ser usada para avaliar fraturas complexas ou lesões ósseas.
+<strong>Ultrassonografia:</strong>  Avaliação de estruturas superficiais, como músculos, tendões e bursas.
+<strong>Exames laboratoriais:</strong> Podem ser solicitados quando há suspeita de doenças inflamatórias ou metabólicas, como artrite reumatoide ou osteoporose.</p>
+<hr>
+<h3>Material Complementar</h3> 
+        <iframe src="ortoped.pdf" width="100%" height="600px"></iframe>
+<hr>
+<h3>Vídeo Explicativo</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yjFeVo-IC-o?si=KGSRBJScLaUXvp5x&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                       
+                    `;
+                    break;
+                    case "Semiologia Otorrinolaringológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia otorrinolaringológica envolve o estudo de sinais e sintomas relacionados aos sistemas auditivo, respiratório superior e de deglutição. O diagnóstico correto e a identificação precoce de doenças são essenciais para o tratamento eficaz e a prevenção de complicações.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa principal: O paciente pode relatar sintomas como dor de garganta, rouquidão, dificuldade para respirar, dor no ouvido, perda auditiva, secreção nasal, entre outros.
+
+História da doença atual:
+
+Início e duração: Quando os sintomas começaram? Estão melhorando ou piorando?
+Sintomas associados: Dor, secreção (mucosa ou purulenta), febre, dificuldades respiratórias ou alterações na voz.
+Fatores de risco: Exposição a poluentes, tabagismo, alergias, histórico de infecções respiratórias, uso de medicamentos.
+Histórico otológico:
+
+Dor de ouvido (otalgia), secreção auricular, zumbido (tinnitus), perda auditiva súbita ou gradual, sensação de plenitude auricular.
+Histórico nasal:
+
+Congestão nasal, secreção nasal, sangramentos (epistaxe), ronco, sinusite recorrente.
+Histórico de garganta e laringe:
+
+Rouquidão, dor ao engolir (odinofagia), dificuldade de deglutição (disfagia), alterações na voz.
+Histórico familiar:
+
+Doenças genéticas ou predisposição para problemas otorrinolaringológicos (como surdez hereditária ou distúrbios respiratórios).</p>
+                        <p><strong>Exame Físico:</strong> O exame físico otorrinolaringológico inclui a inspeção das estruturas do ouvido, nariz, garganta e laringe, além da palpação e percussão. A avaliação de cada área ajuda a identificar alterações patológicas.
+
+<strong>a) Exame de Ouvido (Otoscopia)</strong>
+<strong>Inspeção externa:</strong> Observar o pavilhão auricular, presença de secreção, edemas ou deformidades.
+<strong>Otoscopia:</strong> Exame direto do canal auditivo e da membrana timpânica. Permite avaliar sinais de infecção (otite), presença de cera (cerume), perfuração timpânica ou alterações anatômicas.
+<strong>b) Exame de Nariz e Cavidade Nasal</strong>
+<strong>Inspeção externa:</strong> Observar o nariz quanto a deformidades (desvio de septo, fraturas nasais).
+<strong>Inspeção interna (Rinoscopia anterior):</strong> Utilizada para visualizar as cavidades nasais e septo nasal. Permite detectar secreções, obstruções, pólipos, infecções ou presença de corpos estranhos.
+<strong>Rinoscopia posterior:</strong> Usada para avaliar a nasofaringe (parte posterior da cavidade nasal).
+<strong>Percussão dos seios paranasais:</strong> Avaliar dor ou sensibilidade que pode indicar sinusite.
+<strong>c) Exame de Garganta e Laringe</strong>
+<strong>Inspeção da boca e faringe:</strong> Observar a mucosa da garganta quanto a sinais de infecção, como placas brancas (amigdalite), edema ou vermelhidão.
+<strong>Palpação do pescoço:</strong> Avaliar linfonodos, glândulas salivares e presença de nódulos ou massas.
+<strong>Exame da laringe:</strong> Avaliar a movimentação das cordas vocais e sinais de rouquidão ou dificuldades respiratórias. A laringoscopia pode ser realizada para visualização direta da laringe e das cordas vocais.</p>
+ <hr><h3>Sinais e Sintomas Comuns em Otorrinolaringologia</h3>  
+ <p>Durante a anamnese e exame físico, alguns sinais e sintomas comuns que podem ser identificados incluem:
+
+<strong>Otalgia (dor de ouvido):</strong> Pode ser causada por otite externa ou média, ou por doenças referidas (como sinusite ou dor de garganta irradiando para o ouvido).
+<strong>Perda auditiva:</strong> Pode ocorrer devido a disfunções da orelha externa, média ou interna (ex.: otite, cerume impactado, surdez neurossensorial).
+<strong>Tinnitus (zumbido):</strong>Sinal de alterações no sistema auditivo, como perda auditiva ou disfunção da cóclea.
+<strong>Nasalidade e obstrução nasal:</strong> Frequentemente associadas a rinite, sinusite ou desvio de septo nasal.
+<strong>Epistaxe (sangramento nasal):</strong> Pode ser devido a trauma, ressecamento das mucosas nasais ou distúrbios hematológicos.
+<strong>Rouquidão:</strong> Pode ser causada por laringite, refluxo gastroesofágico, tumor de laringe ou esforço vocal excessivo.
+<strong>Dificuldade para engolir (disfagia):</strong> Relacionada a doenças da faringe ou esôfago, como infecções ou tumores.
+<strong>Dor de garganta (faringodinia):</strong> Geralmente associada a infecções virais ou bacterianas, como amigdalite ou faringite.</p>   
+<hr><h3>Exames Complementares em Otorrinolaringologia</h3>       
+<p>Além do exame físico, alguns exames complementares são utilizados para diagnosticar e confirmar doenças otorrinolaringológicas:
+
+<strong>Audiometria:</strong> Avaliação da capacidade auditiva do paciente, útil para diagnosticar perda auditiva neurossensorial ou condutiva.
+<strong>Ressonância magnética (RM) ou Tomografia computadorizada (TC):</strong>  Exames de imagem para avaliar estruturas internas do ouvido, nariz, seios paranasais e faringe em casos de suspeita de tumores, infecções graves ou anomalias anatômicas.
+<strong>Endoscopia nasal ou laríngea:</strong>  Exame direto das vias aéreas superiores para visualização detalhada da cavidade nasal, faringe e laringe.
+<strong>Testes de função nasal:</strong> Incluem testes de fluxo nasal, rinometria ou avaliação de alergias nasais.</p>     
+<hr> 
+<h3>Material Complementar</h3> 
+<iframe src="otorri.pdf" width="100%" height="600px"></iframe>    
+<hr> 
+<h3>Video Explicativo</h3> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lUMqSNg1BSw?si=cJlnDBn_fizdSejF&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+                    `;
+                    break;
+                case "Semiologia Pneumológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia pneumológica tem como objetivo identificar doenças respiratórias, desde as mais comuns, como infecções respiratórias, até doenças mais complexas, como doenças pulmonares obstrutivas crônicas (DPOC), asma e câncer de pulmão. A avaliação do paciente é feita por meio de uma anamnese detalhada, exame físico e exames complementares.</p>
+                        <p><strong>Exemplo de Anamnese:</strong> A anamnese é crucial para o diagnóstico precoce das doenças respiratórias. A coleta de informações detalhadas sobre os sintomas respiratórios é a base para a investigação clínica.
+<hr>
+Exemplo de Anamnese:
+
+Queixa principal: O paciente pode relatar sintomas como tosse, dispneia (falta de ar), dor torácica ou hemoptise (expectoração de sangue).
+
+História da doença atual:
+
+Início e duração dos sintomas: Quando começaram os sintomas? São agudos ou crônicos? A tosse é seca ou produtiva?
+Padrão da tosse: A tosse é intermitente ou persistente? Está associada a esforços ou à mudança de posição?
+Expectoração: Quantidade, cor e cheiro da secreção. Se houver sangue, pode indicar uma condição mais grave como pneumonia ou câncer de pulmão.
+Dispneia: Se é de esforço, paroxística, progressiva ou estática.
+Dor torácica: Localização, tipo (aguda, pleurítica ou opressiva), irradiação, fatores que agravam ou aliviam.
+Fatores de risco:
+
+Tabagismo, histórico de exposição a substâncias tóxicas ou poluentes, histórico familiar de doenças respiratórias como asma, DPOC ou câncer de pulmão.
+Histórico de doenças respiratórias prévias:
+
+Infecções respiratórias, pneumonia, tuberculose, asma, DPOC, doenças pulmonares intersticiais.
+Sintomas associados:
+
+Febre, calafrios, sudorese noturna, cianose, perda de peso inexplicada.</p>
+                       <hr> <p><strong>Exame Físico:</strong> O exame físico é essencial para avaliar a função pulmonar e identificar sinais de doenças respiratórias. A inspeção, palpação, percussão e ausculta são fundamentais para a avaliação.
+
+<strong>a) Inspeção</strong>
+<strong>Postura:</strong> Avaliar se o paciente está em posição ortopneica (sentado, inclinado para frente) para facilitar a respiração.
+<strong>Movimentos respiratórios:</strong> Observar a amplitude e o ritmo respiratório. Movimentos compensatórios, como uso de músculos acessórios (pescoço e intercostais), podem indicar dificuldade respiratória.
+<strong>Cianose:</strong> Observada na pele ou mucosas, é um sinal de hipoxemia (baixa oxigenação sanguínea).
+<strong>Tórax:</strong> Observar deformidades torácicas, como esterno em funil (pectus excavatum) ou esterno protuberante (pectus carinatum).
+b) <strong>Palpação</strong>
+<strong>Expansão torácica:</strong> Avaliar se os dois lados do tórax se expandem igualmente durante a inspiração.
+<strong>Fremito toracovocal:</strong> Palpação das vibrações da fala, que pode estar diminuída em casos de derrame pleural ou enfisema pulmonar.
+c) <strong>Percussão</strong>
+<strong>Som normal:</strong> O som da percussão deve ser claro e ressoante.
+<strong>Som anormal:</strong>
+<strong>Macicez:</strong> Pode indicar derrame pleural, consolidação pulmonar ou tumores.
+<strong>Hipersonoridade:</strong> Pode ser indicativa de enfisema ou pneumotórax.
+d) <strong>Ausculta</strong>
+<strong>Murmuros vesiculares:</strong> Auscultação do som normal da respiração. Sua diminuição ou ausência pode indicar doenças como atelectasia, pneumotórax ou derrame pleural.
+<strong>Roncus e estertores: </strong>Sons anormais como roncos (relacionados à obstrução das vias respiratórias maiores) ou estertores (sibilos, crepitações) que podem ser observados em doenças como bronquite ou pneumonia.
+<strong>Sibilos:</strong> Sons agudos e contínuos que podem indicar asma ou DPOC.
+<strong>Estertores finos:</strong> Sons estalidos ou crepitantes que são típicos de doenças intersticiais ou pneumonias.
+</p>
+<hr>
+<h3>Exames Complementares em Pneumologia</h3> 
+<p><strong>Radiografia de tórax: </strong>Fundamental para avaliar a presença de infiltrações, consolidações, pneumotórax, derrames pleurais e tumores.
+<strong>Tomografia Computadorizada (TC):</strong> Indicada para uma análise mais detalhada das condições pulmonares e para detectar doenças como câncer de pulmão, tuberculose ou doenças pulmonares intersticiais.
+<strong>Espirometria:</strong> Exame essencial para diagnóstico de doenças obstrutivas, como asma e DPOC, avaliando a função pulmonar.
+<strong>Gasometria arterial:</strong> Para avaliar a oxigenação do sangue e o equilíbrio ácido-base.
+<strong>Exames microbiológicos:</strong> Cultura de escarro ou aspirado para diagnóstico de infecções pulmonares bacterianas ou virais.
+<strong>Exame de escarro:</strong> Para identificar bactérias, células tumorais ou micobactérias em casos de suspeita de tuberculose.
+<strong>Broncoscopia:</strong> Para visualização direta das vias aéreas e coleta de amostras para biópsia ou cultura.</p>
+<hr><h3>Sinais e Sintomas Comuns em Pneumologia</h3> 
+<p><strong>Tosse:</strong> Pode ser seca (irritativa) ou produtiva (com secreção).
+<strong>Dispneia:</strong> Falta de ar que pode ser progressiva ou associada a esforço.
+<strong>Hemoptise:</strong> Expectoração de sangue, que pode ser causada por doenças como tuberculose, câncer ou pneumonia grave.
+<strong>Dor torácica:</strong> Pode indicar pneumonia, pleurite ou infarto pulmonar.
+<strong>Cianose: Sinal de hipoxemia grave.</p>
+ 
+<hr> 
+<h3>Video Explicativo</h3> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6lQ-noco0Tw?si=GGsPjdgEfZBGQM_d&amp;start=20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                     
+                    `;
+                    break;
+                    case "Semiologia Psiquiátrica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia psiquiátrica é essencial para o diagnóstico e tratamento de transtornos mentais. Ela se concentra na identificação dos sinais e sintomas psiquiátricos através de uma abordagem sistemática. A avaliação do paciente envolve a análise de sua história de vida, comportamentos, pensamentos, sentimentos e o exame do estado mental, com o objetivo de compreender a natureza do problema psiquiátrico.</p>
+                        <hr><p><strong>Exemplo de Anamnese:</strong> A anamnese psiquiátrica é um componente vital para o diagnóstico. Ela deve ser detalhada, abordando diversos aspectos da vida do paciente, incluindo:
+
+<hr><strong> a) Queixa Principal</strong> 
+O paciente geralmente descreve o principal motivo de consulta, que pode ser algo como "estou me sentindo muito triste", "não consigo dormir", "estou tendo pensamentos confusos" ou "não consigo lidar com a ansiedade".
+<strong>b) História da Doença Atual</strong> 
+<strong>Início:</strong> Quando os sintomas começaram? Há quanto tempo o paciente está sofrendo com esses sintomas?
+<strong>Evolução:</strong> Os sintomas pioraram, melhoraram ou permaneceram constantes? O paciente já procurou tratamento anteriormente?
+<strong>Fatores desencadeantes:</strong> Algum evento ou situação específica que tenha contribuído para o início ou piora dos sintomas (ex.: perda de ente querido, estresse no trabalho, eventos traumáticos)?
+<strong>Sintomas associados:</strong> O paciente apresenta alterações no sono, apetite, energia, pensamento, comportamento ou humor? Há sinais de psicose, como alucinações ou delírios?
+<strong>c) Histórico Pessoal</strong> 
+<strong>Histórico de doenças psiquiátricas:</strong> O paciente ou sua família tem histórico de transtornos psiquiátricos, como depressão, transtorno bipolar, esquizofrenia ou ansiedade?
+<strong>Histórico médico:</strong> Existe alguma condição médica relevante, como doenças neurológicas, endocrinológicas, ou uso de medicamentos que possam afetar a saúde mental?
+<strong>Histórico de uso de substâncias:</strong> O paciente faz uso de álcool, drogas recreativas ou medicamentos? Há histórico de abuso ou dependência de substâncias?
+<strong>Histórico de traumas e eventos de vida:</strong> O paciente já passou por eventos traumáticos, como abuso, acidentes ou experiências de vida difíceis?
+<strong>d) Histórico Familiar</strong> 
+O que é relevante na história psiquiátrica familiar, incluindo doenças psiquiátricas prevalentes, como transtornos de humor, esquizofrenia, transtornos de ansiedade ou distúrbios de personalidade.
+<strong>e) Avaliação do Risco</strong> 
+<strong>Risco de suicídio:</strong>  O paciente tem pensamentos suicidas ou já tentou suicídio no passado? Avaliar a ideação suicida, planos ou tentativas anteriores.
+<strong>Risco de automutilação ou agressão:</strong>  O paciente tem comportamentos autolesivos ou está em risco de prejudicar outras pessoas?</p>
+                        <hr><p><strong>Exame Físico:</strong> O exame físico no contexto psiquiátrico visa identificar alterações de comportamento e sinais de doenças subjacentes que possam contribuir para os sintomas psiquiátricos. O exame físico geral é importante para garantir que não há condições médicas graves ou distúrbios neurológicos.
+
+<strong>a) Aparência e Comportamento</strong> 
+<strong>Aparência: </strong> Avaliar se a aparência do paciente é adequada para sua idade e condições sociais. O paciente está bem cuidado ou apresenta sinais de negligência? Existem vestígios de automutilação, marcas de abuso de substâncias ou distúrbios alimentares?
+<strong>Comportamento:</strong>  Observar o comportamento do paciente, como agitação, inatividade, movimentos repetitivos (tics ou tremores) ou comportamentos estranhos.
+<strong>b) Expressão Facial</strong> 
+<strong>Facialidade:</strong>  A expressão facial é congruente com o estado emocional relatado? Por exemplo, em um paciente com depressão, pode-se observar uma expressão de tristeza ou apatia.
+<strong>c) Postura e Gestos</strong> 
+<strong>Postura:</strong>  A postura do paciente é ereta, relaxada, ou ele demonstra uma postura curvada ou encolhida (como pode ocorrer em estados depressivos)?
+<strong>Gestos:</strong>  A pessoa está falando com as mãos? Seus gestos são adequados e moderados ou excessivos e inapropriados?
+<strong>d) Fala</strong> 
+<strong>Características da fala:</strong>  A fala é fluente, coerente, rápida, lenta ou hesitante? Em transtornos de pensamento, pode haver incoerência na fala ou fuga de ideias (como em casos de esquizofrenia ou transtorno bipolar).
+<strong>Volume e tom:</strong>  A fala do paciente é alta, baixa ou monótona? Um tom de voz monótono pode ser observado em pacientes com depressão.
+<strong>e) Cognição e Orientação</strong> 
+<strong>Nível de consciência:</strong>  O paciente está alerta, orientado e atento? Está sonolento ou delirante?
+<strong>Orientação:</strong>  O paciente está orientado quanto ao tempo, espaço e pessoa? A desorientação pode ser um sinal de psicose, demência ou intoxicação.
+<strong>Memória:</strong>  O paciente apresenta falhas de memória, como em casos de demência ou transtornos cognitivos? Verificar memória recente e remota.
+<strong>f) Estado Emocional</strong> 
+<strong>Humor:</strong>  O estado de humor do paciente é deprimido, ansioso, irritável, eufórico ou labilizado (com mudanças abruptas de humor)?
+<strong>Afeto: </strong> O afeto do paciente é congruente com seu estado de humor ou há uma discordância (ex.: paciente com afeto embotado, típico da depressão)?
+</p>
+<hr>
+<h3>Exame do Estado Mental (EEM)</h3> 
+<p>O Exame do Estado Mental (EEM) é uma avaliação sistemática do funcionamento mental do paciente, abordando vários aspectos, como:
+
+Atenção e concentração: </strong> Testes simples, como contar de 7 em 7 ou repetir uma sequência de palavras, ajudam a avaliar esses aspectos.
+Pensamento:</strong>  Avaliar se o pensamento é lógico, coeso e organizado. Observar sinais de delírios, como crenças irracionais ou distorcidas da realidade.
+Percepção:</strong>  Investigar se há alucinações auditivas, visuais ou táteis.
+Insight:</strong>  Avaliar se o paciente tem consciência de sua condição mental e a necessidade de tratamento.
+Julgamento:</strong>  Analisar se o paciente toma decisões adequadas e razoáveis, de acordo com a sua realidade.</p>
+<hr>
+<h3>Diagnóstico Diferencial</h3> 
+<p>É importante considerar outras condições médicas que possam mimetizar sintomas psiquiátricos, como:
+
+Distúrbios neurológicos:</strong>  Como epilepsia, lesões cerebrais, demência ou doenças neurodegenerativas.
+Distúrbios endócrinos: </strong> Como hipotireoidismo, que pode causar sintomas depressivos.
+Doenças infecciosas:</strong>  Como meningite ou encefalite, que podem afetar o comportamento e a cognição.</p>
+<hr>
+<h3>Exames Complementares</h3> 
+<p>Embora o diagnóstico psiquiátrico seja baseado principalmente na avaliação clínica, alguns exames complementares podem ser necessários:
+
+Exames laboratoriais:</strong>  Para investigar desequilíbrios hormonais ou nutricionais, como o TSH, que pode sugerir problemas tireoidianos.
+Neuroimagem (TC ou RM):</strong>  Usado quando há suspeita de lesões cerebrais estruturais que possam estar influenciando os sintomas psiquiátricos.
+EEG:</strong> Pode ser útil para diagnosticar convulsões ou distúrbios do ritmo cerebral.</p><hr>
+<h3>Material Complementar</h3> 
+<iframe src="psiq.pdf" width="100%" height="600px"></iframe>    
+<hr> 
+<h3>Video Explicativo</h3> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2OBWsmlLgUk?si=VaD7siC6Joj6Rzrq&amp;start=20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `;
+                    break;
+                    case "Semiologia Reumatológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia reumatológica é voltada para a identificação de sinais e sintomas de doenças reumáticas. O diagnóstico precoce é crucial, já que muitas dessas doenças podem evoluir para deformidades articulares, limitações funcionais e comprometimento de órgãos. A avaliação do paciente é feita com base na anamnese, no exame físico e no uso de exames complementares.</p><hr>
+                        <p><strong>Exemplo de Anamnese:</strong> Queixa Principal
+O paciente pode se queixar de dor nas articulações, rigidez, inchaço, cansaço ou febre.
+<strong>Exemplo de queixa:</strong> "Sinto dor nas articulações das mãos e pés, principalmente pela manhã", "Tenho dificuldade para me mover devido à dor nas costas".
+<strong>b) História da Doença Atual</strong>
+<strong>Início e duração:</strong> Quando os sintomas começaram? São sintomas agudos ou crônicos?
+<strong>Localização das dores:</strong> As dores afetam várias articulações ou apenas uma? Elas são simétricas (afetando ambos os lados do corpo) ou assimétricas?
+<strong>Padrão da dor:</strong> A dor é constante ou intermitente? Ela piora com o movimento ou ao repouso?
+<strong>Rigidez matinal:</strong> Se a rigidez matinal durar mais de 30 minutos, pode indicar uma condição inflamatória como artrite reumatoide.
+<strong>Sintomas associados:</strong> Há febre, perda de peso inexplicada, cansaço excessivo, manchas na pele, ou alterações nos órgãos internos?
+<strong>c) Fatores Desencadeantes ou Agravantes</strong>
+Alguma lesão prévia ou trauma pode ter desencadeado os sintomas?
+Existe histórico de infecções, como infecções urinárias ou respiratórias, que podem estar associadas ao início dos sintomas?
+Há fatores genéticos, como histórico familiar de doenças autoimunes ou reumáticas?
+<strong>d) História Pessoal</strong>
+<strong>Doenças anteriores:</strong> O paciente tem histórico de outras doenças reumáticas, como osteoartrite, espondilite anquilosante ou lupus?
+<strong>Uso de medicamentos:</strong> O paciente faz uso de medicamentos anti-inflamatórios, corticoides, ou outros medicamentos que possam afetar o sistema musculoesquelético?
+<strong>e) Histórico Familiar</strong>
+<strong>Doenças reumáticas na família:</strong> O paciente tem familiares com doenças como artrite reumatoide, espondilite anquilosante, lupus ou gota? Isso pode indicar um componente genético na doença.
+<strong>f) Exposição ao Meio Ambiente</strong>
+O paciente tem exposições ocupacionais ou ambientais que possam predispor a doenças reumáticas, como exposição a substâncias tóxicas ou atividades repetitivas que sobrecarreguem as articulações?</p><hr>
+                        <p><strong>Exame Físico:</strong> O exame físico reumatológico é um dos principais instrumentos para o diagnóstico, permitindo a avaliação das articulações, tecidos moles e da função do sistema musculoesquelético.
+
+<strong>a) Inspeção</strong>
+<strong>Deformidades articulares:</strong> Observar se há deformidades, inchaço, eritema ou calor nas articulações.
+<strong>Postura:</strong> Verificar se o paciente apresenta alterações posturais, como escoliose, cifose ou alterações no alinhamento das articulações.
+<strong>Edema:</strong> Inchaço nas articulações, que pode ser indicativo de inflamação ou derrame articular.
+<strong>b) Palpação</strong>
+<strong>Temperatura:</strong> A palpação das articulações ajuda a identificar áreas de aumento de temperatura, sugerindo inflamação.
+<strong>Sensibilidade:</strong> Palpar as articulações para verificar a presença de dor local ou sensibilidade.
+<strong>Deformidades articulares:</strong> Avaliar se há deformações como nódulos ou cistos nas articulações.
+<strong>Fremito:</strong> Sentir se há crepitação (sons de atrito) nas articulações, que pode indicar desgaste da cartilagem articular, como na osteoartrite.
+<strong>c) Movimentos Articulares</strong>
+<strong>Amplitude de movimento:</strong> Testar a amplitude de movimento das articulações afetadas. A presença de rigidez articular pode sugerir doenças inflamatórias.
+<strong>Dor durante a movimentação:</strong> Observar se a dor ocorre em determinados movimentos articulares e se a dor é de caráter mecânico (como na osteoartrite) ou inflamatório (como na artrite reumatoide).
+<strong>d) Testes Específicos</strong>
+<strong>Sinal de Gaenslen:</strong> Usado para avaliar a presença de inflamação nas articulações sacroilíacas, comum na espondilite anquilosante.
+<strong>Sinal de Tinel:</strong> Com a percussão do nervo, pode-se testar a compressão de nervos, como no caso da síndrome do túnel do carpo.
+<strong>Teste de Finkelstein:</strong> Teste para identificar a tenossinovite de De Quervain (inflamação dos tendões do polegar).
+<strong>4. Principais Sinais e Sintomas em Doenças Reumáticas</strong>
+<strong>a) Artrite Reumatoide</strong>
+<strong>Sintomas:</strong> Dor, inchaço e rigidez em várias articulações, principalmente as pequenas articulações das mãos e pés. A rigidez matinal pode durar mais de 30 minutos.
+<strong>Achados físicos:</strong> Deformidades articulares, como desvio ulnar das mãos, nódulos reumatoides.
+<strong>b) Osteoartrite</strong>
+<strong>Sintomas:</strong> Dor articular que piora com o movimento e melhora com o repouso, rigidez matinal breve (menos de 30 minutos).
+<strong>chados físicos:</strong> Crepitação nas articulações, inchaço (especialmente nas articulações dos joelhos, quadris e mãos).
+<strong>c) Espondilite Anquilosante</strong>
+<strong>Sintomas:</strong> Dor nas costas e rigidez que piora à noite e melhora com o movimento.
+<strong>Achados físicos:</strong> Redução da mobilidade da coluna, postura inclinada para frente, dor nas articulações sacroilíacas.
+<strong>d) Lupus Eritematoso Sistêmico</strong>
+<strong>Sintomas: </strong>Fadiga, erupções cutâneas (como o clássico "lúpus malar"), dor nas articulações, febre e envolvimento de órgãos internos.
+<strong>Achados físicos: </strong>Erupções cutâneas típicas, artralgia (dor nas articulações), e envolvimento de órgãos como rins e coração.
+<strong>e) Gota</strong>
+<strong>Sintomas:</strong> Dor intensa, geralmente nas articulações do pé, especialmente no dedão, com inchaço e calor.
+<strong>Achados físicos:</strong> Nódulos de cristais de urato (tofos), em articulações ou tecidos moles.</p><hr>
+<hr>
+<h3>Exames Complementares</h3> 
+<p>Os exames laboratoriais e de imagem são fundamentais para confirmar o diagnóstico e monitorar a evolução das doenças reumáticas.
+
+<strong>Exames laboratoriais:</strong>
+Fator reumatoide e anticorpos anti-CCP para artrite reumatoide.
+Velocidade de hemossedimentação (VHS) e proteína C-reativa (PCR), que são marcadores de inflamação.
+<strong>Citoquímica do líquido sinovial:</strong> Para análise de infecção ou cristais (como no caso da gota).
+Anticorpos antinucleares (ANA) para doenças autoimunes, como lupus.
+<strong>Exames de imagem:</strong>
+<strong>Raio-X:</strong> Para avaliação de erosões articulares, desgaste da cartilagem e presença de deformidades.
+<strong>Ultrassonografia articular:</strong> Para avaliar derrames articulares e inflamação das articulações.
+<strong>Ressonância magnética (RM):</strong> Para uma avaliação mais detalhada das articulações e tecidos moles.
+</p>
+<hr>
+<h3>Material Complementar</h3> 
+<iframe src="reumato.pdf" width="100%" height="600px"></iframe>    
+<hr> 
+<h3>Video Explicativo</h3> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n26hqL2C5WE?si=yvVT5wjxrwyyGx_N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    `;
+                    break;
+                    case "Semiologia Urológica":
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>A semiologia urológica é essencial para o diagnóstico das doenças do trato urinário e reprodutor. Através da anamnese, do exame físico e de exames complementares, o médico pode identificar as causas de queixas como dor abdominal, disúria, hematúria, incontinência urinária, entre outras.</p><hr>
+                      <p><strong>Exemplo de Anamnese:</strong> A anamnese urológica é um passo importante para determinar a causa das queixas do paciente. Ela deve ser detalhada e focada nas funções urinária e genital, com a seguinte estrutura:
+<hr>
+<strong>a) Queixa Principal</strong>
+O paciente pode se queixar de dor ao urinar, dificuldades para urinar, presença de sangue na urina, aumento ou diminuição da frequência urinária, dor nos flancos ou no baixo ventre, entre outros sintomas.
+Exemplo de queixa: "Estou tendo dor ao urinar e percebi sangue na urina."
+<strong>b) História da Doença Atual</strong>
+Início e duração dos sintomas: Quando começaram os sintomas? O paciente notou algum padrão nas queixas, como dor constante ou intermitente?
+Localização da dor: Se o paciente se queixa de dor, é importante questionar sobre a localização (flancos, região suprapúbica, períneo).
+Tipo de dor: A dor é contínua ou tipo cólica? Dores no flanco podem sugerir problemas renais, enquanto dor suprapúbica pode ser mais comum em doenças da bexiga.
+Sintomas associados: O paciente tem febre, calafrios, náuseas, vômitos, ou outras alterações associadas? Esses sintomas podem sugerir uma infecção urinária ou pielonefrite.
+Presença de alterações urinárias: Perguntar sobre aumento ou diminuição do volume urinário (polaciúria, poliúria, anúria), alteração da cor da urina (hematúria, urina turva) ou dificuldades para urinar (disúria, hesitação).
+<strong>c) História Pessoal</strong>
+Histórico de doenças urológicas anteriores: O paciente tem histórico de infecções urinárias recorrentes, cálculos renais, ou doenças genitais (prostatite, epididimite, cistite)?
+Uso de medicamentos: O paciente usa medicamentos que possam afetar o sistema urinário, como diuréticos, analgésicos ou antibióticos?
+Histórico cirúrgico urológico: O paciente já passou por cirurgias no trato urinário ou reprodutor (ex: prostatectomia, cistostomia)?
+Hábitos urinários: Frequência urinária diária, volume urinário médio e características do jato urinário (fraco ou forte).
+<strong>d) Histórico Familiar</strong>
+Doenças urológicas na família: O paciente tem familiares com histórico de doenças renais (como insuficiência renal crônica), câncer urológico, pedras nos rins ou disfunções sexuais?
+<strong>e) Exposição a Fatores de Risco</strong>
+Fatores de risco para doenças urológicas: O paciente tem histórico de diabetes, hipertensão, tabagismo ou obesidade, que são fatores de risco para doença renal crônica e câncer urológico?</p>
+                        <hr><p><strong>Exame Físico:</strong> O exame físico urológico visa a avaliação do trato urinário e genital, bem como a verificação de sinais de infecção, obstrução ou outras condições patológicas.
+
+a) Inspeção e Palpação Abdominal
+Palpação abdominal: A palpação dos flancos (área lateral do abdômen) pode revelar dor ou aumento do rim, sugerindo pielonefrite ou cistos renais. A palpação da bexiga pode revelar retenção urinária ou distensão, principalmente em pacientes com dificuldades para urinar.
+Inspeção da área genital: Observar a presença de lesões, secreções, inchaços ou outras anomalias no escroto, pênis ou vulva.
+b) Exame Genital Masculino
+Inspeção do pênis e escroto: Procurar por lesões, secreções, varicocele, hérnia inguinal ou alterações na anatomia.
+Palpação do escroto e testículos: Verificar se há aumento, dor ou nódulos nos testículos, que podem indicar condições como epididimite ou câncer testicular.
+Exame da próstata: O exame retal digital (toque retal) pode ser realizado para avaliar o tamanho, a consistência e a presença de nódulos na próstata. Esse exame é fundamental para a avaliação do risco de câncer de próstata.
+c) Exame Genital Feminino
+Inspeção da vulva e vagina: Verificar sinais de inflamação, secreções anormais ou lesões.
+Exame pélvico: Realizado para verificar a presença de massas, dor na palpação, ou outros sinais que possam indicar doenças urológicas ou ginecológicas associadas, como cistite intersticial ou prolapsos.
+d) Sinal de Murphy
+Sinal de Murphy: Palpação do flanco direito e observação da dor durante a inspiração profunda, o que pode ser um indicativo de infecção renal (pielonefrite).
+e) Exame de Inspeção Urinária
+Coloração da urina: Observar se há hematúria (sangue na urina) ou turvação, que podem sugerir infecção ou pedras nos rins.
+Sinais de retenção urinária: Observar sinais de distensão abdominal e dor na bexiga, indicando retenção urinária.</p><hr>
+<h3>Principais Sinais e Sintomas em Doenças Urológicas</h3> 
+<p><strong>a) Infecção do Trato Urinário (ITU)</strong>
+<strong>Sintomas:</strong> Dor ao urinar (disúria), urgência urinária, aumento da frequência urinária (polaciúria), febre e dor lombar ou suprapúbica.
+<strong>Exame físico:</strong> Sensibilidade à palpação dos flancos, indicando pielonefrite, ou dor suprapúbica, sugestiva de cistite.
+<strong>b) Pedras nos Rins (Cálculos Renais)</strong>
+<strong>Sintomas:</strong> Dor intensa e cólica nas costas ou no flanco, com irradiação para a região inguinal, presença de sangue na urina (hematúria).
+<strong>Exame físico:</strong> Palpação dolorosa nos flancos, podendo ser positivo o sinal de Murphy.
+<strong>c) Câncer Urológico</strong>
+<strong>Sintomas:</strong> Hematúria (sangue na urina), dor pélvica, perda de peso inexplicada, cansaço extremo.
+<strong>Exame físico:</strong> Massa palpável no abdômen ou na pelve, distensão da bexiga ou próstata aumentada e endurecida.
+<strong>d) Hiperplasia Prostática Benigna (HPB)</strong>
+<strong>Sintomas:</strong> Dificuldade para iniciar a micção, fluxo urinário fraco, urgência urinária, sensação de esvaziamento incompleto da bexiga.
+<strong>Exame físico:</strong> Prostata aumentada e firme ao toque retal, sem nódulos.
+<strong>e) Incontinência Urinária</strong>
+<strong>Sintomas:</strong> Perda involuntária de urina, que pode ser associada a tosse, espirro, riso (incontinência de esforço) ou necessidade urgente de urinar (incontinência de urgência).
+<strong> Exame físico:</strong>  Testes de estimulação da bexiga e do esfíncter urinário para avaliar a função.</p><hr>
+<h3>Exames Complementares</h3> 
+<p>Exames laboratoriais:
+
+<strong>EAS (Exame de Urina Tipo 1):</strong> Para verificar infecções urinárias, presença de sangue ou proteínas.
+<strong>Urocultura:</strong>  Para identificar bactérias causadoras de ITUs.
+<strong>Creatinina e ureia:</strong>  Para avaliar a função renal.
+<strong>Antígeno prostático específico (PSA):</strong>  Para rastrear câncer de próstata.
+Exames de imagem:
+
+<strong>Ultrassonografia abdominal:</strong> Para avaliar os rins, bexiga e próstata.
+<strong>Tomografia computadorizada (TC):</strong> Usada para identificar cálculos renais, massas ou tumores.
+<strong>Urografia excretora:</strong> Para avaliação do trato urinário superior e detectar anomalias ou obstruções.
+<strong>Cistoscopia:</strong> Exame visual da bexiga para diagnóstico de câncer ou outras condições.</p><hr>
+<h3>Material Complementar</h3> 
+<iframe src="uro.pdf" width="100%" height="600px"></iframe>    
+<hr> 
+<h3>Video Explicativo</h3> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sWuZAju5jKE?si=hEnBlo1kg5GUAxz6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    `;
+                    break;
+                default:
+                    content = `
+                        <h2>${specialty}</h2>
+                        <p>Conteúdo sobre ${specialty} será exibido aqui.</p>
+                    `;
+            }
+
+            contentArea.innerHTML = content;
             contentArea.style.display = 'block';
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('specialty-list').style.display = 'none';
         }
     </script>
 </body>

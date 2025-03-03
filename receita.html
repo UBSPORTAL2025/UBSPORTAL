@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBS Portal Caieiras - Receituário</title>
+    <style>
+        :root {
+            --primary-color: #005792;
+            --secondary-color: #00334e;
+            --accent-color: #f6f6e9;
+            --text-color: #333;
+            --border-color: #d1d1d1;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm; /* Tamanho A4 */
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            min-height: 297mm; /* Altura A4 */
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 70px;
+            color: rgba(0,0,0,0.03);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .header-text {
+            flex: 1;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+        
+        .info p {
+            margin: 3px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .titulo {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 25px 0;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .titulo:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 8px auto 0;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-column {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 87, 146, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .medications {
+            margin-bottom: 20px;
+        }
+        
+        .medications h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+        
+        .medication-item {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+            position: relative;
+        }
+        
+        .medication-number {
+            margin-right: 10px;
+            min-width: 20px;
+            text-align: right;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .medication-input {
+            flex: 1;
+            position: relative;
+        }
+        
+        .medication-suggestions {
+            position: absolute;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 100%;
+            display: none;
+            z-index: 10;
+            box-shadow: var(--shadow);
+        }
+        
+        .suggestion {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+        
+        .suggestion:last-child {
+            border-bottom: none;
+        }
+        
+        .suggestion:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .suggestion .medication-name {
+            font-weight: bold;
+            display: block;
+            color: var(--primary-color);
+        }
+        
+        .suggestion .medication-details {
+            font-size: 12px;
+            color: #666;
+            display: block;
+            margin-top: 3px;
+        }
+        
+        .add-medication-btn {
+            background-color: transparent;
+            border: 1px dashed var(--border-color);
+            color: var(--primary-color);
+            padding: 8px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .add-medication-btn:hover {
+            background-color: rgba(0, 87, 146, 0.05);
+        }
+        
+        .remove-med-btn {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0 5px;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        
+        .remove-med-btn:hover {
+            color: #ff4d4d;
+        }
+        
+        .signature {
+            margin-top: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .signature-line {
+            border-top: 1px solid black;
+            width: 250px;
+            margin: 10px auto;
+        }
+        
+        .signature p {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #666;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer h4 {
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+        
+        .medication-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .category {
+            margin-bottom: 10px;
+        }
+        
+        .category-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .commands {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        button.secondary {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        button.secondary:hover {
+            background-color: #e1e1e1;
+        }
+        
+        .icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+        
+        .tab {
+            padding: 8px 15px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .color-option {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        
+        /* Estilos para impressão - Melhorado para remover setas e linhas */
+        @media print {
+            body {
+                padding: 0;
+                background-color: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 15mm;
+                max-width: 100%;
+                min-height: auto;
+            }
+            
+            /* Ocultar elementos de UI na impressão */
+            .commands, 
+            .add-medication-btn, 
+            .remove-med-btn, 
+            .icon-plus, 
+            .icon-remove, 
+            .icon-print, 
+            .icon-clear, 
+            .icon-settings, 
+            select[id="tipo-profissional"],
+            input[type="date"]::-webkit-calendar-picker-indicator,
+            input[type="date"]::-webkit-inner-spin-button {
+                display: none !important;
+            }
+            
+            /* Remover bordas e background dos elementos de formulário */
+            input, select, textarea {
+                border: none;
+                background: transparent;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+            
+            /* Remover triângulos de dropdown nos selects */
+            select {
+                background-image: none !important;
+            }
+            
+            .medication-suggestions {
+                display: none !important;
+            }
+            
+            .footer {
+                margin-top: 30px;
+                page-break-inside: avoid;
+                border-top-color: #999;
+            }
+            
+            .signature {
+                page-break-inside: avoid;
+                margin-top: 50px;
+            }
+            
+            .watermark {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .form-section {
+                border: none;
+                padding: 0;
+                background: transparent;
+                box-shadow: none;
+            }
+            
+            /* Garantir que inputs de texto não mostrem outline */
+            input[type="text"], textarea {
+                outline: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+            
+            /* Remover bordas das tabelas */
+            table, tr, td, th {
+                border-color: #999 !important;
+            }
+            
+            /* Manter apenas o conteúdo visível nos inputs */
+            input, select, textarea {
+                color: black;
+            }
+            
+            /* Ocultar decorações e sombras */
+            .titulo:after {
+                background-color: #999;
+            }
+            
+            /* Remover linhas pontilhadas e decorações */
+            a, button, select {
+                text-decoration: none !important;
+            }
+        }
+        
+        /* Ícones */
+        .icon-print:before { content: "🖨️"; }
+        .icon-settings:before { content: "⚙️"; }
+        .icon-clear:before { content: "🗑️"; }
+        .icon-plus:before { content: "➕"; }
+        .icon-remove:before { content: "✖"; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="watermark">UBS PORTAL DAS LARANJEIRAS</div>
+        
+        <div class="header">
+            <div class="logo-container">
+                <img id="logo-preview" src="logo-prefeitura-2021.png" alt="Logo UBS">
+            </div>
+            <div class="header-text">
+                <h1>UBS Portal das Laranjeiras</h1>
+                <div class="info">
+                    <p>Tel: (11) 4800-5024</p>
+                    <p id="endereco-display">Endereço: Cardeal, S/N - Portal das Laranjeiras Caieiras, SP</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="titulo">RECEITUÁRIO</div>
+        
+        <div class="form-section">
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="tipo-profissional">Profissional:</label>
+                        <select id="tipo-profissional">
+                            <option value="Médico">Médico</option>
+                            <option value="Dentista">Dentista</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="crm-cro">CRM/CRO:</label>
+                        <input type="text" id="crm-cro">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="paciente">Paciente:</label>
+                        <input type="text" id="paciente">
+                    </div>
+                </div>
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="data">Data:</label>
+                        <input type="date" id="data">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section medications">
+            <h3>Prescrição</h3>
+            <div id="medication-list">
+                <!-- Javascript injeta as medicações aqui -->
+            </div>
+            <button class="add-medication-btn"><span class="icon icon-plus"></span> Adicionar Medicação</button>
+        </div>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="orientacoes">Orientações de Uso:</label>
+                <textarea id="orientacoes" placeholder="Posologia, horários, e observações"></textarea>
+            </div>
+        </div>
+        
+        <div class="signature">
+            <div class="signature-line"></div>
+            <p>Assinatura e Carimbo do Profissional</p>
+        </div>
+        
+        <div class="footer">
+            <h4>UBS Portal das Laranjeiras</h4>
+            <p>Rua Cardeal,S/N - Portal das Laranjeiras Caieiras, SP | Tel: (11) 4800-5024</p>
+        </div>
+        
+        <div class="commands">
+            <div class="btn-group">
+                <button onclick="window.print()">
+                    <span class="icon icon-print"></span> Imprimir
+                </button>
+                <button class="secondary" onclick="limparFormulario()">
+                    <span class="icon icon-clear"></span> Limpar Tudo
+                </button>
+            </div>
+            <button class="secondary" onclick="abrirModal()"><span class="icon icon-settings"></span> Personalizar</button>
+        </div>
+    </div>
+    
+    <!-- Configurações Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Personalizar Receituário</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="logo">Logo</div>
+                <div class="tab" data-tab="colors">Cores</div>
+                <div class="tab" data-tab="address">Endereço</div>
+            </div>
+            
+            <div id="logo" class="tab-content active">
+                <p>Mude o logo da UBS:</p>
+                <input type="file" id="logo-upload" accept="image/*">
+            </div>
+            
+            <div id="colors" class="tab-content">
+                <h4>Esquema de Cores</h4>
+                <div class="color-option">
+                    <label>Cor Primária:</label>
+                    <input type="color" id="primary-color" value="#005792">
+                </div>
+                <div class="color-option">
+                    <label>Cor Secundária:</label>
+                    <input type="color" id="secondary-color" value="#00334e">
+                </div>
+                <div class="color-option">
+                    <label>Cor de Destaque:</label>
+                    <input type="color" id="accent-color" value="#f6f6e9">
+                </div>
+                <button onclick="aplicarCores()">Aplicar Cores</button>
+            </div>
+            
+            <div id="address" class="tab-content">
+                <h4>Alterar Endereço</h4>
+                <label for="endereco">Novo Endereço:</label>
+                <input type="text" id="endereco" placeholder="Rua, Número - Bairro, Cidade - UF">
+                <button onclick="atualizarEndereco()">Atualizar Endereço</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Sugestões de Medicamentos
+        const medicamentosDisponiveis = [
+            { name: "Paracetamol", details: "500mg, Comprimido" },
+            { name: "Ibuprofeno", details: "400mg, Comprimido" },
+            { name: "Dipirona", details: "500mg/mL, Solução Oral" },
+            { name: "Amoxicilina", details: "500mg, Cápsula" },
+            { name: "Cefalexina", details: "500mg, Cápsula" },
+            { name: "Nimesulida", details: "100mg, Comprimido" },
+            { name: "Diclofenaco Sódico", details: "50mg, Comprimido" },
+            { name: "Ácido Acetilsalicílico (AAS)", details: "100mg/500mg, Comprimido" },
+            { name: "Azitromicina", details: "500mg, Comprimido" },
+{ name: "Clarithromicina", details: "500mg, Comprimido" },
+{ name: "Amoxicilina + Clavulanato de Potássio", details: "875mg/125mg, Comprimido" },
+{ name: "Ciprofloxacino", details: "500mg, Comprimido" },
+{ name: "Celecoxibe", details: "200mg, Comprimido" },
+{ name: "Prednisona", details: "5mg/20mg, Comprimido" },
+{ name: "Dexametasona", details: "4mg, Comprimido" },
+{ name: "Loratadina", details: "10mg, Comprimido" },
+{ name: "Desloratadina", details: "5mg, Comprimido" },
+{ name: "Cetirizina", details: "10mg, Comprimido" },
+{ name: "Fexofenadina", details: "180mg, Comprimido" },
+{ name: "Omeprazol", details: "20mg/40mg, Cápsula" },
+{ name: "Esomeprazol", details: "20mg/40mg, Cápsula" },
+{ name: "Ranitidina", details: "150mg/300mg, Comprimido" },
+{ name: "Loperamida", details: "2mg, Comprimido" },
+{ name: "Dimeticona", details: "40mg/mL, Suspensão Oral" },
+{ name: "Losartana", details: "50mg/100mg, Comprimido" },
+{ name: "Atenolol", details: "50mg/100mg, Comprimido" },
+{ name: "Hidroclorotiazida", details: "25mg, Comprimido" },
+{ name: "Enalapril", details: "10mg/20mg, Comprimido" },
+{ name: "Amlodipina", details: "5mg/10mg, Comprimido" },
+{ name: "Sertralina", details: "50mg/100mg, Comprimido" },
+{ name: "Fluoxetina", details: "20mg, Comprimido" },
+{ name: "Clonazepam", details: "0,5mg/2mg, Comprimido" },
+{ name: "Alprazolam", details: "0,25mg/1mg, Comprimido" },
+{ name: "Paroxetina", details: "20mg, Comprimido" },
+{ name: "Metformina", details: "500mg/850mg, Comprimido" },
+{ name: "Glibenclamida", details: "5mg, Comprimido" },
+{ name: "Insulina NPH", details: "100UI/mL, Solução Injetável" },
+{ name: "Insulina Glargina", details: "100UI/mL, Solução Injetável" },
+{ name: "Salbutamol", details: "100mcg, Aerossol" },
+{ name: "Montelucaste", details: "10mg, Comprimido" },
+{ name: "Budesonida", details: "200mcg, Aerossol" },
+{ name: "Complexo B", details: "Comprimido" },
+{ name: "Vitamina C", details: "500mg, Comprimido Efervescente" },
+{ name: "Vitamina D3", details: "2000UI, Cápsula" },
+{ name: "Ômega 3", details: "1000mg, Cápsula" },
+{ name: "Paracetamol + Cafeína", details: "500mg/65mg, Comprimido" },
+{ name: "Dipirona Sódica", details: "1g, Ampola Injetável" },
+{ name: "Sulfato de Magnésio", details: "2g/10mL, Solução Injetável" },
+{ name: "Hidróxido de Alumínio + Magnésio", details: "Suspensão Oral" },
+{ name: "Acetato de Ciproterona + Etinilestradiol", details: "2mg/35mcg, Comprimido" },
+        ];
+        
+        // Variáveis Globais e Helpers
+        let medicationCount = 0;
+        const medicationList = document.getElementById("medication-list");
+        const addMedicationButton = document.querySelector(".add-medication-btn");
+        
+        // Função para adicionar uma linha de medicação
+        function addMedicationLine() {
+            medicationCount++;
+            const line = document.createElement("div");
+            line.classList.add("medication-item");
+            
+            line.innerHTML = `
+                <span class="medication-number">${medicationCount}.</span>
+                <div class="medication-input">
+                    <input type="text" class="medication-name" placeholder="Nome do medicamento">
+                    <div class="medication-suggestions"></div>
+                </div>
+                <button class="remove-med-btn" title="Remover"><span class="icon icon-remove"></span></button>
+            `;
+            
+            medicationList.appendChild(line);
+            setupMedicationSuggestions(line.querySelector(".medication-name"), line.querySelector(".medication-suggestions"));
+            
+            line.querySelector(".remove-med-btn").addEventListener("click", () => {
+                medicationList.removeChild(line);
+                updateMedicationNumbers();
+            });
+        }
+        
+        // Função para atualizar a numeração das medicações
+        function updateMedicationNumbers() {
+            const lines = document.querySelectorAll(".medication-item");
+            medicationCount = 0;
+            lines.forEach(line => {
+                medicationCount++;
+                line.querySelector(".medication-number").innerText = `${medicationCount}.`;
+            });
+        }
+        
+        // Função para configurar as sugestões
+        function setupMedicationSuggestions(input, suggestionsContainer) {
+            input.addEventListener("input", () => {
+                const term = input.value.toLowerCase();
+                const suggestions = medicamentosDisponiveis.filter(med => med.name.toLowerCase().includes(term)).slice(0, 5);
+                displaySuggestions(suggestions, suggestionsContainer, input);
+            });
+        }
+        
+        // Função para exibir as sugestões
+        function displaySuggestions(suggestions, container, input) {
+            container.innerHTML = "";
+            if (suggestions.length === 0) {
+                container.style.display = "none";
+                return;
+            }
+            
+            suggestions.forEach(med => {
+                const suggestionElement = document.createElement("div");
+                suggestionElement.classList.add("suggestion");
+                suggestionElement.innerHTML = `
+                    <span class="medication-name">${med.name}</span>
+                    <span class="medication-details">${med.details}</span>
+                `;
+                suggestionElement.addEventListener("click", () => {
+                    input.value = `${med.name} - ${med.details}`;
+                    container.style.display = "none";
+                });
+                container.appendChild(suggestionElement);
+            });
+            container.style.display = "block";
+        }
+        
+        // Função para limpar o formulário
+        function limparFormulario() {
+            document.getElementById("tipo-profissional").selectedIndex = 0;
+            document.getElementById("crm-cro").value = "";
+            document.getElementById("paciente").value = "";
+            document.getElementById("data").value = "";
+            document.getElementById("orientacoes").value = "";
+            medicationList.innerHTML = "";
+            medicationCount = 0;
+        }
+        
+        // Função para abrir o modal
+        function abrirModal() {
+            document.getElementById("settings-modal").style.display = "flex";
+        }
+        
+        // Evento ao clicar fora para fechar sugestões
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".medication-input")) {
+                document.querySelectorAll(".medication-suggestions").forEach(container => container.style.display = "none");
+            }
+        });
+        
+        // Modal e Funções de Personalização
+        const settingsModal = document.getElementById("settings-modal");
+        const closeModalButton = document.querySelector(".close-btn");
+        const tabButtons = document.querySelectorAll(".tab");
+        const tabContents = document.querySelectorAll(".tab-content");
+        const logoUpload = document.getElementById("logo-upload");
+        const logoPreview = document.getElementById("logo-preview");
+        const enderecoInput = document.getElementById("endereco");
+        const enderecoDisplay = document.getElementById("endereco-display");
+        
+        // Fecha o Modal
+        closeModalButton.addEventListener("click", () => {
+            settingsModal.style.display = "none";
+        });
+        
+        // Navegação nas Tabs
+        tabButtons.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabButtons.forEach(t => t.classList.remove("active"));
+                tabContents.forEach(c => c.classList.remove("active"));
+                tab.classList.add("active");
+                document.getElementById(tab.dataset.tab).classList.add("active");
+            });
+        });
+        
+        // Atualiza o endereço
+        function atualizarEndereco() {
+            const novoEndereco = enderecoInput.value.trim();
+            if (novoEndereco) {
+                enderecoDisplay.innerText = "Endereço: " + novoEndereco;
+                // Atualiza também no rodapé
+                const footerText = document.querySelector(".footer p");
+                const enderecoParts = footerText.innerText.split("|");
+                if (enderecoParts.length > 1) {
+                    footerText.innerText = novoEndereco + " | " + enderecoParts[1];
+                }
+            }
+        }
+        
+        // Atualiza o Logo (Preview)
+        logoUpload.addEventListener("change", (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    logoPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Manipulação de Cores
+        function aplicarCores() {
+            const primaryColor = document.getElementById("primary-color").value;
+            const secondaryColor = document.getElementById("secondary-color").value;
+            const accentColor = document.getElementById("accent-color").value;
+            
+            // Atualizar variáveis CSS
+            document.documentElement.style.setProperty('--primary-color', primaryColor);
+            document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+            document.documentElement.style.setProperty('--accent-color', accentColor);
+        }
+        
+        // Inicialização - adiciona algumas linhas por padrão
+        window.addEventListener('DOMContentLoaded', () => {
+            // Define a data atual no campo de data
+            const today = new Date();
+            const formattedDate = today.toISOString().substr(0, 10);
+            document.getElementById("data").value = formattedDate;
+            
+            // Adiciona uma linha de medicação em branco por padrão
+            addMedicationLine();
+        });
+        
+        // Hook para botão adicionar medicação
+        addMedicationButton.addEventListener("click", addMedicationLine);
+    </script>
+</body>
+</html>
