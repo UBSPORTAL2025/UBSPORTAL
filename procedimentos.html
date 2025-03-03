@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedimentos Médicos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>/* style.css */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        
+        h1 {
+            color: #007BFF;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .dropbtn {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #0056b3;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            width: 100%;
+            left: 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        
+        .dropdown:hover .dropdown-content, .dropdown:focus .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        /* Estilos para as explicações dos procedimentos */
+        div[id] {
+            margin-top: 20px;
+            padding: 20px;
+            border-left: 5px solid #007BFF;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        div[id]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        div[id] h2 {
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        
+        div[id] p {
+            line-height: 1.6;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Procedimentos Médicos</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Selecione um Procedimento</button>
+            <div class="dropdown-content">
+                <a href="#av-intraoseo">Acesso Vascular Intraósseo</a>
+                <a href="#avc-femoral">Acesso Venoso Central - Veia Femoral</a>
+                <a href="#avc-jugular">Acesso Venoso Central - Veia Jugular Interna</a>
+                <a href="#avc-subclavia">Acesso Venoso Central - Veia Subclávia</a>
+                <a href="#avp">Acesso Venoso Periférico</a>
+                <a href="#artrocentese">Artrocentese / Infiltração Articular</a>
+                <a href="#balao-gastro">Balão Gastresofágico de Sengstaken-Blakemore</a>
+                <a href="#cantoplastia">Cantoplastia</a>
+                <a href="#cat-nasogastrica">Cateterização Nasogástrica</a>
+                <a href="#cat-vesical">Cateterização Vesical</a>
+                <a href="#cat-pulmonar">Cateterização da Artéria Pulmonar (Swan-Ganz)</a>
+                <a href="#cat-umbilical">Cateterização da Artéria Umbilical</a>
+                <a href="#cat-veia-umbilical">Cateterização da Veia Umbilical</a>
+                <a href="#cistostomia-aberta">Cistostomia Aberta (cirúrgica)</a>
+                <a href="#cistostomia-percutanea">Cistostomia Percutânea</a>
+                <a href="#coleta-gasometria">Coleta de Gasometria Arterial</a>
+                <a href="#colpocitologia">Colpocitologia Oncótica (Papanicolau)</a>
+                <a href="#combitubo">Combitubo</a>
+                <a href="#cricotireoidostomia-cirurgica">Cricotireoidostomia Cirúrgica</a>
+                <a href="#cricotireoidostomia-por-puncao">Cricotireoidostomia por Punção</a>
+                <a href="#dissecacao-venosa">Dissecção Venosa</a>
+                <a href="#drenagem-pleural">Drenagem Pleural</a>
+                <a href="#drenagem-abscesso">Drenagem de Abscesso Cutâneo</a>
+                <a href="#drenagem-hematoma">Drenagem de Hematoma Subungueal</a>
+                <a href="#injecao-intramuscular">Injeção Intramuscular</a>
+                <a href="#insercao-diou">Inserção de DIU</a>
+                <a href="#intubacao-nasotraqueal">Intubação Nasotraqueal</a>
+                <a href="#intubacao-orotraqueal">Intubação Orotraqueal (IOT)</a>
+                <a href="#lavado-peritoneal">Lavado Peritoneal Diagnóstico (LPD)</a>
+                <a href="#marca-passo-transcutaneo">Marca-passo Provisório Transcutâneo (Transtorácico)</a>
+                <a href="#marca-passo-transvenoso">Marca-passo Provisório Transvenoso</a>
+                <a href="#medida-pressao-intraabdominal">Medida da Pressão Intra-abdominal</a>
+                <a href="#medida-pressao-venosa-central">Medida da Pressão Venosa Central</a>
+                <a href="#monitorizacao-invasiva">Monitorização Invasiva de Pressão Arterial</a>
+                <a href="#mascara-larinjea">Máscara Laríngea</a>
+                <a href="#paracentese">Paracentese</a>
+                <a href="#pericardiocentese">Pericardiocentese</a>
+                <a href="#puncao-lombar">Punção Lombar</a>
+                <a href="#reducao-parafimose">Redução de Parafimose</a>
+                <a href="#remocao-fecaloma">Remoção (quebra) Manual de Fecaloma</a>
+                <a href="#remocao-anel-presos">Remoção de Anel Preso</a>
+                <a href="#remocao-anzol">Remoção de Anzol</a>
+                <a href="#remocao-corpo-estranho-nariz">Remoção de Corpo Estranho do Nariz</a>
+                <a href="#remocao-corpo-estranho-olho">Remoção de Corpo Estranho do Olho</a>
+                <a href="#remocao-corpo-estranho-ouvido">Remoção de Corpo Estranho do Ouvido</a>
+                <a href="#retirada-cerume">Retirada de Cerume (lavagem Auricular)</a>
+                <a href="#suturas">Suturas</a>
+                <a href="#tamponamento-nasal">Tamponamento Nasal (epistaxe)</a>
+                <a href="#toracocentese">Toracocentese</a>
+                <a href="#traqueostomia-aberta">Traqueostomia Aberta (cirúrgica)</a>
+                <a href="#traqueostomia-percutanea">Traqueostomia Percutânea</a>
+                <a href="#trombectomia-hemorroidaria">Trombectomia Hemorroidaria</a>
+            </div>
+        </div>
+
+        <!-- Explicações dos procedimentos -->
+        <div id="av-intraoseo">
+            <h2>Acesso Vascular Intraósseo</h2>
+            <p>É um procedimento que envolve a inserção de um cateter em um osso para administração de medicamentos ou fluidos.</p>
+        </div>
+
+        <div id="avc-femoral">
+            <h2>Acesso Venoso Central - Veia Femoral</h2>
+            <p>Utiliza a veia femoral para inserir um cateter central, permitindo a administração de medicamentos ou fluidos.</p>
+        </div>
+
+        <div id="avc-jugular">
+            <h2>Acesso Venoso Central - Veia Jugular Interna</h2>
+            <p>Utiliza a veia jugular interna para inserir um cateter central.</p>
+        </div>
+
+        <div id="avc-subclavia">
+            <h2>Acesso Venoso Central - Veia Subclávia</h2>
+            <p>Utiliza a veia subclávia para inserir um cateter central.</p>
+        </div>
+
+        <div id="avp">
+            <h2>Acesso Venoso Periférico</h2>
+            <p>Refere-se à inserção de um cateter em uma veia periférica para administração de medicamentos ou fluidos.</p>
+        </div>
+
+        <div id="artrocentese">
+            <h2>Artrocentese / Infiltração Articular</h2>
+            <p>Procedimento que envolve a remoção de fluido de uma articulação ou a injeção de medicamentos diretamente na articulação.</p>
+        </div>
+
+        <div id="balao-gastro">
+            <h2>Balão Gastresofágico de Sengstaken-Blakemore</h2>
+            <p>Utilizado para controlar sangramentos no esôfago.</p>
+        </div>
+
+        <div id="cantoplastia">
+            <h2>Cantoplastia</h2>
+            <p>Procedimento cirúrgico para reparar ou reconstruir a pálpebra.</p>
+        </div>
+
+        <div id="cat-nasogastrica">
+            <h2>Cateterização Nasogástrica</h2>
+            <p>Inserção de um tubo pelo nariz até o estômago para alimentação ou remoção de conteúdo.</p>
+        </div>
+
+        <div id="cat-vesical">
+            <h2>Cateterização Vesical</h2>
+            <p>Inserção de um cateter na bexiga para drenar urina.</p>
+        </div>
+
+        <div id="cat-pulmonar">
+            <h2>Cateterização da Artéria Pulmonar (Swan-Ganz)</h2>
+            <p>Monitora a pressão e o fluxo sanguíneo nos pulmões.</p>
+        </div>
+
+        <div id="cat-umbilical">
+            <h2>Cateterização da Artéria Umbilical</h2>
+            <p>Utilizada em recém-nascidos para monitorar e tratar condições.</p>
+        </div>
+        
+        <div id="cat-veia-umbilical">
+            <h2>Cateterização da Veia Umbilical</h2>
+            <p>Utilizada em recém-nascidos para administração de medicamentos ou fluidos.</p>
+        </div>
+
+        <div id="cistostomia-aberta">
+            <h2>Cistostomia Aberta (cirúrgica)</h2>
+            <p>Procedimento cirúrgico para criar uma abertura na bexiga.</p>
+        </div>
+
+        <div id="cistostomia-percutanea">
+            <h2>Cistostomia Percutânea</h2>
+            <p>Procedimento minimamente invasivo para drenar a bexiga.</p>
+        </div>
+
+        <div id="coleta-gasometria">
+            <h2>Coleta de Gasometria Arterial</h2>
+            <p>Análise do sangue para medir níveis de oxigênio e dióxido de carbono.</p>
+        </div>
+
+        <div id="colpocitologia">
+            <h2>Colpocitologia Oncótica (Papanicolau)</h2>
+            <p>Exame para detecção de câncer cervical.</p>
+        </div>
+
+        <div id="combitubo">
+            <h2>Combitubo</h2>
+            <p>Dispositivo para ventilação e aspiração.</p>
+        </div>
+
+        <div id="cricotireoidostomia-cirurgica">
+            <h2>Cricotireoidostomia Cirúrgica</h2>
+            <p>Procedimento para criar uma abertura na cartilagem cricóide.</p>
+        </div>
+
+        <div id="cricotireoidostomia-por-puncao">
+            <h2>Cricotireoidostomia por Punção</h2>
+            <p>Procedimento minimamente invasivo para criar uma abertura na cartilagem cricóide.</p>
+        </div>
+
+        <div id="dissecacao-venosa">
+            <h2>Dissecção Venosa</h2>
+            <p>Procedimento para remover ou reparar veias.</p>
+        </div>
+
+        <div id="drenagem-pleural">
+            <h2>Drenagem Pleural</h2>
+            <p>Remoção de fluido ou ar do espaço pleural.</p>
+        </div>
+
+        <div id="drenagem-abscesso">
+            <h2>Drenagem de Abscesso Cutâneo</h2>
+            <p>Remoção de pus de um abscesso na pele.</p>
+        </div>
+
+        <div id="drenagem-hematoma">
+            <h2>Drenagem de Hematoma Subungueal</h2>
+            <p>Remoção de sangue acumulado sob a unha.</p>
+        </div>
+
+        <div id="injecao-intramuscular">
+            <h2>Injeção Intramuscular</h2>
+            <p>Administração de medicamentos diretamente no músculo.</p>
+        </div>
+
+        <div id="insercao-diou">
+            <h2>Inserção de DIU</h2>
+            <p>Colocação de um dispositivo intrauterino para contracepção.</p>
+        </div>
+
+        <div id="intubacao-nasotraqueal">
+            <h2>Intubação Nasotraqueal</h2>
+            <p>Inserção de um tubo pela narina até a traqueia para ventilação.</p>
+        </div>
+
+        <div id="intubacao-orotraqueal">
+            <h2>Intubação Orotraqueal (IOT)</h2>
+            <p>Inserção de um tubo pela boca até a traqueia para ventilação.</p>
+        </div>
+
+        <div id="lavado-peritoneal">
+            <h2>Lavado Peritoneal Diagnóstico (LPD)</h2>
+            <p>Procedimento para diagnosticar ou tratar condições no abdômen.</p>
+        </div>
+
+        <div id="marca-passo-transcutaneo">
+            <h2>Marca-passo Provisório Transcutâneo (Transtorácico)</h2>
+            <p>Dispositivo temporário para regular o ritmo cardíaco.</p>
+        </div>
+
+        <div id="marca-passo-transvenoso">
+            <h2>Marca-passo Provisório Transvenoso</h2>
+            <p>Dispositivo temporário inserido por via venosa para regular o ritmo cardíaco.</p>
+        </div>
+
+        <div id="medida-pressao-intraabdominal">
+            <h2>Medida da Pressão Intra-abdominal</h2>
+            <p>Avaliação da pressão dentro do abdômen.</p>
+        </div>
+
+        <div id="medida-pressao-venosa-central">
+            <h2>Medida da Pressão Venosa Central</h2>
+            <p>Avaliação da pressão nas veias centrais.</p>
+        </div>
+
+        <div id="monitorizacao-invasiva">
+            <h2>Monitorização Invasiva de Pressão Arterial</h2>
+            <p>Monitora a pressão arterial diretamente nas artérias.</p>
+        </div>
+
+        <div id="mascara-larinjea">
+            <h2>Máscara Laríngea</h2>
+            <p>Dispositivo para ventilação sem intubação.</p>
+        </div>
+
+        <div id="paracentese">
+            <h2>Paracentese</h2>
+            <p>Remoção de fluido do abdômen.</p>
+        </div>
+
+        <div id="pericardiocentese">
+            <h2>Pericardiocentese</h2>
+            <p>Remoção de fluido do saco pericárdico.</p>
+        </div>
+
+        <div id="puncao-lombar">
+            <h2>Punção Lombar</h2>
+            <p>Coleta de líquido cefalorraquidiano para diagnóstico.</p>
+        </div>
+
+        <div id="reducao-parafimose">
+            <h2>Redução de Parafimose</h2>
+            <p>Procedimento para tratar a parafimose, uma condição do pênis.</p>
+        </div>
+
+        <div id="remocao-fecaloma">
+            <h2>Remoção (quebra) Manual de Fecaloma</h2>
+            <p>Remoção manual de fezes endurecidas no intestino.</p>
+        </div>
+
+        <div id="remocao-anel-presos">
+            <h2>Remoção de Anel Preso</h2>
+            <p>Remoção de um anel preso no dedo.</p>
+        </div>
+
+        <div id="remocao-anzol">
+            <h2>Remoção de Anzol</h2>
+            <p>Remoção de um anzol preso na pele.</p>
+        </div>
+
+        <div id="remocao-corpo-estranho-nariz">
+            <h2>Remoção de Corpo Estranho do Nariz</h2>
+            <p>Remoção de objetos presos no nariz.</p>
+        </div>
+
+        <div id="remocao-corpo-estranho-olho">
+            <h2>Remoção de Corpo Estranho do Olho</h2>
+            <p>Remoção de objetos presos no olho.</p>
+        </div>
+
+        <div id="remocao-corpo-estranho-ouvido">
+            <h2>Remoção de Corpo Estranho do Ouvido</h2>
+            <p>Remoção de objetos presos no ouvido.</p>
+        </div>
+
+        <div id="retirada-cerume">
+            <h2>Retirada de Cerume (lavagem Auricular)</h2>
+            <p>Remoção de cera do ouvido.</p>
+        </div>
+
+        <div id="suturas">
+            <h2>Suturas</h2>
+            <p>Fechamento de feridas com pontos.</p>
+        </div>
+
+        <div id="tamponamento-nasal">
+            <h2>Tamponamento Nasal (epistaxe)</h2>
+            <p>Controle de sangramento nasal.</p>
+        </div>
+
+        <div id="toracocentese">
+            <h2>Toracocentese</h2>
+            <p>Remoção de líquido do espaço pleural.</p>
+        </div>
+
+        <div id="traqueostomia-aberta">
+            <h2>Traqueostomia Aberta (cirúrgica)</h2>
+            <p>Criação de uma abertura na traqueia.</p>
+        </div>
+
+        <div id="traqueostomia-percutanea">
+            <h2>Traqueostomia Percutânea</h2>
+            <p>Criação de uma abertura na traqueia através da pele.</p>
+        </div>
+
+        <div id="trombectomia-hemorroidaria">
+            <h2>Trombectomia Hemorroidaria</h2>
+            <p>Remoção de um coágulo de uma hemorroida.</p>
+        </div>
+    </div>
+
+</div>
+<script>
+    document.querySelector('.dropbtn').addEventListener('click', function() {
+        document.querySelector('.dropdown-content').classList.toggle('show');
+    });
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+</body>
+</html>
