@@ -4,185 +4,181 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediAssist AI - Assistente Médico Virtual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Variáveis de cores e fonte */
     :root {
-      --primary-color: #2C3E50; /* Tom escuro para textos e bordas */
-      --accent-color: #3498DB;  /* Tom vibrante para botões e destaques */
-      --background-color: #ffffff; /* Fundo branco */
-      --text-color: #2C3E50;
+      --primary-color: #4285f4;
+      --secondary-color: #34a853;
+      --accent-color: #ea4335;
+      --background-color: #f8f9fa;
+      --text-color: #202124;
+      --font-family: 'Roboto', sans-serif;
     }
-    /* Reset básico */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: var(--font-family);
       background-color: var(--background-color);
       color: var(--text-color);
       line-height: 1.6;
+      padding-bottom: 40px;
     }
     header {
       text-align: center;
-      padding: 20px;
-      background-color: var(--background-color);
-      border-bottom: 2px solid var(--primary-color);
-      margin-bottom: 20px;
+      padding: 30px 20px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
+    header .logo {
+      font-size: 36px;
+      font-weight: 700;
     }
-    .tagline {
-      font-size: 16px;
+    header .tagline {
+      font-size: 18px;
+      margin-top: 5px;
+      color: #e0e0e0;
     }
     .container {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
-      background-color: var(--background-color);
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .accessibility-controls {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 15px;
+      margin-bottom: 30px;
     }
     .accessibility-btn {
-      background-color: var(--accent-color);
-      border: 1px solid var(--primary-color);
+      background-color: #fff;
+      border: 2px solid #ddd;
       border-radius: 50px;
       padding: 10px 20px;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--background-color);
-      transition: background-color 0.3s;
+      font-weight: 500;
     }
-    .accessibility-btn:hover, .accessibility-btn.active {
+    .accessibility-btn:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+    }
+    .accessibility-btn.active {
       background-color: var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
     }
     .video-container {
       display: flex;
       gap: 20px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      margin-bottom: 30px;
     }
     .user-video, .doctor-avatar {
       flex: 1;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
+      background-color: #e0e0e0;
       border-radius: 10px;
-      height: 300px;
+      height: 320px;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s;
+    }
+    .user-video:hover, .doctor-avatar:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
     .user-video-placeholder, .doctor-avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 20px;
     }
-    .doctor-avatar-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border: 3px solid var(--accent-color);
-    }
-    /* Indicador de fala */
-    #speaking-indicator {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 15px;
-      height: 15px;
-      background-color: var(--accent-color);
-      border-radius: 50%;
-      opacity: 0;
-    }
-    .blink {
-      animation: blinkAnimation 0.5s infinite;
-      opacity: 1;
-    }
-    @keyframes blinkAnimation {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
+    .doctor-avatar-placeholder img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
     }
     .emotion-detection {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background-color: var(--accent-color);
-      color: var(--background-color);
-      padding: 5px 10px;
+      bottom: 15px;
+      left: 15px;
+      background-color: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      padding: 6px 12px;
       border-radius: 20px;
       font-size: 14px;
     }
     .interaction-panel {
-      background-color: var(--background-color);
-      border: 1px solid #ddd;
+      background-color: #fff;
       border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
     }
     .chat-container {
-      height: 300px;
+      height: 320px;
       overflow-y: auto;
-      background-color: #f1f1f1;
-      border-radius: 5px;
-      padding: 10px;
       margin-bottom: 20px;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
     }
     .message {
       margin-bottom: 15px;
-      padding: 10px 15px;
+      padding: 12px 18px;
       border-radius: 20px;
       max-width: 80%;
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+      word-wrap: break-word;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
     .ai-message {
-      background-color: var(--accent-color);
-      color: var(--background-color);
+      background-color: var(--primary-color);
+      color: #fff;
+      border-top-left-radius: 5px;
       align-self: flex-start;
       margin-right: auto;
-      animation: fadeIn 0.5s ease;
+      white-space: pre-line;
     }
     .user-message {
-      background-color: var(--primary-color);
-      color: var(--background-color);
+      background-color: #e0e0e0;
+      border-top-right-radius: 5px;
       align-self: flex-end;
       margin-left: auto;
       text-align: right;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     .input-area {
       display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 15px;
     }
     .text-input {
       flex-grow: 1;
-      padding: 12px;
-      border: 1px solid #ccc;
+      padding: 14px 20px;
+      border: 1px solid #ddd;
       border-radius: 50px;
       font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s;
     }
-    /* Botões de interação */
-    .send-btn, .voice-btn, .gesture-btn, .music-btn, .motivation-btn, .health-tip-btn, .schedule-btn, .feedback-btn {
+    .text-input:focus {
+      border-color: var(--primary-color);
+    }
+    .send-btn, .voice-btn, .gesture-btn {
       background-color: var(--primary-color);
-      color: var(--background-color);
+      color: #fff;
       border: none;
       border-radius: 50%;
       width: 50px;
@@ -191,16 +187,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
-    .send-btn:hover, .voice-btn:hover, .gesture-btn:hover, .music-btn:hover, .motivation-btn:hover, .health-tip-btn:hover, .schedule-btn:hover, .feedback-btn:hover {
-      background-color: var(--accent-color);
-    }
-    .additional-controls {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
+    .send-btn:hover, .voice-btn:hover, .gesture-btn:hover {
+      background-color: #3367d6;
+      transform: scale(1.1);
     }
     .healthcare-metrics {
       display: flex;
@@ -209,59 +200,84 @@
       margin-top: 30px;
     }
     .metric-card {
-      flex: 1;
-      min-width: 200px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
+      background-color: #fff;
       border-radius: 10px;
       padding: 20px;
-      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex: 1;
+      min-width: 220px;
+      transition: transform 0.3s;
+    }
+    .metric-card:hover {
+      transform: translateY(-5px);
+    }
+    .metric-title {
+      font-weight: 600;
+      margin-bottom: 10px;
       color: var(--primary-color);
+    }
+    .metric-value {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .metric-trend {
+      font-size: 14px;
+      color: var(--secondary-color);
     }
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: var(--background-color);
-      border-top: 1px solid #ddd;
       margin-top: 50px;
-      color: var(--primary-color);
+      text-align: center;
+      padding: 20px 0;
+      background-color: #fff;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
     }
-    /* Tela de Carregamento */
-    #loading {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--background-color);
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .sign-language-display {
+      display: none;
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background-color: rgba(0,0,0,0.65);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
     }
-    .loader {
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid var(--primary-color);
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 20px;
+    .sign-language-active .sign-language-display {
+      display: block;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes flash {
+      0% { box-shadow: 0 0 0 0 rgba(255,255,0,0.8); }
+      50% { box-shadow: 0 0 20px 10px rgba(255,255,0,0.8); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,0,0.8); }
     }
+    .doctor-avatar.flash {
+      animation: flash 1s ease-out;
+    }
+    @media (max-width: 768px) {
+      .video-container {
+        flex-direction: column;
+      }
+      .user-video, .doctor-avatar {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+    .hidden {
+      display: none;
+    }
+    @keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.pulse {
+  animation: pulse 0.5s;
+}
+
   </style>
 </head>
 <body>
-  <!-- Tela de Carregamento -->
-  <div id="loading">
-    <div class="loader"></div>
-    <p>Carregando, a Doutora Iris já vai atender...</p>
-  </div>
-  
   <header>
     <div class="logo">MediAssist AI</div>
     <div class="tagline">Assistente Médico Virtual com Tecnologia Inclusiva</div>
@@ -293,208 +309,107 @@
         Língua de Sinais
       </button>
     </div>
-    <div class="video-container">
-      <div class="user-video">
-        <div class="user-video-placeholder">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-            <path d="M7 2v4"></path>
-            <path d="M17 2v4"></path>
-            <path d="M2 7h20"></path>
-            <circle cx="12" cy="14" r="4"></circle>
-          </svg>
-          <p>Câmera do Paciente<br>Clique para ativar a câmera</p>
+    <div class="main-content">
+      <div class="video-container">
+        <div class="user-video">
+          <div class="user-video-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <path d="M7 2v4"></path>
+              <path d="M17 2v4"></path>
+              <path d="M2 7h20"></path>
+              <circle cx="12" cy="14" r="4"></circle>
+            </svg>
+            <p>Câmera do Paciente<br>Clique para ativar a câmera</p>
+          </div>
+          <div class="emotion-detection">Expressão: Neutra</div>
         </div>
-        <div class="emotion-detection">Expressão: Neutra</div>
-      </div>
-      <div class="doctor-avatar">
-        <div class="doctor-avatar-placeholder">
-          <div id="speaking-indicator"></div>
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar da Doutora Iris" class="doctor-avatar-img">
-          <p>Doutora Iris<br>Médica Virtual</p>
+        <div class="doctor-avatar">
+          <div id="doctor-loading">Aguardando o médico...</div>
+          <div class="doctor-avatar-placeholder">
+            <img src="iris.png" alt="Dra. Iris">
+            <p>Dra. Iris<br>Sua assistente médica virtual</p>
+          </div>
+          <div class="sign-language-display">Tradução em LIBRAS ativa</div>
         </div>
-        <div class="sign-language-display">Tradução em LIBRAS ativa</div>
       </div>
-    </div>
-    <div class="interaction-panel">
-      <div class="chat-container" id="chat-container">
-        <!-- Mensagens serão inseridas dinamicamente -->
+      <div class="interaction-panel">
+        <div class="chat-container" id="chat-container">
+          <div class="message ai-message">
+            Oi, tudo bem? Eu sou a Dra. Iris, sua assistente médica virtual. Gostaria de saber:
+            <br>- Se há casos similares na sua família;
+            <br>- Se você fuma;
+            <br>- Se você bebe.
+            <br>Por favor, me conte um pouco sobre seu histórico e seus sintomas.
+          </div>
+        </div>
+        <div class="input-area">
+          <input type="text" class="text-input" placeholder="Digite sua mensagem..." aria-label="Digite sua mensagem">
+          <button class="voice-btn" title="Entrada por voz">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </button>
+          <button class="gesture-btn" title="Entrada por gestos">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 6.83a3 3 0 1 1 4 0V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9.83a3 3 0 1 1 4 0V17a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V6.83z"></path>
+            </svg>
+          </button>
+          <button class="send-btn" title="Enviar mensagem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="additional-controls">
-        <button class="music-btn" title="Música">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M9 18V5l12-2v13"></path>
-            <circle cx="6" cy="18" r="3"></circle>
-            <circle cx="18" cy="16" r="3"></circle>
-          </svg>
-        </button>
-        <button class="motivation-btn" title="Frase Motivacional">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2l9 21H3L12 2z"></path>
-          </svg>
-        </button>
-        <button class="health-tip-btn" title="Dicas de Saúde">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 8v4"></path>
-            <circle cx="12" cy="16" r="1"></circle>
-          </svg>
-        </button>
-        <button class="schedule-btn" title="Agendar Consulta">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-        </button>
-        <button class="feedback-btn" title="Enviar Feedback">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </button>
-      </div>
-      <div class="input-area">
-        <input type="text" class="text-input" placeholder="Digite sua mensagem..." aria-label="Digite sua mensagem">
-        <button class="voice-btn" title="Entrada por voz">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-            <line x1="12" y1="19" x2="12" y2="23"></line>
-            <line x1="8" y1="23" x2="16" y2="23"></line>
-          </svg>
-        </button>
-        <button class="gesture-btn" title="Entrada por gestos">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M6 6.83a3 3 0 1 1 4 0V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9.83a3 3 0 1 1 4 0V17a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V6.83z"></path>
-          </svg>
-        </button>
-        <button class="send-btn" title="Enviar mensagem">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
-      </div>
-      <audio id="music-player" src="music.mp3"></audio>
-    </div>
-    <div class="healthcare-metrics">
-      <div class="metric-card">
-        <div class="metric-title">Batimentos Cardíacos</div>
-        <div class="metric-value">78 BPM</div>
-        <div class="metric-trend">Normal</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-title">Expressão Facial</div>
-        <div class="metric-value">Desconforto</div>
-        <div class="metric-trend">Detectado</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-title">Nível de Estresse</div>
-        <div class="metric-value">Moderado</div>
-        <div class="metric-trend">Baseado em expressões</div>
+      <div class="healthcare-metrics">
+        <div class="metric-card">
+          <div class="metric-title">Batimentos Cardíacos</div>
+          <div class="metric-value">78 BPM</div>
+          <div class="metric-trend">Normal</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Expressão Facial</div>
+          <div class="metric-value">Desconforto</div>
+          <div class="metric-trend">Detectado</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Nível de Estresse</div>
+          <div class="metric-value">Moderado</div>
+          <div class="metric-trend">Baseado em expressões</div>
+        </div>
       </div>
     </div>
   </div>
   <footer>
     <p>© 2025 MediAssist AI - Interface Demonstrativa</p>
-    <p><small>Esta é uma ferramenta em fase de testes. Em uma situação real, consulte sempre uma médica ou um profissional da saúde.</small></p>
+    <p><small>Este é um protótipo. Em uma situação real, consulte sempre um médico licenciado.</small></p>
   </footer>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Remover tela de carregamento após 3 segundos
+    document.addEventListener('DOMContentLoaded', function () {
+      // Simulação de carregamento do médico
+      const doctorLoading = document.getElementById('doctor-loading');
       setTimeout(() => {
-        document.getElementById('loading').style.display = 'none';
+        doctorLoading.classList.add('hidden');
       }, 3000);
-      
-      // Função para obter saudação baseada no horário
-      function getGreeting() {
-        const now = new Date();
-        const hour = now.getHours();
-        if (hour < 12) return "Bom dia";
-        else if (hour < 18) return "Boa tarde";
-        else return "Boa noite";
-      }
-      
-      // Seleciona uma voz feminina se disponível
-      function getFemaleVoice() {
-        const voices = speechSynthesis.getVoices();
-        return voices.find(voice => voice.lang === 'pt-BR' && 
-          (voice.name.toLowerCase().includes("femin") || voice.name.toLowerCase().includes("mulher"))) || voices[0];
-      }
-      
-      // Função para sintetizar voz com indicador piscante
-      function speakText(text) {
-        const indicator = document.getElementById('speaking-indicator');
-        if (indicator) {
-          indicator.classList.add('blink');
-        }
-        if ('speechSynthesis' in window) {
-          const utterance = new SpeechSynthesisUtterance(text);
-          utterance.lang = 'pt-BR';
-          utterance.rate = 1.1;
-          const femaleVoice = getFemaleVoice();
-          if (femaleVoice) {
-            utterance.voice = femaleVoice;
-          }
-          utterance.onend = function() {
-            if (indicator) {
-              indicator.classList.remove('blink');
-            }
-          };
-          speechSynthesis.speak(utterance);
-        }
-      }
-      
-      // Função para obter a cidade do usuário via geolocalização e reverse geocoding
-      function getCity(latitude, longitude) {
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`)
-          .then(response => response.json())
-          .then(data => {
-            const city = data.address.city || data.address.town || data.address.village || "sua região";
-            addAIMessage(`Percebi que você está em ${city}.`);
-          })
-          .catch(error => {
-            console.log("Erro ao obter a cidade:", error);
-          });
-      }
-      
-      // Obter localização do usuário e a cidade (se permitido)
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          getCity(latitude, longitude);
-          // Simula temperatura e alerta se estiver muito quente
-          let temp = Math.floor(Math.random() * 16) + 25;
-          if(temp >= 30) {
-            addAIMessage(`Notei que a temperatura na sua região está em torno de ${temp}°C. Está realmente calor por aí!`);
-          }
-        }, function(error) {
-          console.log("Geolocalização não disponível.");
-        });
-      }
-      
-      // Reconhecimento de voz para entrada do usuário
-      let recognition;
-      if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        recognition = new SpeechRecognition();
-        recognition.lang = 'pt-BR';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-      }
-      
+
+      // Simulação de análise de expressões faciais
       const emotions = ['Neutra', 'Desconforto', 'Dor', 'Ansiedade', 'Calma'];
       const emotionDisplay = document.querySelector('.emotion-detection');
       setInterval(() => {
         const randomEmotion = emotions[Math.floor(Math.random() * emotions.length)];
         emotionDisplay.textContent = `Expressão: ${randomEmotion}`;
+        document.querySelector('.metric-card:nth-child(2) .metric-value').textContent = randomEmotion;
       }, 5000);
-      
+
+      // Controladores de acessibilidade
       const accessButtons = document.querySelectorAll('.accessibility-btn');
       accessButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
           this.classList.toggle('active');
           if (this.id === 'sign-language') {
             document.querySelector('.doctor-avatar').classList.toggle('sign-language-active');
@@ -503,97 +418,62 @@
           addAIMessage(`Modo ${mode} ${this.classList.contains('active') ? 'ativado' : 'desativado'}.`);
         });
       });
-      
+
+      // Eventos de envio de mensagens
       const textInput = document.querySelector('.text-input');
       const sendButton = document.querySelector('.send-btn');
       const voiceButton = document.querySelector('.voice-btn');
       const gestureButton = document.querySelector('.gesture-btn');
-      const musicButton = document.querySelector('.music-btn');
-      const motivationButton = document.querySelector('.motivation-btn');
-      const healthTipButton = document.querySelector('.health-tip-btn');
-      const scheduleButton = document.querySelector('.schedule-btn');
-      const feedbackButton = document.querySelector('.feedback-btn');
-      const musicPlayer = document.getElementById('music-player');
-      
+
       sendButton.addEventListener('click', sendMessage);
-      textInput.addEventListener('keypress', function(e) {
+      textInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
           sendMessage();
         }
       });
-      
-      voiceButton.addEventListener('click', function() {
-        if (recognition) {
-          addUserMessage('(Aguardando entrada de voz...)');
-          recognition.start();
-          recognition.onresult = function(event) {
-            const transcript = event.results[0][0].transcript;
-            addUserMessage(transcript);
-            generateAIResponse(transcript);
-          };
-          recognition.onerror = function(event) {
-            addUserMessage('(Erro no reconhecimento de voz)');
-          };
-        } else {
-          addUserMessage('(Reconhecimento de voz não suportado neste navegador)');
-        }
-      });
-      
-      gestureButton.addEventListener('click', function() {
-        addUserMessage('(Gestos/sinais sendo interpretados...)');
+
+      voiceButton.addEventListener('click', function () {
+        addUserMessage('(Mensagem de voz sendo processada...)');
         setTimeout(() => {
-          addAIMessage('Entendi seus sinais. Você parece estar se sentindo mal. Pode me dizer como está se sentindo agora?');
+          addAIMessage('Entendi sua mensagem de voz. Pode me dar mais detalhes sobre seus sintomas?');
         }, 1500);
       });
-      
-      musicButton.addEventListener('click', function() {
-        addAIMessage('Tocando uma música para relaxar...');
-        if(musicPlayer) {
-          musicPlayer.play();
-        }
+
+      gestureButton.addEventListener('click', function () {
+        addUserMessage('(Gestos/sinais sendo interpretados...)');
+        setTimeout(() => {
+          addAIMessage('Compreendi seus sinais. Baseado nos seus gestos, você parece estar com dor na região da cabeça. Isso está correto?');
+        }, 1500);
       });
-      
-      motivationButton.addEventListener('click', function() {
-        const frases = [
-          'Lembre-se: cada dia é uma nova oportunidade!',
-          'Você é mais forte do que imagina.',
-          'Continue firme, dias melhores virão!',
-          'Acredite no seu potencial!'
-        ];
-        const frase = frases[Math.floor(Math.random() * frases.length)];
-        addAIMessage(frase);
-      });
-      
-      healthTipButton.addEventListener('click', function() {
-        const dicas = [
-          'Hidrate-se bem durante o dia.',
-          'Uma alimentação equilibrada faz toda a diferença.',
-          'Exercite-se um pouco para aliviar o estresse.',
-          'Lembre-se de descansar o suficiente!'
-        ];
-        const dica = dicas[Math.floor(Math.random() * dicas.length)];
-        addAIMessage(dica);
-      });
-      
-      scheduleButton.addEventListener('click', function() {
-        addAIMessage('Para agendar uma consulta, ligue para 0800-123-456 ou acesse nosso site.');
-      });
-      
-      feedbackButton.addEventListener('click', function() {
-        addAIMessage('Seu feedback é muito importante. Envie suas sugestões para feedback@mediassist.ai.');
-      });
-      
+
       function sendMessage() {
         const message = textInput.value.trim();
         if (message) {
           addUserMessage(message);
           textInput.value = '';
+          
+          // Extração de palavras-chave
+          const keywords = extractKeywords(message);
+          if (keywords) {
+            addAIMessage(`Palavras-chave identificadas: ${keywords}`);
+          }
+          
+          // Responde a expressões comuns (saudações, agradecimentos etc.)
+          checkCommonExpressions(message);
+          
+          // Gera diagnósticos (10 condições)
+          generateDiagnosis(message);
+          
+          // Verifica estilo de vida (fumar, beber)
+          checkLifestyle(message);
+          
+          // Resposta genérica
           setTimeout(() => {
             generateAIResponse(message);
           }, 1000);
         }
       }
-      
+
       function addUserMessage(message) {
         const chatContainer = document.getElementById('chat-container');
         const messageElement = document.createElement('div');
@@ -602,52 +482,162 @@
         chatContainer.appendChild(messageElement);
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }
-      
+
+      // Função para escrever a mensagem do AI com efeito de máquina de escrever
       function addAIMessage(message) {
         const chatContainer = document.getElementById('chat-container');
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', 'ai-message');
-        messageElement.textContent = message;
         chatContainer.appendChild(messageElement);
         chatContainer.scrollTop = chatContainer.scrollHeight;
+        typeWriter(messageElement, message, 40);
+        triggerDoctorFlash();
         if (document.getElementById('audio-assist').classList.contains('active')) {
-          speakText(message);
+          console.log('Lendo mensagem em voz alta: ' + message);
         }
       }
-      
-      function generateAIResponse(userMessage) {
-        const lowercaseMessage = userMessage.toLowerCase();
-        if (lowercaseMessage.includes('oi') || lowercaseMessage.includes('olá')) {
-          addAIMessage(`${getGreeting()}! Tudo bem? Como você está se sentindo hoje?`);
-        } else if (lowercaseMessage.includes('tudo bem') || lowercaseMessage.includes('estou bem')) {
-          addAIMessage('Que bom! E como está sua saúde hoje? Alguma dor ou desconforto?');
-        } else if (lowercaseMessage.includes('como você está')) {
-          addAIMessage('Estou ótima e animada para ajudar você! Me conte, como você está se sentindo hoje?');
-        } else if (lowercaseMessage.includes('dor') && (lowercaseMessage.includes('cabeça') || lowercaseMessage.includes('cabeca'))) {
-          addAIMessage('Você mencionou dor de cabeça. A dor é constante ou intermitente? De 1 a 10, qual a intensidade?');
-        } else if (lowercaseMessage.includes('febre') || lowercaseMessage.includes('temperatura')) {
-          addAIMessage('Você disse que tem febre. Qual foi a última medição da sua temperatura? Sente calafrios ou sudorese?');
-        } else if (lowercaseMessage.includes('medicamento') || lowercaseMessage.includes('remédio') || lowercaseMessage.includes('remedio')) {
-          addAIMessage('Por favor, informe quais medicamentos você está utilizando e em que horários, para que possamos verificar possíveis interações.');
-        } else if (lowercaseMessage.includes('dengue')) {
-          addAIMessage('Se estiver com sintomas como febre alta, dores intensas e manchas na pele, pode ser dengue. Procure atendimento médico imediatamente.');
-        } else if (lowercaseMessage.includes('covid')) {
-          addAIMessage('Caso apresente falta de ar, tosse seca, febre e perda de olfato, pode ser Covid-19. Recomendo fazer um teste e buscar orientação médica.');
-        } else if (lowercaseMessage.includes('diagnóstico')) {
-          addAIMessage('Lembre-se: diagnósticos precisos ainda estão em desenvolvimento. Esta ferramenta está em fase de testes e estou aqui para oferecer orientações e apoio, mas nada substitui uma consulta presencial.');
-        } else if (lowercaseMessage.includes('ajuda')) {
-          addAIMessage('Posso ajudar com informações sobre sintomas, dicas de saúde, músicas, frases motivacionais e muito mais. Como posso ajudar você hoje?');
-        } else if (lowercaseMessage.includes('sintoma')) {
-          addAIMessage('Pode descrever melhor os sintomas que você está sentindo? Assim, posso oferecer uma orientação mais precisa.');
-        } else {
-          addAIMessage('Com base na nossa conversa, recomendo que continue monitorando seus sintomas. Se piorarem, procure atendimento presencial. Há algo mais que eu possa fazer por você?');
+
+      function typeWriter(element, text, speed) {
+        let index = 0;
+        const timer = setInterval(() => {
+          element.textContent += text.charAt(index);
+          index++;
+          if (index >= text.length) {
+            clearInterval(timer);
+          }
+          document.getElementById('chat-container').scrollTop = document.getElementById('chat-container').scrollHeight;
+        }, speed);
+      }
+
+      // Animação do avatar: flash de luz atrás do avatar da Dra. Iris
+      function triggerDoctorFlash() {
+        const doctorAvatar = document.querySelector('.doctor-avatar');
+        doctorAvatar.classList.add('flash');
+        setTimeout(() => {
+          doctorAvatar.classList.remove('flash');
+        }, 1000);
+      }
+
+      function generateDiagnosis(message) {
+        let conditions = [];
+        const lowerMsg = message.toLowerCase();
+        if (lowerMsg.includes('dor de cabeça')) {
+          conditions.push("Possível cefaleia tensional. Recomendo repouso, hidratação e, se persistir, consultar um médico.");
+        }
+        if (lowerMsg.includes('febre')) {
+          conditions.push("Febre pode ser sinal de infecção. Se persistir, procure um médico.");
+        }
+        if (lowerMsg.includes('tosse')) {
+          conditions.push("Tosse pode indicar infecção respiratória. Monitore os sintomas e, se piorar, consulte um médico.");
+        }
+        if (lowerMsg.includes('falta de ar')) {
+          conditions.push("Dificuldade para respirar pode indicar problema pulmonar. Procure ajuda médica imediatamente.");
+        }
+        if (lowerMsg.includes('dor no peito')) {
+          conditions.push("Dor no peito pode indicar problemas cardíacos. Se acompanhada de outros sintomas, procure atendimento imediato.");
+        }
+        if (lowerMsg.includes('náusea') || lowerMsg.includes('enjoo')) {
+          conditions.push("Náuseas podem ser causadas por diversas condições. Hidrate-se e, se persistir, consulte um médico.");
+        }
+        if (lowerMsg.includes('dor abdominal')) {
+          conditions.push("Dor abdominal pode ter várias causas. Observe outros sintomas e, se persistir, consulte um médico.");
+        }
+        if (lowerMsg.includes('dor nas costas')) {
+          conditions.push("Dor nas costas pode ser causada por má postura ou tensão muscular. Alongue-se e, se necessário, consulte um especialista.");
+        }
+        if (lowerMsg.includes('cansaço')) {
+          conditions.push("Cansaço excessivo pode indicar problemas diversos. Investigue e, se persistir, procure um médico.");
+        }
+        if (lowerMsg.includes('insônia')) {
+          conditions.push("Insônia pode afetar sua saúde. Estabeleça uma rotina de sono e, se persistir, consulte um especialista.");
+        }
+        if (conditions.length > 0) {
+          addAIMessage(`Diagnósticos:\n${conditions.join("\n")}`);
         }
       }
-      
-      // Mensagem inicial de apresentação da Doutora Iris com menção à cidade e fase de testes
-      const initialMessage = `${getGreeting()}! Sou a Doutora Iris, tenho 30 anos e estou aqui para ajudar com orientações, dicas, músicas e frases motivacionais. Esta ferramenta está em fase de testes. Estou atenta às condições de saúde e, se possível, percebi que você está na sua cidade. Como você está se sentindo hoje?`;
-      addAIMessage(initialMessage);
+
+      function extractKeywords(message) {
+        const commonWords = ['a', 'o', 'e', 'de', 'do', 'da', 'para', 'com', 'que', 'se'];
+        const words = message.split(' ');
+        const keywords = words.filter(word => !commonWords.includes(word.toLowerCase()) && word.length > 3);
+        return keywords.join(', ');
+      }
+
+      function checkLifestyle(message) {
+        const lowerMsg = message.toLowerCase();
+        let responses = [];
+        if (lowerMsg.includes('fumo') || lowerMsg.includes('fumar') || lowerMsg.includes('sim, fumo')) {
+          responses.push("Vamos tentar controlar isso, amiguinho. Parar de fumar pode melhorar muito sua saúde!");
+        }
+        if (lowerMsg.includes('bebo') || lowerMsg.includes('bebida') || lowerMsg.includes('sim, bebo')) {
+          responses.push("Vamos tentar controlar isso, amiguinho. Reduzir o consumo de álcool traz muitos benefícios!");
+        }
+        if (responses.length > 0) {
+          addAIMessage(responses.join("\n"));
+        }
+      }
+
+      function checkCommonExpressions(message) {
+        const lowerMsg = message.toLowerCase();
+        const commonExpressions = [
+          { keywords: ["oi", "olá"], responses: ["Oi! Tudo bem?", "Olá! Como você está?", "Oi, que bom ver você!"] },
+          { keywords: ["tudo bem?"], responses: ["Tudo bem, e com você?", "Estou bem, obrigado! E aí, como vai?", "Mais ou menos, mas estou aqui! E você?"] },
+          { keywords: ["ok"], responses: ["Ok, combinado!", "Beleza, entendi!", "Ok, vamos lá!"] },
+          { keywords: ["obrigado", "obrigada"], responses: ["De nada!", "Por nada, disponha!", "Imagina, precisando estou aqui!"] },
+          { keywords: ["desculpe"], responses: ["Tudo bem, sem problemas!", "Não se preocupe, acontece.", "Tranquilo, vamos seguir em frente."] },
+          { keywords: ["por favor"], responses: ["Claro, pode deixar!", "Sim, sem problemas!", "É pra já!"] },
+          { keywords: ["bom dia"], responses: ["Bom dia! Como você está?", "Bom dia! Que seu dia seja ótimo!", "Bom dia! Tudo bem por aí?"] },
+          { keywords: ["boa noite"], responses: ["Boa noite! Durma bem!", "Boa noite! Aproveite o descanso.", "Boa noite! Até amanhã."] },
+          { keywords: ["tchau"], responses: ["Tchau! Até logo!", "Tchau! Cuide-se!", "Tchau! Volte sempre!"] }
+        ];
+        let responses = [];
+        commonExpressions.forEach(item => {
+          item.keywords.forEach(keyword => {
+            if (lowerMsg.includes(keyword)) {
+              const randomResponse = item.responses[Math.floor(Math.random() * item.responses.length)];
+              responses.push(randomResponse);
+            }
+          });
+        });
+        if (responses.length > 0) {
+          addAIMessage(responses.join("\n"));
+        }
+      }
+
+      function generateAIResponse(message) {
+        addAIMessage("Obrigado por compartilhar. Vou analisar suas informações e, se precisar de mais detalhes, estarei aqui para ajudar.");
+      }
+
+      // Acesso à Câmera: solicita permissão e exibe o stream de vídeo
+      document.querySelector('.user-video').addEventListener('click', function() {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+          .then(stream => {
+            const videoElement = document.createElement('video');
+            videoElement.srcObject = stream;
+            videoElement.play();
+            this.innerHTML = '';
+            this.appendChild(videoElement);
+          })
+          .catch(error => {
+            console.error('Erro ao acessar a câmera: ', error);
+            alert('Não foi possível acessar a câmera.');
+          });
+      });
     });
+
+    // Simulação de batimentos cardíacos animados
+const heartbeatValues = [78, 80, 83, 95, 98, 99, 101 ];
+const heartbeatElement = document.querySelector('.metric-card:nth-child(1) .metric-value');
+
+setInterval(() => {
+  const randomHeartbeat = heartbeatValues[Math.floor(Math.random() * heartbeatValues.length)];
+  heartbeatElement.textContent = `${randomHeartbeat} BPM`;
+  heartbeatElement.classList.add('pulse');
+  setTimeout(() => {
+    heartbeatElement.classList.remove('pulse');
+  }, 500);
+}, 3000);
+
   </script>
 </body>
 </html>
