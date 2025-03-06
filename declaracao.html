@@ -52,7 +52,7 @@
       margin: 0 auto;
       padding: 0;
       position: relative;
-      font-size: 16px; /* Increased base font size */
+      font-size: 16px;
       background-color: #f5f5f5;
     }
 
@@ -61,7 +61,7 @@
       padding: 1cm;
       position: relative;
       background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       min-height: 29.7cm;
       width: 21cm;
       box-sizing: border-box;
@@ -71,12 +71,25 @@
     /* Cabeçalho com a logo */
     .header {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
-      padding: 5px;
-      background-color: #e8f0fe;
+      padding: 10px;
+      background: linear-gradient(to right, #e8f0fe, #d1e3fa);
       border-radius: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-text {
+      margin-left: 10px;
+      color: #194275;
+      font-size: 14px;
+      font-weight: bold;
     }
 
     .header img {
@@ -86,11 +99,15 @@
 
     /* Container para Unidade */
     .unidade-container {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-left: 5px solid #194275;
+      border-radius: 0 5px 5px 0;
     }
 
     .unidade {
-      font-size: 15px; /* Increased font size */
+      font-size: 16px;
       font-weight: bold;
       color: #194275;
     }
@@ -100,31 +117,45 @@
     }
 
     .title {
-      font-size: 26px; /* Increased font size */
+      font-size: 28px;
       font-weight: bold;
       text-align: center;
-      margin: 20px 0;
+      margin: 25px 0;
       color: #194275;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      border-bottom: 2px solid #194275;
+      padding-bottom: 10px;
     }
 
     .content {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: justify;
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
     }
 
     /* Novo estilo para os campos sem linhas */
     .info-paragraph {
-      margin-bottom: 16px; /* Increased spacing */
+      margin-bottom: 20px;
       text-align: justify;
       line-height: 1.6;
+      padding: 8px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .info-paragraph:hover {
+      background-color: #f8f9fa;
     }
 
     .label {
       font-weight: bold;
       color: #194275;
       margin-right: 5px;
-      font-size: 18px; /* Increased font size */
+      font-size: 18px;
     }
 
     .value {
@@ -132,72 +163,101 @@
       display: inline;
       padding: 0 5px;
       min-width: 100px;
-      font-size: 18px; /* Increased font size */
+      font-size: 18px;
+      border-bottom: 1px dashed #ccc;
+      transition: all 0.3s;
+    }
+
+    .value:focus {
+      outline: none;
+      border-bottom: 2px solid #194275;
+      background-color: #f0f8ff;
     }
 
     /* Estilo para o grupo de checkboxes */
     .service-types {
-      margin: 20px 0; /* Increased spacing */
-      padding: 12px;
-      background-color: #f8f9fa;
-      border-radius: 5px;
+      margin: 25px 0;
+      padding: 15px;
+      background: linear-gradient(to right, #f8f9fa, #e8f0fe);
+      border-radius: 8px;
       text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .service-types-title {
       font-weight: bold;
       color: #194275;
-      margin-bottom: 10px;
-      font-size: 18px; /* Increased font size */
+      margin-bottom: 12px;
+      font-size: 18px;
     }
 
     .checkbox-group {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 15px;
     }
 
     .checkbox-item {
       display: flex;
       align-items: center;
-      margin: 0 12px; /* Increased spacing */
+      margin: 0;
+      background-color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .checkbox-item:hover {
+      transform: translateY(-2px);
     }
 
     .checkbox-item input {
-      margin-right: 6px;
-      transform: scale(1.4); /* Increased checkbox size */
+      margin-right: 8px;
+      transform: scale(1.4);
+      accent-color: #194275;
     }
 
     .checkbox-item label {
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .signature {
-      margin-top: 60px; /* Increased spacing */
+      margin-top: 70px;
       border-top: 1px solid #333;
-      padding-top: 5px;
-      width: 50%;
+      padding-top: 8px;
+      width: 60%;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
     }
     
     .professional-selector {
       text-align: center;
-      margin-top: 8px;
+      margin-top: 10px;
     }
     
     select {
-      padding: 4px;
-      background-color: transparent;
-      border: none;
+      padding: 6px 12px;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
       font-size: 16px;
       color: #333;
       cursor: pointer;
       outline: none;
       text-align: center;
-      width: 100%;
+      width: 80%;
+      transition: all 0.3s;
+    }
+
+    select:focus, select:hover {
+      border-color: #194275;
+      box-shadow: 0 0 5px rgba(25, 66, 117, 0.3);
     }
 
     .watermark {
@@ -205,48 +265,84 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(-30deg);
-      opacity: 0.15;
-      font-size: 5cm; /* Increased font size */
+      opacity: 0.1;
+      font-size: 5.5cm;
       color: #194275;
       z-index: 0;
       pointer-events: none;
+      font-weight: bold;
     }
 
     .footer {
-      margin-top: 5px;
+      margin-top: 15px;
       text-align: center;
-      font-size: 14px; /* Increased font size */
+      font-size: 14px;
       border-top: 1px solid #ccc;
-      padding-top: 5px;
+      padding-top: 10px;
       color: #194275;
+      background-color: #f8f9fa;
+      border-radius: 0 0 5px 5px;
+      padding: 10px;
     }
 
     .footer p {
-      margin: 2px 0;
+      margin: 3px 0;
+    }
+
+    .social-icons {
+      font-weight: bold;
     }
 
     .no-print {
-      background-color: #f0f8ff;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 5px;
+      background-color: #e8f0fe;
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 8px;
       border-left: 5px solid #194275;
       text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
 
     .print-button {
       background-color: #194275;
       color: white;
       border: none;
-      padding: 12px 24px; /* Increased padding */
+      padding: 12px 24px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .print-button:hover {
       background-color: #0e2a4f;
+      transform: translateY(-2px);
+    }
+    
+    .date-picker {
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #333;
+    }
+    
+    /* Responsividade para dispositivos móveis */
+    @media screen and (max-width: 768px) {
+      .checkbox-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .checkbox-item {
+        width: 80%;
+      }
+      
+      .signature {
+        width: 80%;
+      }
     }
   </style>
   <link rel="icon" href="cristo (2).png" type="image/png">
@@ -255,12 +351,15 @@
   <div class="document">
     <!-- Cabeçalho com a logo -->
     <div class="header">
+      <div class="header-left">
+        <div class="header-text">Prefeitura de Caieiras<br>Secretaria de Saúde</div>
+      </div>
       <img src="bb.png" alt="Logo UBS" class="ubs-logo">
     </div>
 
     <!-- Container para Unidade -->
     <div class="unidade-container">
-      <div class="unidade">UBS PORTAL DAS LARANJEIRAS ANTÔNIO DE SOUZA SANTOS <p>CNES:4737423</p></div>
+      <div class="unidade">UBS PORTAL DAS LARANJEIRAS ANTÔNIO DE SOUZA SANTOS <p>CNES: 4737423</p></div>
     </div>
 
     <div class="title">DECLARAÇÃO DE COMPARECIMENTO</div>
@@ -281,7 +380,8 @@
 
     <div class="info-paragraph">
       <span class="label">Data:</span>
-      <span class="value" id="data"></span>
+      <span class="value" id="data" contenteditable="true"></span>
+      <input type="date" id="datePicker" class="date-picker no-print" onchange="updateDate(this.value)">
     </div>
 
     <div class="info-paragraph">
@@ -295,15 +395,15 @@
       <div class="checkbox-group">
         <div class="checkbox-item">
           <input type="checkbox" id="consulta" name="tipo">
-          <label for="consulta">Consulta </label>
+          <label for="consulta">Consulta</label>
         </div>
         <div class="checkbox-item">
           <input type="checkbox" id="exame" name="tipo">
           <label for="exame">Exame</label>
         </div>
         <div class="checkbox-item">
-          <input type="checkbox" id="procedimento" name="tipo">
-          <label for="procedimento">Acompanhante</label>
+          <input type="checkbox" id="acompanhante" name="tipo">
+          <label for="acompanhante">Acompanhante</label>
         </div>
         <div class="checkbox-item">
           <input type="checkbox" id="outro" name="tipo">
@@ -346,22 +446,44 @@
   </div>
 
   <script>
+    function formatDate(date) {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+    
+    function updateDate(value) {
+      if (value) {
+        const selectedDate = new Date(value);
+        document.getElementById('data').textContent = formatDate(selectedDate);
+      }
+    }
+
     function updateDateTime() {
       const today = new Date();
-      const day = String(today.getDate()).padStart(2, '0');
-      const month = String(today.getMonth() + 1).padStart(2, '0');
-      const year = today.getFullYear();
+      const formattedDate = formatDate(today);
       const hours = String(today.getHours()).padStart(2, '0');
       const minutes = String(today.getMinutes()).padStart(2, '0');
 
-      document.getElementById('data-atual').textContent = `${day}/${month}/${year}`;
-      document.getElementById('data').textContent = `${day}/${month}/${year}`;
+      document.getElementById('data-atual').textContent = formattedDate;
+      
+      // Apenas define a data se o campo estiver vazio
+      if (!document.getElementById('data').textContent) {
+        document.getElementById('data').textContent = formattedDate;
+      }
+      
       document.getElementById('hora-atual').textContent = `${hours}:${minutes}`;
+      
+      // Define o valor do date picker
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      document.getElementById('datePicker').value = `${year}-${month}-${day}`;
     }
     
     function updateProfessionalTitle() {
-      // Esta função não precisa mais atualizar um elemento separado de título profissional
-      // já que a seleção é feita diretamente abaixo da assinatura
+      // Esta função mantida para compatibilidade
     }
 
     function generateAndPrint() {
@@ -371,14 +493,31 @@
       });
       window.print();
       document.querySelectorAll('.value').forEach(function(field) {
-        if (field.id !== 'data' && field.id !== 'hora-atual' && field.id !== 'data-atual') {
+        if (field.id !== 'hora-atual' && field.id !== 'data-atual') {
           field.setAttribute('contenteditable', 'true');
         }
       });
     }
 
+    function maskCPF(input) {
+      let value = input.replace(/\D/g, '');
+      if (value.length > 11) {
+        value = value.slice(0, 11);
+      }
+      
+      if (value.length > 9) {
+        return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+      } else if (value.length > 6) {
+        return value.replace(/(\d{3})(\d{3})(\d{3})/, '$1.$2.$3');
+      } else if (value.length > 3) {
+        return value.replace(/(\d{3})(\d{3})/, '$1.$2');
+      } else {
+        return value;
+      }
+    }
+
     window.addEventListener('afterprint', function() {
-      alert("Ótimo trabalho! Continue se dedicando e parabéns pelo esforço!");
+      alert("Documento impresso com sucesso!");
     });
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -390,13 +529,25 @@
         document.getElementById('horario').textContent = 'das 00:00 às 00:00 (período da manhã)';
       }
       
+      // Adiciona efeitos aos campos editáveis
       document.querySelectorAll('[contenteditable]').forEach(function(field) {
         field.addEventListener('focus', function() {
-          this.style.backgroundColor = '#f8f9fa';
+          this.style.backgroundColor = '#f0f8ff';
         });
         field.addEventListener('blur', function() {
           this.style.backgroundColor = '';
+          
+          // Aplica máscara de CPF
+          if (this.id === 'cpf') {
+            this.textContent = maskCPF(this.textContent);
+          }
         });
+      });
+      
+      // Event listener para o date picker
+      document.getElementById('datePicker').addEventListener('change', function() {
+        const selectedDate = new Date(this.value);
+        document.getElementById('data').textContent = formatDate(selectedDate);
       });
     });
   </script>
