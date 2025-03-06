@@ -1,643 +1,328 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediAssist AI - Assistente Médico Virtual</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    /* Variáveis de cores e fonte */
-    :root {
-      --primary-color: #4285f4;
-      --secondary-color: #34a853;
-      --accent-color: #ea4335;
-      --background-color: #f8f9fa;
-      --text-color: #202124;
-      --font-family: 'Roboto', sans-serif;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: var(--font-family);
-      background-color: var(--background-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      padding-bottom: 40px;
-    }
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      color: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    header .logo {
-      font-size: 36px;
-      font-weight: 700;
-    }
-    header .tagline {
-      font-size: 18px;
-      margin-top: 5px;
-      color: #e0e0e0;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-    }
-    .accessibility-controls {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-    .accessibility-btn {
-      background-color: #fff;
-      border: 2px solid #ddd;
-      border-radius: 50px;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
-    }
-    .accessibility-btn:hover {
-      background-color: #f0f0f0;
-      transform: scale(1.05);
-    }
-    .accessibility-btn.active {
-      background-color: var(--primary-color);
-      color: #fff;
-      border-color: var(--primary-color);
-    }
-    .video-container {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    .user-video, .doctor-avatar {
-      flex: 1;
-      background-color: #e0e0e0;
-      border-radius: 10px;
-      height: 320px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: box-shadow 0.3s;
-    }
-    .user-video:hover, .doctor-avatar:hover {
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-    .user-video-placeholder, .doctor-avatar-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .doctor-avatar-placeholder img {
-      max-width: 80%;
-      max-height: 80%;
-      object-fit: contain;
-    }
-    .emotion-detection {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      background-color: rgba(0, 0, 0, 0.65);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
-    .interaction-panel {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 25px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-    .chat-container {
-      height: 320px;
-      overflow-y: auto;
-      margin-bottom: 20px;
-      padding: 15px;
-      background-color: #f5f5f5;
-      border-radius: 8px;
-    }
-    .message {
-      margin-bottom: 15px;
-      padding: 12px 18px;
-      border-radius: 20px;
-      max-width: 80%;
-      opacity: 0;
-      animation: fadeIn 0.5s forwards;
-      word-wrap: break-word;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    .ai-message {
-      background-color: var(--primary-color);
-      color: #fff;
-      border-top-left-radius: 5px;
-      align-self: flex-start;
-      margin-right: auto;
-      white-space: pre-line;
-    }
-    .user-message {
-      background-color: #e0e0e0;
-      border-top-right-radius: 5px;
-      align-self: flex-end;
-      margin-left: auto;
-      text-align: right;
-    }
-    .input-area {
-      display: flex;
-      gap: 15px;
-    }
-    .text-input {
-      flex-grow: 1;
-      padding: 14px 20px;
-      border: 1px solid #ddd;
-      border-radius: 50px;
-      font-size: 16px;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-    .text-input:focus {
-      border-color: var(--primary-color);
-    }
-    .send-btn, .voice-btn, .gesture-btn {
-      background-color: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .send-btn:hover, .voice-btn:hover, .gesture-btn:hover {
-      background-color: #3367d6;
-      transform: scale(1.1);
-    }
-    .healthcare-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .metric-card {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      flex: 1;
-      min-width: 220px;
-      transition: transform 0.3s;
-    }
-    .metric-card:hover {
-      transform: translateY(-5px);
-    }
-    .metric-title {
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--primary-color);
-    }
-    .metric-value {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .metric-trend {
-      font-size: 14px;
-      color: var(--secondary-color);
-    }
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      padding: 20px 0;
-      background-color: #fff;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    }
-    .sign-language-display {
-      display: none;
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
-      background-color: rgba(0,0,0,0.65);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
-    .sign-language-active .sign-language-display {
-      display: block;
-    }
-    @keyframes flash {
-      0% { box-shadow: 0 0 0 0 rgba(255,255,0,0.8); }
-      50% { box-shadow: 0 0 20px 10px rgba(255,255,0,0.8); }
-      100% { box-shadow: 0 0 0 0 rgba(255,255,0,0.8); }
-    }
-    .doctor-avatar.flash {
-      animation: flash 1s ease-out;
-    }
-    @media (max-width: 768px) {
-      .video-container {
-        flex-direction: column;
-      }
-      .user-video, .doctor-avatar {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-    }
-    .hidden {
-      display: none;
-    }
-    @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-.pulse {
-  animation: pulse 0.5s;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot UBS Portal</title>
+    <style>
+        /* CSS styles - same as before, but with comments */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  </style>
+        body {
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #0078D7;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .chat-header h2 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .chat-header p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message .message-content {
+            background-color: #0078D7;
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-message .message-content {
+            background-color: #E8E8E8;
+            color: #333;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input {
+            padding: 15px;
+            display: flex;
+            border-top: 1px solid #E8E8E8;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .chat-input button {
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-input button:hover {
+            background-color: #005a9e;
+        }
+
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .option-button {
+            background-color: #f0f4f8;
+            border: 1px solid #0078D7;
+            color: #0078D7;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .option-button:hover {
+            background-color: #0078D7;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
-  <header>
-    <div class="logo">MediAssist AI</div>
-    <div class="tagline">Assistente Médico Virtual com Tecnologia Inclusiva</div>
-  </header>
-  <div class="container">
-    <div class="accessibility-controls">
-      <button class="accessibility-btn" id="visual-assist" title="Assistência Visual">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-        Modo Visual
-      </button>
-      <button class="accessibility-btn" id="audio-assist" title="Assistência Auditiva">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        </svg>
-        Modo Auditivo
-      </button>
-      <button class="accessibility-btn" id="sign-language" title="Linguagem de Sinais">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          <path d="M21 11V7a5 5 0 0 0-10 0v4"></path>
-          <path d="M12 15v5"></path>
-          <path d="M8 15h8"></path>
-        </svg>
-        Língua de Sinais
-      </button>
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="iris.png" alt="UBS Portal Logo">
+            <div>
+                <h2>Assistente Virtual UBS Portal</h2>
+                <p>Assistente de informações de saúde</p>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages" aria-live="polite">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)"
+                aria-label="Digite sua mensagem">
+            <button onclick="sendMessage()" aria-label="Enviar mensagem">➤</button>
+        </div>
     </div>
-    <div class="main-content">
-      <div class="video-container">
-        <div class="user-video">
-          <div class="user-video-placeholder">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-              <path d="M7 2v4"></path>
-              <path d="M17 2v4"></path>
-              <path d="M2 7h20"></path>
-              <circle cx="12" cy="14" r="4"></circle>
-            </svg>
-            <p>Câmera do Paciente<br>Clique para ativar a câmera</p>
-          </div>
-          <div class="emotion-detection">Expressão: Neutra</div>
-        </div>
-        <div class="doctor-avatar">
-          <div id="doctor-loading">Aguardando o médico...</div>
-          <div class="doctor-avatar-placeholder">
-            <img src="iris.png" alt="Dra. Iris">
-            <p>Dra. Iris<br>Sua assistente médica virtual</p>
-          </div>
-          <div class="sign-language-display">Tradução em LIBRAS ativa</div>
-        </div>
-      </div>
-      <div class="interaction-panel">
-        <div class="chat-container" id="chat-container">
-          <div class="message ai-message">
-            Oi, tudo bem? Eu sou a Dra. Iris, sua assistente médica virtual. Gostaria de saber:
-            <br>- Se há casos similares na sua família;
-            <br>- Se você fuma;
-            <br>- Se você bebe.
-            <br>Por favor, me conte um pouco sobre seu histórico e seus sintomas.
-          </div>
-        </div>
-        <div class="input-area">
-          <input type="text" class="text-input" placeholder="Digite sua mensagem..." aria-label="Digite sua mensagem">
-          <button class="voice-btn" title="Entrada por voz">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-          </button>
-          <button class="gesture-btn" title="Entrada por gestos">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 6.83a3 3 0 1 1 4 0V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9.83a3 3 0 1 1 4 0V17a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V6.83z"></path>
-            </svg>
-          </button>
-          <button class="send-btn" title="Enviar mensagem">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="healthcare-metrics">
-        <div class="metric-card">
-          <div class="metric-title">Batimentos Cardíacos</div>
-          <div class="metric-value">78 BPM</div>
-          <div class="metric-trend">Normal</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-title">Expressão Facial</div>
-          <div class="metric-value">Desconforto</div>
-          <div class="metric-trend">Detectado</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-title">Nível de Estresse</div>
-          <div class="metric-value">Moderado</div>
-          <div class="metric-trend">Baseado em expressões</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <p>© 2025 MediAssist AI - Interface Demonstrativa</p>
-    <p><small>Este é um protótipo. Em uma situação real, consulte sempre um médico licenciado.</small></p>
-  </footer>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Simulação de carregamento do médico
-      const doctorLoading = document.getElementById('doctor-loading');
-      setTimeout(() => {
-        doctorLoading.classList.add('hidden');
-      }, 3000);
 
-      // Simulação de análise de expressões faciais
-      const emotions = ['Neutra', 'Desconforto', 'Dor', 'Ansiedade', 'Calma'];
-      const emotionDisplay = document.querySelector('.emotion-detection');
-      setInterval(() => {
-        const randomEmotion = emotions[Math.floor(Math.random() * emotions.length)];
-        emotionDisplay.textContent = `Expressão: ${randomEmotion}`;
-        document.querySelector('.metric-card:nth-child(2) .metric-value').textContent = randomEmotion;
-      }, 5000);
+    <script>
+        // Knowledge base
+        const knowledgeBase = {
+            "horario": "A UBS Portal funciona de segunda a sexta, das 7h às 17h.",
+            "agendamento": "Para agendar uma consulta, você precisa comparecer à UBS com cartão SUS, documento de identidade e comprovante de residência.",
+            "documentos": "Para atendimento, traga seu cartão SUS, documento de identidade e comprovante de residência.",
+            "especialidades": "Nossa UBS oferece atendimento em: Clínica Geral, Pediatria, Ginecologia, Enfermagem e Vacinação.",
+            "emergencia": "Em caso de emergência, dirija-se à UPA mais próxima ou ligue para o SAUR (192).",
+            "exames": "Os resultados de exames ficam disponíveis em aproximadamente 15 dias úteis e podem ser retirados na própria UBS.",
+            "covid": "Oferecemos vacinação contra COVID-19. Consulte o cronograma atual na recepção da UBS.",
+            "telefone": "O telefone da UBS Portal é (11) 4800-5024.",
+            "endereço": "Estamos localizados na Rua Cardeal, S/N - Bairro Portal da Laranjeiras, São Paulo."
+        };
 
-      // Controladores de acessibilidade
-      const accessButtons = document.querySelectorAll('.accessibility-btn');
-      accessButtons.forEach(button => {
-        button.addEventListener('click', function () {
-          this.classList.toggle('active');
-          if (this.id === 'sign-language') {
-            document.querySelector('.doctor-avatar').classList.toggle('sign-language-active');
-          }
-          const mode = this.textContent.trim();
-          addAIMessage(`Modo ${mode} ${this.classList.contains('active') ? 'ativado' : 'desativado'}.`);
-        });
-      });
-
-      // Eventos de envio de mensagens
-      const textInput = document.querySelector('.text-input');
-      const sendButton = document.querySelector('.send-btn');
-      const voiceButton = document.querySelector('.voice-btn');
-      const gestureButton = document.querySelector('.gesture-btn');
-
-      sendButton.addEventListener('click', sendMessage);
-      textInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-          sendMessage();
-        }
-      });
-
-      voiceButton.addEventListener('click', function () {
-        addUserMessage('(Mensagem de voz sendo processada...)');
-        setTimeout(() => {
-          addAIMessage('Entendi sua mensagem de voz. Pode me dar mais detalhes sobre seus sintomas?');
-        }, 1500);
-      });
-
-      gestureButton.addEventListener('click', function () {
-        addUserMessage('(Gestos/sinais sendo interpretados...)');
-        setTimeout(() => {
-          addAIMessage('Compreendi seus sinais. Baseado nos seus gestos, você parece estar com dor na região da cabeça. Isso está correto?');
-        }, 1500);
-      });
-
-      function sendMessage() {
-        const message = textInput.value.trim();
-        if (message) {
-          addUserMessage(message);
-          textInput.value = '';
-          
-          // Extração de palavras-chave
-          const keywords = extractKeywords(message);
-          if (keywords) {
-            addAIMessage(`Palavras-chave identificadas: ${keywords}`);
-          }
-          
-          // Responde a expressões comuns (saudações, agradecimentos etc.)
-          checkCommonExpressions(message);
-          
-          // Gera diagnósticos (10 condições)
-          generateDiagnosis(message);
-          
-          // Verifica estilo de vida (fumar, beber)
-          checkLifestyle(message);
-          
-          // Resposta genérica
-          setTimeout(() => {
-            generateAIResponse(message);
-          }, 1000);
-        }
-      }
-
-      function addUserMessage(message) {
-        const chatContainer = document.getElementById('chat-container');
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message', 'user-message');
-        messageElement.textContent = message;
-        chatContainer.appendChild(messageElement);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-      }
-
-      // Função para escrever a mensagem do AI com efeito de máquina de escrever
-      function addAIMessage(message) {
-        const chatContainer = document.getElementById('chat-container');
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message', 'ai-message');
-        chatContainer.appendChild(messageElement);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-        typeWriter(messageElement, message, 40);
-        triggerDoctorFlash();
-        if (document.getElementById('audio-assist').classList.contains('active')) {
-          console.log('Lendo mensagem em voz alta: ' + message);
-        }
-      }
-
-      function typeWriter(element, text, speed) {
-        let index = 0;
-        const timer = setInterval(() => {
-          element.textContent += text.charAt(index);
-          index++;
-          if (index >= text.length) {
-            clearInterval(timer);
-          }
-          document.getElementById('chat-container').scrollTop = document.getElementById('chat-container').scrollHeight;
-        }, speed);
-      }
-
-      // Animação do avatar: flash de luz atrás do avatar da Dra. Iris
-      function triggerDoctorFlash() {
-        const doctorAvatar = document.querySelector('.doctor-avatar');
-        doctorAvatar.classList.add('flash');
-        setTimeout(() => {
-          doctorAvatar.classList.remove('flash');
-        }, 1000);
-      }
-
-      function generateDiagnosis(message) {
-        let conditions = [];
-        const lowerMsg = message.toLowerCase();
-        if (lowerMsg.includes('dor de cabeça')) {
-          conditions.push("Possível cefaleia tensional. Recomendo repouso, hidratação e, se persistir, consultar um médico.");
-        }
-        if (lowerMsg.includes('febre')) {
-          conditions.push("Febre pode ser sinal de infecção. Se persistir, procure um médico.");
-        }
-        if (lowerMsg.includes('tosse')) {
-          conditions.push("Tosse pode indicar infecção respiratória. Monitore os sintomas e, se piorar, consulte um médico.");
-        }
-        if (lowerMsg.includes('falta de ar')) {
-          conditions.push("Dificuldade para respirar pode indicar problema pulmonar. Procure ajuda médica imediatamente.");
-        }
-        if (lowerMsg.includes('dor no peito')) {
-          conditions.push("Dor no peito pode indicar problemas cardíacos. Se acompanhada de outros sintomas, procure atendimento imediato.");
-        }
-        if (lowerMsg.includes('náusea') || lowerMsg.includes('enjoo')) {
-          conditions.push("Náuseas podem ser causadas por diversas condições. Hidrate-se e, se persistir, consulte um médico.");
-        }
-        if (lowerMsg.includes('dor abdominal')) {
-          conditions.push("Dor abdominal pode ter várias causas. Observe outros sintomas e, se persistir, consulte um médico.");
-        }
-        if (lowerMsg.includes('dor nas costas')) {
-          conditions.push("Dor nas costas pode ser causada por má postura ou tensão muscular. Alongue-se e, se necessário, consulte um especialista.");
-        }
-        if (lowerMsg.includes('cansaço')) {
-          conditions.push("Cansaço excessivo pode indicar problemas diversos. Investigue e, se persistir, procure um médico.");
-        }
-        if (lowerMsg.includes('insônia')) {
-          conditions.push("Insônia pode afetar sua saúde. Estabeleça uma rotina de sono e, se persistir, consulte um especialista.");
-        }
-        if (conditions.length > 0) {
-          addAIMessage(`Diagnósticos:\n${conditions.join("\n")}`);
-        }
-      }
-
-      function extractKeywords(message) {
-        const commonWords = ['a', 'o', 'e', 'de', 'do', 'da', 'para', 'com', 'que', 'se'];
-        const words = message.split(' ');
-        const keywords = words.filter(word => !commonWords.includes(word.toLowerCase()) && word.length > 3);
-        return keywords.join(', ');
-      }
-
-      function checkLifestyle(message) {
-        const lowerMsg = message.toLowerCase();
-        let responses = [];
-        if (lowerMsg.includes('fumo') || lowerMsg.includes('fumar') || lowerMsg.includes('sim, fumo')) {
-          responses.push("Vamos tentar controlar isso, amiguinho. Parar de fumar pode melhorar muito sua saúde!");
-        }
-        if (lowerMsg.includes('bebo') || lowerMsg.includes('bebida') || lowerMsg.includes('sim, bebo')) {
-          responses.push("Vamos tentar controlar isso, amiguinho. Reduzir o consumo de álcool traz muitos benefícios!");
-        }
-        if (responses.length > 0) {
-          addAIMessage(responses.join("\n"));
-        }
-      }
-
-      function checkCommonExpressions(message) {
-        const lowerMsg = message.toLowerCase();
-        const commonExpressions = [
-          { keywords: ["oi", "olá"], responses: ["Oi! Tudo bem?", "Olá! Como você está?", "Oi, que bom ver você!"] },
-          { keywords: ["tudo bem?"], responses: ["Tudo bem, e com você?", "Estou bem, obrigado! E aí, como vai?", "Mais ou menos, mas estou aqui! E você?"] },
-          { keywords: ["ok"], responses: ["Ok, combinado!", "Beleza, entendi!", "Ok, vamos lá!"] },
-          { keywords: ["obrigado", "obrigada"], responses: ["De nada!", "Por nada, disponha!", "Imagina, precisando estou aqui!"] },
-          { keywords: ["desculpe"], responses: ["Tudo bem, sem problemas!", "Não se preocupe, acontece.", "Tranquilo, vamos seguir em frente."] },
-          { keywords: ["por favor"], responses: ["Claro, pode deixar!", "Sim, sem problemas!", "É pra já!"] },
-          { keywords: ["bom dia"], responses: ["Bom dia! Como você está?", "Bom dia! Que seu dia seja ótimo!", "Bom dia! Tudo bem por aí?"] },
-          { keywords: ["boa noite"], responses: ["Boa noite! Durma bem!", "Boa noite! Aproveite o descanso.", "Boa noite! Até amanhã."] },
-          { keywords: ["tchau"], responses: ["Tchau! Até logo!", "Tchau! Cuide-se!", "Tchau! Volte sempre!"] }
+        // Suggested questions
+        const suggestedQuestions = [
+            "Qual o horário de funcionamento?",
+            "Como faço para agendar consulta?",
+            "Quais documentos preciso levar?",
+            "Quais especialidades atendem?",
+            "O que fazer em caso de emergência?",
+            "Como receber resultados de exames?",
+            "Tem vacinação contra COVID-19?",
+            "Qual o telefone da UBS?",
+            "Qual o endereço da UBS?"
         ];
-        let responses = [];
-        commonExpressions.forEach(item => {
-          item.keywords.forEach(keyword => {
-            if (lowerMsg.includes(keyword)) {
-              const randomResponse = item.responses[Math.floor(Math.random() * item.responses.length)];
-              responses.push(randomResponse);
-            }
-          });
-        });
-        if (responses.length > 0) {
-          addAIMessage(responses.join("\n"));
+
+        // Function to add a message to the chat
+        function addMessage(message, type) {
+            const chatMessages = document.getElementById("chatMessages");
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${type}-message`;
+            messageDiv.innerHTML = `<div class="message-content">${message}</div>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-      }
 
-      function generateAIResponse(message) {
-        addAIMessage("Obrigado por compartilhar. Vou analisar suas informações e, se precisar de mais detalhes, estarei aqui para ajudar.");
-      }
+        // Function to add a bot message
+        function addBotMessage(message) {
+            addMessage(message, "bot");
+        }
 
-      // Acesso à Câmera: solicita permissão e exibe o stream de vídeo
-      document.querySelector('.user-video').addEventListener('click', function() {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-          .then(stream => {
-            const videoElement = document.createElement('video');
-            videoElement.srcObject = stream;
-            videoElement.play();
-            this.innerHTML = '';
-            this.appendChild(videoElement);
-          })
-          .catch(error => {
-            console.error('Erro ao acessar a câmera: ', error);
-            alert('Não foi possível acessar a câmera.');
-          });
-      });
-    });
+        // Function to add a user message
+        function addUserMessage(message) {
+            addMessage(message, "user");
+        }
 
-    // Simulação de batimentos cardíacos animados
-const heartbeatValues = [78, 80, 83, 95, 98, 99, 101 ];
-const heartbeatElement = document.querySelector('.metric-card:nth-child(1) .metric-value');
+        // Function to show options
+        function showOptions(options) {
+            const chatMessages = document.getElementById("chatMessages");
+            const optionsDiv = document.createElement("div");
+            optionsDiv.className = "options-container";
 
-setInterval(() => {
-  const randomHeartbeat = heartbeatValues[Math.floor(Math.random() * heartbeatValues.length)];
-  heartbeatElement.textContent = `${randomHeartbeat} BPM`;
-  heartbeatElement.classList.add('pulse');
-  setTimeout(() => {
-    heartbeatElement.classList.remove('pulse');
-  }, 500);
-}, 3000);
+            options.forEach(option => {
+                const button = document.createElement("button");
+                button.className = "option-button";
+                button.textContent = option;
+                button.onclick = function () {
+                    addUserMessage(option);
+                    processMessage(option);
+                };
+                optionsDiv.appendChild(button);
+            });
 
-  </script>
+            const messageDiv = document.createElement("div");
+            messageDiv.className = "message bot-message";
+            messageDiv.appendChild(optionsDiv);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Function to process the user message and send a response
+        function processMessage(message) {
+            message = message.toLowerCase();
+
+            let response = "";
+            if (message.includes("horario") || message.includes("funcionamento") || message.includes("aberto")) {
+                response = knowledgeBase.horario;
+            } else if (message.includes("agendar") || message.includes("consulta") || message.includes("marcar")) {
+                response = knowledgeBase.agendamento;
+            } else if (message.includes("documentos") || message.includes("levar")) {
+                response = knowledgeBase.documentos;
+            } else if (message.includes("especialidades") || message.includes("médicos") || message.includes("atendimento")) {
+                response = knowledgeBase.especialidades;
+            } else if (message.includes("emergencia") || message.includes("urgência")) {
+                response = knowledgeBase.emergencia;
+            } else if (message.includes("exames") || message.includes("resultados")) {
+                response = knowledgeBase.exames;
+            } else if (message.includes("covid") || message.includes("vacina")) {
+                response = knowledgeBase.covid;
+            } else if (message.includes("telefone") || message.includes("contato")) {
+                response = knowledgeBase.telefone;
+            } else if (message.includes("endereço") || message.includes("localização") || message.includes("onde")) {
+                response = knowledgeBase.endereço;
+            } else {
+                response = "Desculpe, não entendi sua pergunta. Pode tentar novamente ou escolher uma das opções sugeridas?";
+                setTimeout(() => {
+                    showOptions(suggestedQuestions);
+                }, 1000);
+
+
+                if (message.includes("sintoma") || message.includes("dor") || message.includes("febre") ||
+                    message.includes("doente") || message.includes("tratamento") || message.includes("remédio") ||
+                    message.includes("diagnóstico")) {
+                    setTimeout(() => {
+                        addBotMessage("Importante: Não posso fornecer diagnósticos ou aconselhamento médico. Para questões de saúde, por favor, consulte um profissional médico na UBS ou procure atendimento de emergência se necessário.");
+                    }, 2000);
+                }
+
+                return;
+            }
+
+            setTimeout(() => {
+                addBotMessage(response);
+            }, 1000);
+
+            setTimeout(() => {
+                addBotMessage("Posso ajudar com mais alguma coisa?");
+            }, 2000);
+        }
+
+        // Function to send a message
+        function sendMessage() {
+            const userInput = document.getElementById("userInput");
+            const message = userInput.value.trim();
+
+            if (message !== "") {
+                addUserMessage(message);
+                userInput.value = "";
+                processMessage(message);
+            }
+        }
+
+        // Function to handle key press
+        function handleKeyPress(e) {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        }
+
+        // Initialization
+        window.onload = function () {
+            addBotMessage("Olá! Sou o assistente virtual da UBS Portal. Posso fornecer informações gerais sobre nossos serviços. Lembre-se que não sou um médico e não posso fornecer diagnósticos ou aconselhamento médico.");
+
+            setTimeout(() => {
+                addBotMessage("Como posso ajudar você hoje?");
+                showOptions(suggestedQuestions);
+            }, 1000);
+        };
+    </script>
 </body>
+
 </html>
