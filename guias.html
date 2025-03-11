@@ -4,30 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encaminhamento Médico e Guias Médicas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            line-height: 1.6;
+        :root {
+            --primary-color: #1a3a5f;
+            --secondary-color: #2d5986;
+            --accent-color: #4d92df;
+            --light-blue: #e6f2ff;
+            --gradient-start: #0d2b4b;
+            --gradient-end: #2d5986;
+            --text-color: #333;
+            --light-text: #f0f0f0;
+            --warning-color: #e63946;
+            --success-color: #2a9d8f;
+            --info-color: #457b9d;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            line-height: 1.6;
+            color: var(--text-color);
         }
 
         header {
-            background-color: #1a3a5f; /* Tom de azul escuro */
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Menu styling */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Z"></path></svg>');
+            background-size: cover;
+        }
+
+        header h1 {
+            position: relative;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            position: relative;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Menu styling - APRIMORADO */
         #menu-container {
-            background-color: #0d2b4b; /* Azul mais escuro para o menu */
+            background: linear-gradient(90deg, var(--gradient-start), var(--secondary-color));
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -56,6 +104,7 @@
         .nav-links li {
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         .nav-links li a {
@@ -63,35 +112,78 @@
             color: white;
             text-decoration: none;
             padding: 15px 20px;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .nav-links li a:hover {
-            background-color: #2d5986; /* Azul médio para hover */
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links li a:hover::after {
+            width: 70%;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: white;
+            font-size: 1.4rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
         }
 
         main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 30px;
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 35px;
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
         }
 
         h2 {
-            color: #1a3a5f; /* Tom de azul escuro para os títulos */
-            margin-top: 20px;
-            border-bottom: 2px solid #d1e1f1; /* Linha azul clara abaixo dos títulos */
-            padding-bottom: 5px;
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 i {
+            margin-right: 12px;
+            color: var(--accent-color);
+            font-size: 1.5rem;
         }
 
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
         }
 
         .info {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             animation: fadeIn 1s;
         }
 
@@ -102,29 +194,75 @@
 
         .highlight {
             font-weight: bold;
-            color: #1a3a5f; /* Destaque em azul escuro */
+            color: var(--primary-color);
         }
 
         .warning {
-            color: #e63946;
+            color: var(--warning-color);
             font-style: italic;
         }
 
         .thank-you {
             text-align: center;
-            margin-top: 30px;
-            font-size: 1.1em;
-            color: #1a3a5f; /* Agradecimento em azul escuro */
+            margin: 40px 0 20px;
+            font-size: 1.2em;
+            color: var(--primary-color);
             font-weight: bold;
+            position: relative;
+            padding: 15px;
         }
 
-        /* Novas seções adicionadas */
+        .thank-you::before,
+        .thank-you::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .thank-you::before {
+            top: 0;
+        }
+
+        .thank-you::after {
+            bottom: 0;
+        }
+
+        /* Enhanced info boxes */
         .info-box {
-            background-color: #e6f2ff; /* Fundo azul claro */
-            border-left: 4px solid #1a3a5f;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 0 5px 5px 0;
+            background-color: var(--light-blue);
+            border-left: 5px solid var(--accent-color);
+            padding: 18px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-box::before {
+            content: '\f05a';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            color: rgba(77, 146, 223, 0.1);
+        }
+
+        .info-box.warning {
+            background-color: #ffedee;
+            border-left-color: var(--warning-color);
+        }
+
+        .info-box.warning::before {
+            content: '\f071';
+            color: rgba(230, 57, 70, 0.1);
         }
 
         .contact-info {
@@ -132,26 +270,56 @@
             flex-wrap: wrap;
             justify-content: space-between;
             margin-top: 20px;
+            gap: 20px;
         }
 
         .contact-item {
-            flex-basis: 48%;
-            margin-bottom: 15px;
+            flex-basis: calc(50% - 20px);
+            background-color: #f9fafc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .contact-item h3 {
-            margin-bottom: 5px;
-            color: #1a3a5f;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item h3 i {
+            margin-right: 10px;
+            color: var(--accent-color);
         }
 
         .timeline {
             position: relative;
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 30px auto;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--light-blue);
+            top: 0;
+            bottom: 0;
+            left: 10px;
         }
 
         .timeline-item {
-            padding: 10px 40px;
+            padding: 10px 30px 20px 30px;
             position: relative;
             background-color: inherit;
             width: 100%;
@@ -160,14 +328,266 @@
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: #1a3a5f;
-            border: 4px solid #d1e1f1;
+            width: 18px;
+            height: 18px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
             top: 15px;
             border-radius: 50%;
             z-index: 1;
-            left: 10px;
+            left: -23px;
+            box-shadow: 0 0 0 4px rgba(77, 146, 223, 0.2);
+        }
+
+        .timeline-item:hover::after {
+            background-color: var(--accent-color);
+        }
+
+        .timeline-item h4 {
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .app-promo {
+            background: linear-gradient(135deg, #f0f7ff, #e6f2ff);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .app-promo h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .app-promo i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .app-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .app-feature {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .app-feature i {
+            font-size: 1rem;
+            margin-right: 8px;
+            margin-bottom: 0;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .download-button:hover {
+            transform: translateY(-3px);
+            background-color: var(--secondary-color);
+        }
+
+        .download-button i {
+            font-size: 1.2rem;
+            margin-right: 8px;
+            margin-bottom: 0;
+            color: white;
+        }
+
+        .priority-levels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .priority-level {
+            flex: 1 1 45%;
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .priority-level.emergency {
+            border-left-color: #e63946;
+        }
+
+        .priority-level.urgent {
+            border-left-color: #f4a261;
+        }
+
+        .priority-level.high {
+            border-left-color: #e9c46a;
+        }
+
+        .priority-level.medium {
+            border-left-color: #2a9d8f;
+        }
+
+        .priority-level.low {
+            border-left-color: #457b9d;
+        }
+
+        .priority-level h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .priority-level h4 i {
+            margin-right: 8px;
+        }
+
+        .priority-level p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+            padding-left: 0;
+        }
+
+        .footer-links li::before {
+            content: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
         /* Responsividade para o menu */
@@ -181,7 +601,7 @@
                 top: 60px;
                 left: -100%;
                 flex-direction: column;
-                background-color: #0d2b4b;
+                background-color: var(--gradient-start);
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
@@ -192,37 +612,92 @@
                 left: 0;
             }
 
-            .contact-item {
+            .nav-links li a {
+                padding: 15px;
+            }
+
+            .nav-links li a::after {
+                display: none;
+            }
+
+            .contact-item, 
+            .priority-level {
                 flex-basis: 100%;
+            }
+
+            .timeline-item {
+                padding-left: 20px;
+                padding-right: 10px;
+            }
+
+            main {
+                padding: 20px;
+                margin: 20px 10px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .footer-section {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .app-feature {
+                flex-basis: 100%;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .priority-levels {
+                gap: 15px;
+            }
+
+            .thank-you::before,
+            .thank-you::after {
+                width: 60px;
             }
         }
     </style>
-    
-    
 </head>
 <body>
     <header>
-        <h1>Encaminhamento Médico e Guias Médicas</h1>
+        <h1><i class="fas fa-notes-medical"></i> Encaminhamento Médico e Guias Médicas</h1>
+        <p>Informações importantes sobre seu encaminhamento e agendamento de exames</p>
     </header>
 
     <div id="menu-container">
         <nav>
+            <a href="#" class="logo"><i class="fas fa-heartbeat"></i> UBS Portal</a>
             <span class="menu-icon" onclick="toggleMenu()">☰</span>
             <ul class="nav-links">
-
-                
-                <li><a href="index.html">Início</a></li>
-            
-                
-          
-                
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#atendimentos"><i class="fas fa-calendar-check"></i> Atendimentos</a></li>
+                <li><a href="#app-sus"><i class="fas fa-mobile-alt"></i> Meu SUS</a></li>
+                <li><a href="acs.html"><i class="fas fa-user-md"></i> Equipe</a></li>
+                <li><a href="#sobre-ubs"><i class="fas fa-info-circle"></i> Sobre</a></li>
             </ul>
         </nav>
     </div>
 
     <main>
         <section class="info">
-            <h2>O que é Encaminhamento Médico?</h2>
+            <h2><i class="fas fa-file-medical"></i> O que é Encaminhamento Médico?</h2>
             <p>O encaminhamento médico é um documento fundamental emitido pelo seu médico, que o direciona para um especialista ou para a realização de exames complementares. Este documento é necessário quando o médico identifica a necessidade de uma avaliação mais específica ou de um tratamento que esteja fora de sua área de especialização.</p>
             <p>Este documento contém informações cruciais sobre você, como seu histórico médico, os sintomas que você está apresentando e os resultados dos exames já realizados. Essas informações são essenciais para que o especialista possa oferecer o melhor e mais adequado cuidado para a sua saúde.</p>
             
@@ -232,88 +707,112 @@
         </section>
 
         <section class="info">
-            <h2>Informações Importantes sobre suas Guias</h2>
+            <h2><i class="fas fa-clipboard-list"></i> Informações Importantes sobre suas Guias</h2>
             <p>As guias para consultas e exames são emitidas nas cidades de <span class="highlight">Caieiras e São Paulo</span>. Queremos informar que, devido à alta demanda e complexidade de alguns procedimentos, o tempo de espera para a realização de certos exames, como <span class="highlight">USG TV, USG Mamas</span>, entre outros, pode variar. Em alguns casos, esse tempo pode levar <span class="highlight">meses ou até mesmo anos</span>.</p>
             <p class="warning">Entendemos que essa espera pode ser frustrante, e estamos trabalhando continuamente para agilizar os processos e reduzir o tempo de espera. Agradecemos sua compreensão e paciência.</p>
             
             <div class="timeline">
                 <h3>Processo de Agendamento</h3>
                 <div class="timeline-item">
-                    <h4>Emissão da Guia</h4>
+                    <h4><i class="fas fa-pen"></i> Emissão da Guia</h4>
                     <p>Após sua consulta, o médico emite o encaminhamento que é registrado no sistema.</p>
                 </div>
                 <div class="timeline-item">
-                    <h4>Análise e Priorização</h4>
+                    <h4><i class="fas fa-search"></i> Análise e Priorização</h4>
                     <p>A Central de Regulação analisa o pedido e atribui um nível de prioridade com base na gravidade.</p>
                 </div>
                 <div class="timeline-item">
-                    <h4>Agendamento</h4>
+                    <h4><i class="fas fa-calendar-alt"></i> Agendamento</h4>
                     <p>Quando sua vez chegar, você receberá uma notificação por telefone ou SMS.</p>
                 </div>
                 <div class="timeline-item">
-                    <h4>Realização</h4>
+                    <h4><i class="fas fa-check-circle"></i> Realização</h4>
                     <p>Compareça no local, data e horário agendados com seus documentos pessoais e guia.</p>
                 </div>
             </div>
         </section>
 
         <section class="info">
-            <h2>Prioridades no Atendimento</h2>
+            <h2><i class="fas fa-exclamation-triangle"></i> Prioridades no Atendimento</h2>
             <p>É importante entender que o sistema de saúde trabalha com prioridades baseadas na avaliação clínica. Casos mais graves são atendidos com maior urgência. As prioridades são classificadas da seguinte forma:</p>
             
-            <ul>
-                <li><span class="highlight">Emergência:</span> Atendimento imediato para casos de risco à vida</li>
-                <li><span class="highlight">Urgência:</span> Casos graves que necessitam de atendimento rápido</li>
-                <li><span class="highlight">Alta prioridade:</span> Condições que requerem atendimento em curto prazo</li>
-                <li><span class="highlight">Média prioridade:</span> Condições que permitem espera moderada</li>
-                <li><span class="highlight">Baixa prioridade:</span> Condições estáveis que permitem maior tempo de espera</li>
-            </ul>
+            <div class="priority-levels">
+                <div class="priority-level emergency">
+                    <h4><i class="fas fa-ambulance"></i> Emergência</h4>
+                    <p>Atendimento imediato para casos de risco à vida</p>
+                </div>
+                <div class="priority-level urgent">
+                    <h4><i class="fas fa-heartbeat"></i> Urgência</h4>
+                    <p>Casos graves que necessitam de atendimento rápido</p>
+                </div>
+                <div class="priority-level high">
+                    <h4><i class="fas fa-arrow-circle-up"></i> Alta prioridade</h4>
+                    <p>Condições que requerem atendimento em curto prazo</p>
+                </div>
+                <div class="priority-level medium">
+                    <h4><i class="fas fa-arrows-alt-h"></i> Média prioridade</h4>
+                    <p>Condições que permitem espera moderada</p>
+                </div>
+                <div class="priority-level low">
+                    <h4><i class="fas fa-arrow-circle-down"></i> Baixa prioridade</h4>
+                    <p>Condições estáveis que permitem maior tempo de espera</p>
+                </div>
+            </div>
             
-            <div class="info-box">
-                <p>Se houver piora em seu quadro clínico enquanto aguarda pelo agendamento, procure novamente sua Unidade Básica de Saúde para reavaliação da prioridade.</p>
+            <div class="info-box warning">
+                <p><strong>Atenção:</strong> Se houver piora em seu quadro clínico enquanto aguarda pelo agendamento, procure novamente sua Unidade Básica de Saúde para reavaliação da prioridade.</p>
+            </div>
+        </section>
+
+        <section class="info" id="app-sus">
+            <h2><i class="fas fa-mobile-alt"></i> Aplicativo Meu SUS</h2>
+            
+            <div class="app-promo">
+                <i class="fas fa-mobile-screen-button"></i>
+                <h3>Facilite o acompanhamento dos seus encaminhamentos</h3>
+                <p>Para acompanhar suas guias e agendamentos, recomendamos o uso do aplicativo <span class="highlight">Meu SUS</span>, disponível para download em smartphones.</p>
+                
+                <div class="app-features">
+                    <div class="app-feature"><i class="fas fa-search"></i> Consultar status de encaminhamentos</div>
+                    <div class="app-feature"><i class="fas fa-calendar"></i> Verificar datas de consultas</div>
+                    <div class="app-feature"><i class="fas fa-file-medical-alt"></i> Acessar resultados de exames</div>
+                    <div class="app-feature"><i class="fas fa-bell"></i> Receber notificações</div>
+                    <div class="app-feature"><i class="fas fa-syringe"></i> Carteira de vacinação digital</div>
+                </div>
+                
+                <div class="download-buttons">
+                    <a href="#" class="download-button"><i class="fab fa-google-play"></i> Google Play</a>
+                    <a href="#" class="download-button"><i class="fab fa-apple"></i> App Store</a>
+                </div>
             </div>
         </section>
 
         <section class="info">
-            <h2>Aplicativo Meu SUS</h2>
-            <p>Para facilitar o acompanhamento de suas guias e agendamentos, recomendamos o uso do aplicativo <span class="highlight">Meu SUS</span>, disponível para download em smartphones. Com ele, você pode:</p>
-            
-            <ul>
-                <li>Consultar o status de seus encaminhamentos</li>
-                <li>Verificar datas de consultas agendadas</li>
-                <li>Acessar resultados de exames</li>
-                <li>Receber notificações sobre agendamentos</li>
-                <li>Visualizar sua carteira de vacinação digital</li>
-            </ul>
-        </section>
-
-        <section class="info">
-            <h2>Agradecimento</h2>
+            <h2><i class="fas fa-handshake"></i> Agradecimento</h2>
             <p>UBS Portal agradece o empenho dos pacientes em manter a regularidade e comparecer aos agendamentos. Sua colaboração é essencial para o bom funcionamento do sistema e para garantir que todos recebam o atendimento necessário.</p>
         </section>
 
         <section class="info">
-            <h2>Contatos Úteis</h2>
+            <h2><i class="fas fa-address-book"></i> Contatos Úteis</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <h3>Central de Agendamentos</h3>
-        
-                    <p>Horário: Segunda a Sexta, 8h às 17h</p>
+                    <h3><i class="fas fa-calendar-alt"></i> Central de Agendamentos</h3>
+                    <p><i class="fas fa-clock"></i> Horário: Segunda a Sexta, 8h às 17h</p>
                 </div>
                 <div class="contact-item">
-                    <h3>Ouvidoria</h3>
-                    <p>Telefone:  156 e 11 4445-9265</p>
-                    <p>Email: ouvidoria@caieiras.sp.gov.br</p>
+                    <h3><i class="fas fa-comments"></i> Ouvidoria</h3>
+                    <p><i class="fas fa-phone"></i> Telefone: 156 e 11 4445-9265</p>
+                    <p><i class="fas fa-envelope"></i> Email: ouvidoria@caieiras.sp.gov.br</p>
                 </div>
                 <div class="contact-item">
-                    <h3>Secretaria Municipal de Saúde</h3>
-                    <p>Telefone: 11 4442-7352 </p>
-                    <p>Website: caieiras.sp.gov.br</p>
+                    <h3><i class="fas fa-hospital"></i> Secretaria Municipal de Saúde</h3>
+                    <p><i class="fas fa-phone"></i> Telefone: 11 4442-7352</p>
+                    <p><i class="fas fa-globe"></i> Website: caieiras.sp.gov.br</p>
                 </div>
                 <div class="contact-item">
-                    <h3>Emergências</h3>
-                    <p>SAUR: 192</p>
-                    <p>Bombeiros: 193</p>
+                    <h3><i class="fas fa-ambulance"></i> Emergências</h3>
+                    <p><i class="fas fa-first-aid"></i> SAUR/SAMU: 192</p>
+                    <p><i class="fas fa-fire-extinguisher"></i> Bombeiros: 193</p>
                 </div>
             </div>
         </section>
@@ -321,7 +820,42 @@
         <p class="thank-you">Agradecemos a sua compreensão e colaboração!</p>
     </main>
 
-    <!-- Script para funcionamento do menu responsivo -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UBS Portal</h3>
+                <p>Unidade Básica de Saúde dedicada ao atendimento de qualidade para todos os cidadãos.</p>
+                <div class="social-links">
+                
+                    <a href="https://www.instagram.com/ubsportaldaslaranjeiras/"><i class="fab fa-instagram"></i></a>
+                    
+                    <a href="https://api.whatsapp.com/send/?phone=%2B551148005024&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Agendamento Online</a></li>
+                    <li><a href="#">Campanhas de Saúde</a></li>
+                    <li><a href="#">Perguntas Frequentes                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Rua Cardeal, S/N - Caieiras, SP</p>
+                <p><i class="fas fa-phone"></i> Telefone: (11) 4800-5024</p>
+                <p><i class="fas fa-envelope"></i> Email: portaldaslaranjeirasrecepcao@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2023 UBS Portal. Todos os direitos reservados.
+        </div>
+    </footer>
+
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
