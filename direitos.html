@@ -9,68 +9,326 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
+      background: linear-gradient(135deg, #1a2a6c, #2a4dad, #4169e1);
       margin: 0;
       padding: 0;
+      color: #333;
+      min-height: 100vh;
     }
+    
     .container {
-      margin-top: 50px;
+      margin-top: 30px;
+      margin-bottom: 50px;
     }
+    
     .direitos-deveres-info {
       margin-top: 20px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
+    
     .direitos-deveres-info h3 {
-      color: #333;
+      color: #0d47a1;
       margin-bottom: 20px;
+      border-bottom: 2px solid #4169e1;
+      padding-bottom: 10px;
+      font-weight: 700;
     }
+    
     .direitos-deveres-info ul {
       list-style-type: none;
       padding-left: 0;
     }
+    
     .direitos-deveres-info ul li {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      padding-left: 20px;
+      position: relative;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
     }
+    
+    .direitos-deveres-info ul li:before {
+      content: "•";
+      color: #0d47a1;
+      font-size: 1.5em;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+    
     .direitos-deveres-info ul li strong {
-      color: #007bff;
+      color: #0d47a1;
+      font-weight: 600;
+    }
+    
+    .lei-explicacao {
+      background-color: #e8f0fe;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      border-left: 4px solid #0d47a1;
+    }
+    
+    /* Estilos para o menu */
+    #menu-container {
+      background: linear-gradient(90deg, #0d47a1, #1565c0);
+      padding: 15px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .menu-icon {
+      display: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin: 0 15px;
+    }
+    
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links li a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links li a:hover:after {
+      width: 100%;
+    }
+    
+    /* Responsividade do menu */
+    @media screen and (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+      
+      .nav-links {
+        position: absolute;
+        background: linear-gradient(90deg, #0d47a1, #1565c0);
+        width: 100%;
+        flex-direction: column;
+        top: 60px;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      
+      .nav-links li {
+        margin: 15px 0;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Menu de Navegação -->
+  <div id="menu-container">
+    <nav>
+      <span class="menu-icon" onclick="toggleMenu()">☰</span>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="#atendimentos">Atendimentos</a></li>
+        <li><a href="#app-sus">Meu SUS</a></li>
+        <li><a href="acs.html">Equipe</a></li>
+        <li><a href="#sobre-ubs">Sobre</a></li>
+      </ul>
+    </nav>
+  </div>
+  
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+      <div class="col-lg-10 col-md-12 mx-auto">
         <div class="direitos-deveres-info">
-          <h3>Direitos e Deveres dos Cidadãos e Funcionários Públicos</h3>
-          <p>A seguir, destacamos os direitos e deveres que asseguram um atendimento de qualidade aos pacientes.</p>
+          <h3 class="text-center">Direitos e Deveres dos Cidadãos e Funcionários Públicos na Saúde</h3>
+          <p class="lead text-center mb-4">Conheça os direitos e deveres que asseguram um atendimento de qualidade aos pacientes e o trabalho digno dos profissionais de saúde.</p>
+          
+          <h4 class="mt-4 mb-3 text-primary">Direitos dos Cidadãos</h4>
           <ul>
-            <li><strong>Direito à Saúde:</strong> Garantido pelo <strong>Art. 196 da Constituição Federal</strong>, o acesso universal e igualitário à saúde é um direito de todos.</li>
-            <li><strong>Atendimento Digno:</strong> Conforme o <strong>Art. 3º da Lei 8.080/90</strong>, os cidadãos têm direito ao atendimento respeitoso e eficiente no SUS.</li>
-            <li><strong>Sigilo Médico:</strong> O <strong>Art. 5º, inciso X da Constituição</strong> assegura a privacidade dos pacientes.</li>
-            <li><strong>Medicamentos e Tratamentos:</strong> A <strong>Lei 8.080/90</strong> garante o acesso a medicamentos essenciais gratuitamente pelo SUS.</li>
-            <li><strong>Direito à Capacitação dos Profissionais:</strong> Conforme o <strong>Art. 27 da Lei 8.080/90</strong>, os profissionais de saúde devem receber treinamentos constantes.</li>
-            <li><strong>Dever de Zelo:</strong> É obrigação dos agentes oferecer atendimento de excelência e com respeito aos direitos dos cidadãos.</li>
-            <li><strong>Direito à Remuneração Justa:</strong> Garantia de uma remuneração compatível com a responsabilidade e carga horária.</li>
-            <li><strong>Dever de Sigilo:</strong> Manter a confidencialidade das informações dos pacientes, em conformidade com as normas éticas.</li>
-            <li><strong>Direito à Segurança:</strong> Assegura-se ambientes de trabalho seguros e adequados para a prática profissional.</li>
-            <li><strong>Dever de Atendimento:</strong> Prestação de serviços de saúde de forma humanizada e seguindo os protocolos estabelecidos.</li>
-            <li><strong>Art. 196 da Constituição Federal:</strong> A saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doenças e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação.</li>
-            <li><strong>Art. 198:</strong> O Sistema Único de Saúde (SUS) deve ser descentralizado, com participação da comunidade e atendimento integral.</li>
-            <li><strong>Lei 8.080/1990:</strong> Regula as condições para a promoção, proteção e recuperação da saúde, além da organização e funcionamento dos serviços.</li>
-            <li><strong>Lei 8.142/1990:</strong> Garante a participação popular no SUS por meio dos Conselhos e Conferências de Saúde.</li>
-            <li><strong>Lei 9.431/1997:</strong> Estabelece diretrizes para o Sistema Único de Saúde, especialmente no que se refere ao financiamento da saúde.</li>
-            <li><strong>Lei 13.979/2020:</strong> Dispõe sobre medidas para enfrentamento da emergência de saúde pública decorrente da pandemia de COVID-19.</li>
+            <li>
+              <strong>Direito à Saúde:</strong> Garantido pelo <strong>Art. 196 da Constituição Federal</strong>, o acesso universal e igualitário à saúde é um direito de todos.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Este artigo estabelece que a saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doenças e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Atendimento Digno:</strong> Conforme o <strong>Art. 3º da Lei 8.080/90</strong>, os cidadãos têm direito ao atendimento respeitoso e eficiente no SUS.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Define que a saúde tem como fatores determinantes e condicionantes, entre outros, a alimentação, a moradia, o saneamento básico, o meio ambiente, o trabalho, a renda, a educação, o transporte, o lazer e o acesso aos bens e serviços essenciais.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Sigilo Médico:</strong> O <strong>Art. 5º, inciso X da Constituição</strong> assegura a privacidade dos pacientes.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Estabelece que são invioláveis a intimidade, a vida privada, a honra e a imagem das pessoas, assegurado o direito à indenização pelo dano material ou moral decorrente de sua violação.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Medicamentos e Tratamentos:</strong> A <strong>Lei 8.080/90</strong> garante o acesso a medicamentos essenciais gratuitamente pelo SUS.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> O Art. 6º desta lei inclui no campo de atuação do SUS a execução de ações de assistência terapêutica integral, inclusive farmacêutica.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Direito à Informação:</strong> Conforme a <strong>Lei 13.460/2017</strong>, o paciente tem direito de receber informações claras sobre sua condição de saúde e tratamentos.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Dispõe sobre a participação, proteção e defesa dos direitos do usuário dos serviços públicos, garantindo acesso à informação adequada.
+              </div>
+            </li>
           </ul>
-          <p>Estas orientações têm respaldo em diversos dispositivos legais e normativos, visando proteger tanto os profissionais quanto os pacientes.</p>
+          
+          <h4 class="mt-4 mb-3 text-primary">Direitos dos Profissionais</h4>
+          <ul>
+            <li>
+              <strong>Direito à Capacitação:</strong> Conforme o <strong>Art. 27 da Lei 8.080/90</strong>, os profissionais de saúde devem receber treinamentos constantes.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> A política de recursos humanos na área da saúde será formalizada e executada, articuladamente, pelas diferentes esferas de governo, garantindo a valorização da dedicação exclusiva aos serviços do SUS.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Direito à Remuneração Justa:</strong> Garantia de uma remuneração compatível com a responsabilidade e carga horária, conforme a <strong>Lei 8.112/90</strong>.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Dispõe sobre o regime jurídico dos servidores públicos e estabelece direitos remuneratórios como vencimento, remuneração e adicionais.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Direito à Segurança:</strong> A <strong>NR-32 do Ministério do Trabalho</strong> assegura ambientes de trabalho seguros e adequados para a prática profissional.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Esta Norma Regulamentadora estabelece diretrizes para implementação de medidas de proteção à segurança e à saúde dos trabalhadores dos serviços de saúde.
+              </div>
+            </li>
+          </ul>
+          
+          <h4 class="mt-4 mb-3 text-primary">Deveres dos Cidadãos e Profissionais</h4>
+          <ul>
+            <li>
+              <strong>Dever de Zelo:</strong> É obrigação dos agentes oferecer atendimento de excelência e com respeito aos direitos dos cidadãos, conforme o <strong>Código de Ética Profissional</strong>.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Os códigos de ética das profissões de saúde estabelecem princípios, direitos e responsabilidades inerentes ao exercício profissional.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Dever de Sigilo:</strong> Manter a confidencialidade das informações dos pacientes, em conformidade com o <strong>Art. 154 do Código Penal</strong>.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Caracteriza como crime a violação de segredo profissional, revelando, sem justa causa, segredo de que tem ciência em razão de função, ministério, ofício ou profissão.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Dever de Atendimento:</strong> Prestação de serviços de saúde de forma humanizada e seguindo os protocolos estabelecidos pela <strong>Política Nacional de Humanização</strong>.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Estabelece diretrizes para a humanização do atendimento nos serviços de saúde, valorizando a dimensão subjetiva e social em todas as práticas de atenção e gestão no SUS.
+              </div>
+            </li>
+          </ul>
+          
+          <h4 class="mt-4 mb-3 text-primary">Legislação Relacionada à Saúde</h4>
+          <ul>
+            <li>
+              <strong>Lei 8.142/1990:</strong> Garante a participação popular no SUS por meio dos Conselhos e Conferências de Saúde.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Dispõe sobre a participação da comunidade na gestão do SUS e sobre as transferências intergovernamentais de recursos financeiros na área da saúde.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Lei 9.431/1997:</strong> Estabelece diretrizes para o Sistema Único de Saúde, especialmente no que se refere ao financiamento da saúde.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Dispõe sobre a obrigatoriedade de manutenção de programa de controle de infecções hospitalares pelos hospitais do país.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Lei 10.741/2003 (Estatuto do Idoso):</strong> Garante atendimento preferencial e integral à saúde do idoso.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Regulamenta os direitos assegurados às pessoas com idade igual ou superior a 60 anos, incluindo atendimento prioritário em serviços de saúde.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Lei 13.146/2015 (Estatuto da Pessoa com Deficiência):</strong> Assegura direitos específicos no atendimento de saúde às pessoas com deficiência.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Institui a Lei Brasileira de Inclusão da Pessoa com Deficiência, garantindo o direito à saúde de forma acessível e adequada às necessidades específicas.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Lei 13.979/2020:</strong> Dispõe sobre medidas para enfrentamento da emergência de saúde pública decorrente da pandemia de COVID-19.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Estabelece medidas de proteção à população durante situações de emergência em saúde pública, incluindo isolamento, quarentena e restrições diversas.
+              </div>
+            </li>
+            
+            <li>
+              <strong>Lei 13.989/2020:</strong> Regulamenta a telemedicina durante crises sanitárias.
+              <div class="lei-explicacao">
+                <strong>Explicação:</strong> Autoriza o uso da telemedicina em caráter emergencial durante a pandemia de COVID-19, permitindo consultas médicas à distância.
+              </div>
+            </li>
+          </ul>
+          
+          <p class="mt-4">Estas orientações têm respaldo em diversos dispositivos legais e normativos, visando proteger tanto os profissionais quanto os pacientes. O conhecimento desses direitos e deveres contribui para um sistema de saúde mais justo, eficiente e humanizado.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Adicionando o Bootstrap JS -->
+  <!-- Adicionando o Bootstrap JS e script para o menu -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
