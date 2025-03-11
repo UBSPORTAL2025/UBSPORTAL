@@ -1,538 +1,761 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>SmartBulas</title>
- <style>
- /* Reset e configuração base */
- 
- * {
- box-sizing: border-box;
- margin: 0;
- padding: 0;
- }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBulas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Definição de variáveis de cores */
+    :root {
+      --primary-color: #1a3a5f;
+      --secondary-color: #2d5986;
+      --accent-color: #4d92df;
+      --light-blue: #e6f2ff;
+      --gradient-start: #0d2b4b;
+      --gradient-end: #2d5986;
+      --text-color: #333;
+      --light-text: #f0f0f0;
+    }
+
+    /* Reset e configuração base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a3a5f 0%, #2d5986 100%);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Cabeçalho estilizado */
+    header {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Z"></path></svg>');
+      background-size: cover;
+    }
+
+    header h1 {
+      position: relative;
+      font-size: 2.2rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    header p {
+      position: relative;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 15px auto;
+      color: white;
+    }
+
+    /* Menu styling */
+    #menu-container {
+      background: linear-gradient(90deg, var(--gradient-start), var(--secondary-color));
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-icon {
+      display: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    .nav-links li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background-color: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-links li a:hover::after {
+      width: 70%;
+    }
+
+    .logo-menu {
+      font-weight: 700;
+      color: white;
+      font-size: 1.4rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-menu i {
+      margin-right: 10px;
+      color: var(--accent-color);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* Estilo do campo de busca */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .search-container input[type="text"] {
+      width: 70%;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-container button {
+      padding: 12px 20px;
+      margin-left: 10px;
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-container button:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    /* Estilo dos cards de categoria */
+    .category-card {
+      background: #2c4c6e;
+      border: 1px solid #345980;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(90deg, #2c4c6e, #345980);
+    }
+
+    .category-header:hover {
+      background: linear-gradient(90deg, #345980, #3f6a94);
+    }
+
+    .category-header .arrow {
+      transition: transform 0.3s ease;
+      font-size: 18px;
+    }
+
+    .category-content {
+      display: none;
+      padding: 15px;
+      border-top: 1px solid #345980;
+      color: #e0e0e0;
+      background: #253c56;
+    }
+
+    .category-content ul {
+      list-style: none;
+    }
+
+    .category-content li {
+      padding: 10px 0;
+      border-bottom: 1px solid #345980;
+      cursor: pointer;
+      transition: background 0.3s ease, padding 0.2s ease;
+    }
+
+    .category-content li:hover {
+      background: #345980;
+      padding-left: 5px;
+    }
+
+    .no-results {
+      text-align: center;
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-top: 20px;
+    }
+
+   .medication-details {
+  padding: 30px;
+  background: #ffffff; /* Fundo claro para melhor contraste */
+  color: #333;        /* Texto em cor escura */
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  font-size: 18px;
+  line-height: 1.8;
+  transition: all 0.3s ease;
+}
+
+.medication-details h3 {
+  color: #1a3a5f;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.medication-details p {
+  color: #333;
+  margin-bottom: 15px;
+}
 
 
- body {
- font-family: Arial, sans-serif;
- background: #1a3a5f;
- /* Fundo azul escuro */
- color: #fff;
- line-height: 1.6;
- }
+    /* Informações adicionais */
+    .info-section {
+      background: #2c4c6e;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
+    .info-section h2 {
+      color: #fff;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #4d92df;
+      padding-bottom: 10px;
+    }
 
- .container {
- max-width: 800px;
- margin: 30px auto;
- padding: 0 20px;
- }
+    .info-section p {
+      color: #e0e0e0;
+      margin-bottom: 15px;
+    }
 
+    .info-section ul {
+      color: #e0e0e0;
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
 
- h1 {
- text-align: center;
- margin-bottom: 20px;
- color: #fff;
- }
+    .info-section li {
+      margin-bottom: 8px;
+    }
 
+    /* Rodapé */
+    footer {
+      background: var(--gradient-start);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
 
- /* Estilo do campo de busca */
- .search-container {
- display: flex;
- justify-content: center;
- margin-bottom: 30px;
- }
+    footer p {
+      margin: 10px 0;
+    }
 
+    .social-links {
+      margin-top: 15px;
+    }
 
- .search-container input[type="text"] {
- width: 70%;
- padding: 10px 15px;
- border: 1px solid #ccc;
- border-radius: 4px;
- font-size: 16px;
- }
+    .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
 
+    .social-links a:hover {
+      color: var(--accent-color);
+    }
 
- .search-container button {
- padding: 10px 15px;
- margin-left: 10px;
- background: #3498db;
- color: #fff;
- border: none;
- border-radius: 4px;
- cursor: pointer;
- font-size: 16px;
- transition: background 0.3s ease;
- }
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
 
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--gradient-start);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      }
 
- .search-container button:hover {
- background: #2980b9;
- }
+      .nav-links.active {
+        left: 0;
+      }
 
+      .nav-links li a {
+        padding: 15px;
+      }
 
- /* Estilo dos cards de categoria */
- .category-card {
- background: #2c4c6e;
- border: 1px solid #345980;
- border-radius: 5px;
- margin-bottom: 15px;
- box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
- overflow: hidden;
- transition: all 0.3s ease;
- }
+      .nav-links li a::after {
+        display: none;
+      }
 
+      header h1 {
+        font-size: 1.8rem;
+      }
 
- .category-header {
- display: flex;
- justify-content: space-between;
- align-items: center;
- padding: 15px;
- cursor: pointer;
- color: #fff;
- }
+      .search-container {
+        flex-direction: column;
+      }
 
+      .search-container input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
 
- .category-header:hover {
- background: #345980;
- }
-
-
- .category-header .arrow {
- transition: transform 0.3s ease;
- font-size: 18px;
- }
-
-
- .category-content {
- display: none;
- padding: 15px;
- border-top: 1px solid #345980;
- color: #e0e0e0;
- }
-
-
- .category-content ul {
- list-style: none;
- }
-
-
- .category-content li {
- padding: 8px 0;
- border-bottom: 1px solid #345980;
- cursor: pointer;
- transition: background 0.3s ease;
- }
-
-
- .category-content li:hover {
- background: #345980;
- }
-
-
- .no-results {
- text-align: center;
- font-size: 18px;
- color: #e0e0e0;
- margin-top: 20px;
- }
-
-
- /* Estilo dos detalhes do medicamento */
- .medication-details {
- padding: 20px;
- background: #2c4c6e;
- margin-top: 20px;
- border-radius: 8px;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- }
-
-
- .medication-details h3 {
- color: #fff;
- margin-bottom: 10px;
- }
-
-
- .medication-details p {
- color: #e0e0e0;
- line-height: 1.7;
- }
- </style>
- <link rel="icon" href="cristo (2).png" type="image/png">
+      .search-container button {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+  <link rel="icon" href="cristo (2).png" type="image/png">
 </head>
-
-
 <body>
- <div class="container">
- <h1>Bulas Inteligentes</h1>
- <div class="search-container">
- <input type="text" id="searchInput" placeholder="Buscar medicamento...">
- <button id="searchButton">Buscar</button>
- </div>
- <div id="categories">
- <!-- Os cards de categoria serão inseridos aqui via JavaScript -->
- </div>
- <div id="searchResults" class="medication-details" style="display:none;">
- <h3>Resultados da Busca</h3>
- <div id="searchResultsContent"></div>
- </div>
- </div>
- <script>
- // Dados de exemplo para categorias, medicamentos e detalhes da bula
- const categories = [{
- name: "AGENTES DIAGNÓSTICOS",
- medications: [{
- name: "Agente Anti-Cistina",
- details:
- "<h3>Agente Anti-Cistina</h3><p>O Agente Anti-Cistina é utilizado para auxiliar no diagnóstico de cistinúria, uma condição em que há um excesso de cistina na urina. Ele age inibindo a formação de cálculos renais de cistina, facilitando a sua eliminação.</p>"
- },
- {
- name: "Agente Radiológico",
- details:
- "<h3>Agente Radiológico</h3><p>Agentes radiológicos são substâncias utilizadas para melhorar a visualização de estruturas internas do corpo em exames de imagem, como radiografias e tomografias. Eles podem ser à base de iodo ou bário, dependendo do tipo de exame.</p>"
- },
- {
- name: "Agente Ultrassonográfico",
- details:
- "<h3>Agente Ultrassonográfico</h3><p>Agentes ultrassonográficos, também conhecidos como contrastes ultrassonográficos, são utilizados para aprimorar a qualidade das imagens obtidas em ultrassonografias. Eles ajudam a diferenciar tecidos e órgãos, facilitando o diagnóstico de diversas condições.</p>"
- },
- {
- name: "Contraste para Ressonância Magnética",
- details:
- "<h3>Contraste para Ressonância Magnética</h3><p>O contraste para ressonância magnética é um agente à base de gadolínio utilizado para melhorar a visualização de certas estruturas durante exames de ressonância magnética. É administrado por via intravenosa e ajuda a identificar anomalias em tecidos e órgãos.</p>"
- },
- {
- name: "Corante para Endoscopia",
- details:
- "<h3>Corante para Endoscopia</h3><p>Os corantes para endoscopia são utilizados durante procedimentos endoscópicos para destacar áreas específicas do trato gastrointestinal. Eles ajudam os médicos a identificar lesões, pólipos e outras anomalias que podem não ser visíveis a olho nu.</p>"
- }
- ]
- },
- {
- name: "ANALGÉSICOS",
- medications: [{
- name: "Analgésico Paracetamol",
- details:
- "<h3>Analgésico Paracetamol</h3><p>O paracetamol é um analgésico e antipirético amplamente utilizado para aliviar dores leves a moderadas e reduzir a febre. Ele age inibindo a produção de prostaglandinas no cérebro, substâncias envolvidas na sensação de dor e na regulação da temperatura corporal.</p>"
- },
- {
- name: "Analgésico Ibuprofeno",
- details:
- "<h3>Analgésico Ibuprofeno</h3><p>O ibuprofeno é um anti-inflamatório não esteroidal (AINE) com propriedades analgésicas e antipiréticas. Ele é utilizado para aliviar dores, reduzir a inflamação e baixar a febre. O ibuprofeno age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
- },
- {
- name: "Analgésico Dipirona",
- details:
- "<h3>Analgésico Dipirona</h3><p>A dipirona é um analgésico e antipirético utilizado para aliviar dores e reduzir a febre. Embora seu mecanismo de ação não seja totalmente compreendido, sabe-se que ela atua no sistema nervoso central, inibindo a produção de substâncias envolvidas na dor e na regulação da temperatura.</p>"
- },
- {
- name: "Analgésico Codeína",
- details:
- "<h3>Analgésico Codeína</h3><p>A codeína é um analgésico opioide usado para tratar dores moderadas a intensas. Ela atua nos receptores opioides no cérebro e na medula espinhal, alterando a maneira como o corpo sente e responde à dor. É frequentemente combinada com outros analgésicos para maior eficácia.</p>"
- },
- {
- name: "Analgésico Tramadol",
- details:
- "<h3>Analgésico Tramadol</h3><p>O tramadol é um analgésico opioide sintético utilizado para tratar dores moderadas a intensas. Ele atua de forma semelhante aos opioides naturais, ligando-se aos receptores µ no cérebro, além de inibir a recaptação de serotonina e noradrenalina, o que contribui para seu efeito analgésico.</p>"
- }
- ]
- },
- {
- name: "ANTIBIÓTICOS",
- medications: [{
- name: "Antibiótico Amoxicilina",
- details:
- "<h3>Antibiótico Amoxicilina</h3><p>A amoxicilina é um antibiótico da classe das penicilinas, utilizado para tratar infecções bacterianas. Ela age inibindo a síntese da parede celular das bactérias, impedindo o seu crescimento e reprodução.</p>"
- },
- {
- name: "Antibiótico Ciprofloxacino",
- details:
- "<h3>Antibiótico Ciprofloxacino</h3><p>O ciprofloxacino é um antibiótico da classe das quinolonas, utilizado para tratar infecções bacterianas. Ele age inibindo a enzima DNA girase, essencial para a replicação do DNA bacteriano.</p>"
- },
- {
- name: "Antibiótico Azitromicina",
- details:
- "<h3>Antibiótico Azitromicina</h3><p>A azitromicina é um antibiótico da classe dos macrolídeos, utilizado para tratar infecções bacterianas. Ela age inibindo a síntese de proteínas nas bactérias, impedindo o seu crescimento e reprodução.</p>"
- },
- {
- name: "Antibiótico Cefuroxima",
- details:
- "<h3>Antibiótico Cefuroxima</h3><p>A cefuroxima é um antibiótico da classe das cefalosporinas de segunda geração, eficaz contra bactérias gram-positivas e gram-negativas. É utilizada para tratar infecções do trato respiratório, urinário, pele e outras infecções bacterianas.</p>"
- },
- {
- name: "Antibiótico Clindamicina",
- details:
- "<h3>Antibiótico Clindamicina</h3><p>A clindamicina é um antibiótico da classe das lincosamidas, eficaz contra bactérias anaeróbias e algumas aeróbias. É utilizada principalmente para tratar infecções graves causadas por bactérias sensíveis, como infecções de pele, ossos e articulações.</p>"
- },
- {
- name: "Antibiótico Doxiciclina",
- details:
- "<h3>Antibiótico Doxiciclina</h3><p>A doxiciclina é um antibiótico da classe das tetraciclinas, utilizado para tratar uma ampla variedade de infecções bacterianas. Também é eficaz contra alguns parasitas e pode ser usado para prevenção de malária em viajantes.</p>"
- }
- ]
- },
- {
- name: "ANTIDEPRESSIVOS",
- medications: [{
- name: "Antidepressivo Sertralina",
- details:
- "<h3>Antidepressivo Sertralina</h3><p>A sertralina é um antidepressivo da classe dos inibidores seletivos da recaptação de serotonina (ISRS), utilizado para tratar a depressão, transtornos de ansiedade e outros transtornos mentais. Ela age aumentando a disponibilidade de serotonina no cérebro.</p>"
- },
- {
- name: "Antidepressivo Fluoxetina",
- details:
- "<h3>Antidepressivo Fluoxetina</h3><p>A fluoxetina é um antidepressivo da classe dos inibidores seletivos da recaptação de serotonina (ISRS), utilizado para tratar a depressão, transtornos de ansiedade e outros transtornos mentais. Ela age aumentando a disponibilidade de serotonina no cérebro.</p>"
- },
- {
- name: "Antidepressivo Amitriptilina",
- details:
- "<h3>Antidepressivo Amitriptilina</h3><p>A amitriptilina é um antidepressivo tricíclico, utilizado para tratar a depressão, dores crônicas e outros transtornos. Ela age inibindo a recaptação de serotonina e noradrenalina no cérebro.</p>"
- },
- {
- name: "Antidepressivo Venlafaxina",
- details:
- "<h3>Antidepressivo Venlafaxina</h3><p>A venlafaxina é um antidepressivo da classe dos inibidores da recaptação de serotonina e noradrenalina (IRSN). É utilizada para tratar depressão, transtorno de ansiedade generalizada, transtorno do pânico e dor neuropática.</p>"
- },
- {
- name: "Antidepressivo Bupropiona",
- details:
- "<h3>Antidepressivo Bupropiona</h3><p>A bupropiona é um antidepressivo atípico que atua principalmente inibindo a recaptação de dopamina e noradrenalina. É utilizada para tratar depressão e também como auxiliar no abandono do tabagismo.</p>"
- },
- {
- name: "Antidepressivo Escitalopram",
- details:
- "<h3>Antidepressivo Escitalopram</h3><p>O escitalopram é um antidepressivo da classe dos inibidores seletivos da recaptação de serotonina (ISRS), considerado um dos mais seletivos desta classe. É utilizado para tratar depressão, transtorno de ansiedade generalizada, transtorno do pânico e fobia social.</p>"
- }
- ]
- },
- {
- name: "ANTI-INFLAMATÓRIOS",
- medications: [{
- name: "Anti-Inflamatório Diclofenaco",
- details:
- "<h3>Anti-Inflamatório Diclofenaco</h3><p>O diclofenaco é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores e reduzir a inflamação. Ele age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
- },
- {
- name: "Anti-Inflamatório Nimesulida",
- details:
- "<h3>Anti-Inflamatório Nimesulida</h3><p>A nimesulida é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores e reduzir a inflamação. Ela age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
- },
- {
- name: "Anti-Inflamatório Cetoprofeno",
- details:
- "<h3>Anti-Inflamatório Cetoprofeno</h3><p>O cetoprofeno é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores e reduzir a inflamação. Ele age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
- },
- {
- name: "Anti-Inflamatório Naproxeno",
- details:
- "<h3>Anti-Inflamatório Naproxeno</h3><p>O naproxeno é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores, reduzir inflamações e baixar a febre. É particularmente eficaz para condições como artrite, tendinite e bursite.</p>"
- },
- {
- name: "Anti-Inflamatório Meloxicam",
- details:
- "<h3>Anti-Inflamatório Meloxicam</h3><p>O meloxicam é um anti-inflamatório não esteroidal (AINE) que possui ação preferencial sobre a COX-2. É utilizado para tratar dor e inflamação em condições como artrite reumatoide e osteoartrite.</p>"
- }
- ]
- },
- {
- name: "ANTI-HIPERTENSIVOS",
- medications: [{
- name: "Enalapril",
- details:
- "<h3>Enalapril</h3><p>O enalapril é um medicamento da classe dos inibidores da enzima conversora de angiotensina (IECA), utilizado no tratamento da hipertensão arterial e insuficiência cardíaca. Atua bloqueando a conversão da angiotensina I em angiotensina II, reduzindo assim a pressão arterial.</p>"
- },
- {
- name: "Losartana",
- details:
- "<h3>Losartana</h3><p>A losartana é um antagonista dos receptores da angiotensina II, utilizada no tratamento da hipertensão arterial. Bloqueia a ligação da angiotensina II aos seus receptores, impedindo seus efeitos vasoconstritores e promotores de retenção de sódio.</p>"
- },
- {
- name: "Anlodipino",
- details:
- "<h3>Anlodipino</h3><p>O anlodipino é um bloqueador dos canais de cálcio, utilizado no tratamento da hipertensão arterial e angina. Atua relaxando os vasos sanguíneos, facilitando o fluxo de sangue e reduzindo a pressão arterial.</p>"
- },
- {
- name: "Atenolol",
- details:
- "<h3>Atenolol</h3><p>O atenolol é um betabloqueador cardioseletivo usado para tratar hipertensão, angina e arritmias cardíacas. Ele reduz a frequência cardíaca e a força de contração do coração, diminuindo assim a pressão arterial.</p>"
- }
- ]
- },
- {
- name: "ANTIALÉRGICOS",
- medications: [{
- name: "Loratadina",
- details:
- "<h3>Loratadina</h3><p>A loratadina é um anti-histamínico de segunda geração utilizado para aliviar os sintomas de alergias, como rinite alérgica e urticária. Atua bloqueando os receptores H1 da histamina, reduzindo sintomas como espirros, coriza e coceira.</p>"
- },
- {
- name: "Cetirizina",
- details:
- "<h3>Cetirizina</h3><p>A cetirizina é um anti-histamínico de segunda geração usado para aliviar os sintomas de alergias sazonais e perenes, como rinite alérgica e urticária crônica. Ela bloqueia os receptores H1 da histamina, reduzindo a inflamação e os sintomas alérgicos.</p>"
- },
- {
- name: "Fexofenadina",
- details:
- "<h3>Fexofenadina</h3><p>A fexofenadina é um anti-histamínico de terceira geração que proporciona alívio eficaz dos sintomas alérgicos, como espirros, coriza, coceira e olhos lacrimejantes. Ela possui menos efeitos sedativos em comparação com os anti-histamínicos de primeira geração.</p>"
- }
- ]
- },
- {
- name: "ANTIDIABÉTICOS",
- medications: [{
- name: "Metformina",
- details:
- "<h3>Metformina</h3><p>A metformina é um medicamento de primeira linha para o tratamento do diabetes tipo 2. Ela ajuda a reduzir os níveis de glicose no sangue, melhorando a sensibilidade à insulina e diminuindo a produção de glicose pelo fígado.</p>"
- },
- {
- name: "Glibenclamida",
- details:
- "<h3>Glibenclamida</h3><p>A glibenclamida é uma sulfonilureia utilizada no tratamento do diabetes tipo 2. Ela estimula a secreção de insulina pelo pâncreas, ajudando a reduzir os níveis de glicose no sangue.</p>"
- },
- {
- name: "Insulina",
- details:
- "<h3>Insulina</h3><p>A insulina é um hormônio essencial para o tratamento do diabetes tipo 1 e, em alguns casos, do diabetes tipo 2. Ela ajuda a transportar a glicose do sangue para as células, onde é utilizada como fonte de energia.</p>"
- },
- {
- name: "Empagliflozina",
- details:
- "<h3>Empagliflozina</h3><p>A empagliflozina é um inibidor de SGLT2 utilizado no tratamento do diabetes tipo 2. Ela atua nos rins, reduzindo a reabsorção de glicose e aumentando a excreção de glicose na urina, ajudando a controlar os níveis de açúcar no sangue.</p>"
- }
- ]
- },
- {
- name: "ANTIVIRAIS",
- medications: [{
- name: "Aciclovir",
- details:
- "<h3>Aciclovir</h3><p>O aciclovir é um antiviral utilizado para tratar infecções causadas pelo vírus herpes simplex, como herpes labial e herpes genital. Ele age inibindo a replicação do DNA viral, reduzindo a duração e a gravidade das infecções.</p>"
- },
- {
- name: "Oseltamivir",
- details:
- "<h3>Oseltamivir</h3><p>O oseltamivir é um antiviral utilizado para tratar a gripe (influenza) causada pelos vírus influenza A e B. Ele age inibindo a enzima neuraminidase, impedindo a liberação de novos vírus das células infectadas e reduzindo a disseminação da infecção.</p>"
- },
- {
- name: "Ribavirina",
- details:
- "<h3>Ribavirina</h3><p>A ribavirina é um antiviral utilizado no tratamento de diversas infecções virais, como hepatite C e febre hemorrágica. Seu mecanismo de ação envolve a inibição da replicação do RNA viral e a modulação da resposta imune do hospedeiro.</p>"
- },
- {
- name: "Sofosbuvir",
- details:
- "<h3>Sofosbuvir</h3><p>O sofosbuvir é um antiviral utilizado no tratamento da hepatite C crônica. Ele age inibindo a enzima NS5B polimerase, essencial para a replicação do vírus da hepatite C, levando à erradicação do vírus em muitos pacientes.</p>"
- }
- ]
- }
- ];
+  <!-- Cabeçalho -->
+  <header>
+    <h1>SmartBulas</h1>
+    <p>Seu guia completo de informações sobre medicamentos</p>
+    <p>Consulte bulas, efeitos colaterais e interações medicamentosas</p>
+  </header>
 
+  <!-- Menu de Navegação -->
+  <div id="menu-container">
+    <nav>
+      <a href="#" class="logo-menu">
+        <i class="fas fa-pills"></i> SmartBulas
+      </a>
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
+        <li><a href="#"><i class="fas fa-tablet-alt"></i> Medicamentos</a></li>
+        <li><a href="#"><i class="fas fa-book-medical"></i> Bulas</a></li>
+        <li><a href="#"><i class="fas fa-info-circle"></i> Sobre</a></li>
+        <li><a href="#"><i class="fas fa-phone"></i> Contato</a></li>
+      </ul>
+    </nav>
+  </div>
 
- function initializeCategories() {
- const categoriesDiv = document.getElementById('categories');
- categories.forEach(category => {
- const card = createCategoryCard(category);
- categoriesDiv.appendChild(card);
- });
- }
+  <div class="container">
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar medicamento...">
+      <button id="searchButton"><i class="fas fa-search"></i> Buscar</button>
+    </div>
+    <div id="categories">
+      <!-- Os cards de categoria serão inseridos aqui via JavaScript -->
+    </div>
+    <div id="searchResults" class="medication-details" style="display:none;">
+      <h3>Resultados da Busca</h3>
+      <div id="searchResultsContent"></div>
+    </div>
 
+    <!-- Seção de informações adicionais -->
+    <div class="info-section">
+      <h2><i class="fas fa-info-circle"></i> Como Usar o SmartBulas</h2>
+      <p>O SmartBulas é uma ferramenta prática para consulta de informações sobre medicamentos. Siga os passos abaixo para utilizar nosso sistema:</p>
+      <ul>
+        <li>Use a barra de pesquisa para buscar um medicamento específico</li>
+        <li>Navegue pelas categorias para encontrar medicamentos por tipo</li>
+        <li>Clique no nome do medicamento para visualizar informações detalhadas</li>
+        <li>Consulte orientações sobre dosagem, efeitos colaterais e precauções</li>
+      </ul>
+      <p><strong>Atenção:</strong> As informações contidas neste site são apenas para fins informativos e não substituem a orientação médica profissional. Sempre consulte seu médico ou farmacêutico antes de iniciar ou modificar qualquer tratamento.</p>
+    </div>
 
- function createCategoryCard(category) {
- const card = document.createElement('div');
- card.classList.add('category-card');
+    <div class="info-section">
+      <h2><i class="fas fa-exclamation-triangle"></i> Interações Medicamentosas</h2>
+      <p>Interações medicamentosas podem ocorrer quando dois ou mais medicamentos são tomados juntos. Algumas combinações podem:</p>
+      <ul>
+        <li>Diminuir a eficácia de um ou mais medicamentos</li>
+        <li>Aumentar o risco de efeitos colaterais</li>
+        <li>Potencializar efeitos não desejados</li>
+        <li>Alterar a forma como os medicamentos são metabolizados pelo corpo</li>
+      </ul>
+      <p>Sempre informe seu médico sobre todos os medicamentos, suplementos e produtos naturais que você esteja utilizando.</p>
+    </div>
 
+    
 
- const header = document.createElement('div');
- header.classList.add('category-header');
- header.innerHTML = `
- <span>${category.name}</span>
- <span class="arrow">&#9660;</span>
- `;
- header.addEventListener('click', () => toggleCategory(card));
- card.appendChild(header);
+  <!-- Rodapé -->
+  <footer>
+    <p><i class="fas fa-pills"></i> SmartBulas © 2025 - Todos os direitos reservados</p>
+    <p>Uma ferramenta para informações sobre medicamentos e bulas</p>
+    <div class="social-links">
+     
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+  
+    </div>
+  </footer>
 
+  <script>
+    // Dados de exemplo para categorias, medicamentos e detalhes da bula
+    const categories = [
+      {
+        name: "AGENTES DIAGNÓSTICOS",
+        medications: [
+          {
+            name: "Agente Anti-Cistina",
+            details:
+              "<h3>Agente Anti-Cistina</h3><p>O Agente Anti-Cistina é utilizado para auxiliar no diagnóstico de cistinúria, uma condição em que há um excesso de cistina na urina. Ele age inibindo a formação de cálculos renais de cistina, facilitando a sua eliminação.</p>"
+          },
+          {
+            name: "Agente Radiológico",
+            details:
+              "<h3>Agente Radiológico</h3><p>Agentes radiológicos são substâncias utilizadas para melhorar a visualização de estruturas internas do corpo em exames de imagem, como radiografias e tomografias. Eles podem ser à base de iodo ou bário, dependendo do tipo de exame.</p>"
+          },
+          {
+            name: "Agente Ultrassonográfico",
+            details:
+              "<h3>Agente Ultrassonográfico</h3><p>Agentes ultrassonográficos, também conhecidos como contrastes ultrassonográficos, são utilizados para aprimorar a qualidade das imagens obtidas em ultrassonografias. Eles ajudam a diferenciar tecidos e órgãos, facilitando o diagnóstico de diversas condições.</p>"
+          },
+          {
+            name: "Contraste para Ressonância Magnética",
+            details:
+              "<h3>Contraste para Ressonância Magnética</h3><p>O contraste para ressonância magnética é um agente à base de gadolínio utilizado para melhorar a visualização de certas estruturas durante exames de ressonância magnética. É administrado por via intravenosa e ajuda a identificar anomalias em tecidos e órgãos.</p>"
+          },
+          {
+            name: "Corante para Endoscopia",
+            details:
+              "<h3>Corante para Endoscopia</h3><p>Os corantes para endoscopia são utilizados durante procedimentos endoscópicos para destacar áreas específicas do trato gastrointestinal. Eles ajudam os médicos a identificar lesões, pólipos e outras anomalias que podem não ser visíveis a olho nu.</p>"
+          }
+        ]
+      },
+      {
+        name: "ANALGÉSICOS",
+        medications: [
+          {
+            name: "Analgésico Paracetamol",
+            details:
+              "<h3>Analgésico Paracetamol</h3><p>O paracetamol é um analgésico e antipirético amplamente utilizado para aliviar dores leves a moderadas e reduzir a febre. Ele age inibindo a produção de prostaglandinas no cérebro, substâncias envolvidas na sensação de dor e na regulação da temperatura corporal.</p>"
+          },
+          {
+            name: "Analgésico Ibuprofeno",
+            details:
+              "<h3>Analgésico Ibuprofeno</h3><p>O ibuprofeno é um anti-inflamatório não esteroidal (AINE) com propriedades analgésicas e antipiréticas. Ele é utilizado para aliviar dores, reduzir a inflamação e baixar a febre. O ibuprofeno age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
+          },
+          {
+            name: "Analgésico Dipirona",
+            details:
+              "<h3>Analgésico Dipirona</h3><p>A dipirona é um analgésico e antipirético utilizado para aliviar dores e reduzir a febre. Embora seu mecanismo de ação não seja totalmente compreendido, sabe-se que ela atua no sistema nervoso central, inibindo a produção de substâncias envolvidas na dor e na regulação da temperatura.</p>"
+          },
+          {
+            name: "Analgésico Codeína",
+            details:
+              "<h3>Analgésico Codeína</h3><p>A codeína é um analgésico opioide usado para tratar dores moderadas a intensas. Ela atua nos receptores opioides no cérebro e na medula espinhal, alterando a maneira como o corpo sente e responde à dor. É frequentemente combinada com outros analgésicos para maior eficácia.</p>"
+          },
+          {
+            name: "Analgésico Tramadol",
+            details:
+              "<h3>Analgésico Tramadol</h3><p>O tramadol é um analgésico opioide sintético utilizado para tratar dores moderadas a intensas. Ele atua de forma semelhante aos opioides naturais, ligando-se aos receptores µ no cérebro, além de inibir a recaptação de serotonina e noradrenalina, o que contribui para seu efeito analgésico.</p>"
+          }
+        ]
+      },
+      {
+        name: "ANTIBIÓTICOS",
+        medications: [
+          {
+            name: "Antibiótico Amoxicilina",
+            details:
+              "<h3>Antibiótico Amoxicilina</h3><p>A amoxicilina é um antibiótico da classe das penicilinas, utilizado para tratar infecções bacterianas. Ela age inibindo a síntese da parede celular das bactérias, impedindo o seu crescimento e reprodução.</p>"
+          },
+          {
+            name: "Antibiótico Ciprofloxacino",
+            details:
+              "<h3>Antibiótico Ciprofloxacino</h3><p>O ciprofloxacino é um antibiótico da classe das quinolonas, utilizado para tratar infecções bacterianas. Ele age inibindo a enzima DNA girase, essencial para a replicação do DNA bacteriano.</p>"
+          },
+          {
+            name: "Antibiótico Azitromicina",
+            details:
+              "<h3>Antibiótico Azitromicina</h3><p>A azitromicina é um antibiótico da classe dos macrolídeos, utilizado para tratar infecções bacterianas. Ela age inibindo a síntese de proteínas nas bactérias, impedindo o seu crescimento e reprodução.</p>"
+          },
+          {
+            name: "Antibiótico Cefuroxima",
+            details:
+              "<h3>Antibiótico Cefuroxima</h3><p>A cefuroxima é um antibiótico da classe das cefalosporinas de segunda geração, eficaz contra bactérias gram-positivas e gram-negativas. É utilizada para tratar infecções do trato respiratório, urinário, pele e outras infecções bacterianas.</p>"
+          },
+          {
+            name: "Antibiótico Clindamicina",
+            details:
+              "<h3>Antibiótico Clindamicina</h3><p>A clindamicina é um antibiótico da classe das lincosamidas, eficaz contra bactérias anaeróbias e algumas aeróbias. É utilizada principalmente para tratar infecções graves causadas por bactérias sensíveis, como infecções de pele, ossos e articulações.</p>"
+          },
+          {
+            name: "Antibiótico Doxiciclina",
+            details:
+              "<h3>Antibiótico Doxiciclina</h3><p>A doxiciclina é um antibiótico da classe das tetraciclinas, utilizado para tratar uma ampla variedade de infecções bacterianas. Também é eficaz contra alguns parasitas e pode ser usado para prevenção de malária em viajantes.</p>"
+          }
+        ]
+      },
+      {
+        name: "ANTIDEPRESSIVOS",
+        medications: [
+          {
+            name: "Antidepressivo Sertralina",
+            details:
+              "<h3>Antidepressivo Sertralina</h3><p>A sertralina é um antidepressivo da classe dos inibidores seletivos da recaptação de serotonina (ISRS), utilizado para tratar a depressão, transtornos de ansiedade e outros transtornos mentais. Ela age aumentando a disponibilidade de serotonina no cérebro.</p>"
+          },
+          {
+            name: "Antidepressivo Fluoxetina",
+            details:
+              "<h3>Antidepressivo Fluoxetina</h3><p>A fluoxetina é um antidepressivo da classe dos inibidores seletivos da recaptação de serotonina (ISRS), utilizado para tratar a depressão, transtornos de ansiedade e outros transtornos mentais. Ela age aumentando a disponibilidade de serotonina no cérebro.</p>"
+          },
+          {
+            name: "Antidepressivo Amitriptilina",
+            details:
+              "<h3>Antidepressivo Amitriptilina</h3><p>A amitriptilina é um antidepressivo tricíclico, utilizado para tratar a depressão, dores crônicas e outros transtornos. Ela age inibindo a recaptação de serotonina e noradrenalina no cérebro.</p>"
+          },
+          {
+            name: "Antidepressivo Venlafaxina",
+            details:
+              "<h3>Antidepressivo Venlafaxina</h3><p>A venlafaxina é um antidepressivo da classe dos inibidores da recaptação de serotonina e noradrenalina (IRSN). É utilizada para tratar depressão, transtorno de ansiedade generalizada, transtorno do pânico e dor neuropática.</p>"
+          },
+          {
+            name: "Antidepressivo Bupropiona",
+            details:
+              "<h3>Antidepressivo Bupropiona</h3><p>A bupropiona é um antidepressivo atípico que atua principalmente inibindo a recaptação de dopamina e noradrenalina. É utilizada para tratar depressão e também como auxiliar no abandono do tabagismo.</p>"
+          },
+          {
+            name: "Antidepressivo Escitalopram",
+            details:
+              "<h3>Antidepressivo Escitalopram</h3><p>O escitalopram é um antidepressivo da classe dos inibidores seletivos da recaptação de serotonina (ISRS), considerado um dos mais seletivos desta classe. É utilizado para tratar depressão, transtorno de ansiedade generalizada, transtorno do pânico e fobia social.</p>"
+          }
+        ]
+      },
+      {
+        name: "ANTI-INFLAMATÓRIOS",
+        medications: [
+          {
+            name: "Anti-Inflamatório Diclofenaco",
+            details:
+              "<h3>Anti-Inflamatório Diclofenaco</h3><p>O diclofenaco é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores e reduzir a inflamação. Ele age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
+          },
+          {
+            name: "Anti-Inflamatório Nimesulida",
+            details:
+              "<h3>Anti-Inflamatório Nimesulida</h3><p>A nimesulida é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores e reduzir a inflamação. Ela age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
+          },
+          {
+            name: "Anti-Inflamatório Cetoprofeno",
+            details:
+              "<h3>Anti-Inflamatório Cetoprofeno</h3><p>O cetoprofeno é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores e reduzir a inflamação. Ele age inibindo a ação das enzimas ciclooxigenases (COX), responsáveis pela produção de prostaglandinas.</p>"
+          },
+          {
+            name: "Anti-Inflamatório Naproxeno",
+            details:
+              "<h3>Anti-Inflamatório Naproxeno</h3><p>O naproxeno é um anti-inflamatório não esteroidal (AINE) utilizado para aliviar dores, reduzir inflamações e baixar a febre. É particularmente eficaz para condições como artrite, tendinite e bursite.</p>"
+          },
+          {
+            name: "Anti-Inflamatório Meloxicam",
+            details:
+              "<h3>Anti-Inflamatório Meloxicam</h3><p>O meloxicam é um anti-inflamatório não esteroidal (AINE) que possui ação preferencial sobre a COX-2. É utilizado para tratar dor e inflamação em condições como artrite reumatoide e osteoartrite.</p>"
+          }
+        ]
+      },
+      {
+        name: "ANTI-HIPERTENSIVOS",
+        medications: [
+          {
+            name: "Enalapril",
+            details:
+              "<h3>Enalapril</h3><p>O enalapril é um medicamento da classe dos inibidores da enzima conversora de angiotensina (IECA), utilizado no tratamento da hipertensão arterial e insuficiência cardíaca. Atua bloqueando a conversão da angiotensina I em angiotensina II, reduzindo assim a pressão arterial.</p>"
+          },
+          {
+            name: "Losartana",
+            details:
+              "<h3>Losartana</h3><p>A losartana é um antagonista dos receptores da angiotensina II, utilizada no tratamento da hipertensão arterial. Bloqueia a ligação da angiotensina II aos seus receptores, impedindo seus efeitos vasoconstritores e promotores de retenção de sódio.</p>"
+          },
+          {
+            name: "Anlodipino",
+            details:
+              "<h3>Anlodipino</h3><p>O anlodipino é um bloqueador dos canais de cálcio, utilizado no tratamento da hipertensão arterial e angina. Atua relaxando os vasos sanguíneos, facilitando o fluxo de sangue e reduzindo a pressão arterial.</p>"
+          }
+        ]
+      },
+      // Novo grupo de remédios adicionado conforme solicitado
+      {
+        name: "NOVOS REMÉDIOS",
+        medications: [
+          {
+            name: "Remédio Pendente",
+            details:
+              "<h3>Remédio Exemplo</h3><p>Este remédio é um exemplo adicionado para demonstrar a funcionalidade de inclusão de novos medicamentos. Ele possui propriedades analgésicas e anti-inflamatórias, auxiliando no alívio de dores moderadas.</p>"
+          }
+        ]
+      }
+    ];
 
- const content = document.createElement('div');
- content.classList.add('category-content');
- const ul = document.createElement('ul');
- category.medications.forEach(medication => {
- const li = document.createElement('li');
- li.textContent = medication.name;
- li.addEventListener('click', () => showMedicationDetails(medication.details));
- ul.appendChild(li);
- });
- content.appendChild(ul);
- card.appendChild(content);
+    // Função para exibir os detalhes do medicamento
+    function showMedicationDetails(details) {
+      const searchResultsContent = document.getElementById('searchResultsContent');
+      searchResultsContent.innerHTML = details;
+      document.getElementById('searchResults').style.display = 'block';
+    }
 
+    // Função para criar os cards de categoria
+    function createCategoryCards() {
+      const categoriesContainer = document.getElementById('categories');
+      categoriesContainer.innerHTML = ''; // Limpa o conteúdo anterior
 
- return card;
- }
+      categories.forEach(category => {
+        const categoryCard = document.createElement('div');
+        categoryCard.classList.add('category-card');
 
+        const categoryHeader = document.createElement('div');
+        categoryHeader.classList.add('category-header');
+        categoryHeader.innerHTML = `
+          <span>${category.name}</span>
+          <i class="fas fa-chevron-down arrow"></i>
+        `;
 
- function toggleCategory(card) {
- const content = card.querySelector('.category-content');
- const arrow = card.querySelector('.arrow');
- content.style.display = content.style.display === 'block' ? 'none' : 'block';
- arrow.style.transform = content.style.display === 'block' ? 'rotate(-180deg)' : 'rotate(0deg)';
- }
+        const categoryContent = document.createElement('div');
+        categoryContent.classList.add('category-content');
+        const medicationList = document.createElement('ul');
 
+        category.medications.forEach(medication => {
+          const medicationItem = document.createElement('li');
+          medicationItem.textContent = medication.name;
+          medicationItem.addEventListener('click', () => {
+            showMedicationDetails(medication.details);
+          });
+          medicationList.appendChild(medicationItem);
+        });
 
- function showMedicationDetails(details) {
- const searchResultsDiv = document.getElementById('searchResults');
- const searchResultsContentDiv = document.getElementById('searchResultsContent');
- searchResultsContentDiv.innerHTML = details;
- searchResultsDiv.style.display = 'block';
- }
+        categoryContent.appendChild(medicationList);
+        categoryCard.appendChild(categoryHeader);
+        categoryCard.appendChild(categoryContent);
 
+        // Adiciona funcionalidade de expandir/recolher
+        categoryHeader.addEventListener('click', () => {
+          const arrow = categoryHeader.querySelector('.arrow');
+          if (categoryContent.style.display === 'block') {
+            categoryContent.style.display = 'none';
+            arrow.style.transform = 'rotate(0deg)';
+          } else {
+            categoryContent.style.display = 'block';
+            arrow.style.transform = 'rotate(180deg)';
+          }
+        });
 
- // Implementação da busca aprimorada
- document.getElementById('searchButton').addEventListener('click', function() {
- const searchTerm = document.getElementById('searchInput').value.toLowerCase();
- const searchResults = [];
+        categoriesContainer.appendChild(categoryCard);
+      });
+    }
 
+    // Função para buscar medicamentos
+    function searchMedication() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const searchResultsContent = document.getElementById('searchResultsContent');
+      searchResultsContent.innerHTML = '';
 
- categories.forEach(category => {
- category.medications.forEach(medication => {
- if (medication.name.toLowerCase().includes(searchTerm)) {
- searchResults.push(medication);
- }
- });
- });
+      let found = false;
 
+      categories.forEach(category => {
+        category.medications.forEach(medication => {
+          if (medication.name.toLowerCase().includes(searchTerm)) {
+            found = true;
+            const resultItem = document.createElement('div');
+            resultItem.innerHTML = medication.details;
+            searchResultsContent.appendChild(resultItem);
+          }
+        });
+      });
 
- displaySearchResults(searchResults);
- });
+      if (!found) {
+        searchResultsContent.innerHTML = '<p class="no-results">Nenhum medicamento encontrado.</p>';
+      }
 
+      document.getElementById('searchResults').style.display = 'block';
+    }
 
- function displaySearchResults(results) {
- const searchResultsDiv = document.getElementById('searchResults');
- const searchResultsContentDiv = document.getElementById('searchResultsContent');
+    // Evento de clique no botão de busca
+    document.getElementById('searchButton').addEventListener('click', searchMedication);
 
+    // Evento de pressionar "Enter" no campo de busca
+    document.getElementById('searchInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        searchMedication();
+      }
+    });
 
- if (results.length === 0) {
- searchResultsContentDiv.innerHTML = '<p>Nenhum resultado encontrado.</p>';
- } else {
- let resultsHTML = '<ul>';
- results.forEach(medication => {
- resultsHTML += `<li onclick="showMedicationDetails('${medication.details}')">${medication.name}</li>`;
- });
- resultsHTML += '</ul>';
- searchResultsContentDiv.innerHTML = resultsHTML;
- }
-
-
- searchResultsDiv.style.display = 'block';
- }
-
-
- // Inicialização das categorias
- initializeCategories();
- </script>
+    // Inicializa os cards de categoria ao carregar a página
+    document.addEventListener('DOMContentLoaded', createCategoryCards);
+  </script>
 </body>
-
-
 </html>
