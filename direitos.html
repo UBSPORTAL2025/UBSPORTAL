@@ -1,101 +1,86 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Direitos e Deveres dos Cidadãos e Funcionários Públicos</title>
-  <!-- Adicionando o Bootstrap para facilitar o layout -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Direitos do Cidadão - Caieiras Saúde</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="cristo (2).png" type="image/png">
   <style>
+    :root {
+      --primary-color: #1a3a5f;
+      --secondary-color: #2d5986;
+      --accent-color: #4d92df;
+      --light-blue: #e6f2ff;
+      --gradient-start: #0d2b4b;
+      --gradient-end: #2d5986;
+      --text-color: #333;
+      --light-text: #f0f0f0;
+    }
+    
     body {
-      font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #1a2a6c, #2a4dad, #4169e1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       color: #333;
       min-height: 100vh;
     }
     
-    .container {
-      margin-top: 30px;
-      margin-bottom: 50px;
-    }
-    
-    .direitos-deveres-info {
-      margin-top: 20px;
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-    
-    .direitos-deveres-info h3 {
-      color: #0d47a1;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #4169e1;
-      padding-bottom: 10px;
-      font-weight: 700;
-    }
-    
-    .direitos-deveres-info ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    
-    .direitos-deveres-info ul li {
-      margin-bottom: 15px;
-      padding-left: 20px;
-      position: relative;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 15px;
-    }
-    
-    .direitos-deveres-info ul li:before {
-      content: "•";
-      color: #0d47a1;
-      font-size: 1.5em;
-      position: absolute;
-      left: 0;
-      top: -5px;
-    }
-    
-    .direitos-deveres-info ul li strong {
-      color: #0d47a1;
-      font-weight: 600;
-    }
-    
-    .lei-explicacao {
-      background-color: #e8f0fe;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 10px;
-      border-left: 4px solid #0d47a1;
-    }
-    
-    /* Estilos para o menu */
+    /* Menu */
     #menu-container {
-      background: linear-gradient(90deg, #0d47a1, #1565c0);
-      padding: 15px 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(90deg, var(--gradient-start), var(--secondary-color));
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     
-    nav {
+    .main-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 20px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      height: 60px;
     }
     
-    .menu-icon {
-      display: none;
+    .nav-brand {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-menu {
+      font-weight: 700;
       color: white;
-      font-size: 24px;
+      font-size: 1.4rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-menu i {
+      margin-right: 10px;
+      color: var(--accent-color);
+    }
+    
+    .mobile-toggle {
+      display: none;
       cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+    }
+    
+    .bar {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
     }
     
     .nav-links {
@@ -103,62 +88,391 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      align-items: center;
     }
     
     .nav-links li {
-      margin: 0 15px;
+      position: relative;
+      margin: 0;
     }
     
     .nav-links li a {
+      display: flex;
+      align-items: center;
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      padding: 8px 0;
-      position: relative;
+      padding: 0 15px;
+      height: 60px;
       transition: all 0.3s ease;
+      font-weight: 500;
     }
     
-    .nav-links li a:after {
-      content: '';
+    .nav-links li a i {
+      margin-right: 8px;
+    }
+    
+    .nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+    }
+    
+    .dropdown-toggle .fa-chevron-down {
+      margin-left: 8px;
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .dropdown:hover .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+    
+    .dropdown-menu {
       position: absolute;
-      width: 0;
-      height: 2px;
-      background-color: white;
-      bottom: 0;
+      top: 60px;
       left: 0;
-      transition: width 0.3s ease;
+      width: 200px;
+      background-color: white;
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 10px 0;
+      display: none;
+      z-index: 1001;
     }
     
-    .nav-links li a:hover:after {
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .dropdown-menu li {
+      margin: 0;
+      padding: 0;
       width: 100%;
     }
     
-    /* Responsividade do menu */
+    .dropdown-menu li a {
+      color: var(--primary-color);
+      padding: 10px 20px;
+      height: auto;
+      display: block;
+    }
+    
+    .dropdown-menu li a:hover {
+      background-color: var(--light-blue);
+      color: var(--secondary-color);
+    }
+    
+    /* Active */
+    .nav-links li a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+    
+    .nav-links li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 70%;
+      height: 3px;
+      background-color: white;
+      transform: translateX(-50%);
+    }
+    
+    /* Cabeçalho */
+    .page-header {
+      background: linear-gradient(135deg, var(--gradient-start), var(--accent-color));
+      color: white;
+      padding: 40px 0;
+      margin-bottom: 30px;
+      text-align: center;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header-content h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    
+    .header-content p {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      opacity: 0.9;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .header-icon {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    
+    /* Conteúdo principal */
+    .direitos-content {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      margin-bottom: 40px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    .direitos-content h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 10px;
+      font-weight: 700;
+    }
+    
+    .direitos-content h3 {
+      color: var(--secondary-color);
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .direitos-content ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    .direitos-content ul li {
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+    }
+    
+    .direitos-content ul li:before {
+      content: "•";
+      color: var(--accent-color);
+      font-size: 1.5em;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+    
+    .direitos-content ul li strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .lei-box {
+      background-color: #e8f0fe;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      border-left: 4px solid var(--accent-color);
+    }
+    
+    .nav-tabs .nav-link {
+      color: var(--secondary-color);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 0;
+      font-weight: 500;
+    }
+    
+    .nav-tabs .nav-link.active {
+      color: var(--primary-color);
+      background-color: transparent;
+      border-bottom: 3px solid var(--accent-color);
+    }
+    
+    .nav-tabs {
+      border-bottom: 1px solid #dee2e6;
+      margin-bottom: 20px;
+    }
+    
+    .tab-content {
+      padding: 20px 0;
+    }
+    
+    .card {
+      border: none;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-header {
+      background-color: var(--light-blue);
+      color: var(--primary-color);
+      font-weight: 600;
+      padding: 15px;
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+    
+    .btn-primary {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-outline-primary {
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+    
+    /* Rodapé */
+    .footer {
+      background: linear-gradient(90deg, var(--gradient-start), var(--secondary-color));
+      color: white;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
+    
+    .footer h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+    }
+    
+    .footer a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+      color: var(--light-blue);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links i {
+      margin-right: 10px;
+      color: var(--accent-color);
+    }
+    
+    .copyright {
+      background: var(--gradient-start);
+      text-align: center;
+      padding: 15px 0;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* Animação */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Responsividade */
     @media screen and (max-width: 768px) {
-      .menu-icon {
-        display: block;
+      .mobile-toggle {
+        display: flex;
       }
       
       .nav-links {
         position: absolute;
-        background: linear-gradient(90deg, #0d47a1, #1565c0);
-        width: 100%;
-        flex-direction: column;
         top: 60px;
-        left: 0;
-        padding: 20px 0;
-        text-align: center;
-        transform: translateY(-150%);
-        transition: transform 0.4s ease;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--gradient-start);
+        width: 100%;
+        text-align: left;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        align-items: flex-start;
+        z-index: 1000;
       }
       
       .nav-links.active {
-        transform: translateY(0);
+        left: 0;
       }
       
       .nav-links li {
-        margin: 15px 0;
+        width: 100%;
+      }
+      
+      .nav-links li a {
+        padding: 15px 20px;
+        height: auto;
+      }
+      
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: none;
+        padding: 0;
+      }
+      
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+      
+      .dropdown-toggle .fa-chevron-down {
+        margin-left: auto;
+      }
+      
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+      
+      .header-content h1 {
+        font-size: 1.8rem;
+      }
+      
+      .header-content p {
+        font-size: 1rem;
       }
     }
   </style>
@@ -166,164 +480,253 @@
 <body>
   <!-- Menu de Navegação -->
   <div id="menu-container">
-    <nav>
-      <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <nav class="main-nav">
+      <div class="nav-brand">
+        <a href="index.html" class="logo-menu">
+          <i class="fas fa-heartbeat"></i> UBS Portal das Laranjeiras
+        </a>
+      </div>
+      <div class="mobile-toggle" onclick="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
       <ul class="nav-links">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="#atendimentos">Atendimentos</a></li>
-        <li><a href="#app-sus">Meu SUS</a></li>
-        <li><a href="acs.html">Equipe</a></li>
-        <li><a href="#sobre-ubs">Sobre</a></li>
+        <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"><i class="fas fa-calendar-check"></i> Serviços <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#atendimentos">Atendimentos</a></li>
+            <li><a href="vacinacao.html">Vacinação</a></li>
+            <li><a href="calculadodrop.html">Calcular sua Saúde</a></li>
+          </ul>
+        </li>
+        <li><a href="#app-sus"><i class="fas fa-mobile-alt"></i> Meu SUS</a></li>
+        <li><a href="acs.html"><i class="fas fa-user-md"></i> Equipe</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle active"><i class="fas fa-info-circle"></i> Informações <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="contatos.html">Contatos Úteis</a></li>
+            <li><a href="direitos.html" class="active">Direitos e Deveres</a></li>
+            <li><a href="bulas.html">Bulas</a></li>
+            <li><a href="#sobre-ubs">Sobre</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>
-  
+
+  <!-- Cabeçalho -->
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <i class="fas fa-balance-scale"></i>
+      </div>
+      <h1>Direitos e Deveres na Saúde</h1>
+      <p>Conheça os direitos e deveres que asseguram um atendimento de qualidade aos pacientes e o trabalho digno dos profissionais no Sistema Único de Saúde (SUS).</p>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-12 mx-auto">
-        <div class="direitos-deveres-info">
-          <h3 class="text-center">Direitos e Deveres dos Cidadãos e Funcionários Públicos na Saúde</h3>
-          <p class="lead text-center mb-4">Conheça os direitos e deveres que asseguram um atendimento de qualidade aos pacientes e o trabalho digno dos profissionais de saúde.</p>
+        <div class="direitos-content">
+          <h2 class="text-center mb-4">Conheça seus Direitos no SUS</h2>
           
-          <h4 class="mt-4 mb-3 text-primary">Direitos dos Cidadãos</h4>
-          <ul>
-            <li>
-              <strong>Direito à Saúde:</strong> Garantido pelo <strong>Art. 196 da Constituição Federal</strong>, o acesso universal e igualitário à saúde é um direito de todos.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Este artigo estabelece que a saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doenças e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação.
-              </div>
+          <!-- Abas -->
+          <ul class="nav nav-tabs" id="direitos-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="cidadaos-tab" data-bs-toggle="tab" data-bs-target="#cidadaos" type="button" role="tab" aria-controls="cidadaos" aria-selected="true">Direitos dos Cidadãos</button>
             </li>
-            
-            <li>
-              <strong>Atendimento Digno:</strong> Conforme o <strong>Art. 3º da Lei 8.080/90</strong>, os cidadãos têm direito ao atendimento respeitoso e eficiente no SUS.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Define que a saúde tem como fatores determinantes e condicionantes, entre outros, a alimentação, a moradia, o saneamento básico, o meio ambiente, o trabalho, a renda, a educação, o transporte, o lazer e o acesso aos bens e serviços essenciais.
-              </div>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profissionais-tab" data-bs-toggle="tab" data-bs-target="#profissionais" type="button" role="tab" aria-controls="profissionais" aria-selected="false">Direitos dos Profissionais</button>
             </li>
-            
-            <li>
-              <strong>Sigilo Médico:</strong> O <strong>Art. 5º, inciso X da Constituição</strong> assegura a privacidade dos pacientes.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Estabelece que são invioláveis a intimidade, a vida privada, a honra e a imagem das pessoas, assegurado o direito à indenização pelo dano material ou moral decorrente de sua violação.
-              </div>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="deveres-tab" data-bs-toggle="tab" data-bs-target="#deveres" type="button" role="tab" aria-controls="deveres" aria-selected="false">Deveres</button>
             </li>
-            
-            <li>
-              <strong>Medicamentos e Tratamentos:</strong> A <strong>Lei 8.080/90</strong> garante o acesso a medicamentos essenciais gratuitamente pelo SUS.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> O Art. 6º desta lei inclui no campo de atuação do SUS a execução de ações de assistência terapêutica integral, inclusive farmacêutica.
-              </div>
-            </li>
-            
-            <li>
-              <strong>Direito à Informação:</strong> Conforme a <strong>Lei 13.460/2017</strong>, o paciente tem direito de receber informações claras sobre sua condição de saúde e tratamentos.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Dispõe sobre a participação, proteção e defesa dos direitos do usuário dos serviços públicos, garantindo acesso à informação adequada.
-              </div>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="legislacao-tab" data-bs-toggle="tab" data-bs-target="#legislacao" type="button" role="tab" aria-controls="legislacao" aria-selected="false">Principais Leis</button>
             </li>
           </ul>
           
-          <h4 class="mt-4 mb-3 text-primary">Direitos dos Profissionais</h4>
-          <ul>
-            <li>
-              <strong>Direito à Capacitação:</strong> Conforme o <strong>Art. 27 da Lei 8.080/90</strong>, os profissionais de saúde devem receber treinamentos constantes.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> A política de recursos humanos na área da saúde será formalizada e executada, articuladamente, pelas diferentes esferas de governo, garantindo a valorização da dedicação exclusiva aos serviços do SUS.
-              </div>
-            </li>
+          <!-- Conteúdo das Abas -->
+          <div class="tab-content" id="direitos-tabs-content">
+            <!-- Direitos dos Cidadãos -->
+            <div class="tab-pane fade show active" id="cidadaos" role="tabpanel" aria-labelledby="cidadaos-tab">
+              <h3>Direitos Fundamentais dos Cidadãos na Saúde</h3>
+              <p class="lead">Todos os cidadãos brasileiros têm direito a uma assistência à saúde de qualidade, com base nos seguintes princípios:</p>
+              <ul>
+                <li>
+                  <strong>Acesso Universal e Igualitário à Saúde</strong> - Garantido pelo <strong>Art. 196 da Constituição Federal</strong>, todos os cidadãos têm direito ao acesso gratuito e universal aos serviços de saúde.
+                  <div class="lei-box">
+                    <p><em>"A saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos..."</em> - CF, Art. 196</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Atendimento Humanizado e Respeitoso</strong> - Conforme a <strong>Política Nacional de Humanização (HumanizaSUS)</strong>, todo cidadão tem direito a um tratamento digno e sem discriminação.
+                  <div class="lei-box">
+                    <p>A Política Nacional de Humanização (2003) determina que o atendimento em saúde valorize a dignidade do usuário e do trabalhador.</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Direito à Informação e Consentimento</strong> - Estabelecido pela <strong>Lei Orgânica da Saúde (Lei 8.080/90)</strong>, o paciente deve receber informações claras sobre seu tratamento.
+                  <div class="lei-box">
+                    <p>Informações sobre diagnóstico, riscos e alternativas de tratamento devem ser fornecidas de forma compreensível.</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Sigilo e Confidencialidade</strong> - Amparado pelo <strong>Código de Ética Médica</strong> e pelo <strong>Art. 5º, inciso X da CF</strong>, garantindo a privacidade do paciente.
+                  <div class="lei-box">
+                    <p><em>"São invioláveis a intimidade, a vida privada, a honra e a imagem das pessoas..."</em> - CF, Art. 5º, X</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Direito à Medicação</strong> - Segundo a <strong>Lei 12.401/2011</strong>, assegura-se a assistência terapêutica integral, com medicamentos da <strong>RENAME</strong>.
+                  <div class="lei-box">
+                    <p>A dispensação de medicamentos deve obedecer aos protocolos clínicos do Ministério da Saúde.</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Direito ao Acompanhante</strong> - Conforme as leis que protegem crianças, adolescentes e idosos, é garantido o direito a acompanhante durante a internação.
+                  <div class="lei-box">
+                    <p>Também se aplica às parturientes, garantindo suporte durante trabalho de parto e pós-parto.</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Direito ao Atendimento de Urgência e Emergência</strong> - Amparado pela <strong>Resolução CFM nº 1.451/95</strong>, o atendimento deve ser imediato em casos de risco de vida.
+                  <div class="lei-box">
+                    <p>Em emergências, não se pode impor barreiras burocráticas que atrasem o socorro.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
             
-            <li>
-              <strong>Direito à Remuneração Justa:</strong> Garantia de uma remuneração compatível com a responsabilidade e carga horária, conforme a <strong>Lei 8.112/90</strong>.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Dispõe sobre o regime jurídico dos servidores públicos e estabelece direitos remuneratórios como vencimento, remuneração e adicionais.
-              </div>
-            </li>
+            <!-- Direitos dos Profissionais -->
+            <div class="tab-pane fade" id="profissionais" role="tabpanel" aria-labelledby="profissionais-tab">
+              <h3>Direitos dos Profissionais de Saúde</h3>
+              <p class="lead">Os profissionais que atuam no sistema de saúde possuem direitos específicos que garantem sua dignidade e condições adequadas de trabalho:</p>
+              <ul>
+                <li>
+                  <strong>Condições de Trabalho</strong> - Conforme a <strong>NR-32</strong>, é assegurada a proteção contra riscos ocupacionais.
+                  <div class="lei-box">
+                    <p>A NR-32 define medidas de segurança para a prevenção de acidentes e exposição a riscos.</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Direito à Capacitação</strong> - Conforme o <strong>Art. 27 da Lei 8.080/90</strong>, os profissionais têm direito a programas de educação continuada.
+                  <div class="lei-box">
+                    <p><em>"A política de recursos humanos na área da saúde deverá incluir programas de aperfeiçoamento permanente..."</em></p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Liberdade de Diagnóstico e Tratamento</strong> - O <strong>Código de Ética Médica</strong> garante autonomia para a escolha dos procedimentos.
+                  <div class="lei-box">
+                    <p>O profissional deve indicar o melhor tratamento sem interferências que prejudiquem sua atuação.</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Direito à Recusa de Procedimentos</strong> - Garante a recusa de atos que contrariem a consciência, salvo em emergências.
+                  <div class="lei-box">
+                    <p>Excetuam-se situações de ausência de outro profissional ou risco iminente ao paciente.</p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Remuneração Justa</strong> - Com base na <strong>Lei de Responsabilidade Fiscal</strong> e no <strong>Estatuto do Servidor</strong>, os profissionais devem receber salários compatíveis.
+                  <div class="lei-box">
+                    <p>Os recursos destinados à saúde também abrangem despesas com pessoal, garantindo remuneração adequada.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
             
-            <li>
-              <strong>Direito à Segurança:</strong> A <strong>NR-32 do Ministério do Trabalho</strong> assegura ambientes de trabalho seguros e adequados para a prática profissional.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Esta Norma Regulamentadora estabelece diretrizes para implementação de medidas de proteção à segurança e à saúde dos trabalhadores dos serviços de saúde.
+            <!-- Deveres -->
+            <div class="tab-pane fade" id="deveres" role="tabpanel" aria-labelledby="deveres-tab">
+              <h3>Deveres dos Cidadãos e Profissionais na Saúde</h3>
+              <p class="lead">Para o bom funcionamento do sistema, é necessário que tanto usuários quanto profissionais cumpram seus deveres:</p>
+              <div class="row mt-4">
+                <!-- Deveres dos Cidadãos -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      Deveres dos Cidadãos
+                    </div>
+                    <div class="card-body">
+                      <ul>
+                        <li><strong>Respeito</strong> - Tratar com cortesia e consideração os profissionais de saúde.</li>
+                        <li><strong>Informações Precisas</strong> - Fornecer dados reais sobre seu histórico de saúde.</li>
+                        <li><strong>Preservação do Patrimônio</strong> - Zelar pelos equipamentos e instalações dos serviços.</li>
+                        <li><strong>Uso Consciente</strong> - Utilizar os serviços de maneira racional e responsável.</li>
+                        <li><strong>Comprometimento</strong> - Comparecer às consultas ou cancelar com antecedência.</li>
+                        <li><strong>Adesão ao Tratamento</strong> - Seguir as orientações e prescrições dos profissionais.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!-- Deveres dos Profissionais -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      Deveres dos Profissionais
+                    </div>
+                    <div class="card-body">
+                      <ul>
+                        <li><strong>Atendimento Humanizado</strong> - Prestar um atendimento empático e digno.</li>
+                        <li><strong>Sigilo Profissional</strong> - Manter confidencialidade sobre as informações dos pacientes.</li>
+                        <li><strong>Atualização Constante</strong> - Buscar aprimoramento e atualização em sua área.</li>
+                        <li><strong>Respeito à Autonomia</strong> - Valorizar a decisão e os direitos dos pacientes.</li>
+                        <li><strong>Compromisso Ético</strong> - Agir com transparência e responsabilidade em todas as práticas.</li>
+                        <li><strong>Colaboração</strong> - Trabalhar em equipe e participar de programas de qualidade e segurança.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </li>
-          </ul>
-          
-          <h4 class="mt-4 mb-3 text-primary">Deveres dos Cidadãos e Profissionais</h4>
-          <ul>
-            <li>
-              <strong>Dever de Zelo:</strong> É obrigação dos agentes oferecer atendimento de excelência e com respeito aos direitos dos cidadãos, conforme o <strong>Código de Ética Profissional</strong>.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Os códigos de ética das profissões de saúde estabelecem princípios, direitos e responsabilidades inerentes ao exercício profissional.
-              </div>
-            </li>
+            </div>
             
-            <li>
-              <strong>Dever de Sigilo:</strong> Manter a confidencialidade das informações dos pacientes, em conformidade com o <strong>Art. 154 do Código Penal</strong>.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Caracteriza como crime a violação de segredo profissional, revelando, sem justa causa, segredo de que tem ciência em razão de função, ministério, ofício ou profissão.
-              </div>
-            </li>
-            
-            <li>
-              <strong>Dever de Atendimento:</strong> Prestação de serviços de saúde de forma humanizada e seguindo os protocolos estabelecidos pela <strong>Política Nacional de Humanização</strong>.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Estabelece diretrizes para a humanização do atendimento nos serviços de saúde, valorizando a dimensão subjetiva e social em todas as práticas de atenção e gestão no SUS.
-              </div>
-            </li>
-          </ul>
-          
-          <h4 class="mt-4 mb-3 text-primary">Legislação Relacionada à Saúde</h4>
-          <ul>
-            <li>
-              <strong>Lei 8.142/1990:</strong> Garante a participação popular no SUS por meio dos Conselhos e Conferências de Saúde.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Dispõe sobre a participação da comunidade na gestão do SUS e sobre as transferências intergovernamentais de recursos financeiros na área da saúde.
-              </div>
-            </li>
-            
-            <li>
-              <strong>Lei 9.431/1997:</strong> Estabelece diretrizes para o Sistema Único de Saúde, especialmente no que se refere ao financiamento da saúde.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Dispõe sobre a obrigatoriedade de manutenção de programa de controle de infecções hospitalares pelos hospitais do país.
-              </div>
-            </li>
-            
-            <li>
-              <strong>Lei 10.741/2003 (Estatuto do Idoso):</strong> Garante atendimento preferencial e integral à saúde do idoso.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Regulamenta os direitos assegurados às pessoas com idade igual ou superior a 60 anos, incluindo atendimento prioritário em serviços de saúde.
-              </div>
-            </li>
-            
-            <li>
-              <strong>Lei 13.146/2015 (Estatuto da Pessoa com Deficiência):</strong> Assegura direitos específicos no atendimento de saúde às pessoas com deficiência.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Institui a Lei Brasileira de Inclusão da Pessoa com Deficiência, garantindo o direito à saúde de forma acessível e adequada às necessidades específicas.
-              </div>
-            </li>
-            
-            <li>
-              <strong>Lei 13.979/2020:</strong> Dispõe sobre medidas para enfrentamento da emergência de saúde pública decorrente da pandemia de COVID-19.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Estabelece medidas de proteção à população durante situações de emergência em saúde pública, incluindo isolamento, quarentena e restrições diversas.
-              </div>
-            </li>
-            
-            <li>
-              <strong>Lei 13.989/2020:</strong> Regulamenta a telemedicina durante crises sanitárias.
-              <div class="lei-explicacao">
-                <strong>Explicação:</strong> Autoriza o uso da telemedicina em caráter emergencial durante a pandemia de COVID-19, permitindo consultas médicas à distância.
-              </div>
-            </li>
-          </ul>
-          
-          <p class="mt-4">Estas orientações têm respaldo em diversos dispositivos legais e normativos, visando proteger tanto os profissionais quanto os pacientes. O conhecimento desses direitos e deveres contribui para um sistema de saúde mais justo, eficiente e humanizado.</p>
+            <!-- Principais Leis -->
+            <div class="tab-pane fade" id="legislacao" role="tabpanel" aria-labelledby="legislacao-tab">
+              <h3>Principais Leis e Normativas</h3>
+              <p class="lead">Conheça as principais leis que regem os direitos e deveres no Sistema Único de Saúde (SUS):</p>
+              <ul>
+                <li><strong>Constituição Federal</strong> - Estabelece, entre outros, o direito à saúde (Art. 196 e Art. 5º, X).</li>
+                <li><strong>Lei Orgânica da Saúde (Lei 8.080/90)</strong> - Regula o funcionamento do SUS e define direitos e deveres.</li>
+                <li><strong>Lei de Participação da Comunidade (Lei 8.142/90)</strong> - Assegura a participação social na gestão da saúde.</li>
+                <li><strong>Lei 12.401/2011</strong> - Garante o direito à medicação e assistência terapêutica integral.</li>
+                <li><strong>NR-32</strong> - Norma que estabelece diretrizes para a segurança e saúde dos trabalhadores dos serviços de saúde.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Adicionando o Bootstrap JS e script para o menu -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Sobre UBS Portal</h4>
+          <p>Comprometido com a promoção de um atendimento humanizado e de qualidade, a UBS Portal trabalha para garantir os direitos dos cidadãos e o bem-estar dos profissionais no SUS.</p>
+        </div>
+        <div class="col-md-6">
+          <h4>Contatos Úteis</h4>
+          <ul class="footer-links">
+            <li><i class="fas fa-phone"></i> (11) 4800-5024</li>
+            <li><i class="fas fa-envelope"></i> portaldaslaranjeirasrecepcao@gmail.com</li>
+            <li><i class="fas fa-map-marker-alt"></i> Rua Cardeal, S/N, Portal das Laranjeiras, Caieiras-SP</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="copyright">
+    &copy; 2025 UBS Portal. Domínio público.
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     function toggleMenu() {
       const navLinks = document.querySelector('.nav-links');
