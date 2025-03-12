@@ -5,15 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UBS Portal Vacinação</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
+  :root {
+    --primary-color: #1a3a5f;
+    --secondary-color: #2d5986;
+    --accent-color: #4d92df;
+    --light-blue: #e6f2ff;
+    --gradient-start: #0d2b4b;
+    --gradient-end: #2d5986;
+    --text-color: #333;
+    --light-text: #f0f0f0;
+  }
+  
   body {
     background: url('https://www.publicdomainpictures.net/pictures/320000/velka/background-with-pine-trees.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
-    font-family: Arial, sans-serif;
-
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+  
   .menu-container {
     max-width: 800px;
     margin: 30px auto;
@@ -24,79 +35,356 @@
     color: black;
     animation: fadeIn 1s ease-in-out;
   }
+  
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
+  
   .accordion-button {
     font-weight: bold;
     transition: background-color 0.3s;
   }
+  
   .accordion-button:hover {
     background-color: #1976d2;
     color: white;
   }
+  
   .accordion-body {
     background: #e3f2fd;
   }
+  
   a {
     color: #0d47a1;
     text-decoration: none;
     font-weight: bold;
   }
+  
   a:hover {
     text-decoration: underline;
   }
+  
   .logo {
     display: block;
     margin: 0 auto 20px;
     width: 150px;
   }
+  
+  /* Improved Menu Styles */
   #menu-container {
-    background: rgba(6, 13, 148, 0.912);
-    padding: 10px;
+    background: linear-gradient(90deg, var(--gradient-start), var(--secondary-color));
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
-  nav {
+  
+  .main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 60px;
   }
-  .menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-  }
-  .nav-links {
-    list-style: none;
-    padding: 0;
+  
+  .nav-brand {
     display: flex;
+    align-items: center;
   }
+  
+  .logo-menu {
+    font-weight: 700;
+    color: white;
+    font-size: 1.4rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-menu i {
+    margin-right: 10px;
+    color: var(--accent-color);
+  }
+  
+  .mobile-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+  }
+  
+  .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  
   .nav-links li {
-    margin: 0 15px;
+    position: relative;
+    margin: 0;
   }
-  .nav-links a {
+  
+  .nav-links li a {
+    display: flex;
+    align-items: center;
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    padding: 0 15px;
+    height: 60px;
+    transition: all 0.3s ease;
+    font-weight: 500;
   }
-  .nav-links a:hover {
-    text-decoration: underline;
+  
+  .nav-links li a i {
+    margin-right: 8px;
+  }
+  
+  .nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Dropdown styles */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-toggle .fa-chevron-down {
+    margin-left: 8px;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .dropdown:hover .fa-chevron-down {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    display: none;
+    z-index: 1001;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .dropdown-menu li {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .dropdown-menu li a {
+    color: var(--primary-color);
+    padding: 10px 20px;
+    height: auto;
+    display: block;
+  }
+  
+  .dropdown-menu li a:hover {
+    background-color: var(--light-blue);
+    color: var(--secondary-color);
+  }
+  
+  /* Active link styling */
+  .nav-links li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+  }
+  
+  .nav-links li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 70%;
+    height: 3px;
+    background-color: white;
+    transform: translateX(-50%);
+  }
+  
+  /* Header styles */
+  .page-header {
+    background: linear-gradient(135deg, var(--gradient-start), var(--accent-color));
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .header-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .header-content p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    opacity: 0.9;
+  }
+  
+  .header-icon {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+  
+  /* Mobile responsiveness */
+  @media screen and (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 60px;
+      left: -100%;
+      flex-direction: column;
+      background-color: var(--gradient-start);
+      width: 100%;
+      text-align: left;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      align-items: flex-start;
+      z-index: 1000;
+    }
+    
+    .nav-links.active {
+      left: 0;
+    }
+    
+    .nav-links li {
+      width: 100%;
+    }
+    
+    .nav-links li a {
+      padding: 15px 20px;
+      height: auto;
+    }
+    
+    .dropdown-menu {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0.1);
+      display: none;
+      padding: 0;
+    }
+    
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+    
+    .dropdown-toggle .fa-chevron-down {
+      margin-left: auto;
+    }
+    
+    /* Don't show dropdown on hover on mobile */
+    .dropdown:hover .dropdown-menu {
+      display: none;
+    }
+    
+    /* Show it on click with JS instead */
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+    
+    .header-content h1 {
+      font-size: 1.8rem;
+    }
+    
+    .header-content p {
+      font-size: 1rem;
+    }
   }
 </style>
 <link rel="icon" href="cristo (2).png" type="image/png">
 </head>
 <body>
+<!-- Improved Navigation Menu -->
 <div id="menu-container">
-    <nav>
-        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="index.html" class="logo-menu">
+                <i class="fas fa-heartbeat"></i> UBS Portal
+            </a>
+        </div>
+        
+        <div class="mobile-toggle" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        
         <ul class="nav-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="calculadodrop.html">Calcular sua Saúde</a></li>
-            <li><a href="contatos.html">Contatos Úteis</a></li>
-            <li><a href="bulas.html">Bulas</a></li>
-    
+            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-calendar-check"></i> Serviços <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="guias.html">Guias</a></li>
+                    <li><a href="vacinacao.html">Vacinação</a></li>
+                    <li><a href="calculadodrop.html">Calcular sua Saúde</a></li>
+                </ul>
+            </li>
+            <li><a href="https://meususdigital.saude.gov.br/"><i class="fas fa-mobile-alt"></i> Meu SUS</a></li>
+            <li><a href="acs.html"><i class="fas fa-user-md"></i> Equipe</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-info-circle"></i> Informações <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="contatos.html">Contatos Úteis</a></li>
+                    <li><a href="bulas.html">Bulas</a></li>
+                    <li><a href="#sobre-ubs">Sobre</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
+</div>
+
+<!-- New Header Section -->
+<div class="page-header">
+    <div class="header-content">
+        <i class="fas fa-syringe header-icon"></i>
+        <h1>Vacinação </h1>
+        <p>Proteja sua saúde e a saúde da sua família com as vacinas disponíveis na nossa unidade</p>
+    </div>
 </div>
 
 <div class="container">
@@ -166,6 +454,47 @@
     </div>
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript for the improved menu -->
+<script>
+    // Function to toggle the menu on mobile
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+        
+        // Animate the hamburger icon
+        const bars = document.querySelectorAll('.bar');
+        bars.forEach(bar => bar.classList.toggle('active'));
+    }
+    
+    // Function to toggle dropdowns on mobile
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                // Only prevent default on mobile
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+        
+        // Set active class based on current page
+        const currentLocation = window.location.href;
+        const menuItems = document.querySelectorAll('.nav-links a');
+        
+        menuItems.forEach(item => {
+            if (currentLocation.includes(item.getAttribute('href')) && 
+                item.getAttribute('href') !== '#' && 
+                item.getAttribute('href') !== '') {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
 </body>
 </html>
