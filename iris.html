@@ -478,31 +478,32 @@
     </div>
 
     <div class="quick-actions">
-      <div class="quick-action" onclick="handleQuickAction('horario')">
-        <i class="fas fa-clock"></i>
-        <span>Horários</span>
-      </div>
-      <div class="quick-action" onclick="handleQuickAction('agendamento')">
-        <i class="fas fa-calendar-alt"></i>
-        <span>Agendar</span>
-      </div>
-      <div class="quick-action" onclick="handleQuickAction('exames')">
-        <i class="fas fa-vial"></i>
-        <span>Exames</span>
-      </div>
-      <div class="quick-action" onclick="handleQuickAction('vacina')">
-        <i class="fas fa-syringe"></i>
-        <span>Vacinas</span>
-      </div>
-      <div class="quick-action" onclick="handleQuickAction('medicamentos')">
-        <i class="fas fa-pills"></i>
-        <span>Medicamentos</span>
-      </div>
-      <div class="quick-action" onclick="handleQuickAction('endereco')">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Localização</span>
-      </div>
-    </div>
+  <a class="quick-action" href="horario.html">
+    <i class="fas fa-clock"></i>
+    <span>Horários</span>
+  </a>
+  <a class="quick-action" href="agendamento.html">
+    <i class="fas fa-calendar-alt"></i>
+    <span>Agendar</span>
+  </a>
+  <a class="quick-action" href="exames.html">
+    <i class="fas fa-vial"></i>
+    <span>Exames</span>
+  </a>
+  <a class="quick-action" href="vacina.html">
+    <i class="fas fa-syringe"></i>
+    <span>Vacinas</span>
+  </a>
+  <a class="quick-action" href="bulas.html">
+    <i class="fas fa-pills"></i>
+    <span>Medicamentos</span>
+  </a>
+  <a class="quick-action" href="endereco.html">
+    <i class="fas fa-map-marker-alt"></i>
+    <span>Localização</span>
+  </a>
+</div>
+
 
     <div class="chat-messages" id="chatMessages" aria-live="polite">
       <!-- As mensagens serão adicionadas aqui dinamicamente -->
@@ -590,12 +591,7 @@
     `;
 
     // Sugestões com ícones e direcionamento para páginas específicas
-    const suggestionLinks = [
-      { text: "Início", icon: "fas fa-home", url: "index.html" },
-      { text: "Guias", icon: "fas fa-book", url: "guias.html" },
-      { text: "Vacina", icon: "fas fa-syringe", url: "vacina.html" },
-      { text: "Salva Vidas", icon: "fas fa-heartbeat", url: "salva.html" }
-    ];
+   
 
     // Inicializa as sugestões de navegação
     const suggestedContainer = document.getElementById("suggestedQuestionsContainer");
