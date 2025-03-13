@@ -107,78 +107,6 @@
       top: 15px;
     }
 
-    /* Menu styling */
-    #menu-container {
-      background: linear-gradient(90deg, var(--gradient-start), var(--secondary-color));
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    .menu-icon {
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: var(--gradient-start);
-      flex-direction: column;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-    }
-
-    .nav-links.active {
-      display: flex;
-    }
-
-    .nav-links li {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links li a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-links li a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .logo {
-      font-weight: 700;
-      color: white;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo i {
-      margin-right: 10px;
-      color: var(--accent-color);
-    }
-
     .chat-messages {
       flex: 1;
       padding: 20px;
@@ -287,36 +215,6 @@
       flex-direction: column;
     }
 
-    /* Container de sugestões com ícones */
-    .suggested-questions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .suggested-questions button {
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      border-radius: 20px;
-      padding: 6px 12px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .suggested-questions button i {
-      font-size: 16px;
-    }
-
-    .suggested-questions button:hover {
-      background-color: var(--secondary-color);
-    }
-
     .input-row {
       display: flex;
       align-items: center;
@@ -363,74 +261,6 @@
       font-size: 18px;
     }
 
-    /* Botões extras: anexo e voz */
-    .extra-button {
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      margin-left: 5px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s;
-    }
-
-    .extra-button:hover {
-      background-color: var(--secondary-color);
-      transform: scale(1.05);
-    }
-
-    /* Quick actions (mantidas da versão anterior) */
-    .quick-actions {
-      display: flex;
-      overflow-x: auto;
-      padding: 10px 5px;
-      gap: 10px;
-      background-color: #f0f4f8;
-      border-bottom: 1px solid #e8e8e8;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    .quick-actions::-webkit-scrollbar {
-      display: none;
-    }
-
-    .quick-action {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 70px;
-      padding: 10px 5px;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .quick-action:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .quick-action i {
-      font-size: 20px;
-      color: var(--secondary-color);
-      margin-bottom: 5px;
-    }
-
-    .quick-action span {
-      font-size: 12px;
-      text-align: center;
-      color: var(--text-color);
-    }
-
     /* Responsividade para telas menores */
     @media (max-width: 600px) {
       .chat-container {
@@ -456,72 +286,25 @@
       <img src="iris.png" alt="UBS Portal Logo">
       <div class="chat-header-text">
         <h2>Assistente Virtual UBS Portal</h2>
-        <p>Assistente de informações de saúde</p>
+        <p>Assistente de informações de saúde – Em fase de testes</p>
       </div>
       <button class="clear-chat-button" onclick="clearChat()" title="Limpar chat">
         <i class="fas fa-trash"></i>
       </button>
     </div>
 
-    <div id="menu-container">
-      <nav>
-        <a href="#" class="logo"><i class="fas fa-heartbeat"></i> UBS Portal</a>
-        <span class="menu-icon" onclick="toggleMenu()">☰</span>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#" onclick="handleMenuClick('inicio')"><i class="fas fa-home"></i> Início</a></li>
-          <li><a href="#" onclick="handleMenuClick('especialidades')"><i class="fas fa-stethoscope"></i> Especialidades</a></li>
-          <li><a href="#" onclick="handleMenuClick('app-sus')"><i class="fas fa-mobile-alt"></i> Meu SUS</a></li>
-          <li><a href="#" onclick="handleMenuClick('equipe')"><i class="fas fa-user-md"></i> Equipe</a></li>
-          <li><a href="#" onclick="handleMenuClick('emergencia')"><i class="fas fa-ambulance"></i> Emergência</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="quick-actions">
-  <a class="quick-action" href="horario.html">
-    <i class="fas fa-clock"></i>
-    <span>Horários</span>
-  </a>
-  <a class="quick-action" href="agendamento.html">
-    <i class="fas fa-calendar-alt"></i>
-    <span>Agendar</span>
-  </a>
-  <a class="quick-action" href="exames.html">
-    <i class="fas fa-vial"></i>
-    <span>Exames</span>
-  </a>
-  <a class="quick-action" href="vacina.html">
-    <i class="fas fa-syringe"></i>
-    <span>Vacinas</span>
-  </a>
-  <a class="quick-action" href="bulas.html">
-    <i class="fas fa-pills"></i>
-    <span>Medicamentos</span>
-  </a>
-  <a class="quick-action" href="endereco.html">
-    <i class="fas fa-map-marker-alt"></i>
-    <span>Localização</span>
-  </a>
-</div>
-
-
+    <!-- Área de mensagens -->
     <div class="chat-messages" id="chatMessages" aria-live="polite">
       <!-- As mensagens serão adicionadas aqui dinamicamente -->
     </div>
 
+    <!-- Área de entrada de mensagem (sem sugestões nem anexos) -->
     <div class="chat-input">
-      <!-- Container de sugestões com ícones e direcionamento -->
-      <div class="suggested-questions" id="suggestedQuestionsContainer">
-        <!-- As sugestões serão inseridas via JavaScript -->
-      </div>
       <div class="input-row">
         <input type="text" id="userInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)" aria-label="Digite sua mensagem">
         <button class="extra-button" onclick="startVoiceInput()" title="Entrada por voz">
           <i class="fas fa-microphone"></i>
         </button>
-        <div class="extra-button" onclick="triggerFileInput()" title="Enviar anexo">
-          <i class="fas fa-paperclip"></i>
-        </div>
         <button onclick="sendMessage()" aria-label="Enviar mensagem">
           <i class="fas fa-paper-plane"></i>
         </button>
@@ -529,125 +312,59 @@
     </div>
   </div>
 
-  <!-- Input oculto para anexos -->
-  <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFileUpload(event)">
-
   <script>
-    // Base de conhecimento expandida
+    // Base de conhecimento com informações essenciais para saúde e da UBS Portal das Laranjeiras
     const knowledgeBase = {
-      "horario": "A UBS Portal funciona de segunda a sexta, das 7h às 17h sem intervalo para almoço. Temos atendimento preferencial para idosos, gestantes e PCDs das 7h às 9h.",
-      "agendamento": "Para agendar uma consulta, você pode: 1) Comparecer à UBS com cartão SUS, documento de identidade e comprovante de residência; 2) Utilizar o aplicativo Meu SUS; ou 3) Ligar para a central de agendamentos no telefone (11) 4800-5024.",
-      "documentos": "Para atendimento, traga seu cartão SUS, documento de identidade com foto e comprovante de residência atualizado (últimos 3 meses). Para crianças, traga também a caderneta de vacinação.",
-      "especialidades": "Nossa UBS oferece atendimento em: Clínica Geral, Pediatria, Ginecologia, Enfermagem, Vacinação, Nutrição, Psicologia, Odontologia e Serviço Social.",
-      "emergencia": "Em caso de emergência, dirija-se à UPA mais próxima ou ligue para o SAMU (192). A UBS não oferece serviço de pronto-atendimento para casos urgentes.",
-      "exames": "Os resultados de exames ficam disponíveis em aproximadamente 15 dias úteis e podem ser retirados na própria UBS ou consultados pelo aplicativo Meu SUS. Para autorização de exames, é necessário passar por consulta médica.",
-      "covid": "Oferecemos vacinação contra COVID-19 conforme disponibilidade. Atualmente atendemos público acima de 6 meses de idade. Consulte o cronograma atual na recepção da UBS ou pelo app Meu SUS.",
-      "telefone": "O telefone da UBS Portal é (11) 4800-5024. O horário de atendimento telefônico é de segunda a sexta, das 8h às 16h.",
-      "endereco": "Estamos localizados na Rua Cardeal, S/N - Bairro Portal da Laranjeiras, São Paulo. Referência: próximo ao Terminal Rodoviário Portal.",
-      "medicamentos": "A farmácia da UBS funciona de segunda a sexta, das 8h às 16h. Para retirar medicamentos, é necessário apresentar receita médica, documento de identidade e cartão SUS.",
-      "vacina": "Nossa sala de vacinação funciona de segunda a sexta, das 8h às 16h. Oferecemos todas as vacinas do calendário nacional de imunização. Traga sua caderneta de vacinação e documento de identidade.",
-      "dentista": "O atendimento odontológico funciona mediante agendamento prévio. Casos de emergência (dor intensa, inchaço, trauma) são avaliados no mesmo dia para atendimento prioritário.",
-      "gestante": "Oferecemos acompanhamento pré-natal completo. Para iniciar, agende uma consulta com apresentação do teste de gravidez positivo. Você receberá a caderneta da gestante e realizará todos os exames necessários.",
-      "hipertenso": "Pacientes hipertensos têm atendimento prioritário em nosso Programa de Hipertensão. Consultas médicas periódicas, fornecimento de medicamentos e grupos educativos estão disponíveis.",
-      "diabetico": "Pacientes diabéticos têm atendimento prioritário em nosso Programa de Diabetes. Oferecemos consultas periódicas, fornecimento de medicamentos, insumos para insulinodependentes e grupos educativos.",
-      "encaminhamento": "Encaminhamentos para especialistas são feitos pelo médico da UBS. Após a emissão, o agendamento é realizado pela Central de Regulação. O tempo de espera varia conforme a especialidade e prioridade clínica.",
-      "app_sus": "O aplicativo Meu SUS permite acessar sua carteira de vacinação digital, consultar resultados de exames, verificar agendamentos e muito mais. Disponível para download na App Store e Google Play.",
-      "teleconsulta": "O serviço de teleconsulta está disponível para casos específicos. Consulte a recepção para verificar se seu caso é elegível. É necessário ter acesso à internet e um dispositivo com câmera."
+      "horario": "A UBS Portal funciona de segunda a sexta, das 7h às 17h sem intervalo para almoço. Atendimento preferencial para idosos, gestantes e PCDs das 7h às 9h.",
+      "agendamento": "Para agendar uma consulta, compareça à UBS com cartão SUS, documento de identidade e comprovante de residência, ou utilize o aplicativo Meu SUS.",
+      "documentos": "Para atendimento, traga seu cartão SUS, documento de identidade com foto e comprovante de residência atualizado. Para crianças, também a caderneta de vacinação.",
+      "especialidades": "Oferecemos atendimento em Clínica Geral, Pediatria, Ginecologia, Enfermagem, Vacinação, Nutrição, Psicologia, Odontologia e Serviço Social.",
+      "emergencia": "Em caso de emergência, dirija-se à UPA mais próxima ou ligue para o SAMU (192). A UBS não presta pronto-atendimento para casos urgentes.",
+      "exames": "Os resultados de exames ficam disponíveis em aproximadamente 15 dias úteis e podem ser retirados na UBS ou consultados pelo app Meu SUS.",
+      "covid": "Vacinação contra COVID-19 conforme disponibilidade. Atualmente, atendemos público acima de 6 meses. Verifique o cronograma na recepção ou pelo app Meu SUS.",
+      "telefone": "Telefone da UBS Portal: (11) 4800-5024. Atendimento telefônico de segunda a sexta, das 8h às 16h.",
+      "endereco": "Localizada na Rua Cardeal, S/N - Bairro Portal das Laranjeiras, São Paulo. Referência: próximo ao Terminal Rodoviário Portal.",
+      "medicamentos": "Na farmácia da UBS, o atendimento é de segunda a sexta, das 8h às 16h. Apresente receita médica, documento de identidade e cartão SUS para retirar medicamentos.",
+      "vacina": "Sala de vacinação da UBS funciona de segunda a sexta, das 8h às 16h. Oferecemos as vacinas do calendário nacional. Traga sua caderneta de vacinação e documento.",
+      "dentista": "Atendimento odontológico mediante agendamento prévio. Em casos de emergência (dor intensa, inchaço, trauma), a avaliação é feita no mesmo dia.",
+      "gestante": "Para acompanhamento pré-natal, agende uma consulta com apresentação do teste de gravidez positivo. Você receberá a caderneta da gestante e realizará os exames necessários.",
+      "hipertenso": "Pacientes hipertensos têm atendimento prioritário com consultas periódicas, fornecimento de medicamentos e grupos educativos.",
+      "diabetico": "Pacientes diabéticos contam com atendimento prioritário, consultas periódicas, fornecimento de medicamentos e insumos para insulinodependentes.",
+      "encaminhamento": "Encaminhamentos para especialistas são realizados pelo médico da UBS, com agendamento feito pela Central de Regulação.",
+      "app_sus": "O aplicativo Meu SUS permite acessar sua carteira de vacinação digital, consultar resultados de exames e verificar agendamentos.",
+      "teleconsulta": "Serviço de teleconsulta disponível para casos específicos. Consulte a recepção para verificar se seu caso é elegível."
     };
 
-    // Variável com informações estendidas para saudações
+    // Informações estendidas sobre a UBS Portal das Laranjeiras
     const extendedInfo = `
       <strong>Atendimentos Médicos e Especialistas</strong><br><br>
       <em>Sala 02 - Médica da Família:</em> Bianca – Todos os dias<br>
-      <em>Sala 01 - Médica da Família:</em> Middy – Terça a Sexta-feira; Segunda-feira: vago<br>
+      <em>Sala 01 - Médica da Família:</em> Middy – Terça a Sexta-feira; Segunda: vago<br>
       <em>Pediatria:</em> Nairobi – Segunda-feira<br>
       <em>Ginecologia:</em> José Adalberto – Sexta-feira<br>
       <em>Psicologia:</em> Liege – Quarta e Quinta-feira<br>
       <em>Nutrição:</em> Tatiane – Quinta-feira<br>
       <em>Odontologia:</em> Ana – Sexta-feira<br><br>
-      <strong>📦 Retirada de Insumos:</strong> Oferecemos atendimento para retirada de insumos de diabetes, fraldas e materiais.<br><br>
       <strong>Sobre a UBS Portal das Laranjeiras</strong><br>
-      A UBS Portal das Laranjeiras é uma Unidade Básica de Saúde da rede pública, localizada em Caieiras, SP. Sua missão é oferecer atenção primária à saúde, integrando ações de promoção, prevenção, recuperação e reabilitação.<br><br>
-      <strong>Pontos sobre a unidade:</strong><br>
-      - Atendimento Integral: Diversas especialidades (clínica geral, pediatria, ginecologia, odontologia, psicologia, nutrição, etc.).<br>
-      - Equipe de Saúde da Família: Equipe multidisciplinar integrada para promover ações preventivas.<br>
-      - Serviços de Urgência e Emergência: Procedimentos de emergência (RCP, atendimento para infarto, engasgo, choque elétrico, etc.).<br>
-      - Acesso a Informações: Contatos úteis, horários, localização, cronogramas e orientações de saúde.<br>
-      - Integração com Outros Serviços Públicos: Abordagem integrada e humanizada do cuidado à saúde.<br><br>
-      <strong>Contatos e Endereços:</strong><br>
-      <em>Casa da Mulher:</em> 4445-2729, Al. das Mangueiras, 47 - Laranjeiras<br>
-      <em>CEME:</em> 4442-7362, R. Flávio Augusto de Moraes, 80 - Centro<br>
-      <em>PS Laranjeiras:</em> 4899-3367, Al. das Mangueiras, 47 - Laranjeiras<br>
-      <em>PS Caieiras:</em> 4934-5132, Av. Dr. Olindo Dartora, 448<br>
-      <em>CTA Caieiras:</em> 4442-4749, Av. Pres. Kennedy, 111 - Centro<br>
-      <em>CAPS Caieiras:</em> 4605-2641, R. Padre Aquiles Silvestre, 274 - Centro<br>
-      <em>CRAS Caieiras:</em> 4605-5116, R. Padre Aquiles Silvestre, 76 - Centro<br>
-      <em>CREAS Caieiras:</em> 4442-4046, R. Padre Aquiles Silvestre, 69 - Centro<br>
-      <em>CIAS:</em> 4442-4200, R. Ambrosina do Carmo Buonaguide, 310<br>
-      <em>UBS Laranjeiras:</em> 4899-3367, Av. Pauliceia, 400 - Laranjeiras<br>
-      <em>UBS Portal:</em> 4800-5024, Rua Cardeal, em frente ao nº 458 - Portal<br>
-      <em>Transporte:</em> 4605-8505<br>
-      <strong>Horário:</strong> Segunda a Quinta, das 9h às 15h.
+      A UBS Portal das Laranjeiras é uma Unidade Básica de Saúde da rede pública, comprometida com a atenção primária e ações de promoção, prevenção, recuperação e reabilitação.
     `;
 
-    // Sugestões com ícones e direcionamento para páginas específicas
-   
-
-    // Inicializa as sugestões de navegação
-    const suggestedContainer = document.getElementById("suggestedQuestionsContainer");
-    suggestionLinks.forEach(suggestion => {
-      const btn = document.createElement("button");
-      btn.innerHTML = `<i class="${suggestion.icon}"></i><span>${suggestion.text}</span>`;
-      btn.onclick = () => handleSuggestion(suggestion);
-      suggestedContainer.appendChild(btn);
-    });
-
-    // Função para tratar sugestões de navegação
-    function handleSuggestion(suggestion) {
-      // Exibe a mensagem do usuário na conversa
-      appendMessage(suggestion.text, "user-message");
-      // Após breve intervalo, o bot responde e redireciona
-      setTimeout(() => {
-        appendMessage("Você será redirecionado para " + suggestion.text + ".", "bot-message");
-        setTimeout(() => {
-          window.location.href = suggestion.url;
-        }, 1500);
-      }, 500);
-    }
-
-    // Função para alternar o menu
-    function toggleMenu() {
-      const navLinks = document.getElementById("navLinks");
-      navLinks.classList.toggle("active");
-    }
-
-    // Função para tratar clique nos itens do menu
-    function handleMenuClick(section) {
-      alert("Você clicou na seção: " + section);
-      document.getElementById("navLinks").classList.remove("active");
-    }
-
-    // Função para tratar as ações rápidas
-    function handleQuickAction(action) {
-      alert("Ação rápida: " + action);
-    }
-
-    // Função para detectar a tecla Enter no input
+    // Detecta a tecla Enter para envio da mensagem
     function handleKeyPress(event) {
       if (event.key === "Enter") {
         sendMessage();
       }
     }
 
-    // Função para enviar a mensagem do usuário e simular resposta do bot
+    // Envia a mensagem do usuário e simula a resposta do bot
     function sendMessage() {
       const userInput = document.getElementById("userInput");
       const messageText = userInput.value.trim();
       if (messageText === "") return;
       appendMessage(messageText, "user-message");
       userInput.value = "";
-      
-      // Verifica se a mensagem é um cumprimento
+
+      // Resposta para cumprimentos
       const greetings = ["oi", "olá", "eae", "tudo bem"];
       if (greetings.includes(messageText.toLowerCase())) {
         showTypingIndicator();
@@ -660,8 +377,8 @@
         }, 1000);
         return;
       }
-      
-      // Processa resposta padrão
+
+      // Resposta padrão com base na base de conhecimento
       showTypingIndicator();
       setTimeout(() => {
         hideTypingIndicator();
@@ -674,7 +391,7 @@
       }, 1500);
     }
 
-    // Função para adicionar mensagem à área de chat
+    // Adiciona mensagem na área de chat
     function appendMessage(message, className) {
       const chatMessages = document.getElementById("chatMessages");
       const messageDiv = document.createElement("div");
@@ -683,7 +400,7 @@
         <div class="message-content">${message}</div>
         <div class="message-time">${new Date().toLocaleTimeString()}</div>
       `;
-      // Evento para exibir menu de contexto (copiar/compartilhar/denunciar)
+      // Menu de contexto (copiar/compartilhar/denunciar)
       messageDiv.addEventListener("contextmenu", function(e) {
         e.preventDefault();
         showContextMenu(e.pageX, e.pageY, message);
@@ -692,23 +409,19 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Função para exibir o indicador de digitação
+    // Exibe o indicador de digitação
     function showTypingIndicator() {
       const chatMessages = document.getElementById("chatMessages");
       if (document.getElementById("typingIndicator")) return;
       const typingDiv = document.createElement("div");
       typingDiv.className = "typing-indicator";
       typingDiv.id = "typingIndicator";
-      typingDiv.innerHTML = `
-        <span></span>
-        <span></span>
-        <span></span>
-      `;
+      typingDiv.innerHTML = `<span></span><span></span><span></span>`;
       chatMessages.appendChild(typingDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Função para remover o indicador de digitação
+    // Remove o indicador de digitação
     function hideTypingIndicator() {
       const typingDiv = document.getElementById("typingIndicator");
       if (typingDiv) {
@@ -716,36 +429,14 @@
       }
     }
 
-    // Função para limpar o chat
+    // Limpa o chat
     function clearChat() {
       if (confirm("Deseja realmente limpar o chat?")) {
         document.getElementById("chatMessages").innerHTML = "";
       }
     }
 
-    // Função para tratar anexos: aciona o input oculto
-    function triggerFileInput() {
-      document.getElementById("fileInput").click();
-    }
-
-    // Função para processar o arquivo enviado
-    function handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          // Exibe a prévia da imagem como mensagem
-          appendMessage(`<img src="${e.target.result}" alt="Anexo" style="max-width: 200px; border-radius: 8px;">`, "user-message");
-          // Simula resposta do bot após o envio do anexo
-          setTimeout(() => {
-            appendMessage("Recebemos seu anexo.", "bot-message");
-          }, 1500);
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    // Função para exibir menu de contexto (copy, share, report)
+    // Exibe menu de contexto para copiar, compartilhar ou denunciar a mensagem
     function showContextMenu(x, y, message) {
       let contextMenu = document.getElementById("contextMenu");
       if (!contextMenu) {
@@ -764,7 +455,6 @@
       contextMenu.style.display = "block";
       contextMenu.style.left = x + "px";
       contextMenu.style.top = y + "px";
-      // Fecha o menu ao clicar em qualquer parte da tela
       document.addEventListener("click", () => {
         contextMenu.style.display = "none";
       }, { once: true });
@@ -785,7 +475,7 @@
       alert("Mensagem denunciada!");
     }
 
-    // Função para iniciar entrada por voz utilizando Web Speech API
+    // Inicia entrada por voz utilizando Web Speech API
     function startVoiceInput() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
