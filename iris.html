@@ -278,6 +278,37 @@
         font-size: 14px;
       }
     }
+
+    .context-menu {
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        display: none; /* Oculto por padrão */
+    }
+
+    .context-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .context-menu li {
+        padding: 8px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .context-menu li:hover {
+        background-color: #f0f0f0;
+    }
+
+    .context-menu li i {
+        margin-right: 8px;
+    }
   </style>
 </head>
 <body>
@@ -295,10 +326,10 @@
 
     <!-- Área de mensagens -->
     <div class="chat-messages" id="chatMessages" aria-live="polite">
-      <!-- As mensagens serão adicionadas aqui dinamicamente -->
+      <!-- Mensagens serão adicionadas dinamicamente -->
     </div>
 
-    <!-- Área de entrada de mensagem (sem sugestões nem anexos) -->
+    <!-- Área de entrada de mensagem -->
     <div class="chat-input">
       <div class="input-row">
         <input type="text" id="userInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)" aria-label="Digite sua mensagem">
@@ -310,6 +341,15 @@
         </button>
       </div>
     </div>
+  </div>
+
+  <!-- Context Menu (oculto por padrão) -->
+  <div id="contextMenu" class="context-menu">
+      <ul>
+          <li onclick="copyMessage()"><i class="fas fa-copy"></i> Copiar</li>
+          <li onclick="shareMessage()"><i class="fas fa-share-alt"></i> Compartilhar</li>
+          <li onclick="reportMessage()"><i class="fas fa-flag"></i> Denunciar</li>
+      </ul>
   </div>
 
   <script>
@@ -332,7 +372,97 @@
       "diabetico": "Pacientes diabéticos contam com atendimento prioritário, consultas periódicas, fornecimento de medicamentos e insumos para insulinodependentes.",
       "encaminhamento": "Encaminhamentos para especialistas são realizados pelo médico da UBS, com agendamento feito pela Central de Regulação.",
       "app_sus": "O aplicativo Meu SUS permite acessar sua carteira de vacinação digital, consultar resultados de exames e verificar agendamentos.",
-      "teleconsulta": "Serviço de teleconsulta disponível para casos específicos. Consulte a recepção para verificar se seu caso é elegível."
+      "teleconsulta": "Serviço de teleconsulta disponível para casos específicos. Consulte a recepção para verificar se seu caso é elegível.",
+      "casa da mulher": "Casa da Mulher - Telefone: 4445-2729 - Endereço: Al. das Mangueiras, 47 - Laranjeiras",
+      "ceme": "CEME (Centro de Especialidades Médicas) - Telefone: 4442-7362 - Endereço: R. Flávio Augusto de Moraes, 80 - Centro",
+      "ps laranjeiras": "PS Laranjeiras (Pronto-Socorro Laranjeiras) - Telefone: 4899-3367 - Endereço: Al. das Mangueiras, 47 - Laranjeiras",
+      "ps caieiras": "PS Caieiras (Pronto-Socorro Caieiras) - Telefone: 4934-5132 - Endereço: Av. Dr. Olindo Dartora, 448",
+      "cta ": "CTA Caieiras (Centro de Testagem e Aconselhamento) - Telefone: 4442-4749 - Endereço: Av. Pres. Kennedy, 111 - Centro",
+      "caps ": "CAPS Caieiras (Centro de Atenção Psicossocial) - Telefone: 4605-2641 - Endereço: R. Padre Aquiles Silvestre, 274 - Centro",
+      "cras": "CRAS Caieiras (Centro de Referência de Assistência Social) - Telefone: 4605-5116 - Endereço: R. Padre Aquiles Silvestre, 76 - Centro",
+      "creas": "CREAS Caieiras (Centro de Referência Especializado de Assistência Social) - Telefone: 4442-4046 - Endereço: R. Padre Aquiles Silvestre, 69 - Centro",
+      "cias": "CIAS (Centro Integrado de Assistência à Saúde) - Telefone: 4442-4200 - Endereço: R. Ambrosina do Carmo Buonaguide, 310",
+      "ubs laranjeiras": "UBS Laranjeiras (Unidade Básica de Saúde Laranjeiras) - Telefone: 4899-3367 - Endereço: Av. Pauliceia, 400 - Laranjeiras",
+      "ubs portal": "UBS Portal (Unidade Básica de Saúde Portal) - Telefone: 4800-5024 - Endereço: Rua Cardeal, em frente ao nº 458 - Portal das Laranjeiras",
+      "transporte": "Transporte - Telefone: 4605-8505",
+      "ola": "Olá! Como posso ajudar hoje?",
+      "bom dia": "Bom dia! Em que posso ser útil?",
+      "boa tarde": "Boa tarde! Como posso te auxiliar?",
+      "boa noite": "Boa noite! Em que posso ajudar?",
+      "tchau": "Tchau! Se precisar de algo mais, é só chamar.",
+      "ate mais": "Até mais! Se cuida.",
+      "como vai": "Eu vou bem, obrigado por perguntar! E você?",
+      "tudo bem": "Tudo bem por aqui! Em que posso ajudar?",
+      "site": "Para acessar o site da UBS Portal, <a href='https://ubsportal2025.github.io/UBSPORTAL/index.html'>clique aqui</a>. (link simulado)",
+      "servicos": "Veja a lista completa de serviços oferecidos <a href='https://ubsportal2025.github.io/UBSPORTAL/especialidades.html'>clicando aqui</a>. (link simulado)",
+      "contato": "Para entrar em contato conosco, <a href='https://api.whatsapp.com/send/?phone=%2B551148005024&text&type=phone_number&app_absent=0'>clique aqui</a>. (link simulado)",
+      "oi": "Olá! 😊 Como posso te ajudar hoje?",
+      "sim": "Certo! 👍",
+      "não": "Tudo bem. 😉",
+      "obrigado": "De nada! 😊 Sempre à disposição.",
+      "ok": "Entendido! 👍",
+      "tudo bem?": "Estou ótimo, obrigado por perguntar! E você? 😊",
+      "qual seu nome?": "Eu sou seu assistente virtual da Saúde. Como posso te ajudar? 🏥",
+      "o que você faz?": "Eu te ajudo com informações de saúde, bem-estar e serviços da UBS Portal das Laranjeiras. 💚",
+      "quero aprender": "Que legal! 📚 Me diz o que você quer aprender?",
+      "estou triste": "Sinto muito. 😔 A UBS Portal das Laranjeiras oferece apoio psicológico gratuito. Quer o contato?",
+      "estou feliz": "Que maravilha! 😄 A felicidade fortalece a imunidade e o coração. ❤️",
+      "tenho uma dúvida": "Claro! Pergunta aí que eu te ajudo. 🧐",
+      "como está o tempo em Caieiras?": "Vou verificar para você. 🌤️",
+      "vamos jogar?": "Adoro jogos! 🎮 Mas também posso te ensinar a cuidar da saúde. 😊",
+      "me conte uma piada": "Por que o enfermeiro foi para o hospital? 🏥 Porque estava com 'febre' de ajudar os outros! 😂",
+      "boa noite": "Boa noite! 🌙 Um sono reparador fortalece sua imunidade. 💤",
+      "bom dia": "Bom dia! ☀️ Comece o dia com um café da manhã saudável e muita hidratação. 💧",
+      "beba água": "Hidrate-se! 💧 A água é essencial para o bom funcionamento do corpo.",
+      "fiz exercício hoje": "Parabéns! 🏃‍♀️ O exercício melhora a saúde do coração e libera endorfina.",
+      "preciso descansar": "O descanso é essencial para a saúde mental e física. 🛌 Cuide-se!",
+      "me sinto ansioso": "A respiração profunda e o apoio psicológico podem ajudar. A UBS Portal das Laranjeiras oferece atendimento gratuito. 🧘‍♂️",
+      "como melhorar minha saúde?": "Alimente-se bem, durma o suficiente, pratique atividades físicas e cuide da sua saúde mental. 🍎💪",
+      "estou gripado": "Descanse, beba líquidos e procure atendimento na UBS Portal das Laranjeiras. 🤧",
+      "saúde mental é importante": "Com certeza! 💚 Converse com um psicólogo ou procure apoio na UBS Portal das Laranjeiras.",
+      "qual a importância de dormir bem?": "Dormir fortalece o sistema imunológico e melhora o humor. 💤",
+      "o que é alimentação saudável?": "Uma dieta equilibrada com frutas, verduras, proteínas e grãos integrais. 🥗",
+      "me dê uma frase motivacional sobre saúde": "‘Cuidar do corpo e da mente é a base para uma vida plena e saudável. 💚’",
+      "qual o endereço da UBS Portal das Laranjeiras?": "Rua das Laranjeiras, Caieiras-SP. 📍",
+      "qual a idade de Caieiras?": "Caieiras tem 66 anos, fundada em 14 de dezembro de 1958. 🎂",
+      "onde fica Caieiras-SP?": "Caieiras está na região metropolitana de São Paulo, conhecida como a 'Cidade dos Pinheirais'. 🌲",
+      "quais serviços a UBS oferece?": "Consultas médicas, atendimento psicológico, vacinação, exames e acompanhamento de gestantes. 💉🏥",
+   
+
+      "rua cardeal": "Na Rua Cardeal, os Agentes de Saúde são: ACS Daniele, ACS Patrícia, ACS Bruna",
+      "rua tucano": "Na Rua Tucano, os Agentes de Saúde são: ACS Solange (236 em diante), ACS Maylon, ACS Susana",
+      "rua pintassilgo": "Na Rua Pintassilgo, os Agentes de Saúde são: ACS Késia, ACS Regina, ACS Tais",
+      "rua luiz gonzaga dartora": "Na Rua Luiz Gonzaga Dartora, os Agentes de Saúde são: ACS Bruna, ACS Solange (971 até 1390), ACS Daniele, ACS Susana, ACS Tais",
+      "rua francisco mommenshon": "Na Rua Francisco Mommenshon, o Agente de Saúde é: ACS Marina (N-224)",
+      "rua erminia amalia": "Na Rua Erminia Amalia, o Agente de Saúde é: ACS Vanessa (Casas par)",
+      "rua benedito rodrigues": "Na Rua Benedito Rodrigues, o Agente de Saúde é: ACS Vanessa (Casas par)",
+      "rua orlando peccicaco": "Na Rua Orlando Peccicaco, o Agente de Saúde é: ACS Vanessa (Casas par)",
+      "rua arapongas": "Na Rua Arapongas, os Agentes de Saúde são: ACS Vanessa (Casas ímpar), ACS Vitor (Casas par)",
+      "rua sabiá laranjeiras": "Na Rua Sabiá Laranjeiras, os Agentes de Saúde são: ACS Felix (Casas par), ACS Vitor (Casas ímpar)",
+      "rua canário": "Na Rua Canário, os Agentes de Saúde são: ACS Vanessa (Casas par 474 até 772), ACS Nadieli (Casas par), ACS Vitor (Casas ímpar)",
+      "rua garça": "Na Rua Garça, o Agente de Saúde é: Luana (Casas par e ímpar)",
+      "rua andorinha": "Na Rua Andorinha, os Agentes de Saúde são: Luana (Casas ímpar - 225 até 555), Fernanda (Casas par), ACS Susana",
+      "rua faisão": "Na Rua Faisão, os Agentes de Saúde são: ACS Solange, ACS Maylon",
+      "rua passáro preto": "Na Rua Passáro Preto, o Agente de Saúde é: ACS Solange (Casas 35 até 90)",
+      "rua anu": "Na Rua Anu, o Agente de Saúde é: Luana",
+      "rua joão de barro": "Na Rua João de Barro, os Agentes de Saúde são: Luana (Casas par 236 até 426), ACS Susana",
+      "rua siriema": "Na Rua Siriema, o Agente de Saúde é: Debora",
+      "rua bem-te-vi": "Na Rua Bem-Te-Vi, os Agentes de Saúde são: ACS Nadieli (Casas par), ACS Felix (Casas par)",
+      "rua sanhaço": "Na Rua Sanhaço, o Agente de Saúde é: ACS Nadieli (Casas par)",
+      "rua beija flor": "Na Rua Beija Flor, o Agente de Saúde é: ACS Nadieli",
+      "rua rouxinol": "Na Rua Rouxinol, os Agentes de Saúde são: ACS Regina, ACS Tais",
+      "rua canário da terra": "Na Rua Canário da Terra, o Agente de Saúde é: ACS Felix",
+      "rua gaivota": "Na Rua Gaivota, os Agentes de Saúde são: ACS Maylon, ACS Kelly",
+      "rua melro": "Na Rua Melro, os Agentes de Saúde são: ACS Maylon, ACS Susana",
+      "rua ibis dourado": "Na Rua Ibis Dourado, os Agentes de Saúde são: ACS Kelly, ACS Patrícia",
+      "rua pardal": "Na Rua Pardal, os Agentes de Saúde são: ACS Regina, ACS Félix, ACS Débora",
+      "rua patativa": "Na Rua Patativa, os Agentes de Saúde são: ACS Daniele, ACS Patrícia",
+      "rua perdiz": "Na Rua Perdiz, os Agentes de Saúde são: ACS Fernanda, ACS Patrícia",
+      "rua periquito": "Na Rua Periquito, o Agente de Saúde é: ACS Félix",
+      "rua tico-tico": "Na Rua Tico-Tico, os Agentes de Saúde são: ACS Tais, ACS Débora",
+      "rua tiziu": "Na Rua Tiziu, os Agentes de Saúde são: ACS Kelly, ACS Maylon",
+      "rua uirapuru": "Na Rua Uirapuru, os Agentes de Saúde são: Débora, Susana",
+      "rua codorna": "Na Rua Codorna, os Agentes de Saúde são: Fernanda, Kelly"
     };
 
     // Informações estendidas sobre a UBS Portal das Laranjeiras
@@ -349,6 +479,9 @@
       A UBS Portal das Laranjeiras é uma Unidade Básica de Saúde da rede pública, comprometida com a atenção primária e ações de promoção, prevenção, recuperação e reabilitação.
     `;
 
+    // Variável global para armazenar a mensagem atual para ações do menu de contexto
+    let currentMessage = "";
+
     // Detecta a tecla Enter para envio da mensagem
     function handleKeyPress(event) {
       if (event.key === "Enter") {
@@ -356,144 +489,193 @@
       }
     }
 
-    // Envia a mensagem do usuário e simula a resposta do bot
-    function sendMessage() {
-      const userInput = document.getElementById("userInput");
-      const messageText = userInput.value.trim();
-      if (messageText === "") return;
-      appendMessage(messageText, "user-message");
-      userInput.value = "";
-
-      // Resposta para cumprimentos
-      const greetings = ["oi", "olá", "eae", "tudo bem"];
-      if (greetings.includes(messageText.toLowerCase())) {
-        showTypingIndicator();
-        setTimeout(() => {
-          hideTypingIndicator();
-          appendMessage("Olá! Tudo bem? Segue abaixo as informações solicitadas:", "bot-message");
-          setTimeout(() => {
-            appendMessage(extendedInfo, "bot-message");
-          }, 1500);
-        }, 1000);
-        return;
-      }
-
-      // Resposta padrão com base na base de conhecimento
-      showTypingIndicator();
-      setTimeout(() => {
-        hideTypingIndicator();
-        let response = "Desculpe, não entendi. Pode reformular?";
-        const key = messageText.toLowerCase();
-        if (knowledgeBase[key]) {
-          response = knowledgeBase[key];
-        }
-        appendMessage(response, "bot-message");
-      }, 1500);
+    // Função para gerar um atraso (simula o tempo de resposta)
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    // Adiciona mensagem na área de chat
-    function appendMessage(message, className) {
+    // Função para encontrar a correspondência mais próxima na base de conhecimento
+    function findClosestMatch(userInput) {
+      const inputLower = userInput.toLowerCase();
+      // Prioriza correspondências exatas para ruas
+      for (const key in knowledgeBase) {
+        if (key.startsWith("rua ") && inputLower === key) {
+          return key; // correspondência exata para nome de rua
+        }
+      }
+      // Verifica outras correspondências
+      for (const key in knowledgeBase) {
+        if (inputLower.includes(key)) {
+          return key;
+        }
+      }
+      return null;
+    }
+
+    // Processa a mensagem do usuário e gera a resposta do bot
+    async function sendMessage() {
+      const userInputElement = document.getElementById("userInput");
+      const userMessageText = userInputElement.value.trim();
+
+      if (!userMessageText) return;
+
+      appendMessage(userMessageText, "user-message");
+      userInputElement.value = "";
+
+      showTypingIndicator();
+      await delay(getRandomDelay());  // Simula o "pensamento" do bot
+      hideTypingIndicator();
+
+      const botResponse = getBotResponse(userMessageText);
+      appendMessage(botResponse, "bot-message");
+    }
+
+    // Obtém a resposta adequada com base na mensagem do usuário
+    function getBotResponse(userMessageText) {
+      const closestMatch = findClosestMatch(userMessageText);
+
+      if (closestMatch) {
+        return knowledgeBase[closestMatch];
+      } else if (userMessageText.toLowerCase().includes("informacoes estendidas")) {
+        return extendedInfo;
+      } else {
+        return "Desculpe, não entendi. 😅 Pode reformular ou perguntar algo relacionado à saúde ou serviços da UBS Portal das Laranjeiras?";
+      }
+    }
+
+    // Adiciona uma mensagem ao chat
+    function appendMessage(message, messageClass) {
       const chatMessages = document.getElementById("chatMessages");
-      const messageDiv = document.createElement("div");
-      messageDiv.className = "message " + className;
-      messageDiv.innerHTML = `
-        <div class="message-content">${message}</div>
-        <div class="message-time">${new Date().toLocaleTimeString()}</div>
-      `;
-      // Menu de contexto (copiar/compartilhar/denunciar)
-      messageDiv.addEventListener("contextmenu", function(e) {
-        e.preventDefault();
-        showContextMenu(e.pageX, e.pageY, message);
-      });
-      chatMessages.appendChild(messageDiv);
+      const messageElement = document.createElement("div");
+      messageElement.classList.add("message", messageClass);
+
+      const messageContent = document.createElement("div");
+      messageContent.classList.add("message-content");
+      messageContent.innerHTML = message;
+
+      const messageTime = document.createElement("div");
+      messageTime.classList.add("message-time");
+      messageTime.textContent = getCurrentTime();
+
+      messageElement.appendChild(messageContent);
+      messageElement.appendChild(messageTime);
+      chatMessages.appendChild(messageElement);
+
+      // Scroll para a última mensagem
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Exibe o indicador de digitação
+    // Mostra o indicador de digitação
     function showTypingIndicator() {
       const chatMessages = document.getElementById("chatMessages");
-      if (document.getElementById("typingIndicator")) return;
-      const typingDiv = document.createElement("div");
-      typingDiv.className = "typing-indicator";
-      typingDiv.id = "typingIndicator";
-      typingDiv.innerHTML = `<span></span><span></span><span></span>`;
-      chatMessages.appendChild(typingDiv);
+      const typingIndicator = document.createElement("div");
+      typingIndicator.classList.add("typing-indicator");
+      typingIndicator.innerHTML = `<span></span><span></span><span></span>`;
+      chatMessages.appendChild(typingIndicator);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Remove o indicador de digitação
+    // Esconde o indicador de digitação
     function hideTypingIndicator() {
-      const typingDiv = document.getElementById("typingIndicator");
-      if (typingDiv) {
-        typingDiv.remove();
+      const chatMessages = document.getElementById("chatMessages");
+      const typingIndicator = chatMessages.querySelector(".typing-indicator");
+      if (typingIndicator) {
+        typingIndicator.remove();
       }
+    }
+
+    // Retorna o horário atual formatado
+    function getCurrentTime() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      return `${hours}:${minutes}`;
     }
 
     // Limpa o chat
     function clearChat() {
-      if (confirm("Deseja realmente limpar o chat?")) {
-        document.getElementById("chatMessages").innerHTML = "";
-      }
+      const chatMessages = document.getElementById("chatMessages");
+      chatMessages.innerHTML = "";
     }
 
-    // Exibe menu de contexto para copiar, compartilhar ou denunciar a mensagem
-    function showContextMenu(x, y, message) {
-      let contextMenu = document.getElementById("contextMenu");
-      if (!contextMenu) {
-        contextMenu = document.createElement("div");
-        contextMenu.id = "contextMenu";
-        contextMenu.className = "context-menu";
-        contextMenu.innerHTML = `
-          <ul>
-            <li onclick="copyMessage('${encodeURIComponent(message)}')"><i class="fas fa-copy"></i> Copiar</li>
-            <li onclick="shareMessage('${encodeURIComponent(message)}')"><i class="fas fa-share-alt"></i> Compartilhar</li>
-            <li onclick="reportMessage()"><i class="fas fa-flag"></i> Denunciar</li>
-          </ul>
-        `;
-        document.body.appendChild(contextMenu);
-      }
-      contextMenu.style.display = "block";
-      contextMenu.style.left = x + "px";
-      contextMenu.style.top = y + "px";
-      document.addEventListener("click", () => {
-        contextMenu.style.display = "none";
-      }, { once: true });
+    // Gera um atraso aleatório para simular o tempo de resposta (500ms a 1500ms)
+    function getRandomDelay() {
+      return Math.floor(Math.random() * 1000) + 500;
     }
 
-    function copyMessage(message) {
-      const decodedMsg = decodeURIComponent(message);
-      navigator.clipboard.writeText(decodedMsg);
-      alert("Mensagem copiada!");
-    }
-
-    function shareMessage(message) {
-      const decodedMsg = decodeURIComponent(message);
-      alert("Compartilhar: " + decodedMsg);
-    }
-
-    function reportMessage() {
-      alert("Mensagem denunciada!");
-    }
-
-    // Inicia entrada por voz utilizando Web Speech API
+    // Inicia a entrada por voz
     function startVoiceInput() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        alert("Seu navegador não suporta entrada por voz.");
-        return;
-      }
-      const recognition = new SpeechRecognition();
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.lang = "pt-BR";
+      recognition.start();
+
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         document.getElementById("userInput").value = transcript;
         sendMessage();
       };
+
       recognition.onerror = (event) => {
-        alert("Erro no reconhecimento de voz: " + event.error);
+        appendMessage("Não consegui entender. Pode repetir?", "bot-message");
       };
-      recognition.start();
     }
+
+    // Exibe o menu de contexto
+    function showContextMenu(event, message) {
+      event.preventDefault();
+      currentMessage = message;
+      const contextMenu = document.getElementById("contextMenu");
+      contextMenu.style.display = "block";
+      contextMenu.style.left = `${event.pageX}px`;
+      contextMenu.style.top = `${event.pageY}px`;
+    }
+
+    // Copia a mensagem
+    function copyMessage() {
+      navigator.clipboard.writeText(currentMessage);
+      alert("Mensagem copiada!");
+      hideContextMenu();
+    }
+
+    // Compartilha a mensagem
+    function shareMessage() {
+      if (navigator.share) {
+        navigator.share({
+          title: "Mensagem do Chatbot",
+          text: currentMessage,
+        });
+      } else {
+        alert("Compartilhamento não suportado no seu navegador.");
+      }
+      hideContextMenu();
+    }
+
+    // Denuncia a mensagem
+    function reportMessage() {
+      alert("Mensagem denunciada. Obrigado pelo feedback!");
+      hideContextMenu();
+    }
+
+    // Esconde o menu de contexto
+    function hideContextMenu() {
+      const contextMenu = document.getElementById("contextMenu");
+      contextMenu.style.display = "none";
+    }
+
+    // Fecha o menu de contexto ao clicar fora
+    document.addEventListener("click", (event) => {
+      const contextMenu = document.getElementById("contextMenu");
+      if (contextMenu.style.display === "block" && !event.target.closest(".context-menu")) {
+        hideContextMenu();
+      }
+    });
+
+    // Adiciona evento de clique nas mensagens para exibir o menu de contexto
+    document.getElementById("chatMessages").addEventListener("contextmenu", (event) => {
+      if (event.target.classList.contains("message-content")) {
+        showContextMenu(event, event.target.innerText);
+      }
+    });
   </script>
 </body>
 </html>
