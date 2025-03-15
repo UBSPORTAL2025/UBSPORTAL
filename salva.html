@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salva Vidas - Procedimentos de Emergência</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* Reset de estilo básico */
     * {
@@ -12,259 +17,834 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary-color: #1a3a5f;
+      --secondary-color: #2d5986;
+      --accent-color: #4d92df;
+      --light-blue: #e6f2ff;
+      --gradient-start: #0d2b4b;
+      --gradient-end: #2d5986;
+      --text-color: #343a40;
+      --light-text: #f0f0f0;
+      --body-bg-url: url('https://www.publicdomainpictures.net/pictures/320000/velka/background-with-pine-trees.jpg');
+    }
+
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      line-height: 1.6;
+      background: var(--body-bg-url) no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color); /* Utiliza a variável para a cor do texto */
+      font-family: 'Lato', sans-serif; /* Utiliza a fonte Lato */
+      line-height: 1.8; /* Espaçamento entre linhas maior */
+      font-size: 18px; /* Tamanho de fonte padrão maior */
+      -webkit-text-size-adjust: 100%; /* Impede o ajuste automático de tamanho de texto no iOS */
+    }
+
+    .menu-container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      color: black;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .accordion-button {
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .accordion-button:hover {
+      background-color: #1976d2;
+      color: white;
+    }
+
+    .accordion-body {
+      background: #e3f2fd;
+    }
+
+    a {
+      color: #0d47a1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      width: 150px;
+    }
+
+    /* Improved Menu Styles */
+    #menu-container {
+      background: linear-gradient(90deg, var(--gradient-start), var(--secondary-color));
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 60px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-menu {
+      font-weight: 700;
+      color: white;
+      font-size: 1.6rem; /* Tamanho da fonte maior */
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-menu i {
+      margin-right: 10px;
+      color: var(--accent-color);
+      animation: pulse 2s infinite; /* Pulsing effect to call attention */
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .mobile-toggle {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
       margin: 0;
       padding: 0;
+      align-items: center;
     }
 
-    header {
-      background-color: #0056b3;
+    .nav-links li {
+      position: relative;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      display: flex;
+      align-items: center;
       color: white;
-      text-align: center;
-      padding: 60px 20px;
+      text-decoration: none;
+      padding: 0 15px;
+      height: 60px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 1.2rem; /* Aumenta o tamanho da fonte dos links */
     }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    .nav-links li a i {
+      margin-right: 8px;
     }
 
-    header p {
-      font-size: 1.2rem;
+    .nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
-    .salva-vidas-info {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 40px auto;
+    /* Dropdown styles */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-toggle .fa-chevron-down {
+      margin-left: 8px;
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown:hover .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 200px;
       background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 10px 0;
+      display: none;
+      z-index: 1001;
     }
 
-    h3 {
-      text-align: center;
-      color: #0056b3;
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
-
-    .procedimento {
-      margin-bottom: 40px;
-    }
-
-    .procedimento h4 {
-      font-size: 1.6rem;
-      color: #333;
-      margin-bottom: 15px;
-    }
-
-    .img-procedimento {
-      width: 100%;
-      max-width: 350px;
+    .dropdown:hover .dropdown-menu {
       display: block;
-      margin: 0 auto 15px;
-      border-radius: 8px;
+      animation: fadeIn 0.3s ease;
     }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
+    .dropdown-menu li {
+      margin: 0;
+      padding: 0;
+      width: 100%;
     }
 
-    ul li {
-      font-size: 1rem;
-      margin-bottom: 8px;
-      color: #555;
+    .dropdown-menu li a {
+      color: var(--primary-color);
+      padding: 10px 20px;
+      height: auto;
+      display: block;
+      font-size: 1.1rem; /* Aumenta a fonte dos itens do dropdown */
     }
 
-    /* Dicas adicionais */
-    #dicas {
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 2px solid #ddd;
+    .dropdown-menu li a:hover {
+      background-color: var(--light-blue);
+      color: var(--secondary-color);
     }
 
-    #dicas h4 {
-      color: #0056b3;
-      margin-bottom: 15px;
-      font-size: 1.4rem;
+    /* Active link styling */
+    .nav-links li a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      position: relative;
     }
 
-    #dicas ul {
-      font-size: 1rem;
-      color: #555;
+    .nav-links li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 70%;
+      height: 3px;
+      background-color: white;
+      transform: translateX(-50%);
     }
 
-    footer {
-      background-color: #333;
-      color: white;
+    /* Header styles */
+    .page-header {
+      background: linear-gradient(135deg, var(--gradient-start), var(--accent-color));
+      color: var(--light-text); /* Cor do texto mais legível */
+      padding: 60px 0; /* Aumenta o padding */
+      margin-bottom: 40px;
       text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-      margin-top: 50px;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+       animation: headerAnimation 5s infinite alternate; /* Apply header animation */
     }
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-      header h1 {
+        @keyframes headerAnimation {
+            0% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(5px);
+            }
+        }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header-content h1 {
+      font-size: 3.2rem; /* Aumenta o tamanho da fonte do título */
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px; /* Espaçamento entre letras para melhor legibilidade */
+    }
+
+    .header-content p {
+      font-size: 1.4rem; /* Aumenta o tamanho da fonte do parágrafo */
+      opacity: 0.9;
+      margin-bottom: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      line-height: 1.8;
+    }
+
+    .header-icon {
+      font-size: 5rem; /* Aumenta o tamanho do ícone */
+      color: var(--light-text); /* Cor do ícone mais legível */
+      margin-bottom: 20px;
+      display: inline-block;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+       animation: heartbeat 1.5s infinite; /* Apply heartbeat animation */
+    }
+          @keyframes heartbeat {
+            0% {
+              transform: scale(1);
+            }
+            25% {
+              transform: scale(1.1);
+            }
+            50% {
+              transform: scale(1);
+            }
+            75% {
+              transform: scale(1.1);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+
+    /* Improved Content Styles */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto; /* Aumenta a margem */
+      padding: 0 20px;
+    }
+
+    .menu-container {
+      max-width: 100%; /* Take full width on smaller screens */
+      margin: 30px auto; /* Aumenta a margem */
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px; /* Aumenta o padding */
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
+      color: var(--text-color); /* Garante a cor do texto */
+      animation: fadeInUp 0.8s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .menu-container h2 {
+      color: var(--secondary-color);
+      text-align: center;
+      margin-bottom: 30px; /* Aumenta a margem */
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.8rem; /* Aumenta a fonte */
+      border-bottom: 3px solid var(--accent-color); /* Aumenta a borda */
+      padding-bottom: 15px; /* Aumenta o padding */
+    }
+
+    .procedure-section {
+      margin-bottom: 40px; /* Aumenta a margem */
+      border-left: 5px solid var(--accent-color); /* Aumenta a borda */
+      padding-left: 20px; /* Aumenta o padding */
+      display: flex;
+      align-items: flex-start; /* Align items at the top */
+      transition: all 0.3s ease; /* Transition for smooth effects */
+      animation: slideIn 1s forwards; /* Apply slide-in animation */
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .procedure-section h3 {
+      color: var(--secondary-color);
+      font-size: 2rem; /* Aumenta a fonte */
+      font-weight: 600;
+      margin-bottom: 10px; /* Aumenta a margem */
+      margin-right: 30px; /* Aumenta a margem */
+      flex: 1; /* Take remaining space */
+    }
+
+    .procedure-list {
+      list-style: disc; /* Listas com marcadores */
+      padding-left: 25px; /* Aumenta o padding */
+      flex: 2; /* Take more space for text */
+    }
+
+    .procedure-list li {
+      margin-bottom: 15px; /* Aumenta a margem */
+      font-size: 1.2rem; /* Aumenta a fonte */
+      line-height: 1.8;
+      color: var(--text-color);
+      text-indent: -1.2em; /* Alinha o texto com o marcador */
+      padding-left: 1.2em; /* Espaçamento para o texto */
+    }
+
+    /* New Image Style */
+    .procedure-image {
+      max-width: 450px; /* Aumenta o tamanho */
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px; /* Arredonda mais as bordas */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais suave */
+      margin-right: 40px; /* Aumenta a margem */
+      margin-bottom: 20px; /* Aumenta a margem */
+      display: block;
+      flex-shrink: 0;
+      transition: transform 0.3s ease; /* Transição suave */
+    }
+
+    .procedure-image:hover {
+      transform: scale(1.05); /* Aumenta a escala */
+    }
+
+    /* Accessibility adjustments */
+    @media (prefers-contrast: more) {
+      body {
+        background-color: #fff;
+        color: #000;
+      }
+      .menu-container {
+        background-color: #fff;
+        color: #000;
+      }
+      /* Adicione mais ajustes de contraste conforme necessário */
+    }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 768px) {
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--gradient-start);
+        width: 100%;
+        text-align: left;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        align-items: flex-start;
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links li a {
+        padding: 15px 20px;
+        height: auto;
+        font-size: 1.2rem;
+      }
+
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: none;
+        padding: 0;
+      }
+
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-toggle .fa-chevron-down {
+        margin-left: auto;
+      }
+
+      /* Don't show dropdown on hover on mobile */
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      /* Show it on click with JS instead */
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+
+      .header-content h1 {
         font-size: 2.5rem;
       }
 
-      .salva-vidas-info {
-        padding: 20px;
+      .header-content p {
+        font-size: 1.2rem;
       }
 
-      .procedimento h4 {
-        font-size: 1.4rem;
+      .menu-container {
+        padding: 30px;
+        margin: 20px auto;
       }
 
-      .img-procedimento {
-        max-width: 100%;
+      .menu-container h2 {
+        font-size: 2rem;
       }
 
-      #dicas h4 {
-        font-size: 1.3rem;
+      .procedure-section {
+        flex-direction: column; /* Stack on mobile */
+        align-items: flex-start; /* Align left */
+        border-left: none; /* Remove the left border */
+        padding-left: 0; /* Remove padding */
+        animation: none; /* Disable animation on mobile */
+      }
+
+      .procedure-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px; /* Spacing for title */
+        margin-right: 0; /* Remove right margin */
+      }
+
+      .procedure-list {
+        padding-left: 20px; /* Adjust padding */
+      }
+
+      .procedure-list li {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        text-indent: -1.1em;
+        padding-left: 1.1em;
+      }
+
+      .procedure-image {
+        max-width: 100%; /* Take up available width */
+        width: auto; /* Let image decide its width based on content */
+        height: auto;
+        margin-bottom: 20px; /* Space below image */
+        margin-right: 0; /* Remove margin */
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Aprenda a Salvar Vidas</h1>
-    <p>Procedimentos de emergência para situações críticas.</p>
-  </header>
+  <!-- Improved Navigation Menu -->
+  <div id="menu-container">
+    <nav class="main-nav">
+      <div class="nav-brand">
+        <a href="index.html" class="logo-menu">
+          <i class="fas fa-heartbeat"></i> Salva Vidas
+        </a>
+      </div>
 
-  <div class="salva-vidas-info">
-    <h3>Procedimentos de Emergência</h3>
+      <div class="mobile-toggle" onclick="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
 
-    <!-- RCP - Ressuscitação Cardiopulmonar -->
-    <section class="procedimento" id="rcp">
-      <h4>RCP (Ressuscitação Cardiopulmonar)</h4>
-      <img src="rcp.jpg" alt="Demonstração de RCP" class="img-procedimento">
-      <ul>
-        <li>Posicione as mãos sobre o centro do peito da vítima.</li>
-        <li>Realize 30 compressões torácicas seguidas de 2 ventilações.</li>
-        <li>Continue até a chegada do socorro ou a vítima recuperar os sinais vitais.</li>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"><i class="fas fa-exclamation-triangle"></i> Procedimentos <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#rcp">RCP</a></li>
+            <li><a href="#pressao">Pressão Arterial</a></li>
+            <li><a href="#infarto">Infarto</a></li>
+            <li><a href="#engasgo">Engasgo</a></li>
+            <li><a href="#afogamento">Afogamento</a></li>
+            <li><a href="#choque">Choque Elétrico</a></li>
+            <li><a href="#picada">Picadas</a></li>
+            <li><a href="#convulsao">Convulsões</a></li>
+            <li><a href="#acidente">Acidente</a></li>
+            <li><a href="#deslizamento">Deslizamento de Terra</a></li>
+            <li><a href="#enchente">Enchente</a></li>
+
+          </ul>
+        </li>
+        <li><a href="#dicas"><i class="fas fa-lightbulb"></i> Dicas</a></li>
+        <li><a href="#numeros-emergencia"><i class="fas fa-phone"></i> Emergência</a></li>
       </ul>
-    </section>
-
-    <!-- Pressão Arterial -->
-    <section class="procedimento" id="pressao">
-      <h4>Pressão Arterial</h4>
-      <img src="pressao.jpg" alt="Medição de Pressão" class="img-procedimento">
-      <ul>
-        <li><strong>Hipertensão (Pressão Alta):</strong> Pode causar AVC, infarto e insuficiência renal.</li>
-        <li><strong>Hipotensão (Pressão Baixa):</strong> Pode causar tontura, desmaios e choque circulatório.</li>
-        <li>Se alta: evite sal, relaxe e procure ajuda médica.</li>
-        <li>Se baixa: beba água, deite-se e levante as pernas.</li>
-      </ul>
-    </section>
-
-    <!-- Infarto -->
-    <section class="procedimento" id="infarto">
-      <h4>Infarto (Ataque Cardíaco)</h4>
-      <img src="infarto.jpg" alt="Sinais de infarto" class="img-procedimento">
-      <ul>
-        <li>Dor intensa no peito, irradiando para braço e mandíbula.</li>
-        <li>Dificuldade para respirar, suor excessivo e náusea.</li>
-        <li>Chame o socorro imediatamente e mantenha a vítima calma.</li>
-      </ul>
-    </section>
-
-    <!-- Engasgo -->
-    <section class="procedimento" id="engasgo">
-      <h4>Engasgo</h4>
-      <img src="engasgo.jpg" alt="Manobra de Heimlich" class="img-procedimento">
-      <ul>
-        <li>Se a pessoa não conseguir respirar ou falar, realize a manobra de Heimlich.</li>
-        <li>Fique atrás, pressione a barriga para cima com força.</li>
-        <li>Repita até o objeto ser expelido ou a vítima desmaiar.</li>
-      </ul>
-    </section>
-
-    <!-- Afogamento -->
-    <section class="procedimento" id="afogamento">
-      <h4>Afogamento</h4>
-      <img src="afogamento.jpg" alt="Resgate em afogamento" class="img-procedimento">
-      <ul>
-        <li>Retire a vítima da água com segurança.</li>
-        <li>Se não respirar, inicie a RCP imediatamente.</li>
-        <li>Evite entrar na água se não tiver treinamento adequado.</li>
-      </ul>
-    </section>
-
-    <!-- Choque Elétrico -->
-    <section class="procedimento" id="choque">
-      <h4>Choque Elétrico</h4>
-      <img src="choque.jpg" alt="Primeiros socorros para choque elétrico" class="img-procedimento">
-      <ul>
-        <li>Desligue a fonte de energia antes de tocar na vítima.</li>
-        <li>Se não respirar, inicie a RCP.</li>
-        <li>Leve a vítima ao hospital, pois choques podem causar danos internos.</li>
-      </ul>
-    </section>
-
-    <!-- Picadas de Animais Peçonhentos -->
-    <section class="procedimento" id="picada">
-      <h4>Picadas de Animais Peçonhentos</h4>
-      <img src="picada.jpg" alt="Picada de cobra" class="img-procedimento">
-      <ul>
-        <li>Mantenha a vítima calma e imóvel.</li>
-        <li>Não tente sugar o veneno ou cortar o local.</li>
-        <li>Leve a vítima rapidamente ao hospital e, se possível, identifique o animal.</li>
-      </ul>
-    </section>
-
-    <!-- Convulsões -->
-    <section class="procedimento" id="convulsao">
-      <h4>Convulsões</h4>
-      <img src="convulsao.jpg" alt="Convulsões" class="img-procedimento">
-      <ul>
-        <li>Deite a vítima de lado para evitar que se engasgue com a língua.</li>
-        <li>Proteja a cabeça da vítima para evitar lesões.</li>
-        <li>Não tente segurar a vítima, deixe que ela se mova livremente.</li>
-        <li>Chame a emergência imediatamente.</li>
-      </ul>
-    </section>
-
-    <!-- Acidente de Trânsito -->
-    <section class="procedimento" id="acidente">
-      <h4>Acidente de Trânsito</h4>
-      <img src="transito.png" alt="Acidente de trânsito" class="img-procedimento">
-      <ul>
-        <li>Verifique se há riscos de incêndio ou outros perigos.</li>
-        <li>Chame o socorro e evite mover as vítimas, a menos que esteja em risco de fogo ou explosão.</li>
-        <li>Se a vítima estiver inconsciente, verifique a respiração e inicie a RCP se necessário.</li>
-      </ul>
-    </section>
-
-    <p><strong>Números de Emergência:</strong></p>
-    <ul>
-      <li><strong>SAUR:</strong> 192</li>
-      <li><strong>Bombeiros:</strong> 193</li>
-      <li><strong>Polícia Militar:</strong> 190</li>
-      <li><strong>Guarda Municipal:</strong> 153</li>
-    </ul>
-
-    <section id="dicas">
-      <h4>Dicas Importantes</h4>
-      <ul>
-        <li>Sempre mantenha a calma, isso ajudará você a tomar melhores decisões.</li>
-        <li>Conheça os primeiros socorros básicos, esses conhecimentos podem salvar vidas.</li>
-        <li>Tenha sempre um número de emergência à mão e em local visível.</li>
-      </ul>
-    </section>
+    </nav>
   </div>
 
-  <footer>
-    <p>© 2025 Salva Vidas - Todos os direitos reservados.</p>
-  </footer>
+  <!-- New Header Section -->
+  <header class="page-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <i class="fas fa-heartbeat header-icon" aria-hidden="true"></i> <!-- Aria hidden to assistive tech -->
+      <h1>Procedimentos de Emergência</h1>
+      <p>Conheça os passos essenciais para agir em situações críticas e salvar vidas.</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="menu-container">
+      <h2 class="text-center mb-4">Procedimentos de Emergência</h2>
+
+      <section class="procedure-section" id="rcp">
+        <img src="rcp.jpg" alt="RCP (Ressuscitação Cardiopulmonar)" class="procedure-image">
+        <h3>RCP (Ressuscitação Cardiopulmonar)</h3>
+        <ul class="procedure-list">
+          <li>Posicione as mãos sobre o centro do peito da vítima.</li>
+          <li>Realize 30 compressões torácicas seguidas de 2 ventilações.</li>
+          <li>Continue até a chegada do socorro ou a vítima recuperar os sinais vitais.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="pressao">
+        <img src="pressao.jpg" alt="Medição de Pressão Arterial" class="procedure-image">
+        <h3>Pressão Arterial</h3>
+        <ul class="procedure-list">
+          <li><strong>Hipertensão (Pressão Alta):</strong> Pode causar AVC, infarto e insuficiência renal.</li>
+          <li><strong>Hipotensão (Pressão Baixa):</strong> Pode causar tontura, desmaios e choque circulatório.</li>
+          <li>Se alta: evite sal, relaxe e procure ajuda médica.</li>
+          <li>Se baixa: beba água, deite-se e levante as pernas.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="infarto">
+        <img src="infarto.jpg" alt="Sinais de Infarto (Ataque Cardíaco)" class="procedure-image">
+        <h3>Infarto (Ataque Cardíaco)</h3>
+        <ul class="procedure-list">
+          <li>Dor intensa no peito, irradiando para braço e mandíbula.</li>
+          <li>Dificuldade para respirar, suor excessivo e náusea.</li>
+          <li>Chame o socorro imediatamente e mantenha a vítima calma.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="engasgo">
+         <img src="engasgo.jpg" alt="Manobra de Heimlich (Engasgo)" class="procedure-image">
+        <h3>Engasgo</h3>
+        <ul class="procedure-list">
+          <li>Se a pessoa não conseguir respirar ou falar, realize a manobra de Heimlich.</li>
+          <li>Fique atrás, pressione a barriga para cima com força.</li>
+          <li>Repita até o objeto ser expelido ou a vítima desmaiar.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="afogamento">
+        <img src="afogamento.jpg" alt="Resgate em Afogamento" class="procedure-image">
+        <h3>Afogamento</h3>
+        <ul class="procedure-list">
+          <li>Retire a vítima da água com segurança.</li>
+          <li>Se não respirar, inicie a RCP imediatamente.</li>
+          <li>Evite entrar na água se não tiver treinamento adequado.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="choque">
+        <img src="choque.jpg" alt="Primeiros Socorros para Choque Elétrico" class="procedure-image">
+        <h3>Choque Elétrico</h3>
+        <ul class="procedure-list">
+          <li>Desligue a fonte de energia antes de tocar na vítima.</li>
+          <li>Se não respirar, inicie a RCP.</li>
+          <li>Leve a vítima ao hospital, pois choques podem causar danos internos.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="picada">
+        <img src="picada.jpg" alt="Primeiros Socorros para Picadas de Animais Peçonhentos" class="procedure-image">
+        <h3>Picadas de Animais Peçonhentos</h3>
+        <ul class="procedure-list">
+          <li>Mantenha a vítima calma e imóvel.</li>
+          <li>Não tente sugar o veneno ou cortar o local.</li>
+          <li>Leve a vítima rapidamente ao hospital e, se possível, identifique o animal.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="convulsao">
+        <img src="convulsao.jpg" alt="Primeiros Socorros para Convulsões" class="procedure-image">
+        <h3>Convulsões</h3>
+        <ul class="procedure-list">
+          <li>Deite a vítima de lado para evitar que se engasgue com a língua.</li>
+          <li>Proteja a cabeça da vítima para evitar lesões.</li>
+          <li>Não tente segurar a vítima, deixe que ela se mova livremente.</li>
+          <li>Chame a emergência imediatamente.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="acidente">
+        <img src="transito.png" alt="Primeiros Socorros para Acidente de Trânsito" class="procedure-image">
+        <h3>Acidente de Trânsito</h3>
+        <ul class="procedure-list">
+          <li>Verifique se há riscos de incêndio ou outros perigos.</li>
+          <li>Chame o socorro e evite mover as vítimas, a menos que esteja em risco de fogo ou explosão.</li>
+          <li>Se a vítima estiver inconsciente, verifique a respiração e inicie a RCP se necessário.</li>
+        </ul>
+      </section>
+
+      <!-- New Sections for Natural Disasters -->
+      <section class="procedure-section" id="deslizamento">
+        <img src="deslizamento.jpg" alt="Prevenção e Ações em Caso de Deslizamento de Terra" class="procedure-image">
+        <h3>Deslizamento de Terra</h3>
+        <ul class="procedure-list">
+          <li>Evacue a área imediatamente ao menor sinal de perigo (rachaduras, sons de estalos).</li>
+          <li>Procure abrigo em local seguro, distante da área de risco.</li>
+          <li>Informe as autoridades sobre a situação e ajude na evacuação de outras pessoas.</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="enchente">
+        <img src="enchente.jpg" alt="Segurança Durante e Após Enchentes" class="procedure-image">
+        <h3>Enchente</h3>
+        <ul class="procedure-list">
+          <li>Desligue a energia elétrica e feche o registro de gás.</li>
+          <li>Eleve os móveis e objetos de valor para protegê-los da água.</li>
+          <li>Evacue para um local alto e seguro. Não caminhe ou dirija em áreas alagadas.</li>
+          <li>Após a enchente, limpe e desinfete a casa. Verifique a potabilidade da água antes de consumir.</li>
+        </ul>
+      </section>
+
+
+      <section class="procedure-section" id="numeros-emergencia">
+        <h3>Números de Emergência</h3>
+        <ul class="procedure-list">
+          <li><strong>SAMU:</strong> 192</li>
+          <li><strong>Bombeiros:</strong> 193</li>
+          <li><strong>Polícia Militar:</strong> 190</li>
+          <li><strong>Guarda Municipal:</strong> 153</li>
+          <li><strong>Defesa Civil:</strong> 199</li>
+        </ul>
+      </section>
+
+      <section class="procedure-section" id="dicas">
+        <h3>Dicas Importantes</h3>
+        <ul class="procedure-list">
+          <li>Sempre mantenha a calma, isso ajudará você a tomar melhores decisões.</li>
+          <li>Conheça os primeiros socorros básicos, esses conhecimentos podem salvar vidas.</li>
+          <li>Tenha sempre um número de emergência à mão e em local visível.</li>
+           <li>Mantenha um kit de emergência com água, alimentos não perecíveis, rádio, lanterna e medicamentos.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Sobre o Salva Vidas</h4>
+                    <p>Este site fornece informações básicas sobre procedimentos de emergência. Em caso de emergência real, chame imediatamente os serviços de emergência.</p>
+                    <p><strong>Aviso:</strong> Este site é apenas para fins informativos e não substitui o conselho médico profissional.</p>
+                </div>
+               
+                <div class="col-md-6">
+                    <p class="copyright">© 2025 Salva Vidas - Domínio público.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript for the improved menu -->
+  <script>
+    // Function to toggle the menu on mobile
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+
+      // Animate the hamburger icon
+      const bars = document.querySelectorAll('.bar');
+      bars.forEach(bar => bar.classList.toggle('active'));
+    }
+
+    // Function to toggle dropdowns on mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+      dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                // Only prevent default on mobile
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+      // Set active class based on current page
+      const currentLocation = window.location.href;
+      const menuItems = document.querySelectorAll('.nav-links a');
+
+      menuItems.forEach(item => {
+        if (currentLocation.includes(item.getAttribute('href')) &&
+            item.getAttribute('href') !== '#' &&
+            item.getAttribute('href') !== '') {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Heartbeat animation for brand icon
+    const brandIcon = document.querySelector('.logo-menu i');
+    brandIcon.addEventListener('mouseover', () => {
+      brandIcon.style.animationPlayState = 'paused';
+    });
+    brandIcon.addEventListener('mouseout', () => {
+      brandIcon.style.animationPlayState = 'running';
+    });
+
+    // Add animations on hover to procedure sections
+    const procedureSections = document.querySelectorAll('.procedure-section');
+
+    procedureSections.forEach(section => {
+      section.addEventListener('mouseover', () => {
+        section.style.transform = 'scale(1.03)';
+        section.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+      });
+      section.addEventListener('mouseout', () => {
+        section.style.transform = 'scale(1)';
+        section.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+      });
+    });
+  </script>
 
 </body>
 </html>
