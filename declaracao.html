@@ -42,6 +42,9 @@
         opacity: 0.15;
         pointer-events: none;
       }
+      .value {
+        border-bottom: none !important;
+      }
     }
 
     body {
@@ -52,7 +55,7 @@
       margin: 0 auto;
       padding: 0;
       position: relative;
-      font-size: 16px; /* Increased base font size */
+      font-size: 16px;
       background-color: #f5f5f5;
     }
 
@@ -68,29 +71,30 @@
       margin: 0 auto;
     }
 
-    /* Cabeçalho com a logo */
+    /* Cabeçalho com as logos */
     .header {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
-      padding: 5px;
+      padding: 10px;
       background-color: #e8f0fe;
       border-radius: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .header img {
-      max-width: 120px;
-      height: auto;
+      max-height: 120px;
+      width: auto;
     }
 
     /* Container para Unidade */
     .unidade-container {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     .unidade {
-      font-size: 15px; /* Increased font size */
+      font-size: 16px;
       font-weight: bold;
       color: #194275;
     }
@@ -100,22 +104,22 @@
     }
 
     .title {
-      font-size: 26px; /* Increased font size */
+      font-size: 26px;
       font-weight: bold;
       text-align: center;
-      margin: 20px 0;
+      margin: 25px 0;
       color: #194275;
     }
 
     .content {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: justify;
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
     }
 
-    /* Novo estilo para os campos sem linhas */
+    /* Estilo para os campos */
     .info-paragraph {
-      margin-bottom: 16px; /* Increased spacing */
+      margin-bottom: 18px;
       text-align: justify;
       line-height: 1.6;
     }
@@ -124,7 +128,7 @@
       font-weight: bold;
       color: #194275;
       margin-right: 5px;
-      font-size: 18px; /* Increased font size */
+      font-size: 18px;
     }
 
     .value {
@@ -132,13 +136,14 @@
       display: inline;
       padding: 0 5px;
       min-width: 100px;
-      font-size: 18px; /* Increased font size */
+      font-size: 18px;
+      border-bottom: 1px dotted #aaa;
     }
 
     /* Estilo para o grupo de checkboxes */
     .service-types {
-      margin: 20px 0; /* Increased spacing */
-      padding: 12px;
+      margin: 25px 0;
+      padding: 15px;
       background-color: #f8f9fa;
       border-radius: 5px;
       text-align: center;
@@ -147,49 +152,49 @@
     .service-types-title {
       font-weight: bold;
       color: #194275;
-      margin-bottom: 10px;
-      font-size: 18px; /* Increased font size */
+      margin-bottom: 12px;
+      font-size: 18px;
     }
 
     .checkbox-group {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 15px;
     }
 
     .checkbox-item {
       display: flex;
       align-items: center;
-      margin: 0 12px; /* Increased spacing */
     }
 
     .checkbox-item input {
       margin-right: 6px;
-      transform: scale(1.4); /* Increased checkbox size */
+      transform: scale(1.4);
     }
 
     .checkbox-item label {
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
     }
 
     .signature {
-      margin-top: 60px; /* Increased spacing */
+      margin-top: 70px;
       border-top: 1px solid #333;
       padding-top: 5px;
       width: 50%;
       text-align: center;
       margin-left: auto;
       margin-right: auto;
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
     }
     
     .professional-selector {
       text-align: center;
-      margin-top: 8px;
+      margin-top: 10px;
     }
     
     select {
-      padding: 4px;
+      padding: 6px;
       background-color: transparent;
       border: none;
       font-size: 16px;
@@ -199,6 +204,11 @@
       text-align: center;
       width: 100%;
     }
+    
+    select.required {
+      border: 1px solid #ff0000;
+      background-color: #ffeeee;
+    }
 
     .watermark {
       position: absolute;
@@ -206,7 +216,7 @@
       left: 50%;
       transform: translate(-50%, -50%) rotate(-30deg);
       opacity: 0.15;
-      font-size: 5cm; /* Increased font size */
+      font-size: 5cm;
       color: #194275;
       z-index: 0;
       pointer-events: none;
@@ -215,7 +225,7 @@
     .footer {
       margin-top: 5px;
       text-align: center;
-      font-size: 14px; /* Increased font size */
+      font-size: 14px;
       border-top: 1px solid #ccc;
       padding-top: 5px;
       color: #194275;
@@ -238,29 +248,67 @@
       background-color: #194275;
       color: white;
       border: none;
-      padding: 12px 24px; /* Increased padding */
+      padding: 12px 24px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 16px; /* Increased font size */
+      font-size: 16px;
+      margin: 0 10px;
     }
 
     .print-button:hover {
       background-color: #0e2a4f;
     }
+    
+    .button-group {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    
+    .reset-button {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .reset-button:hover {
+      background-color: #5a6268;
+    }
+    
+    .message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
   </style>
-  <link rel="icon" href="cristo (2).png" type="image/png">
+  <link rel="icon" href="cristo.png" type="image/png">
 </head>
 <body>
   <div class="document">
-    <!-- Cabeçalho com a logo -->
+    <!-- Cabeçalho com as logos -->
     <div class="header">
+      <img src="SUS.png" alt="Logo SUS" class="sus-logo">
       <img src="bb.png" alt="Logo UBS" class="ubs-logo">
     </div>
 
     <!-- Container para Unidade -->
     <div class="unidade-container">
-      <div class="unidade">UBS PORTAL DAS LARANJEIRAS ANTÔNIO DE SOUZA SANTOS <p>CNES:4737423</p></div>
+      <div class="unidade">UBS PORTAL DAS LARANJEIRAS ANTÔNIO DE SOUZA SANTOS <p>CNES: 4737423</p></div>
     </div>
 
     <div class="title">DECLARAÇÃO DE COMPARECIMENTO</div>
@@ -268,7 +316,7 @@
       Certificamos, para os devidos fins e conforme solicitado, que a pessoa abaixo identificada compareceu a esta Unidade de Saúde na data e horário previamente agendados, tendo recebido o atendimento necessário, seja como acompanhante, ou por meio de consulta ou exame, conforme a situação determinada pelo profissional responsável.
     </div>
 
-    <!-- Novo formato de parágrafo para as informações -->
+    <!-- Informações do paciente -->
     <div class="info-paragraph">
       <span class="label">Nome:</span>
       <span class="value" id="nome" contenteditable="true"></span>
@@ -281,7 +329,7 @@
 
     <div class="info-paragraph">
       <span class="label">Data:</span>
-      <span class="value" id="data"></span>
+      <span class="value" id="data" contenteditable="true"></span>
     </div>
 
     <div class="info-paragraph">
@@ -289,21 +337,25 @@
       <span class="value" id="horario" contenteditable="true">das 00:00 às 00:00 (período da manhã)</span>
     </div>
 
-    <!-- Novo formato para os checkboxes -->
+    <!-- Tipo de atendimento -->
     <div class="service-types">
       <div class="service-types-title">Tipo de Atendimento:</div>
       <div class="checkbox-group">
         <div class="checkbox-item">
           <input type="checkbox" id="consulta" name="tipo">
-          <label for="consulta">Consulta </label>
+          <label for="consulta">Consulta</label>
         </div>
         <div class="checkbox-item">
           <input type="checkbox" id="exame" name="tipo">
           <label for="exame">Exame</label>
         </div>
         <div class="checkbox-item">
-          <input type="checkbox" id="procedimento" name="tipo">
-          <label for="procedimento">Acompanhante</label>
+          <input type="checkbox" id="acompanhante" name="tipo">
+          <label for="acompanhante">Acompanhante</label>
+        </div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="retorno" name="tipo">
+          <label for="retorno">Retorno</label>
         </div>
         <div class="checkbox-item">
           <input type="checkbox" id="outro" name="tipo">
@@ -326,6 +378,9 @@
           <option value="Enfermeiro">Enfermeiro</option>
           <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
           <option value="Agente de Saúde">Agente de Saúde</option>
+          <option value="Assistente Social">Assistente Social</option>
+          <option value="Nutricionista">Nutricionista</option>
+          <option value="Fisioterapeuta">Fisioterapeuta</option>
           <option value="Outro">Outro</option>
         </select>
       </div>
@@ -339,9 +394,13 @@
 
     <div class="watermark">UBS PORTAL</div>
 
-    <!-- Botão de imprimir colocado ao final -->
+    <!-- Área de botões e mensagem -->
     <div class="no-print">
-      <button class="print-button" onclick="generateAndPrint()">Imprimir Declaração</button>
+      <div id="message" class="message"></div>
+      <div class="button-group">
+        <button class="reset-button" onclick="resetForm()">Limpar Formulário</button>
+        <button class="print-button" onclick="generateAndPrint()">Imprimir Declaração</button>
+      </div>
     </div>
   </div>
 
@@ -355,41 +414,109 @@
       const minutes = String(today.getMinutes()).padStart(2, '0');
 
       document.getElementById('data-atual').textContent = `${day}/${month}/${year}`;
-      document.getElementById('data').textContent = `${day}/${month}/${year}`;
+      
+      // Preencher a data apenas se estiver vazia
+      const dataField = document.getElementById('data');
+      if (!dataField.textContent.trim()) {
+        dataField.textContent = `${day}/${month}/${year}`;
+      }
+      
       document.getElementById('hora-atual').textContent = `${hours}:${minutes}`;
     }
     
     function updateProfessionalTitle() {
-      // Esta função não precisa mais atualizar um elemento separado de título profissional
-      // já que a seleção é feita diretamente abaixo da assinatura
+      const select = document.getElementById('profissional');
+      // Remove a classe 'required' quando um profissional é selecionado
+      if (select.value) {
+        select.classList.remove('required');
+      }
     }
 
     function generateAndPrint() {
+      // Verifica se há dados essenciais preenchidos
+      const nome = document.getElementById('nome').textContent.trim();
+      const profissional = document.getElementById('profissional').value;
+      const profissionalSelect = document.getElementById('profissional');
+      
+      if (!nome) {
+        showMessage("Por favor, preencha pelo menos o nome do paciente antes de imprimir.", false);
+        return;
+      }
+      
+      if (!profissional) {
+        showMessage("Por favor, selecione o profissional antes de imprimir.", false);
+        profissionalSelect.classList.add('required');
+        return;
+      }
+      
       updateDateTime();
       document.querySelectorAll('[contenteditable]').forEach(function(field) {
         field.removeAttribute('contenteditable');
       });
+      
       window.print();
+      
       document.querySelectorAll('.value').forEach(function(field) {
-        if (field.id !== 'data' && field.id !== 'hora-atual' && field.id !== 'data-atual') {
+        if (field.id !== 'hora-atual' && field.id !== 'data-atual') {
           field.setAttribute('contenteditable', 'true');
         }
       });
+      
+      showMessage("Declaração impressa com sucesso! Seu trabalho dedicado faz a diferença aqui na UBS! Sorria, pois seu esforço é essencial para todos nós 😊", true);
+    }
+    
+    function resetForm() {
+      document.getElementById('nome').textContent = "";
+      document.getElementById('cpf').textContent = "";
+      
+      // Reset com a data atual
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      document.getElementById('data').textContent = `${day}/${month}/${year}`;
+      
+      document.getElementById('horario').textContent = "das 00:00 às 00:00 (período da manhã)";
+      
+      document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+        checkbox.checked = false;
+      });
+      
+      const profissionalSelect = document.getElementById('profissional');
+      profissionalSelect.value = "";
+      profissionalSelect.classList.remove('required');
+      
+      showMessage("Formulário limpo com sucesso!", true);
+    }
+    
+    function showMessage(text, isSuccess) {
+      const messageElement = document.getElementById('message');
+      messageElement.textContent = text;
+      messageElement.style.display = 'block';
+      
+      if (isSuccess) {
+        messageElement.className = 'message success';
+      } else {
+        messageElement.className = 'message';
+        messageElement.style.backgroundColor = '#f8d7da';
+        messageElement.style.color = '#721c24';
+        messageElement.style.border = '1px solid #f5c6cb';
+      }
+      
+      setTimeout(function() {
+        messageElement.style.display = 'none';
+      }, 5000);
     }
 
     window.addEventListener('afterprint', function() {
-      alert("Ótimo trabalho! Continue se dedicando e parabéns pelo esforço!");
+      showMessage("Declaração impressa com sucesso! Obrigado pelo seu trabalho dedicado.", true);
     });
 
     document.addEventListener('DOMContentLoaded', function() {
       updateDateTime();
       setInterval(updateDateTime, 60000);
       
-      // Set default time with morning period
-      if (!document.getElementById('horario').textContent.includes('período')) {
-        document.getElementById('horario').textContent = 'das 00:00 às 00:00 (período da manhã)';
-      }
-      
+      // Formatar os campos editáveis
       document.querySelectorAll('[contenteditable]').forEach(function(field) {
         field.addEventListener('focus', function() {
           this.style.backgroundColor = '#f8f9fa';
@@ -397,6 +524,46 @@
         field.addEventListener('blur', function() {
           this.style.backgroundColor = '';
         });
+      });
+      
+      // Formatar CPF automaticamente
+      document.getElementById('cpf').addEventListener('input', function() {
+        let value = this.textContent.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+        
+        if (value.length > 9) {
+          value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+        } else if (value.length > 6) {
+          value = value.replace(/^(\d{3})(\d{3})(\d{1,3}).*/, '$1.$2.$3');
+        } else if (value.length > 3) {
+          value = value.replace(/^(\d{3})(\d{1,3}).*/, '$1.$2');
+        }
+        
+        this.textContent = value;
+      });
+      
+      // Ajudar a formatar a data
+      document.getElementById('data').addEventListener('input', function() {
+        let value = this.textContent.replace(/[^\d\/]/g, '');
+        
+        // Remove barras extras
+        value = value.split('/').slice(0, 3).join('/');
+        
+        // Adiciona barras automaticamente
+        if (value.length === 2 && !value.includes('/')) {
+          value += '/';
+        } else if (value.length === 5 && value.split('/').length === 2) {
+          value += '/';
+        }
+        
+        // Limita o tamanho
+        if (value.split('/').length === 3) {
+          const parts = value.split('/');
+          if (parts[2].length > 4) parts[2] = parts[2].substring(0, 4);
+          value = parts.join('/');
+        }
+        
+        this.textContent = value;
       });
     });
   </script>
