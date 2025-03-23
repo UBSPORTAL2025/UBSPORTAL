@@ -267,6 +267,75 @@
     display: inline-block;
   }
   
+  /* Footer Styles */
+  .footer {
+    background: linear-gradient(90deg, var(--gradient-start), var(--primary-color));
+    color: white;
+    padding: 30px 0 10px;
+    margin-top: 50px;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-section h3:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--accent-color);
+  }
+  
+  .footer-section p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .footer-section .contact-info {
+    margin-bottom: 15px;
+  }
+  
+  .footer-section .contact-info i {
+    margin-right: 10px;
+    color: var(--accent-color);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
   /* Mobile responsiveness */
   @media screen and (max-width: 768px) {
     .mobile-toggle {
@@ -334,6 +403,10 @@
     .header-content p {
       font-size: 1rem;
     }
+    
+    .footer-section {
+      flex: 100%;
+    }
   }
 </style>
 <link rel="icon" href="cristo (2).png" type="image/png">
@@ -344,7 +417,7 @@
     <nav class="main-nav">
         <div class="nav-brand">
             <a href="index.html" class="logo-menu">
-                <i class="fas fa-heartbeat"></i> UBS Portal
+                <i class="fas fa-heartbeat"></i> UBS Portal das Laranjeiras
             </a>
         </div>
         
@@ -454,6 +527,29 @@
     </div>
   </div>
 </div>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Sobre UBS Portal</h3>
+      <p>Comprometido com a promoção de um atendimento humanizado e de qualidade, a UBS Portal trabalha para garantir os direitos dos cidadãos e o bem-estar dos profissionais no SUS.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Contatos Úteis</h3>
+      <div class="contact-info">
+        <p><i class="fas fa-phone"></i> (11) 4800-5024</p>
+        <p><i class="fas fa-envelope"></i> portaldaslaranjeirasrecepção@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Rua Cardeal, S/N, Portal das Laranjeiras, Caieiras-SP</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 UBS Portal. Domínio público.</p>
+  </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
