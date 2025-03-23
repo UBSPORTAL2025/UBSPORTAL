@@ -6,7 +6,7 @@
   <title>Procedimentos Médicos - Caieiras Saúde</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="icon" href="cristo (2).png" type="image/png">
+  <link rel="icon" href="cristo.png" type="image/png">
   <style>
     :root {
       --primary-color: #1a3a5f;
@@ -18,7 +18,7 @@
       --text-color: #333;
       --light-text: #f0f0f0;
     }
-    
+
     /* Fundo mais claro */
     body {
       background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
@@ -28,7 +28,7 @@
       color: var(--text-color);
       min-height: 100vh;
     }
-    
+
     /* Menu de Navegação */
     #menu-container {
       background: linear-gradient(90deg, #0d2b4b, #2d5986);
@@ -37,7 +37,7 @@
       z-index: 1000;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-    
+
     .main-nav {
       display: flex;
       justify-content: space-between;
@@ -47,12 +47,12 @@
       margin: 0 auto;
       height: 60px;
     }
-    
+
     .nav-brand {
       display: flex;
       align-items: center;
     }
-    
+
     .logo-menu {
       font-weight: 700;
       color: white;
@@ -61,12 +61,12 @@
       display: flex;
       align-items: center;
     }
-    
+
     .logo-menu i {
       margin-right: 10px;
       color: var(--accent-color);
     }
-    
+
     .mobile-toggle {
       display: none;
       cursor: pointer;
@@ -75,7 +75,7 @@
       height: 24px;
       width: 30px;
     }
-    
+
     .bar {
       width: 100%;
       height: 3px;
@@ -83,7 +83,7 @@
       border-radius: 2px;
       transition: all 0.3s ease;
     }
-    
+
     .nav-links {
       display: flex;
       list-style: none;
@@ -91,12 +91,12 @@
       padding: 0;
       align-items: center;
     }
-    
+
     .nav-links li {
       position: relative;
       margin: 0;
     }
-    
+
     .nav-links li a {
       display: flex;
       align-items: center;
@@ -107,36 +107,36 @@
       transition: all 0.3s ease;
       font-weight: 500;
     }
-    
+
     .nav-links li a i {
       margin-right: 8px;
     }
-    
+
     .nav-links li a:hover,
     .nav-links li a.active {
       background-color: rgba(255, 255, 255, 0.2);
     }
-    
+
     /* Dropdown styles */
     .dropdown {
       position: relative;
     }
-    
+
     .dropdown-toggle {
       display: flex;
       align-items: center;
     }
-    
+
     .dropdown-toggle .fa-chevron-down {
       margin-left: 8px;
       font-size: 0.8rem;
       transition: transform 0.3s ease;
     }
-    
+
     .dropdown:hover .fa-chevron-down {
       transform: rotate(180deg);
     }
-    
+
     .dropdown-menu {
       position: absolute;
       top: 60px;
@@ -149,30 +149,30 @@
       display: none;
       z-index: 1001;
     }
-    
+
     .dropdown:hover .dropdown-menu {
       display: block;
       animation: fadeIn 0.3s ease;
     }
-    
+
     .dropdown-menu li {
       margin: 0;
       padding: 0;
       width: 100%;
     }
-    
+
     .dropdown-menu li a {
       color: var(--primary-color);
       padding: 10px 20px;
       height: auto;
       display: block;
     }
-    
+
     .dropdown-menu li a:hover {
       background-color: var(--light-blue);
       color: var(--secondary-color);
     }
-    
+
     /* Header styles */
     .page-header {
       background: linear-gradient(135deg, #0d2b4b, var(--accent-color));
@@ -184,39 +184,39 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       animation: fadeIn 1s ease-in;
     }
-    
+
     .header-content {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
-    
+
     .header-content h1 {
       font-size: 2.2rem;
       margin-bottom: 10px;
       font-weight: 700;
     }
-    
+
     .header-content p {
       font-size: 1.1rem;
       opacity: 0.9;
       max-width: 800px;
       margin: 0 auto;
     }
-    
+
     .header-icon {
       font-size: 3rem;
       color: white;
       margin-bottom: 15px;
       display: inline-block;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 30px auto;
       padding: 0 20px;
     }
-    
+
     /* Conteúdo Principal */
     .procedimentos-content {
       background-color: rgba(255, 255, 255, 0.95);
@@ -226,7 +226,7 @@
       margin-bottom: 40px;
       animation: fadeIn 0.8s ease-in-out;
     }
-    
+
     .procedimentos-content h2 {
       color: var(--primary-color);
       margin-bottom: 20px;
@@ -234,11 +234,11 @@
       padding-bottom: 10px;
       font-weight: 700;
     }
-    
+
     .procedimentos-search {
       margin-bottom: 30px;
     }
-    
+
     .search-box {
       border: 2px solid var(--accent-color);
       border-radius: 50px;
@@ -246,7 +246,7 @@
       display: flex;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    
+
     .search-box input {
       flex: 1;
       padding: 15px 20px;
@@ -254,7 +254,7 @@
       outline: none;
       font-size: 1rem;
     }
-    
+
     .search-box button {
       background: var(--accent-color);
       color: white;
@@ -263,30 +263,30 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-    
+
     .search-box button:hover {
       background: var(--primary-color);
     }
-    
+
     .filter-section {
       margin-bottom: 30px;
       padding: 15px;
       background-color: var(--light-blue);
       border-radius: 8px;
     }
-    
+
     .filter-title {
       color: var(--primary-color);
       font-weight: 600;
       margin-bottom: 15px;
     }
-    
+
     .filter-options {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
-    
+
     .filter-option {
       background-color: white;
       border: 1px solid #ddd;
@@ -295,32 +295,32 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-    
+
     .filter-option:hover, .filter-option.active {
       background-color: var(--accent-color);
       color: white;
       border-color: var(--accent-color);
     }
-    
+
     .procedure-category {
       margin-bottom: 30px;
       border-left: 4px solid var(--accent-color);
       padding-left: 15px;
     }
-    
+
     .procedure-category h3 {
       margin-top: 20px;
       color: var(--secondary-color);
       font-weight: 600;
     }
-    
+
     .procedure-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
-    
+
     .procedure-card {
       background-color: white;
       border-radius: 8px;
@@ -328,12 +328,12 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    
+
     .procedure-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
-    
+
     .procedure-card-header {
       background-color: var(--light-blue);
       padding: 15px;
@@ -341,23 +341,23 @@
       font-weight: 600;
       border-bottom: 1px solid #e0e0e0;
     }
-    
+
     .procedure-card-body {
       padding: 15px;
     }
-    
+
     .procedure-card-body p {
       margin-bottom: 15px;
       line-height: 1.5;
     }
-    
+
     .procedure-card-footer {
       padding: 10px 15px;
       background-color: #f9f9f9;
       border-top: 1px solid #e0e0e0;
       text-align: right;
     }
-    
+
     .btn-procedure {
       display: inline-block;
       padding: 8px 15px;
@@ -368,11 +368,11 @@
       font-weight: 500;
       transition: background 0.3s;
     }
-    
+
     .btn-procedure:hover {
       background-color: var(--primary-color);
     }
-    
+
     .procedure-detail {
       display: none;
       margin-top: 20px;
@@ -381,19 +381,19 @@
       background-color: var(--light-blue);
       border-left: 4px solid var(--accent-color);
     }
-    
+
     /* Animação de fade in */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    
+
     /* Mobile responsiveness */
     @media screen and (max-width: 768px) {
       .mobile-toggle {
         display: flex;
       }
-      
+
       .nav-links {
         position: absolute;
         top: 60px;
@@ -407,70 +407,175 @@
         align-items: flex-start;
         z-index: 1000;
       }
-      
+
       .nav-links.active {
         left: 0;
       }
-      
+
       .nav-links li {
         width: 100%;
       }
-      
+
       .nav-links li a {
         padding: 15px 20px;
         height: auto;
       }
-      
+
       .header-content h1 {
         font-size: 1.8rem;
       }
-      
+
       .header-content p {
         font-size: 1rem;
       }
-      
+
       .procedure-list {
         grid-template-columns: 1fr;
       }
     }
-    
-    /* Footer aprimorado */
-    .footer {
-      background-color: #343a40;
-      color: white;
-      padding: 30px 0;
-      margin-top: 40px;
+
+     /* Footer Styles */
+  .footer {
+  
+    background: linear-gradient(380deg, var(--gradient-end), var(--primary-color));
+    color: white;
+    padding: 50px 0 10px;
+    margin-top: 50px;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-section h3:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--accent-color);
+  }
+  
+  .footer-section p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .footer-section .contact-info {
+    margin-bottom: 15px;
+  }
+  
+  .footer-section .contact-info i {
+    margin-right: 10px;
+    color: var(--accent-color);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Mobile responsiveness */
+  @media screen and (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
     }
     
-    .footer h4 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      font-weight: 600;
+    .nav-links {
+      position: absolute;
+      top: 60px;
+      left: -100%;
+      flex-direction: column;
+      background-color: var(--gradient-start);
+      width: 100%;
+      text-align: left;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      align-items: flex-start;
+      z-index: 1000;
     }
     
-    .footer p, 
-    .footer a {
-      font-size: 0.95rem;
-      color: white;
-      text-decoration: none;
+    .nav-links.active {
+      left: 0;
     }
     
-    .footer a:hover {
-      text-decoration: underline;
-      color: var(--accent-color);
+    .nav-links li {
+      width: 100%;
     }
     
-    .footer .container {
-      text-align: center;
+    .nav-links li a {
+      padding: 15px 20px;
+      height: auto;
     }
     
-    .copyright {
-      background: #23272b;
-      text-align: center;
-      padding: 15px 0;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
+    .dropdown-menu {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      background-color: rgba(0, 0, 0, 0.1);
+      display: none;
+      padding: 0;
     }
+    
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+    
+    .dropdown-toggle .fa-chevron-down {
+      margin-left: auto;
+    }
+    
+    /* Don't show dropdown on hover on mobile */
+    .dropdown:hover .dropdown-menu {
+      display: none;
+    }
+    
+    /* Show it on click with JS instead */
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+    
+    .header-content h1 {
+      font-size: 1.8rem;
+    }
+    
+    .header-content p {
+      font-size: 1rem;
+    }
+    
+    .footer-section {
+      flex: 100%;
+    }
+  }
   </style>
 </head>
 <body>
@@ -479,7 +584,7 @@
     <nav class="main-nav">
       <div class="nav-brand">
         <a href="index.html" class="logo-menu">
-          <i class="fas fa-heartbeat"></i> UBS Portal 
+          <i class="fas fa-heartbeat"></i> UBS Portal
         </a>
       </div>
       <div class="mobile-toggle" onclick="toggleMenu()">
@@ -505,13 +610,12 @@
             <li><a href="contatos.html">Contatos Úteis</a></li>
             <li><a href="direitos.html">Direitos e Deveres</a></li>
             <li><a href="bulas.html">Bulas</a></li>
-          
           </ul>
         </li>
       </ul>
     </nav>
   </div>
-  
+
   <!-- Cabeçalho da página -->
   <header class="page-header">
     <div class="header-content">
@@ -522,12 +626,12 @@
       <p>Conheça os procedimentos e entenda como cada um deles é executado para melhor entendimento do cidadão.</p>
     </div>
   </header>
-  
+
   <!-- Conteúdo Principal -->
   <div class="container">
     <div class="procedimentos-content">
       <h2>Buscar Procedimentos</h2>
-      
+
       <!-- Caixa de Busca -->
       <div class="procedimentos-search">
         <div class="search-box">
@@ -535,7 +639,7 @@
           <button type="button"><i class="fas fa-search"></i></button>
         </div>
       </div>
-      
+
       <!-- Filtros -->
       <div class="filter-section">
         <div class="filter-title">Filtrar por categoria:</div>
@@ -547,7 +651,7 @@
           <div class="filter-option" data-filter="outros">Outros</div>
         </div>
       </div>
-      
+
       <!-- Listagem de Procedimentos -->
       <div class="procedure-category" id="acessos-vasculares">
         <h3><i class="fas fa-syringe"></i> Acessos Vasculares</h3>
@@ -560,10 +664,10 @@
               <p>Procedimento que envolve a inserção de um cateter em um osso para administração de medicamentos ou fluidos.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://sanarmed.com/acesso-intraosseo/" class="btn-procedure" data-id="av-intraoseo">Ver Detalhes</a>
+              <a href="https://sanarmed.com/acesso-intraosseo/" class="btn-procedure" target="_blank" data-id="av-intraoseo">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="acesso">
             <div class="procedure-card-header">
               Acesso Venoso Central - Veia Femoral
@@ -572,10 +676,10 @@
               <p>Utiliza a veia femoral para inserir um cateter central, permitindo a administração de medicamentos ou fluidos.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.kenhub.com/pt/library/anatomia/veia-femoral" class="btn-procedure" data-id="avc-femoral">Ver Detalhes</a>
+              <a href="https://www.kenhub.com/pt/library/anatomia/veia-femoral" class="btn-procedure" target="_blank" data-id="avc-femoral">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="acesso">
             <div class="procedure-card-header">
               Acesso Venoso Central - Veia Jugular Interna
@@ -584,10 +688,10 @@
               <p>Utiliza a veia jugular interna para inserir um cateter central.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.queenmed.com.br/pt_BR/acesso-venoso-central-veia-jugular-interna/" class="btn-procedure" data-id="avc-jugular">Ver Detalhes</a>
+              <a href="https://www.queenmed.com.br/pt_BR/acesso-venoso-central-veia-jugular-interna/" class="btn-procedure" target="_blank" data-id="avc-jugular">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="acesso">
             <div class="procedure-card-header">
               Acesso Venoso Central - Veia Subclávia
@@ -596,10 +700,10 @@
               <p>Utiliza a veia subclávia para inserir um cateter central.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://thevikingchallenge.pt/blog/acesso-central-subclavia/" class="btn-procedure" data-id="avc-subclavia">Ver Detalhes</a>
+              <a href="https://thevikingchallenge.pt/blog/acesso-central-subclavia/" class="btn-procedure" target="_blank" data-id="avc-subclavia">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="acesso">
             <div class="procedure-card-header">
               Acesso Venoso Periférico
@@ -608,12 +712,12 @@
               <p>Refere-se à inserção de um cateter em uma veia periférica para administração de medicamentos ou fluidos.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://sanarmed.com/resumo-de-acesso-venoso-periferico-definicao-indicacoes-contraindicacoes-tecnica-e-complicacoes/#:~:text=O%20acesso%20venoso%20perif%C3%A9rico%20%28AVP%29%20se%20d%C3%A1%20pela,grandes%20volumes%20ao%20paciente%20diretamente%20na%20corrente%20sangu%C3%ADnea." class="btn-procedure" data-id="avp">Ver Detalhes</a>
+              <a href="https://sanarmed.com/resumo-de-acesso-venoso-periferico-definicao-indicacoes-contraindicacoes-tecnica-e-complicacoes/#:~:text=O%20acesso%20venoso%20perif%C3%A9rico%20%28AVP%29%20se%20d%C3%A1%20pela,grandes%20volumes%20ao%20paciente%20diretamente%20na%20corrente%20sangu%C3%ADnea." class="btn-procedure" target="_blank" data-id="avp">Ver Detalhes</a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="procedure-category" id="procedimentos-respiratorios">
         <h3><i class="fas fa-lungs"></i> Procedimentos Respiratórios</h3>
         <div class="procedure-list">
@@ -625,10 +729,10 @@
               <p>Inserção de um tubo pela boca até a traqueia para ventilação.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.bing.com/search?q=Intubação+Orotraqueal+(IOT)&cvid=8751c9f813b74a4dadcb695efffb2d09&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDIxMDJqMGo0qAIAsAIA&FORM=ANAB01&PC=U531" class="btn-procedure" data-id="intubacao-orotraqueal">Ver Detalhes</a>
+              <a href="https://www.bing.com/search?q=Intubação+Orotraqueal+(IOT)&cvid=8751c9f813b74a4dadcb695efffb2d09&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDIxMDJqMGo0qAIAsAIA&FORM=ANAB01&PC=U531" class="btn-procedure" target="_blank" data-id="intubacao-orotraqueal">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="respiratorio">
             <div class="procedure-card-header">
               Intubação Nasotraqueal
@@ -637,10 +741,10 @@
               <p>Inserção de um tubo pela narina até a traqueia para ventilação.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.suprevida.com.br/blog/intubacao-nasotraqueal:-o-que-e-e-para-que-serve" class="btn-procedure" data-id="intubacao-nasotraqueal">Ver Detalhes</a>
+              <a href="https://www.suprevida.com.br/blog/intubacao-nasotraqueal:-o-que-e-e-para-que-serve" class="btn-procedure" target="_blank" data-id="intubacao-nasotraqueal">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="respiratorio">
             <div class="procedure-card-header">
               Drenagem Pleural
@@ -649,10 +753,10 @@
               <p>Remoção de fluido ou ar do espaço pleural.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.bing.com/search?q=Drenagem+Pleural&cvid=2265692eca0a4af1aa5d36878f99e5d4&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgxMDcxajBqNKgCALACAA&FORM=ANAB01&PC=U531" class="btn-procedure" data-id="drenagem-pleural">Ver Detalhes</a>
+              <a href="https://www.bing.com/search?q=Drenagem+Pleural&cvid=2265692eca0a4af1aa5d36878f99e5d4&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgxMDcxajBqNKgCALACAA&FORM=ANAB01&PC=U531" class="btn-procedure" target="_blank" data-id="drenagem-pleural">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="respiratorio">
             <div class="procedure-card-header">
               Máscara Laríngea
@@ -661,12 +765,12 @@
               <p>Dispositivo para ventilação sem intubação.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://medicalway.com.br/blog/o-que-e-a-mascara-laringea-e-em-quais-ocasioes-ela-deve-ser-utilizada/" class="btn-procedure" data-id="mascara-larinjea">Ver Detalhes</a>
+              <a href="https://medicalway.com.br/blog/o-que-e-a-mascara-laringea-e-em-quais-ocasioes-ela-deve-ser-utilizada/" class="btn-procedure" target="_blank" data-id="mascara-larinjea">Ver Detalhes</a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="procedure-category" id="procedimentos-drenagem">
         <h3><i class="fas fa-tint"></i> Procedimentos de Drenagem</h3>
         <div class="procedure-list">
@@ -678,10 +782,10 @@
               <p>Remoção de fluido do abdômen.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://sanarmed.com/resumo-de-paracentese-indicacoes-materiais-tecnica-e-complicacoes/" class="btn-procedure" data-id="paracentese">Ver Detalhes</a>
+              <a href="https://sanarmed.com/resumo-de-paracentese-indicacoes-materiais-tecnica-e-complicacoes/" class="btn-procedure" target="_blank" data-id="paracentese">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="drenagem">
             <div class="procedure-card-header">
               Toracocentese
@@ -690,10 +794,10 @@
               <p>Remoção de líquido do espaço pleural.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.bing.com/search?q=Toracocentese&cvid=59cd09e2d08e4d0cbf5f42fda70d1aa7&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBBzkwMmowajSoAgCwAgA&FORM=ANAB01&PC=U531" class="btn-procedure" data-id="toracocentese">Ver Detalhes</a>
+              <a href="https://www.bing.com/search?q=Toracocentese&cvid=59cd09e2d08e4d0cbf5f42fda70d1aa7&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBBzkwMmowajSoAgCwAgA&FORM=ANAB01&PC=U531" class="btn-procedure" target="_blank" data-id="toracocentese">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="drenagem">
             <div class="procedure-card-header">
               Drenagem de Abscesso Cutâneo
@@ -702,10 +806,10 @@
               <p>Remoção de pus de um abscesso na pele.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.artmed.com.br/artigos/drenagem-de-abcesso-quando-e-indicado-e-papel-da-enfermagem" class="btn-procedure" data-id="drenagem-abscesso">Ver Detalhes</a>
+              <a href="https://www.artmed.com.br/artigos/drenagem-de-abcesso-quando-e-indicado-e-papel-da-enfermagem" class="btn-procedure" target="_blank" data-id="drenagem-abscesso">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="drenagem">
             <div class="procedure-card-header">
               Pericardiocentese
@@ -714,12 +818,12 @@
               <p>Remoção de fluido do saco pericárdico.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.bing.com/search?q=Pericardiocentese&cvid=83ab76d3b92d4e40befb3437212756ad&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgxMzEwajBqNKgCALACAA&FORM=ANAB01&PC=U531" class="btn-procedure" data-id="pericardiocentese">Ver Detalhes</a>
+              <a href="https://www.bing.com/search?q=Pericardiocentese&cvid=83ab76d3b92d4e40befb3437212756ad&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgxMzEwajBqNKgCALACAA&FORM=ANAB01&PC=U531" class="btn-procedure" target="_blank" data-id="pericardiocentese">Ver Detalhes</a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="procedure-category" id="outros-procedimentos">
         <h3><i class="fas fa-clinic-medical"></i> Outros Procedimentos</h3>
         <div class="procedure-list">
@@ -731,10 +835,10 @@
               <p>Fechamento de feridas com pontos.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://sanarmed.com/suturas-principios-basicos/" class="btn-procedure" data-id="suturas">Ver Detalhes</a>
+              <a href="https://sanarmed.com/suturas-principios-basicos/" class="btn-procedure" target="_blank" data-id="suturas">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="outros">
             <div class="procedure-card-header">
               Cateterização Vesical
@@ -743,10 +847,10 @@
               <p>Inserção de um cateter na bexiga para drenar urina.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://www.medway.com.br/conteudos/cateterismo-vesical-tudo-que-voce-precisa-saber/" class="btn-procedure" data-id="cat-vesical">Ver Detalhes</a>
+              <a href="https://www.medway.com.br/conteudos/cateterismo-vesical-tudo-que-voce-precisa-saber/" class="btn-procedure" target="_blank" data-id="cat-vesical">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="outros">
             <div class="procedure-card-header">
               Punção Lombar
@@ -755,10 +859,10 @@
               <p>Coleta de líquido cefalorraquidiano para diagnóstico.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://sanarmed.com/resumo-de-puncao-lombar-indicacao-materiais-necessarios-tecnicas-e-mais/#:~:text=A%20pun%C3%A7%C3%A3o%20lombar%20%28PL%29%20%C3%A9%20um%20procedimento%20realizado,diagn%C3%B3stica%20para%20diversas%20condi%C3%A7%C3%B5es%20neurol%C3%B3gicas%20infecciosas%2C%20como%20meningi" class="btn-procedure" data-id="puncao-lombar">Ver Detalhes</a>
+              <a href="https://sanarmed.com/resumo-de-puncao-lombar-indicacao-materiais-necessarios-tecnicas-e-mais/#:~:text=A%20pun%C3%A7%C3%A3o%20lombar%20%28PL%29%20%C3%A9%20um%20procedimento%20realizado,diagn%C3%B3stica%20para%20diversas%20condi%C3%A7%C3%B5es%20neurol%C3%B3gicas%20infecciosas%2C%20como%20meningi" class="btn-procedure" target="_blank" data-id="puncao-lombar">Ver Detalhes</a>
             </div>
           </div>
-          
+
           <div class="procedure-card" data-category="outros">
             <div class="procedure-card-header">
               Tamponamento Nasal (epistaxe)
@@ -767,20 +871,16 @@
               <p>Controle de sangramento nasal.</p>
             </div>
             <div class="procedure-card-footer">
-              <a href="https://sanarmed.com/manejo-do-sangramento-nasal-o-que-preciso-saber-carreiramed/" class="btn-procedure" data-id="tamponamento-nasal">Ver Detalhes</a>
+              <a href="www.sanarmed.com/manejo-do-sangramento-nasal-o-que-preciso-saber-carreiramed/" class="btn-procedure" target="_blank" data-id="tamponamento-nasal">Ver Detalhes</a>
             </div>
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
-  
-  <!-- Footer -->
- 
-  <div class="copyright">
-    &copy; 2025 UBS Portal. Domínio público.
-  </div>
+
+
   
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -819,15 +919,39 @@
       });
     });
     
-    // Exibir detalhes do procedimento (pode ser aprimorado com modal)
+    // Exibir detalhes do procedimento (agora permite redirecionamento)
     const detailButtons = document.querySelectorAll('.btn-procedure');
     detailButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const procId = btn.getAttribute('data-id');
-        alert('Detalhes do procedimento: ' + procId);
+        // Removido e.preventDefault() para permitir que o link seja seguido
+        // Se desejar executar alguma ação antes, insira aqui e, em seguida, redirecione:
+        // window.location.href = btn.getAttribute('href');
       });
     });
   </script>
+
+  <!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>UBS Portal</h3>
+      <p>Este site fornece apenas informações básicas.</p>
+      <p>Aviso: Este site é apenas para fins informativos e não substitui o conselho médico profissional.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Contatos Úteis</h3>
+      <div class="contact-info">
+        <p><i class="fas fa-phone"></i> (11) 4800-5024</p>
+        <p><i class="fas fa-envelope"></i> portaldaslaranjeirasrecepção@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Rua Cardeal, S/N, Portal das Laranjeiras, Caieiras-SP</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 UBS Portal. Domínio público.</p>
+  </div>
+</footer>
 </body>
 </html>
