@@ -54,12 +54,12 @@
     }
 
     .logo-menu {
+      display: flex;
+      align-items: center;
       font-weight: 700;
       color: white;
       font-size: 1.4rem;
       text-decoration: none;
-      display: flex;
-      align-items: center;
     }
 
     .logo-menu i {
@@ -399,7 +399,7 @@
         top: 60px;
         left: -100%;
         flex-direction: column;
-        background-color: #0d2b4b;
+        background-color: #0d2b4b; /* Alterado para cor escura */
         width: 100%;
         text-align: left;
         transition: all 0.3s ease;
@@ -421,6 +421,29 @@
         height: auto;
       }
 
+      /* Estilos para dropdown */
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        display: none;
+        padding: 0;
+      }
+
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-toggle .fa-chevron-down {
+        margin-left: auto;
+      }
+
+      /* Não exibe dropdown por hover no mobile */
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
       .header-content h1 {
         font-size: 1.8rem;
       }
@@ -434,148 +457,80 @@
       }
     }
 
-     /* Footer Styles */
-  .footer {
-  
-    background: linear-gradient(380deg, var(--gradient-end), var(--primary-color));
-    color: white;
-    padding: 50px 0 10px;
-    margin-top: 50px;
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .footer-section {
-    flex: 1;
-    min-width: 250px;
-    margin-bottom: 20px;
-    padding: 0 15px;
-  }
-  
-  .footer-section h3 {
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    position: relative;
-    padding-bottom: 10px;
-  }
-  
-  .footer-section h3:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 2px;
-    background: var(--accent-color);
-  }
-  
-  .footer-section p {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .footer-section .contact-info {
-    margin-bottom: 15px;
-  }
-  
-  .footer-section .contact-info i {
-    margin-right: 10px;
-    color: var(--accent-color);
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .footer-bottom p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  /* Mobile responsiveness */
-  @media screen and (max-width: 768px) {
-    .mobile-toggle {
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(380deg, var(--gradient-end), var(--primary-color));
+      color: white;
+      padding: 50px 0 10px;
+      margin-top: 50px;
+    }
+    
+    .footer-content {
       display: flex;
-    }
-    
-    .nav-links {
-      position: absolute;
-      top: 60px;
-      left: -100%;
-      flex-direction: column;
-      background-color: var(--gradient-start);
-      width: 100%;
-      text-align: left;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      align-items: flex-start;
-      z-index: 1000;
-    }
-    
-    .nav-links.active {
-      left: 0;
-    }
-    
-    .nav-links li {
-      width: 100%;
-    }
-    
-    .nav-links li a {
-      padding: 15px 20px;
-      height: auto;
-    }
-    
-    .dropdown-menu {
-      position: static;
-      width: 100%;
-      box-shadow: none;
-      background-color: rgba(0, 0, 0, 0.1);
-      display: none;
-      padding: 0;
-    }
-    
-    .dropdown.open .dropdown-menu {
-      display: block;
-    }
-    
-    .dropdown-toggle .fa-chevron-down {
-      margin-left: auto;
-    }
-    
-    /* Don't show dropdown on hover on mobile */
-    .dropdown:hover .dropdown-menu {
-      display: none;
-    }
-    
-    /* Show it on click with JS instead */
-    .dropdown.open .dropdown-menu {
-      display: block;
-    }
-    
-    .header-content h1 {
-      font-size: 1.8rem;
-    }
-    
-    .header-content p {
-      font-size: 1rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
     
     .footer-section {
-      flex: 100%;
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 20px;
+      padding: 0 15px;
     }
-  }
+    
+    .footer-section h3 {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-section h3:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent-color);
+    }
+    
+    .footer-section p {
+      margin-bottom: 10px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .footer-section .contact-info {
+      margin-bottom: 15px;
+    }
+    
+    .footer-section .contact-info i {
+      margin-right: 10px;
+      color: var(--accent-color);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-bottom p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    @media screen and (max-width: 768px) {
+      .footer-section {
+        flex: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -880,8 +835,6 @@
     </div>
   </div>
 
-
-  
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -919,39 +872,37 @@
       });
     });
     
-    // Exibir detalhes do procedimento (agora permite redirecionamento)
+    // Exibir detalhes do procedimento (redireciona normalmente)
     const detailButtons = document.querySelectorAll('.btn-procedure');
     detailButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        // Removido e.preventDefault() para permitir que o link seja seguido
-        // Se desejar executar alguma ação antes, insira aqui e, em seguida, redirecione:
-        // window.location.href = btn.getAttribute('href');
+        // O comportamento padrão de redirecionamento é mantido
       });
     });
   </script>
 
   <!-- Footer Section -->
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>UBS Portal</h3>
-      <p>Este site fornece apenas informações básicas.</p>
-      <p>Aviso: Este site é apenas para fins informativos e não substitui o conselho médico profissional.</p>
-    </div>
-    
-    <div class="footer-section">
-      <h3>Contatos Úteis</h3>
-      <div class="contact-info">
-        <p><i class="fas fa-phone"></i> (11) 4800-5024</p>
-        <p><i class="fas fa-envelope"></i> portaldaslaranjeirasrecepção@gmail.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> Rua Cardeal, S/N, Portal das Laranjeiras, Caieiras-SP</p>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>UBS Portal</h3>
+        <p>Este site fornece apenas informações básicas.</p>
+        <p>Aviso: Este site é apenas para fins informativos e não substitui o conselho médico profissional.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contatos Úteis</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> (11) 4800-5024</p>
+          <p><i class="fas fa-envelope"></i> portaldaslaranjeirasrecepção@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Cardeal, S/N, Portal das Laranjeiras, Caieiras-SP</p>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="footer-bottom">
-    <p>© 2025 UBS Portal. Domínio público.</p>
-  </div>
-</footer>
+    
+    <div class="footer-bottom">
+      <p>© 2025 UBS Portal. Domínio público.</p>
+    </div>
+  </footer>
 </body>
 </html>
