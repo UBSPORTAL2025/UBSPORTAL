@@ -3,53 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Declaração de Comparecimento - Caieiras</n  ><style>
+  <title>Declaração de Comparecimento - Caieiras</title>
+  <style>
     @media print {
-      @page { size:A4; margin:0; }
-      body, .no-print {margin:0!important; padding:0!important;} 
-      .no-print { display:none!important; }
-      .document { border:none; padding:1cm; width:21cm; height:29.7cm; box-shadow:none; }
-      .footer { position:absolute; bottom:1cm; width:calc(100% - 2cm); border-top:1px solid #ccc; padding-top:5px; }
-      .value { border-bottom:none!important; }
-      .qrcode-bottom { display:block!important; }
-      .justification-field { display:none!important; }
+      @page { size: A4; margin: 0; }
+      body { margin: 0; }
+      .no-print { display: none!important; }
+      .document { border: none; padding: 1cm; box-shadow: none; width: 21cm; height: 29.7cm; }
+      .footer { position: absolute; bottom: 1cm; width: calc(100% - 2cm); border-top: 1px solid #ccc; padding-top: 5px; }
+      .value { border-bottom: none!important; }
+      .justification-field { display: none!important; }
+      .qrcode-bottom { display: block!important; }
     }
-    body { margin:0; padding:0; background:#f5f5f5; font-family:Arial,sans-serif; }
-    .document { position:relative; width:21cm; min-height:29.7cm; margin:1cm auto; background:#fff; border:1px solid #ccc; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:1cm; box-sizing:border-box; }
-    .document::before { content:'UBS PORTAL'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-30deg); font-size:5cm; color:#194275; opacity:0.08; pointer-events:none; white-space:nowrap; }
-    .header { display:flex; justify-content:space-between; align-items:center; background:#e8f0fe; padding:10px; border-radius:5px; margin-bottom:15px; }
-    .header img { max-height:120px; }
-    .unidade-container { text-align:center; margin-bottom:20px; }
-    .unidade { font-size:16px; font-weight:bold; color:#194275; }
-    .title { font-size:26px; color:#194275; font-weight:bold; text-align:center; margin:25px 0; }
-    .content { font-size:16px; text-align:justify; margin-bottom:25px; }
-    .info-paragraph { margin-bottom:18px; line-height:1.6; }
-    .label { font-size:18px; font-weight:bold; color:#194275; margin-right:5px; }
-    .value { font-size:18px; display:inline-block; min-width:100px; border-bottom:1px dotted #aaa; padding:0 5px; }
-    .service-types { background:#f8f9fa; padding:15px; border-radius:5px; text-align:center; margin:25px 0; }
-    .service-types-title { font-size:18px; font-weight:bold; color:#194275; margin-bottom:12px; }
-    .checkbox-group { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
-    .checkbox-item { display:flex; align-items:center; }
-    .checkbox-item input { transform:scale(1.4); margin-right:6px; }
-    .checkbox-item label { font-size:16px; }
-    .justification-field { background:#f8f9fa; padding:15px; border-radius:5px; margin:20px 0; display:none; }
-    .justification-title { font-size:18px; font-weight:bold; color:#194275; margin-bottom:10px; }
-    .justification-content { width:100%; min-height:80px; border:1px solid #ccc; border-radius:5px; padding:10px; resize:vertical; font-size:16px; }
-    .signature { width:50%; margin:70px auto 0; text-align:center; border-top:1px solid #333; padding-top:5px; font-size:16px; }
-    select { width:100%; background:transparent; border:none; font-size:16px; cursor:pointer; }
-    select.required { border:1px solid red; background:#fee; }
-    .footer { text-align:center; font-size:14px; color:#194275; margin-top:5px; }
-    .footer p { margin:2px 0; }
-    .button-group { text-align:center; margin-top:15px; }
-    .print-button, .reset-button { font-size:16px; font-weight:bold; padding:12px 24px; border:none; border-radius:5px; cursor:pointer; color:#fff; margin:0 10px; }
-    .print-button { background:#194275; }
-    .print-button:hover { background:#0e2a4f; }
-    .reset-button { background:#6c757d; }
-    .reset-button:hover { background:#5a6268; }
-    .message { display:none; margin-top:15px; padding:10px; text-align:center; border-radius:5px; font-weight:bold; }
-    .message.success { background:#d4edda; color:#155724; border:1px solid #c3e6cb; }
-    .message.error { background:#f8d7da; color:#721c24; border:1px solid #f5c6cb; }
-    .qrcode-bottom { position:absolute; width:80px; height:80px; bottom:1cm; left:1cm; }
+    body { margin: 0; padding: 0; background: #f5f5f5; font-family: Arial, sans-serif; }
+    .document { position: relative; margin: 1cm auto; padding: 1cm; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 21cm; min-height: 29.7cm; box-sizing: border-box; }
+    .document::before { content: 'UBS PORTAL'; position: absolute; top:50%; left:50%; transform: translate(-50%,-50%) rotate(-30deg); font-size:5cm; color:#194275; opacity:0.08; pointer-events:none; }
+    .header { display: flex; justify-content: space-between; align-items: center; background: #e8f0fe; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+    .header img { max-height: 120px; }
+    .unidade-container { text-align: center; margin-bottom: 20px; }
+    .unidade { font-size: 16px; font-weight: bold; color: #194275; }
+    .title { text-align: center; font-size: 26px; font-weight: bold; color: #194275; margin: 25px 0; }
+    .content { font-size: 16px; text-align: justify; margin-bottom: 25px; }
+    .info-paragraph { margin-bottom: 18px; line-height: 1.6; }
+    .label { font-size: 18px; font-weight: bold; color: #194275; margin-right: 5px; }
+    .value { font-size: 18px; display: inline-block; min-width: 120px; border-bottom: 1px dotted #aaa; padding: 0 5px; }
+    .service-types { background: #f8f9fa; padding: 15px; border-radius: 5px; text-align: center; margin: 25px 0; }
+    .service-types-title { font-size: 18px; font-weight: bold; color: #194275; margin-bottom: 12px; }
+    .checkbox-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .checkbox-item { display: flex; align-items: center; }
+    .checkbox-item input { transform: scale(1.4); margin-right: 6px; }
+    .checkbox-item label { font-size: 16px; }
+    .justification-field { background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; display: none; }
+    .justification-title { font-size: 18px; font-weight: bold; color: #194275; margin-bottom: 10px; }
+    .justification-content { width: 100%; min-height: 80px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; resize: vertical; font-size: 16px; }
+    .signature { width: 50%; margin: 70px auto 0; text-align: center; border-top: 1px solid #333; padding-top: 5px; font-size: 16px; }
+    select { width: 100%; background: transparent; border: none; font-size: 16px; cursor: pointer; }
+    select.required { border: 1px solid red; background: #ffeeee; }
+    .footer { text-align: center; font-size: 14px; color: #194275; margin-top: 5px; }
+    .footer p { margin: 2px 0; }
+    .button-group { text-align: center; margin-top: 15px; }
+    .print-button, .reset-button { font-size: 16px; font-weight: bold; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; color: #fff; margin: 0 10px; }
+    .print-button { background: #194275; }
+    .print-button:hover { background: #0e2a4f; }
+    .reset-button { background: #6c757d; }
+    .reset-button:hover { background: #5a6268; }
+    .message { display: none; margin-top: 15px; padding: 10px; text-align: center; border-radius: 5px; font-weight: bold; }
+    .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .qrcode-bottom { position: absolute; width: 60px; height: 60px; bottom: 1cm; left: 1cm; }
   </style>
 </head>
 <body>
@@ -58,18 +59,16 @@
       <img src="SUS1.png" alt="Logo SUS">
       <img src="bb.png" alt="Logo UBS">
     </div>
-
     <div class="unidade-container">
       <div class="unidade">UBS PORTAL DAS LARANJEIRAS ANTÔNIO DE SOUZA SANTOS<p>CNES: 4737423</p></div>
     </div>
-
     <div class="title">DECLARAÇÃO DE COMPARECIMENTO</div>
-    <div class="content">Certificamos, para os devidos fins e conforme solicitado, que a pessoa abaixo identificada compareceu à esta Unidade de Saúde na data e horário previamente agendados, tendo recebido o atendimento necessário.</div>
+    <div class="content">Certificamos, para os devidos fins e conforme solicitado, que a pessoa abaixo identificada compareceu a esta Unidade de Saúde na data e horário previamente agendados.</div>
 
-    <div class="info-paragraph"><span class="label">Nome:</span><span class="value" id="nome" contenteditable></span></div>
-    <div class="info-paragraph"><span class="label">CPF:</span><span class="value" id="cpf" contenteditable data-raw></span></div>
-    <div class="info-paragraph"><span class="label">Data:</span><span class="value" id="data" contenteditable></span></div>
-    <div class="info-paragraph"><span class="label">Horário:</span><span class="value" id="horario" contenteditable>das 00:00 às 00:00</span></div>
+    <div class="info-paragraph"><span class="label">Nome:</span><span class="value" id="nome" contenteditable="true"></span></div>
+    <div class="info-paragraph"><span class="label">CPF:</span><span class="value" id="cpf" contenteditable="true" data-raw=""></span></div>
+    <div class="info-paragraph"><span class="label">Data:</span><span class="value" id="data" contenteditable="true"></span></div>
+    <div class="info-paragraph"><span class="label">Horário:</span><span class="value" id="horario" contenteditable="true">das 00:00 às 00:00</span></div>
 
     <div class="service-types">
       <div class="service-types-title">Tipo de Atendimento:</div>
@@ -81,72 +80,81 @@
         <div class="checkbox-item"><input type="checkbox" id="outro" onchange="toggleJustificationField()"><label for="outro">Outro</label></div>
       </div>
     </div>
-
     <div class="justification-field" id="justification-field">
       <div class="justification-title">Justificativa:</div>
       <textarea class="justification-content" id="justification" placeholder="Digite a justificativa..."></textarea>
     </div>
-
     <div class="signature">Assinatura do Profissional
-      <select id="profissional" onchange="updateProfessional()">
-        <option value="">Selecione...</option>
+      <select id="profissional" onchange="updateProfessionalTitle()">
+        <option value="">Selecione o profissional</option>
         <option>Auxiliar Administrativo</option><option>Gerente</option><option>Recepcionista</option><option>Médico</option>
         <option>Dentista</option><option>Psicólogo</option><option>Enfermeiro</option><option>Técnico de Enfermagem</option>
-        <option>Agente de Saúde</option><option>Assistente Social</option><option>Nutricionista</option><option>Fisioterapeuta</option><option>Outro</option>
+        <option>Agente de Saúde</option><option>Assistente Social</option><option>Nutricionista</option><option>Fisioterapeuta</option>
+        <option>Outro</option>
       </select>
     </div>
-
     <footer class="footer">
-      <p>Caieiras, <span id="today"></span></p>
-      <p>Horário de emissão: <span id="now"></span></p>
+      <p>Caieiras, <span id="data-atual"></span></p>
+      <p>Horário de emissão: <span id="hora-atual"></span></p>
       <p>www.caieiras.sp.gov.br | @prefeituradecaieiras</p>
     </footer>
-
-    <div class="qrcode-bottom"><img src="quadrado.png" alt="QR Code" width="80" height="80"></div>
-
+    <div class="qrcode-bottom" id="qrcode-bottom"></div>
     <div class="button-group no-print">
       <div id="message" class="message"></div>
-      <button type="button" class="reset-button" onclick="resetForm()">Limpar</button>
-      <button type="button" class="print-button" onclick="printDocument()">Imprimir</button>
+      <button class="reset-button" onclick="resetForm()">Limpar</button>
+      <button class="print-button" onclick="generateAndPrint()">Imprimir</button>
     </div>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
     function toggleJustificationField() {
       document.getElementById('justification-field').style.display = document.getElementById('outro').checked ? 'block' : 'none';
     }
-    function updateProfessional() {
+    function updateProfessionalTitle() {
       document.getElementById('profissional').classList.remove('required');
     }
-    function setDateTime() {
-      const d=new Date();
-      document.getElementById('today').textContent = d.toLocaleDateString('pt-BR');
-      document.getElementById('now').textContent = d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-      const df=document.getElementById('data'); if(!df.textContent.trim()) df.textContent=d.toLocaleDateString('pt-BR');
+    function updateDateTime() {
+      const now = new Date();
+      document.getElementById('data-atual').textContent = now.toLocaleDateString('pt-BR');
+      document.getElementById('hora-atual').textContent = now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+      const df = document.getElementById('data'); if(!df.textContent.trim()) df.textContent = now.toLocaleDateString('pt-BR');
     }
-    function printDocument() {
-      const nome=document.getElementById('nome').textContent.trim();
-      const prof=document.getElementById('profissional');
+    function formatCPF(raw) {
+      raw = raw.replace(/\D/g,'').slice(0,11);
+      return raw.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/,'$1.$2.$3-$4');
+    }
+    function generateAndPrint() {
+      const nome = document.getElementById('nome').textContent.trim();
+      const prof = document.getElementById('profissional');
       if(!nome) return showMessage('Preencha o nome',false);
       if(!prof.value) { prof.classList.add('required'); return showMessage('Selecione o profissional',false); }
       if(document.getElementById('outro').checked && !document.getElementById('justification').value.trim()) return showMessage('Justifique o "Outro"',false);
-      setDateTime();
-      document.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
-      window.print();
-      document.querySelectorAll('.value').forEach(el=>el.setAttribute('contenteditable','true'));
+      // CPF format
+      const cpfEl = document.getElementById('cpf');
+      let raw = cpfEl.textContent.replace(/\D/g,''); cpfEl.dataset.raw = raw;
+      cpfEl.textContent = formatCPF(raw);
+      updateDateTime(); document.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+      // QR Code bottom
+      const qr = document.getElementById('qrcode-bottom'); qr.innerHTML=''; new QRCode(qr,{text:`Nome: ${nome}\nCPF: ${cpfEl.dataset.raw}\nData: ${document.getElementById('data').textContent}\nHorário: ${document.getElementById('horario').textContent}`,width:60,height:60});
+      window.print(); document.querySelectorAll('.value').forEach(el=>el.setAttribute('contenteditable','true'));
       showMessage('Impressão realizada!',true);
     }
     function resetForm() {
       ['nome','cpf','data','horario'].forEach(id=>document.getElementById(id).textContent='');
       document.getElementById('profissional').value='';
       document.getElementById('justification').value=''; document.getElementById('justification-field').style.display='none';
-      ['checkbox'].forEach(_=>{});
-      setDateTime(); showMessage('Formulário limpo!',true);
+      document.getElementById('qrcode-bottom').innerHTML='';
+      updateDateTime(); showMessage('Formulário limpo!',true);
     }
     function showMessage(txt,ok) {
-      const m=document.getElementById('message'); m.textContent=txt; m.className='message '+(ok?'success':'error'); m.style.display='block'; setTimeout(()=>m.style.display='none',3000);
+      const m = document.getElementById('message'); m.textContent = txt; m.className = 'message ' + (ok ? 'success':'error'); m.style.display='block'; setTimeout(()=>m.style.display='none',3000);
     }
-    document.addEventListener('DOMContentLoaded',()=>{ setDateTime(); setInterval(setDateTime,60000); });
+    document.addEventListener('DOMContentLoaded',()=>{ updateDateTime(); setInterval(updateDateTime,60000);
+      const cpfEl = document.getElementById('cpf');
+      cpfEl.addEventListener('input',()=>{ let v=cpfEl.textContent.replace(/\D/g,'').slice(0,11); cpfEl.textContent=v; placeCaretAtEnd(cpfEl); });
+      document.querySelectorAll('[contenteditable]').forEach(el=>{ el.addEventListener('focus',()=>el.style.background='#f8f9fa'); el.addEventListener('blur',()=>el.style.background=''); });
+    });
+    function placeCaretAtEnd(el) { const range=document.createRange(), sel=window.getSelection(); range.selectNodeContents(el); range.collapse(false); sel.removeAllRanges(); sel.addRange(range);} 
   </script>
 </body>
 </html>
